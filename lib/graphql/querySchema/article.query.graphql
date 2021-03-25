@@ -1,9 +1,0 @@
-query articles{
-  article(sorts: [{ column: "id", order: desc }]) {
-    id
-    title
-    poster_image
-    source
-    news
-  }
-}

@@ -1,9 +1,0 @@
-query success_story{
-  stem_success_story( sorts: [{ column: "id", order: desc }]){
-    id
-    poster_image
-    story
-    source
-    story_name
-  }
-}

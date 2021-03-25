@@ -4,63 +4,61 @@ import 'package:artemis/artemis.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:equatable/equatable.dart';
 import 'package:gql/ast.dart';
-part 'story.graphql.g.dart';
+part 'medee.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class SuccessStory$Query$StemSuccessStory with EquatableMixin {
-  SuccessStory$Query$StemSuccessStory();
+class Medee$Query$DsMedee with EquatableMixin {
+  Medee$Query$DsMedee();
 
-  factory SuccessStory$Query$StemSuccessStory.fromJson(
-          Map<String, dynamic> json) =>
-      _$SuccessStory$Query$StemSuccessStoryFromJson(json);
+  factory Medee$Query$DsMedee.fromJson(Map<String, dynamic> json) =>
+      _$Medee$Query$DsMedeeFromJson(json);
 
   int id;
 
-  @JsonKey(name: 'poster_image')
-  String posterImage;
+  String angilal;
 
-  String story;
+  String medee;
 
-  String source;
+  @JsonKey(name: 'medee_cat_id')
+  int medeeCatId;
 
-  @JsonKey(name: 'story_name')
-  String storyName;
+  DateTime ognoo;
+
+  String tailbar;
 
   @override
-  List<Object> get props => [id, posterImage, story, source, storyName];
-  Map<String, dynamic> toJson() =>
-      _$SuccessStory$Query$StemSuccessStoryToJson(this);
+  List<Object> get props => [id, angilal, medee, medeeCatId, ognoo, tailbar];
+  Map<String, dynamic> toJson() => _$Medee$Query$DsMedeeToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class SuccessStory$Query with EquatableMixin {
-  SuccessStory$Query();
+class Medee$Query with EquatableMixin {
+  Medee$Query();
 
-  factory SuccessStory$Query.fromJson(Map<String, dynamic> json) =>
-      _$SuccessStory$QueryFromJson(json);
+  factory Medee$Query.fromJson(Map<String, dynamic> json) =>
+      _$Medee$QueryFromJson(json);
 
-  @JsonKey(name: 'stem_success_story')
-  List<SuccessStory$Query$StemSuccessStory> stemSuccessStory;
+  @JsonKey(name: 'ds_medee')
+  List<Medee$Query$DsMedee> dsMedee;
 
   @override
-  List<Object> get props => [stemSuccessStory];
-  Map<String, dynamic> toJson() => _$SuccessStory$QueryToJson(this);
+  List<Object> get props => [dsMedee];
+  Map<String, dynamic> toJson() => _$Medee$QueryToJson(this);
 }
 
-class SuccessStoryQuery
-    extends GraphQLQuery<SuccessStory$Query, JsonSerializable> {
-  SuccessStoryQuery();
+class MedeeQuery extends GraphQLQuery<Medee$Query, JsonSerializable> {
+  MedeeQuery();
 
   @override
   final DocumentNode document = DocumentNode(definitions: [
     OperationDefinitionNode(
         type: OperationType.query,
-        name: NameNode(value: 'success_story'),
+        name: NameNode(value: 'medee'),
         variableDefinitions: [],
         directives: [],
         selectionSet: SelectionSetNode(selections: [
           FieldNode(
-              name: NameNode(value: 'stem_success_story'),
+              name: NameNode(value: 'ds_medee'),
               alias: null,
               arguments: [
                 ArgumentNode(
@@ -86,25 +84,31 @@ class SuccessStoryQuery
                     directives: [],
                     selectionSet: null),
                 FieldNode(
-                    name: NameNode(value: 'poster_image'),
+                    name: NameNode(value: 'angilal'),
                     alias: null,
                     arguments: [],
                     directives: [],
                     selectionSet: null),
                 FieldNode(
-                    name: NameNode(value: 'story'),
+                    name: NameNode(value: 'medee'),
                     alias: null,
                     arguments: [],
                     directives: [],
                     selectionSet: null),
                 FieldNode(
-                    name: NameNode(value: 'source'),
+                    name: NameNode(value: 'medee_cat_id'),
                     alias: null,
                     arguments: [],
                     directives: [],
                     selectionSet: null),
                 FieldNode(
-                    name: NameNode(value: 'story_name'),
+                    name: NameNode(value: 'ognoo'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'tailbar'),
                     alias: null,
                     arguments: [],
                     directives: [],
@@ -114,11 +118,10 @@ class SuccessStoryQuery
   ]);
 
   @override
-  final String operationName = 'success_story';
+  final String operationName = 'medee';
 
   @override
   List<Object> get props => [document, operationName];
   @override
-  SuccessStory$Query parse(Map<String, dynamic> json) =>
-      SuccessStory$Query.fromJson(json);
+  Medee$Query parse(Map<String, dynamic> json) => Medee$Query.fromJson(json);
 }
