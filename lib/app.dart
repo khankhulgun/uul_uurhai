@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Router;
 import 'package:lambda/modules/gcm/notify.dart';
 import 'package:lambda/modules/network_util.dart';
 import 'package:shared_preferences/shared_preferences.dart';
