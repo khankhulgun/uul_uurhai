@@ -22,7 +22,7 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  Notify fcm = new Notify();
+  // Notify fcm = new Notify();
   BuildContext ctx;
 
   SharedPreferences _prefs;
@@ -53,11 +53,11 @@ class _AppState extends State<App> {
     network.initNetwork(baseUrl);
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      fcm.getPermission(baseUrl, ctx);
-      await fcm.configFcm();
+      // fcm.getPermission(baseUrl, ctx);
+      // await fcm.configFcm();
       await this.checkAuth();
       if (isAuth) {
-        await fcm.setToken("/vpf/api/token", user.id);
+        // await fcm.setToken("/vpf/api/token", user.id);
       } else {
         //await fcm.setToken("/vpf/api/token", 0);
       }

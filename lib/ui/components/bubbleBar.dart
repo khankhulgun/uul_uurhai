@@ -209,7 +209,7 @@ class _BottomNavigationBarState extends State<BubbleBar>
     List<AnimationController>.generate(widget.items.length, (int index) {
       return AnimationController(
         duration: Duration(milliseconds: 200),
-        vsync: this,
+
       )..addListener(_rebuild);
     });
     _animations =

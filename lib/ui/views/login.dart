@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   AgentUtil agentUtil = new AgentUtil();
   AgentState agentState;
-  Notify fcm = new Notify();
+  // Notify fcm = new Notify();
   final GlobalKey<FormState> _loginFormKey = GlobalKey<FormState>();
 
   TextEditingController login = new TextEditingController();
@@ -108,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
       final userState = Provider.of<UserModel>(context, listen: false);
       String userData = prefs.getString('user');
       User user = new User.fromJson(jsonDecode(userData));
-      await fcm.setToken("/lambda/notify/token", user.id);
+      // await fcm.setToken("/lambda/notify/token", user.id);
       userState.setUser(user);
       Navigator.pushReplacementNamed(context, '/main');
     }
@@ -332,7 +332,7 @@ class _LoginPageState extends State<LoginPage> {
                                       height: 40,
                                       margin: EdgeInsets.only(top: 20),
                                       decoration: BoxDecoration(
-                                        gradient: mainGradient,
+                                        color:  Color(0xFF0D47A1),
                                         borderRadius:
                                             new BorderRadius.circular(50.0),
                                       ),
@@ -357,13 +357,13 @@ class _LoginPageState extends State<LoginPage> {
                                           ),
                                         ),
                                         onPressed: () {
-//                                          final form =
-//                                              this._loginFormKey.currentState;
-//                                          if (form.validate()) {
-//                                            form.save();
-//                                            this.doLogin();
-//                                          }
-                                          Navigator.pushNamed(context, '/main');
+                                         final form =
+                                             this._loginFormKey.currentState;
+                                         if (form.validate()) {
+                                           form.save();
+                                           this.doLogin();
+                                         }
+//                                           Navigator.pushNamed(context, '/main');
                                         },
 
                                       ),

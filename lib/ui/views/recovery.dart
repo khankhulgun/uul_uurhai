@@ -127,7 +127,7 @@ class _RecoveryPageState extends State<RecoveryPage> {
                           height: 46,
                           margin: EdgeInsets.only(top: 13),
                           decoration: BoxDecoration(
-                            gradient: prefix0.mainGradient,
+
                             borderRadius: new BorderRadius.circular(50.0),
                           ),
                           child: FlatButton(

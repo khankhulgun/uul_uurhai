@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:541046234779:android:78320802f988259502703e",
         "android_client_info": {
-          "package_name": "mn.khankhulgun.monbiz"
+          "package_name": "mn.khankhulgun.mmhi"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "541046234779-s6lk8b2acb2l0p9u3mnijrlgionbp09a.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "mn.khankhulgun.monbiz",
+            "package_name": "mn.khankhulgun.mmhi",
             "certificate_hash": "f9a1d43643d01eb229752491621c73c84bf586e4"
           }
         },

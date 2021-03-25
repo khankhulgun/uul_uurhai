@@ -45,7 +45,7 @@ class _ProfileScreen extends State<ProfileScreen> {
       dialogType: DialogType.SUCCES,
       animType: AnimType.BOTTOMSLIDE,
       headerAnimationLoop: false,
-      tittle: 'Амжилттай',
+      title: 'Амжилттай',
       desc: 'Хувийн мэдээлэл илгээгдлээ',
       btnOkOnPress: () {
 

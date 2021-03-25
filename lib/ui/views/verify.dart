@@ -122,7 +122,7 @@ class _VerifyPageState extends State<VerifyPage> {
                             margin: EdgeInsets.only(top: 13),
                             decoration: BoxDecoration(
                               color: Color(0xff0079FF),
-                              gradient: prefix0.mainGradient,
+
                               borderRadius: new BorderRadius.circular(50.0),
                             ),
                             child: FlatButton(

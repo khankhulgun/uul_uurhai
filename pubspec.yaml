@@ -20,7 +20,7 @@ dependencies:
   flutter:
     sdk: flutter
   lambda:
-    path: ../lambda
+    path: ./lambda
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
@@ -31,18 +31,13 @@ dependencies:
   get_it: 4.0.0
   flutter_map: 0.8.2
   font_awesome_flutter: 8.8.1
-  awesome_dialog: 0.1.3
-  user_location: 0.1.2
-  firebase_messaging: ^5.1.5
+  awesome_dialog: 1.3.0
   flutter_inner_drawer: ^0.4.0
   device_info: 0.4.2+2
   local_auth: 0.6.1+3
   flutter_icons: ^0.1.4
-  flutter_secure_storage: ^3.2.1+1
-  flutter_map_arcgis: 0.1.5
-  flutter_map_tile_downloader: 0.0.8
+  flutter_secure_storage: ^3.3.5
   gestures: 0.0.1
-  simple_animations: ^1.3.3
   flutter_swiper: ^1.1.6
   intro_views_flutter: ^2.8.0
   liquid_progress_indicator: 0.3.2
@@ -51,8 +46,8 @@ dependencies:
   percent_indicator: ^2.1.1
   datetime_picker_formfield: 1.0.0
   date_format: 1.0.8
-  petitparser: 2.4.0
-  image_picker: 0.6.3+4
+  petitparser: ^3.1.0
+  image_picker: 0.6.7+11
   permission_handler: 4.4.0
   searchable_dropdown: 1.1.2
   flutter_offline: ^0.3.0
@@ -60,11 +55,12 @@ dependencies:
   sqflite: ^1.1.6+5
   intl: ^0.15.7
   flutter_staggered_grid_view: ^0.3.0
-  flutter_svg: ^0.15.0
+  flutter_svg: 0.18.0
   flutter_html: ^0.11.0
   package_info: 0.4.0+18
   carousel_slider: ^2.2.1
-  flutter_launcher_name: "^0.0.1"
+  flutter_launcher_name: ^0.0.1
+  simple_animations: ^2.2.1
 
 dev_dependencies:
   flutter_test:
