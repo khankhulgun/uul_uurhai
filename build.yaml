@@ -1,0 +1,67 @@
+#targets:
+#  $default:
+#    builders:
+#      artemis:
+#        options:
+#          schema_mapping:
+#            - schema: lib/schema.graphql
+#              queries_glob: lib/queries/article.query.graphql
+#              output: lib/graphql/article.query.dart
+#          custom_parser_import: 'package:catalog/coercers.dart'
+#          scalar_mapping:
+#            - graphql_type: Time
+#              dart_type: DateTime
+#              use_custom_parser: true
+targets:
+  $default:
+    builders:
+      artemis:
+        options:
+          schema_mapping:
+            - output: lib/graphql/queries/article.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/article.query.graphql
+            - output: lib/graphql/queries/story.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/story.query.graphql
+            - output: lib/graphql/queries/home.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/home.query.graphql
+            - output: lib/graphql/queries/news.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/news.query.graphql
+            - output: lib/graphql/queries/mentors.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/mentor.query.graphql
+            - output: lib/graphql/queries/tours.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/tour.query.graphql
+            - output: lib/graphql/queries/events.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/events.query.graphql
+            - output: lib/graphql/queries/jobs.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/jobs.query.graphql
+            - output: lib/graphql/queries/edu.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/edu.query.graphql
+            - output: lib/graphql/queries/tests.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/tests.query.graphql
+            - output: lib/graphql/queries/test.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/test.query.graphql
+            - output: lib/graphql/queries/professions.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/professions.query.graphql
+            - output: lib/graphql/queries/test_results.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/test_results.query.graphql
+          custom_parser_import: 'package:catalog/graphql/utils/coercers.dart'
+          scalar_mapping:
+            - graphql_type: Time
+              dart_type: DateTime
+              use_custom_parser: true
+            - graphql_type: ID
+              dart_type: int
+              use_custom_parser: false

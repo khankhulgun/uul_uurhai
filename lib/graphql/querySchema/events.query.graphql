@@ -1,0 +1,10 @@
+query events{
+    event_study(sorts: [{ column: "id", order: desc }]) {
+        id
+        event_date
+        study_name
+        poster_image
+        event_location
+        event_news
+    }
+}

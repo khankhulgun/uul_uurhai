@@ -1,0 +1,18 @@
+query tests{
+    stem_test(limit: 10, sorts: [{ column: "id", order: desc }]) {
+        id
+        cat_id
+        poster_upload
+        title
+        sub_form_test_questions {
+            id
+            test_id
+            questions
+            sub_form_test_questions_answes {
+                id
+                answers
+                questions_id
+            }
+        }
+    }
+}

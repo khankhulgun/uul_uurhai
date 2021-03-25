@@ -1,0 +1,15 @@
+query professions{
+    lut_direct {
+        id
+        direct
+        profession_edu{
+            id
+            link_one
+            news_one
+            photo
+            title_one
+            torol_id
+            created_at
+        }
+    }
+}

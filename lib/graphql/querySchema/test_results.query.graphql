@@ -1,0 +1,7 @@
+query test_results($user_id:String!){
+    test_results(filters:[{column:"user_id", condition:equals, value:$user_id}], sorts: [{ column: "id", order: desc }]) {
+        id
+        test_title
+        conclution
+    }
+}

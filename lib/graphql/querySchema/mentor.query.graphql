@@ -1,0 +1,18 @@
+query mentors{
+    mentors(sorts: [{ column: "id", order: desc }]) {
+        id
+        adviser_woman_one
+        adviser_woman_two
+        bio
+        email
+        facebook
+        firstname
+        instagram
+        lastname
+        phone
+        photo
+        skype
+        twitter
+        website
+    }
+}

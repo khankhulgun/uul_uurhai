@@ -1,0 +1,14 @@
+query jobs{
+    workplace(sorts: [{ column: "id", order: desc }]) {
+        email
+        fee
+        id
+        org_name
+        page
+        position
+        poster_photo
+        roles
+        special_skill
+        web
+    }
+}

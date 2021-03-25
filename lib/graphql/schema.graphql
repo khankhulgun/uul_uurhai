@@ -1,0 +1,264 @@
+type Article {
+  id: ID!
+  news: String
+  poster_image: String
+  source: String
+  title: String
+}
+
+enum condition {
+  equals
+  notEqual
+  contains
+  notContains
+  startsWith
+  endsWith
+  greaterThan
+  greaterThanOrEqual
+  lessThan
+  lessThanOrEqual
+  isNull
+  notNull
+  whereIn
+}
+
+type deleted {
+  id: String!
+}
+
+type EventStudy {
+  event_date: Time
+  event_location: String
+  event_news: String
+  id: ID!
+  poster_image: String
+  study_name: String
+}
+
+input filter {
+  column: String!
+  condition: condition!
+  value: String!
+}
+
+type LutDirect {
+  direct: String
+  id: ID!
+  profession_edu: [ProfessionEdu!]
+}
+
+type Mentors {
+  adviser_woman_one: String
+  adviser_woman_two: String
+  bio: String
+  email: String
+  facebook: String
+  firstname: String
+  id: ID!
+  instagram: String
+  lastname: String
+  phone: String
+  photo: String
+  skype: String
+  twitter: String
+  website: String
+}
+
+enum order {
+  asc
+  desc
+}
+
+type paginate {
+  page: Int!
+  total: Int!
+  last_page: Int!
+  article: [Article!]
+  stem_success_story: [StemSuccessStory!]
+  mentors: [Mentors!]
+  event_study: [EventStudy!]
+  workplace: [Workplace!]
+  stem_lab_tour: [StemLabTour!]
+  stem_test: [StemTest!]
+  lut_direct: [LutDirect!]
+  sub_form_test_questions: [SubFormTestQuestions!]
+  sub_form_test_questions_answes: [SubFormTestQuestionsAnswes!]
+  profession_edu: [ProfessionEdu!]
+  test_results: [TestResults!]
+}
+
+type ProfessionEdu {
+  created_at: Time
+  id: ID!
+  link_one: String
+  news_one: String
+  photo: String
+  title_one: String
+  torol_id: Int
+  updated_at: Time
+}
+
+type Query {
+  article(sorts: [sort], filters: [filter], limit: Int, offset: Int): [Article!]
+  stem_success_story(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [StemSuccessStory!]
+  mentors(sorts: [sort], filters: [filter], limit: Int, offset: Int): [Mentors!]
+  event_study(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [EventStudy!]
+  workplace(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [Workplace!]
+  stem_lab_tour(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [StemLabTour!]
+  stem_test(
+    sorts: [sort]
+    filters: [filter]
+    subSorts: [subSort]
+    subFilters: [subFilter]
+    limit: Int
+    offset: Int
+  ): [StemTest!]
+  lut_direct(
+    sorts: [sort]
+    filters: [filter]
+    subSorts: [subSort]
+    subFilters: [subFilter]
+    limit: Int
+    offset: Int
+  ): [LutDirect!]
+  sub_form_test_questions(
+    sorts: [sort]
+    filters: [filter]
+    subSorts: [subSort]
+    subFilters: [subFilter]
+    limit: Int
+    offset: Int
+  ): [SubFormTestQuestions!]
+  sub_form_test_questions_answes(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [SubFormTestQuestionsAnswes!]
+  profession_edu(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [ProfessionEdu!]
+  test_results(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [TestResults!]
+  paginate(
+    sorts: [sort]
+    filters: [filter]
+    subSorts: [subSort]
+    subFilters: [subFilter]
+    page: Int!
+    size: Int!
+  ): paginate!
+}
+
+input sort {
+  column: String!
+  order: order!
+}
+
+type StemLabTour {
+  id: ID!
+  link: String
+  news: String
+  poster_image: String
+  title: String
+  wide_image: String
+}
+
+type StemSuccessStory {
+  id: ID!
+  poster_image: String
+  source: String
+  story: String
+  story_name: String
+}
+
+type StemTest {
+  cat_id: Int
+  id: ID!
+  poster_upload: String
+  title: String
+  sub_form_test_questions: [SubFormTestQuestions!]
+}
+
+input subFilter {
+  column: String!
+  table: String!
+  condition: condition!
+  value: String!
+}
+
+type SubFormTestQuestions {
+  id: ID!
+  questions: String
+  test_id: Int
+  sub_form_test_questions_answes: [SubFormTestQuestionsAnswes!]
+}
+
+type SubFormTestQuestionsAnswes {
+  answers: String
+  id: ID!
+  is_selected: Int
+  questions_id: Int
+}
+
+input subSort {
+  column: String!
+  table: String!
+  order: order!
+}
+
+type subTable {
+  table: String!
+  parentIdentity: String!
+  ConnectionField: String!
+}
+
+type TestResults {
+  conclution: String
+  id: ID!
+  test_title: String
+  user_id: Int
+}
+
+scalar Time
+
+type Workplace {
+  email: String
+  fee: Int
+  id: ID!
+  org_name: String
+  page: String
+  position: String
+  poster_photo: String
+  roles: String
+  special_skill: String
+  web: String
+}
+

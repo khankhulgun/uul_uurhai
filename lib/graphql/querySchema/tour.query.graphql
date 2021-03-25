@@ -1,0 +1,10 @@
+query tours{
+    stem_lab_tour(sorts: [{ column: "id", order: desc }]) {
+        id
+        link
+        news
+        poster_image
+        title
+        wide_image
+    }
+}
