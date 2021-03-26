@@ -13,7 +13,8 @@ import 'package:catalog/ui/common/paginate.dart';
 
 //GRAPHQL
 import 'package:catalog/graphql/config.dart';
-import 'package:catalog/graphql/queries/medee.dart';
+import 'package:catalog/graphql/queries/medee.data.gql.dart';
+import 'package:catalog/graphql/queries/medee.req.gql.dart';
 
 class News extends StatefulWidget {
   @override
@@ -26,7 +27,7 @@ class _NewsState extends State<News> {
 
 
   //GRAPHQL Pagination
-  List<PaginateMedee$Query$Paginate$DsMedee> news = [];
+  List<GpaginateMedeeData_paginate_ds_medee> news = [];
   bool loading = true;
   int currentPage = 1;
   int lastPage = 0;
@@ -43,8 +44,9 @@ class _NewsState extends State<News> {
     setState(() {
       loading = true;
     });
-    final response = await client.execute(PaginateMedeeQuery(
-        variables: PaginateMedeeArguments(page: page, size: 4)));
+    final response = await client.request(
+        oper
+    );
 
     setState(() {
       news = response.data.paginate.dsMedee;
