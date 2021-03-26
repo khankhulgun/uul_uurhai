@@ -19,6 +19,8 @@ import 'page/Tusuv_HAA/zarlaga.dart';
 import 'page/ZG_vil_ajilganii_hutulbur.dart';
 import 'page/home.dart';
 import 'page/news.dart';
+import 'package:catalog/graphql/config.dart';
+import 'package:catalog/graphql/queries/medee.dart';
 
 class statistic {
   final String title;
@@ -36,6 +38,7 @@ class _mainScreenState extends State<mainScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 //  NetworkUtil _http = new NetworkUtil();
   bool loading = true;
+  List<PaginateMedee$Query$Paginate$DsMedee> news = [];
 
 //  int _currentIndex = 0;
 //
@@ -55,6 +58,19 @@ class _mainScreenState extends State<mainScreen> {
   @override
   void initState() {
     super.initState();
+
+    getData();
+  }
+
+  void getData() async {
+
+    final response = await client.execute(PaginateMedeeQuery(variables: PaginateMedeeArguments(page: 1)));
+
+    print(response.data.paginate.lastPage);
+    print(response.data.paginate.total);
+    print(response.data.paginate.dsMedee[0].id);
+    print(response.data.paginate.dsMedee[0].angilal);
+    print(response.data.paginate.dsMedee[0].medee);
   }
   final List<statistic> statistics = [
     statistic("Экспортын мэдээ",),

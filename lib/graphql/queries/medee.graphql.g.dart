@@ -6,38 +6,71 @@ part of 'medee.graphql.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Medee$Query$DsMedee _$Medee$Query$DsMedeeFromJson(Map<String, dynamic> json) {
-  return Medee$Query$DsMedee()
+PaginateMedee$Query$Paginate$DsMedee
+    _$PaginateMedee$Query$Paginate$DsMedeeFromJson(Map<String, dynamic> json) {
+  return PaginateMedee$Query$Paginate$DsMedee()
     ..id = json['id'] as int
-    ..angilal = json['angilal'] as String
     ..medee = json['medee'] as String
-    ..medeeCatId = json['medee_cat_id'] as int
+    ..angilal = json['angilal'] as String
     ..ognoo =
         json['ognoo'] == null ? null : DateTime.parse(json['ognoo'] as String)
     ..tailbar = json['tailbar'] as String;
 }
 
-Map<String, dynamic> _$Medee$Query$DsMedeeToJson(
-        Medee$Query$DsMedee instance) =>
+Map<String, dynamic> _$PaginateMedee$Query$Paginate$DsMedeeToJson(
+        PaginateMedee$Query$Paginate$DsMedee instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'angilal': instance.angilal,
       'medee': instance.medee,
-      'medee_cat_id': instance.medeeCatId,
+      'angilal': instance.angilal,
       'ognoo': instance.ognoo?.toIso8601String(),
       'tailbar': instance.tailbar,
     };
 
-Medee$Query _$Medee$QueryFromJson(Map<String, dynamic> json) {
-  return Medee$Query()
+PaginateMedee$Query$Paginate _$PaginateMedee$Query$PaginateFromJson(
+    Map<String, dynamic> json) {
+  return PaginateMedee$Query$Paginate()
+    ..total = json['total'] as int
+    ..lastPage = json['last_page'] as int
     ..dsMedee = (json['ds_medee'] as List)
         ?.map((e) => e == null
             ? null
-            : Medee$Query$DsMedee.fromJson(e as Map<String, dynamic>))
+            : PaginateMedee$Query$Paginate$DsMedee.fromJson(
+                e as Map<String, dynamic>))
         ?.toList();
 }
 
-Map<String, dynamic> _$Medee$QueryToJson(Medee$Query instance) =>
+Map<String, dynamic> _$PaginateMedee$Query$PaginateToJson(
+        PaginateMedee$Query$Paginate instance) =>
     <String, dynamic>{
+      'total': instance.total,
+      'last_page': instance.lastPage,
       'ds_medee': instance.dsMedee?.map((e) => e?.toJson())?.toList(),
+    };
+
+PaginateMedee$Query _$PaginateMedee$QueryFromJson(Map<String, dynamic> json) {
+  return PaginateMedee$Query()
+    ..paginate = json['paginate'] == null
+        ? null
+        : PaginateMedee$Query$Paginate.fromJson(
+            json['paginate'] as Map<String, dynamic>);
+}
+
+Map<String, dynamic> _$PaginateMedee$QueryToJson(
+        PaginateMedee$Query instance) =>
+    <String, dynamic>{
+      'paginate': instance.paginate?.toJson(),
+    };
+
+PaginateMedeeArguments _$PaginateMedeeArgumentsFromJson(
+    Map<String, dynamic> json) {
+  return PaginateMedeeArguments(
+    page: json['page'] as int,
+  );
+}
+
+Map<String, dynamic> _$PaginateMedeeArgumentsToJson(
+        PaginateMedeeArguments instance) =>
+    <String, dynamic>{
+      'page': instance.page,
     };
