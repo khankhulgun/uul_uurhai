@@ -5,6 +5,7 @@ import 'package:catalog/ui/styles/_colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../components/sidebar.dart';
 import 'package:flutter/rendering.dart';
+import 'package:lambda/plugins/chart/lambda_chart.dart';
 
 class statistic {
   final String title;
@@ -41,40 +42,48 @@ class _mainScreenState extends State<mainScreen> {
       "МБ-ны худалдан авалт",
     ),
   ];
+  String theme = "shine";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      key: _scaffoldKey,
-
-      drawer: Drawer(
-        elevation: 5,
-        child: SidebarScreen(),
-      ),
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50.0),
-        child: Header(
-          title: "УУЛ УУРХАЙ, ХҮНД ҮЙЛДВЭРИЙН ЯАМ",
-          scaffold: _scaffoldKey,
+        backgroundColor: Colors.white,
+        key: _scaffoldKey,
+        drawer: Drawer(
+          elevation: 5,
+          child: SidebarScreen(),
         ),
-      ),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(50.0),
+          child: Header(
+            title: "УУЛ УУРХАЙ, ХҮНД ҮЙЛДВЭРИЙН ЯАМ",
+            scaffold: _scaffoldKey,
+          ),
+        ),
 //      floatingActionButton: FloatingActionButton(
 //        onPressed: () => _onButtonPressed(),
 //        child: Icon(Feather.getIconData('search')),
 //        backgroundColor: mainColor,
 //      ),
 
-      body: Container(
-          width: MediaQuery.of(context).size.width,
-          margin: EdgeInsets.only(top: 6, right: 10, left: 10, bottom: 10),
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: statistics.length,
-            padding: EdgeInsets.all(0.0),
-            itemBuilder: (BuildContext context, int index) =>
-                buildTripCard(context, index),
-          )),
+        body: SingleChildScrollView(
+
+            child: Container(
+                padding: EdgeInsets.only(right: 5, top: 0, left: 5, bottom: 10),
+                child: Column(
+                  children: [
+                    LambdaChart(schemaID: '210', theme: theme),
+                    LambdaChart(schemaID: '211', theme: theme),
+                    // ListView.builder(
+                    //   scrollDirection: Axis.horizontal,
+                    //   itemCount: statistics.length,
+                    //   padding: EdgeInsets.all(0.0),
+                    //   itemBuilder: (BuildContext context, int index) =>
+                    //       buildTripCard(context, index),
+                    // ),
+
+                  ],
+                ))
 
 //      body: Container(
 //          margin: EdgeInsets.only(top: 6, right: 10, left: 10, bottom: 10),
@@ -426,7 +435,7 @@ class _mainScreenState extends State<mainScreen> {
 //              ]
 //          )
 //      ),
-    );
+            ));
   }
 
   void _onButtonPressed() {
