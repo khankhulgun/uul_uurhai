@@ -16,13 +16,13 @@ targets:
   $default:
     builders:
       gql_build|ast_builder:
-        enabled: true
+        enabled: false
       gql_build|req_builder:
         enabled: true
         options:
           schema: catalog|lib/graphql/schema.graphql
       gql_build|serializer_builder:
-        enabled: true
+        enabled: false
         options:
           schema: catalog|lib/graphql/schema.graphql
       gql_build|schema_builder:
@@ -32,7 +32,7 @@ targets:
         options:
           schema: catalog|lib/graphql/schema.graphql
       gql_build|var_builder:
-        enabled: true
+        enabled: false
         options:
           schema: catalog|lib/graphql/schema.graphql
 #targets:
