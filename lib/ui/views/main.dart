@@ -47,19 +47,7 @@ class _mainScreenState extends State<mainScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       key: _scaffoldKey,
-//      appBar: _currentIndex != 0
-//          ? PreferredSize(
-//        preferredSize: Size.fromHeight(50.0),
-//        child: Header(
-//          reversed: false,
-//          scaffold: _scaffoldKey,
-//        ),
-//      )
-//          : null,
-//      drawer: Drawer(
-//        elevation: 5,
-//        child: SidebarScreen(),
-//      ),
+
 
       drawer: Drawer(
         elevation: 5,
@@ -67,9 +55,11 @@ class _mainScreenState extends State<mainScreen> {
       ),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
+
         child: Header(
           title: "УУЛ УУРХАЙ, ХҮНД ҮЙЛДВЭРИЙН ЯАМ",
           scaffold: _scaffoldKey,
+
         ),
       ),
 //      floatingActionButton: FloatingActionButton(

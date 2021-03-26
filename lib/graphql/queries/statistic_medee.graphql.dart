@@ -220,19 +220,11 @@ class MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvalt
           Map<String, dynamic> json) =>
       _$MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvaltFromJson(json);
 
-  @JsonKey(name: 'a_maltlam_id')
-  int aMaltlamId;
-
-  String buteegdehuun;
-
-  @JsonKey(name: 'eh_survalj_id')
-  int ehSurvaljId;
+  @JsonKey(name: 'ashigt_maltmal')
+  String ashigtMaltmal;
 
   @JsonKey(name: 'h_avsan_hemjee')
   double hAvsanHemjee;
-
-  @JsonKey(name: 'hemjih_negj_id')
-  int hemjihNegjId;
 
   int id;
 
@@ -245,18 +237,8 @@ class MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvalt
   double une;
 
   @override
-  List<Object> get props => [
-        aMaltlamId,
-        buteegdehuun,
-        ehSurvaljId,
-        hAvsanHemjee,
-        hemjihNegjId,
-        id,
-        negj,
-        ognoo,
-        survalj,
-        une
-      ];
+  List<Object> get props =>
+      [ashigtMaltmal, hAvsanHemjee, id, negj, ognoo, survalj, une];
   Map<String, dynamic> toJson() =>
       _$MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvaltToJson(this);
 }
@@ -878,31 +860,13 @@ class MBankHudaldanAvaltQuery extends GraphQLQuery<MBankHudaldanAvalt$Query,
                     directives: [],
                     selectionSet: SelectionSetNode(selections: [
                       FieldNode(
-                          name: NameNode(value: 'a_maltlam_id'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'buteegdehuun'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'eh_survalj_id'),
+                          name: NameNode(value: 'ashigt_maltmal'),
                           alias: null,
                           arguments: [],
                           directives: [],
                           selectionSet: null),
                       FieldNode(
                           name: NameNode(value: 'h_avsan_hemjee'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'hemjih_negj_id'),
                           alias: null,
                           arguments: [],
                           directives: [],

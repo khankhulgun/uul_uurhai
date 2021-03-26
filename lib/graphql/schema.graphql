@@ -219,7 +219,7 @@ type DsHudaldanAvahAjilgaa {
 
 type DsMBankHudaldanAvalt {
   a_maltlam_id: Int
-  buteegdehuun: String
+  ashigt_maltmal: String
   eh_survalj_id: Int
   h_avsan_hemjee: Float
   hemjih_negj_id: Int

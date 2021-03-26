@@ -52,11 +52,8 @@ query m_bank_hudaldan_avalt($page: Int!, $size: Int!) {
         total
         last_page
         ds_m_bank_hudaldan_avalt{
-            a_maltlam_id
-            buteegdehuun
-            eh_survalj_id
+            ashigt_maltmal
             h_avsan_hemjee
-            hemjih_negj_id
             id
             negj
             ognoo

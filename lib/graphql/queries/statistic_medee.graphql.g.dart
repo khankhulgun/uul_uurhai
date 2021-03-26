@@ -165,11 +165,8 @@ MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvalt
     _$MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvaltFromJson(
         Map<String, dynamic> json) {
   return MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvalt()
-    ..aMaltlamId = json['a_maltlam_id'] as int
-    ..buteegdehuun = json['buteegdehuun'] as String
-    ..ehSurvaljId = json['eh_survalj_id'] as int
+    ..ashigtMaltmal = json['ashigt_maltmal'] as String
     ..hAvsanHemjee = (json['h_avsan_hemjee'] as num)?.toDouble()
-    ..hemjihNegjId = json['hemjih_negj_id'] as int
     ..id = json['id'] as int
     ..negj = json['negj'] as String
     ..ognoo =
@@ -182,11 +179,8 @@ Map<String, dynamic>
     _$MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvaltToJson(
             MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvalt instance) =>
         <String, dynamic>{
-          'a_maltlam_id': instance.aMaltlamId,
-          'buteegdehuun': instance.buteegdehuun,
-          'eh_survalj_id': instance.ehSurvaljId,
+          'ashigt_maltmal': instance.ashigtMaltmal,
           'h_avsan_hemjee': instance.hAvsanHemjee,
-          'hemjih_negj_id': instance.hemjihNegjId,
           'id': instance.id,
           'negj': instance.negj,
           'ognoo': instance.ognoo?.toIso8601String(),
