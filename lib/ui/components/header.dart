@@ -159,7 +159,7 @@ class _HeaderState extends State<Header> {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
-      brightness: Brightness.dark,
+      brightness: Brightness.light,
       elevation: 0,
       leading: IconButton(
         padding: EdgeInsets.all(0),

@@ -48,18 +48,15 @@ class _mainScreenState extends State<mainScreen> {
       backgroundColor: Colors.white,
       key: _scaffoldKey,
 
-
       drawer: Drawer(
         elevation: 5,
         child: SidebarScreen(),
       ),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
-
         child: Header(
           title: "УУЛ УУРХАЙ, ХҮНД ҮЙЛДВЭРИЙН ЯАМ",
           scaffold: _scaffoldKey,
-
         ),
       ),
 //      floatingActionButton: FloatingActionButton(
