@@ -1,10 +1,13 @@
-query medee{
-  ds_medee(sorts: [{ column: "id", order: desc }]) {
-    id
-    angilal
-    medee
-    medee_cat_id
-    ognoo
-    tailbar
+query paginateMedee($page:Int!) {
+  paginate(sorts: [{ column: "id", order: desc }], page:$page, size:10) {
+    total,
+    last_page,
+    ds_medee {
+      id
+      medee
+      angilal
+      ognoo
+      tailbar
+    }
   }
 }

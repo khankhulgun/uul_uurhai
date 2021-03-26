@@ -1,3 +1,88 @@
+type AaEBMergejilZovlol {
+  ebmz_salbar_id: Int
+  hh_asuudal_too: Int
+  id: ID!
+  jil_id: Int
+  ds_sub_bu: [DsSubBu!]
+  ds_sub_gt: [DsSubGt!]
+  ds_sub_noots: [DsSubNoots!]
+  ds_sub_tezu: [DsSubTezu!]
+  ds_sub_uhggsa: [DsSubUhggsa!]
+}
+
+type AaMuHuuliHegejilt {
+  b_salbar_id: Int
+  id: ID!
+  m_huuli_id: Int
+  t_hugatsaa_id: String
+  tolov_id: Int
+  ds_sub_heregjilt: [DsSubHeregjilt!]
+}
+
+type AaMUlsHuuli {
+  holboos: String
+  huuli: String
+  id: ID!
+  zaalt: String
+  sub_m_uls_huuli_zaalt: [SubMUlsHuuliZaalt!]
+}
+
+type AaSongonShalagruulaltDelegrengui {
+  a_niislel: Float
+  bosgo_une: Float
+  id: ID!
+  object_id: Int
+  ognoo: Time
+  s_sh_code: Float
+  sum_duureg: Float
+  talbain_dugaar: Float
+  talbain_hemjee: Float
+}
+
+type AaSongonShalgaruulalt {
+  id: ID!
+  object_id: Int
+  ognoo: Time
+  ologson_hegmjee_ga: Float
+  ologson_z_too: Float
+  s_sh_bagts: Float
+  s_sh_hemjee_ga: Float
+  s_sh_talbai: Float
+  uls_tosov_terbum: Float
+  sub_songon_shalgaruulalt: [SubSongonShalgaruulalt!]
+}
+
+type AaTusgaiZovshoorol {
+  a_t_too: Float
+  a_t_zovshoorol: Float
+  ashiglat_tz_huvi: Float
+  haiguul_huvi: Float
+  haiguul_t_z: Float
+  ht_zovshoorol: Float
+  id: ID!
+  niit_gazar_huvi: Float
+  object_id: Int
+  ognoo: Time
+  t_hemjee_say: Float
+  tz_too: Float
+}
+
+type AaUlsIhHuralTogtool {
+  holhoos: String
+  id: ID!
+  togtool: String
+  zaalt: String
+  sub_uih_zaalt: [SubUihZaalt!]
+}
+
+type AaZgTogtool {
+  holboos: String
+  id: ID!
+  togtool: String
+  zaalt: String
+  sub_zg_togtool: [SubZgTogtool!]
+}
+
 enum condition {
   equals
   notEqual
@@ -18,6 +103,120 @@ type deleted {
   id: String!
 }
 
+type DsAjilahHuchMedeelel {
+  aj_ahui_ner_id: Int
+  b_torol: String
+  huch_too: Int
+  id: Int!
+  medeelel: String
+  ua_chiglel_id: Int
+  uls: String
+  uls_id: Int
+}
+
+type DsAjilHeseg {
+  a_heseg_id: Int
+  ah_chig_id: String
+  ajil_heseg: String
+  b_gazar_id: Int
+  g_huvi: String
+  id: Int!
+  jil: String
+  jil_id: Int
+  salbar: String
+  status: String
+  tolov_id: Int
+  tu_dugaar: String
+  yvnts_ognoo: Time
+  yvts_tailan: String
+}
+
+type DsBodlogoBarimtBichig {
+  b_ognoo: Time
+  holboos: String
+  id: Int!
+  ner: String
+  salbar: String
+  salbar_id: Int
+  t_hugatsaa: String
+  t_hugatsaa_id: Int
+  t_sh_dugaar: String
+}
+
+type DsDuremJuram {
+  akt: String
+  dugaar: String
+  e_zuin_akt_id: Int
+  file: String
+  id: Int!
+  ognoo: Time
+  tuhai: String
+}
+
+type DsExportMedee {
+  a_heregsel: String
+  b_id: Int
+  b_torol_id: Int
+  boomt: String
+  boomt_id: Int
+  buteegdehuun: String
+  code: String
+  eh_survalj_id: Int
+  exp_une_dun: Float
+  export_baiguullaga: String
+  export_hemjee: Float
+  hemjih_negj_id: Int
+  id: Int!
+  negj: String
+  ognoo: Time
+  survalj: String
+  t_heregsel_id: Int
+  teever_too: Int
+  uls: String
+  uls_id: Int
+}
+
+type DsHorongoOruulaltTH {
+  h_baidal: String
+  h_eh_uusver_id: Int
+  heregjilt_huvi: String
+  heregjuulegch: String
+  horongooruulalt: String
+  hugatsaa: String
+  id: Int!
+  tosliin_zardal: Float
+  tosol_ner: String
+  tosovt_ortog: Float
+}
+
+type DsHudaldanAvahAjilgaa {
+  b_u_ner: String
+  batlagdsan_ortog_ortov: Float
+  gereen_dun: Float
+  guitsetgegch_b: String
+  haa_torol: String
+  hab_u_id: Int
+  id: Int!
+  ognoo: Time
+  s_shalagruulalt_id: Int
+  shalagruulalt: String
+  tailbar: String
+  tender_ognoo: Time
+}
+
+type DsMBankHudaldanAvalt {
+  a_maltlam_id: Int
+  buteegdehuun: String
+  eh_survalj_id: Int
+  h_avsan_hemjee: Float
+  hemjih_negj_id: Int
+  id: Int!
+  negj: String
+  ognoo: Time
+  survalj: String
+  une: Float
+}
+
 type DsMedee {
   angilal: String
   id: Int!
@@ -25,6 +224,219 @@ type DsMedee {
   medee_cat_id: Int
   ognoo: Time
   tailbar: String
+}
+
+type DsOlborloltMedee {
+  b_id: Int
+  b_torol_id: Int
+  buteegdehuun: String
+  eh_survalj_id: Int
+  hemjih_negj_id: Int
+  id: Int!
+  negj: String
+  ognoo: Time
+  olborlolt_b_id: Int
+  olborlolt_hemjee: Float
+}
+
+type DsOlborloltUurkhai {
+  ah_negj_id: Int
+  aimag_id: Int
+  aimagname: String
+  bag_id: Int
+  bagname: String
+  id: Int!
+  sum_id: Int
+  sumname: String
+  tz_dugaar: String
+  uurkhain_ner: String
+  ds_sub_olborlolt: [DsSubOlborlolt!]
+}
+
+type DsShuurkhaiAjil {
+  ajil: String
+  alban_tushaal: String
+  angilal: String
+  b_g_id: Int
+  id: Int!
+  ognoo: Time
+  salbar: String
+  shiidverleh_hugatsaa: Time
+  shuurhai_cat_id: Int
+  status: String
+  tolov_id: Int
+}
+
+type DsSubBu {
+  asuudal: String
+  asuudal_d: Int
+  b_torol: String
+  id: Int!
+  table_id: Int
+  tolov: String
+  tolov_id: Int
+  torol_id: Int
+}
+
+type DsSubGt {
+  a_dugaar: Int
+  asuudal: String
+  gt_torol: String
+  id: Int!
+  table_id: Int
+  tolov: String
+  tolov_id: Int
+  torol_id: Int
+}
+
+type DsSubHeregjilt {
+  heregjilt_id: Int
+  id: Int!
+  ognoo: Time
+  salbar: String
+  salbar_id: Int
+  shat: String
+  table_id: Int
+  tailan: String
+}
+
+type DsSubNoots {
+  a_dugaar: Int
+  asuudal: String
+  buteegdehuun: String
+  id: Int!
+  table_id: Int
+  tolov: String
+  tolov_id: Int
+  torol_id: Int
+}
+
+type DsSubOlborlolt {
+  ajilchin_too: Float
+  b_noots: Float
+  b_torol_id: Int
+  buteegdehuun: String
+  buteegdehuun_id: Int
+  code: String
+  id: Int!
+  o_ehelsen_on: Time
+  o_huch_chadal: Float
+  table_id: Int
+  tezu_b_on: Time
+  torol: String
+  torol_code: String
+  zurag: String
+}
+
+type DsSubTezu {
+  a_dugaar: Int
+  asuudal: String
+  buteegdehuun: String
+  id: Int!
+  sub_b_torol_id: Int
+  table_id: Int
+  tolov: String
+  tolov_id: Int
+}
+
+type DsSubUhggsa {
+  a_dugaar: Int
+  asuudal: String
+  id: Int!
+  table_id: Int
+  tolov_id: Int
+  torol: String
+  torol_id: Int
+  uhggsa_tolov: String
+}
+
+type DsSubUildverlel {
+  ajilchin_too: Float
+  b_huchin_chadal: Float
+  b_noots: Float
+  b_torol_id: Int
+  buteegdehuun: String
+  buteegdehuun_id: Int
+  code: String
+  id: Int!
+  table_id: Int
+  tezu: Time
+  torol: String
+  torol_code: String
+  u_ehelsen: Time
+  uildverlel_tolov_id: Int
+  zurag: String
+}
+
+type DsTaamagUne {
+  ashigt_m_id: Int
+  ashigt_maltmal: String
+  dollar_tn: Float
+  eh_survalj_id: Int
+  h_negj_id: Int
+  id: Int!
+  jil: String
+  negj: String
+  ognoo: Time
+  on_id: Int
+  sar: String
+  sar_id: Int
+  survalj: String
+  valiut: String
+  valiut_id: Int
+}
+
+type DsTosovZarlaga {
+  b_tosov: Float
+  guitsetgel: Float
+  guitstgel: Float
+  id: Int!
+  ognoo: Time
+  t_tosov: Float
+  torol: String
+  zardal_torol_id: Int
+}
+
+type DsTosviinOrlogo {
+  b_tosov: Float
+  id: Int!
+  jileer: Float
+  ognoo: Time
+  orlogo_torol: String
+  orlogo_torol_id: Int
+  t_tosov: Float
+  t_uy_tolovlogoo: Float
+  tailan_uy_guitsetgel: Float
+  tailant_uy: Float
+}
+
+type DsUildver {
+  aimag_id: Int
+  aimagname: String
+  aj_ahui_id: Int
+  bag_id: Int
+  bagname: String
+  id: Int!
+  sum_id: Int
+  sumname: String
+  uildver_ner: String
+  ds_sub_uildverlel: [DsSubUildverlel!]
+}
+
+type DsZgHotolbor {
+  arga_hemjee: String
+  ded_zorilt: String
+  e_uusver: String
+  h_baiguullaga_id: Int
+  hotolbor: String
+  hugatsaa: String
+  id: Int!
+  niit_tosov: Float
+  status: String
+  suuri_tuvshin: String
+  tolov_id: Int
+  zorilt: String
+  sub_hotolbor_uzuulelt: [SubHotolborUzuulelt!]
 }
 
 input filter {
@@ -43,6 +455,43 @@ type paginate {
   total: Int!
   last_page: Int!
   ds_medee: [DsMedee!]
+  ds_shuurkhai_ajil: [DsShuurkhaiAjil!]
+  sub_m_uls_huuli_zaalt: [SubMUlsHuuliZaalt!]
+  aa_m_uls_huuli: [AaMUlsHuuli!]
+  sub_uih_zaalt: [SubUihZaalt!]
+  aa_uls_ih_hural_togtool: [AaUlsIhHuralTogtool!]
+  ds_bodlogo_barimt_bichig: [DsBodlogoBarimtBichig!]
+  sub_hotolbor_uzuulelt: [SubHotolborUzuulelt!]
+  ds_zg_hotolbor: [DsZgHotolbor!]
+  sub_zg_togtool: [SubZgTogtool!]
+  aa_zg_togtool: [AaZgTogtool!]
+  ds_durem_juram: [DsDuremJuram!]
+  ds_export_medee: [DsExportMedee!]
+  ds_olborlolt_medee: [DsOlborloltMedee!]
+  ds_m_bank_hudaldan_avalt: [DsMBankHudaldanAvalt!]
+  ds_taamag_une: [DsTaamagUne!]
+  aa_mu_huuli_hegejilt: [AaMuHuuliHegejilt!]
+  ds_sub_heregjilt: [DsSubHeregjilt!]
+  ds_horongo_oruulalt_t_h: [DsHorongoOruulaltTH!]
+  ds_ajil_heseg: [DsAjilHeseg!]
+  ds_hudaldan_avah_ajilgaa: [DsHudaldanAvahAjilgaa!]
+  ds_tosviin_orlogo: [DsTosviinOrlogo!]
+  ds_tosov_zarlaga: [DsTosovZarlaga!]
+  ds_sub_olborlolt: [DsSubOlborlolt!]
+  ds_olborlolt_uurkhai: [DsOlborloltUurkhai!]
+  ds_uildver: [DsUildver!]
+  ds_sub_uildverlel: [DsSubUildverlel!]
+  aa_tusgai_zovshoorol: [AaTusgaiZovshoorol!]
+  sub_songon_shalgaruulalt: [SubSongonShalgaruulalt!]
+  aa_songon_shalgaruulalt: [AaSongonShalgaruulalt!]
+  aa_songon_shalagruulalt_delegrengui: [AaSongonShalagruulaltDelegrengui!]
+  aa_e_b_mergejil_zovlol: [AaEBMergejilZovlol!]
+  ds_sub_uhggsa: [DsSubUhggsa!]
+  ds_sub_tezu: [DsSubTezu!]
+  ds_sub_noots: [DsSubNoots!]
+  ds_sub_gt: [DsSubGt!]
+  ds_sub_bu: [DsSubBu!]
+  ds_ajilah_huch_medeelel: [DsAjilahHuchMedeelel!]
 }
 
 type Query {
@@ -52,6 +501,246 @@ type Query {
     limit: Int
     offset: Int
   ): [DsMedee!]
+  ds_shuurkhai_ajil(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsShuurkhaiAjil!]
+  sub_m_uls_huuli_zaalt(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [SubMUlsHuuliZaalt!]
+  aa_m_uls_huuli(
+    sorts: [sort]
+    filters: [filter]
+    subSorts: [subSort]
+    subFilters: [subFilter]
+    limit: Int
+    offset: Int
+  ): [AaMUlsHuuli!]
+  sub_uih_zaalt(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [SubUihZaalt!]
+  aa_uls_ih_hural_togtool(
+    sorts: [sort]
+    filters: [filter]
+    subSorts: [subSort]
+    subFilters: [subFilter]
+    limit: Int
+    offset: Int
+  ): [AaUlsIhHuralTogtool!]
+  ds_bodlogo_barimt_bichig(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsBodlogoBarimtBichig!]
+  sub_hotolbor_uzuulelt(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [SubHotolborUzuulelt!]
+  ds_zg_hotolbor(
+    sorts: [sort]
+    filters: [filter]
+    subSorts: [subSort]
+    subFilters: [subFilter]
+    limit: Int
+    offset: Int
+  ): [DsZgHotolbor!]
+  sub_zg_togtool(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [SubZgTogtool!]
+  aa_zg_togtool(
+    sorts: [sort]
+    filters: [filter]
+    subSorts: [subSort]
+    subFilters: [subFilter]
+    limit: Int
+    offset: Int
+  ): [AaZgTogtool!]
+  ds_durem_juram(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsDuremJuram!]
+  ds_export_medee(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsExportMedee!]
+  ds_olborlolt_medee(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsOlborloltMedee!]
+  ds_m_bank_hudaldan_avalt(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsMBankHudaldanAvalt!]
+  ds_taamag_une(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsTaamagUne!]
+  aa_mu_huuli_hegejilt(
+    sorts: [sort]
+    filters: [filter]
+    subSorts: [subSort]
+    subFilters: [subFilter]
+    limit: Int
+    offset: Int
+  ): [AaMuHuuliHegejilt!]
+  ds_sub_heregjilt(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsSubHeregjilt!]
+  ds_horongo_oruulalt_t_h(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsHorongoOruulaltTH!]
+  ds_ajil_heseg(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsAjilHeseg!]
+  ds_hudaldan_avah_ajilgaa(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsHudaldanAvahAjilgaa!]
+  ds_tosviin_orlogo(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsTosviinOrlogo!]
+  ds_tosov_zarlaga(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsTosovZarlaga!]
+  ds_sub_olborlolt(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsSubOlborlolt!]
+  ds_olborlolt_uurkhai(
+    sorts: [sort]
+    filters: [filter]
+    subSorts: [subSort]
+    subFilters: [subFilter]
+    limit: Int
+    offset: Int
+  ): [DsOlborloltUurkhai!]
+  ds_uildver(
+    sorts: [sort]
+    filters: [filter]
+    subSorts: [subSort]
+    subFilters: [subFilter]
+    limit: Int
+    offset: Int
+  ): [DsUildver!]
+  ds_sub_uildverlel(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsSubUildverlel!]
+  aa_tusgai_zovshoorol(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [AaTusgaiZovshoorol!]
+  sub_songon_shalgaruulalt(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [SubSongonShalgaruulalt!]
+  aa_songon_shalgaruulalt(
+    sorts: [sort]
+    filters: [filter]
+    subSorts: [subSort]
+    subFilters: [subFilter]
+    limit: Int
+    offset: Int
+  ): [AaSongonShalgaruulalt!]
+  aa_songon_shalagruulalt_delegrengui(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [AaSongonShalagruulaltDelegrengui!]
+  aa_e_b_mergejil_zovlol(
+    sorts: [sort]
+    filters: [filter]
+    subSorts: [subSort]
+    subFilters: [subFilter]
+    limit: Int
+    offset: Int
+  ): [AaEBMergejilZovlol!]
+  ds_sub_uhggsa(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsSubUhggsa!]
+  ds_sub_tezu(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsSubTezu!]
+  ds_sub_noots(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsSubNoots!]
+  ds_sub_gt(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsSubGt!]
+  ds_sub_bu(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsSubBu!]
+  ds_ajilah_huch_medeelel(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsAjilahHuchMedeelel!]
   paginate(
     sorts: [sort]
     filters: [filter]
@@ -74,6 +763,34 @@ input subFilter {
   value: String!
 }
 
+type SubHotolborUzuulelt {
+  h_tuvshin: String
+  heregjilt: Float
+  heregjilt_tailan: String
+  hotolbor_id: Int
+  id: ID!
+  jil_id: Int
+  tosov: Float
+}
+
+type SubMUlsHuuliZaalt {
+  id: ID!
+  table_id: Int
+  zaalt: String
+}
+
+type SubSongonShalgaruulalt {
+  aj_negj_too: Int
+  id: ID!
+  o_t_hemjee: Float
+  ognoo: String
+  s_sh_dugaar: Int
+  table_id: Int
+  tovolruulsen: Float
+  z_t_too: Int
+  zaralsan_talbai: Float
+}
+
 input subSort {
   column: String!
   table: String!
@@ -84,6 +801,18 @@ type subTable {
   table: String!
   parentIdentity: String!
   ConnectionField: String!
+}
+
+type SubUihZaalt {
+  id: ID!
+  table_id: Int
+  zaalt: String
+}
+
+type SubZgTogtool {
+  id: ID!
+  table_id: Int
+  zaalt: String
 }
 
 scalar Time

@@ -1,5 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+import 'package:meta/meta.dart';
 import 'package:artemis/artemis.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:equatable/equatable.dart';
@@ -7,58 +8,100 @@ import 'package:gql/ast.dart';
 part 'medee.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Medee$Query$DsMedee with EquatableMixin {
-  Medee$Query$DsMedee();
+class PaginateMedee$Query$Paginate$DsMedee with EquatableMixin {
+  PaginateMedee$Query$Paginate$DsMedee();
 
-  factory Medee$Query$DsMedee.fromJson(Map<String, dynamic> json) =>
-      _$Medee$Query$DsMedeeFromJson(json);
+  factory PaginateMedee$Query$Paginate$DsMedee.fromJson(
+          Map<String, dynamic> json) =>
+      _$PaginateMedee$Query$Paginate$DsMedeeFromJson(json);
 
   int id;
 
-  String angilal;
-
   String medee;
 
-  @JsonKey(name: 'medee_cat_id')
-  int medeeCatId;
+  String angilal;
 
   DateTime ognoo;
 
   String tailbar;
 
   @override
-  List<Object> get props => [id, angilal, medee, medeeCatId, ognoo, tailbar];
-  Map<String, dynamic> toJson() => _$Medee$Query$DsMedeeToJson(this);
+  List<Object> get props => [id, medee, angilal, ognoo, tailbar];
+  Map<String, dynamic> toJson() =>
+      _$PaginateMedee$Query$Paginate$DsMedeeToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Medee$Query with EquatableMixin {
-  Medee$Query();
+class PaginateMedee$Query$Paginate with EquatableMixin {
+  PaginateMedee$Query$Paginate();
 
-  factory Medee$Query.fromJson(Map<String, dynamic> json) =>
-      _$Medee$QueryFromJson(json);
+  factory PaginateMedee$Query$Paginate.fromJson(Map<String, dynamic> json) =>
+      _$PaginateMedee$Query$PaginateFromJson(json);
+
+  int total;
+
+  @JsonKey(name: 'last_page')
+  int lastPage;
 
   @JsonKey(name: 'ds_medee')
-  List<Medee$Query$DsMedee> dsMedee;
+  List<PaginateMedee$Query$Paginate$DsMedee> dsMedee;
 
   @override
-  List<Object> get props => [dsMedee];
-  Map<String, dynamic> toJson() => _$Medee$QueryToJson(this);
+  List<Object> get props => [total, lastPage, dsMedee];
+  Map<String, dynamic> toJson() => _$PaginateMedee$Query$PaginateToJson(this);
 }
 
-class MedeeQuery extends GraphQLQuery<Medee$Query, JsonSerializable> {
-  MedeeQuery();
+@JsonSerializable(explicitToJson: true)
+class PaginateMedee$Query with EquatableMixin {
+  PaginateMedee$Query();
+
+  factory PaginateMedee$Query.fromJson(Map<String, dynamic> json) =>
+      _$PaginateMedee$QueryFromJson(json);
+
+  PaginateMedee$Query$Paginate paginate;
+
+  @override
+  List<Object> get props => [paginate];
+  Map<String, dynamic> toJson() => _$PaginateMedee$QueryToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class PaginateMedeeArguments extends JsonSerializable with EquatableMixin {
+  PaginateMedeeArguments({@required this.page});
+
+  @override
+  factory PaginateMedeeArguments.fromJson(Map<String, dynamic> json) =>
+      _$PaginateMedeeArgumentsFromJson(json);
+
+  final int page;
+
+  @override
+  List<Object> get props => [page];
+  @override
+  Map<String, dynamic> toJson() => _$PaginateMedeeArgumentsToJson(this);
+}
+
+class PaginateMedeeQuery
+    extends GraphQLQuery<PaginateMedee$Query, PaginateMedeeArguments> {
+  PaginateMedeeQuery({this.variables});
 
   @override
   final DocumentNode document = DocumentNode(definitions: [
     OperationDefinitionNode(
         type: OperationType.query,
-        name: NameNode(value: 'medee'),
-        variableDefinitions: [],
+        name: NameNode(value: 'paginateMedee'),
+        variableDefinitions: [
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'page')),
+              type:
+                  NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
+              directives: [])
+        ],
         directives: [],
         selectionSet: SelectionSetNode(selections: [
           FieldNode(
-              name: NameNode(value: 'ds_medee'),
+              name: NameNode(value: 'paginate'),
               alias: null,
               arguments: [
                 ArgumentNode(
@@ -73,55 +116,78 @@ class MedeeQuery extends GraphQLQuery<Medee$Query, JsonSerializable> {
                             name: NameNode(value: 'order'),
                             value: EnumValueNode(name: NameNode(value: 'desc')))
                       ])
-                    ]))
+                    ])),
+                ArgumentNode(
+                    name: NameNode(value: 'page'),
+                    value: VariableNode(name: NameNode(value: 'page'))),
+                ArgumentNode(
+                    name: NameNode(value: 'size'),
+                    value: IntValueNode(value: '10'))
               ],
               directives: [],
               selectionSet: SelectionSetNode(selections: [
                 FieldNode(
-                    name: NameNode(value: 'id'),
+                    name: NameNode(value: 'total'),
                     alias: null,
                     arguments: [],
                     directives: [],
                     selectionSet: null),
                 FieldNode(
-                    name: NameNode(value: 'angilal'),
+                    name: NameNode(value: 'last_page'),
                     alias: null,
                     arguments: [],
                     directives: [],
                     selectionSet: null),
                 FieldNode(
-                    name: NameNode(value: 'medee'),
+                    name: NameNode(value: 'ds_medee'),
                     alias: null,
                     arguments: [],
                     directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'medee_cat_id'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'ognoo'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'tailbar'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null)
+                    selectionSet: SelectionSetNode(selections: [
+                      FieldNode(
+                          name: NameNode(value: 'id'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'medee'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'angilal'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'ognoo'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'tailbar'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null)
+                    ]))
               ]))
         ]))
   ]);
 
   @override
-  final String operationName = 'medee';
+  final String operationName = 'paginateMedee';
 
   @override
-  List<Object> get props => [document, operationName];
+  final PaginateMedeeArguments variables;
+
   @override
-  Medee$Query parse(Map<String, dynamic> json) => Medee$Query.fromJson(json);
+  List<Object> get props => [document, operationName, variables];
+  @override
+  PaginateMedee$Query parse(Map<String, dynamic> json) =>
+      PaginateMedee$Query.fromJson(json);
 }
