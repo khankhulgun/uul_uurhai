@@ -66,6 +66,7 @@ PaginateMedeeArguments _$PaginateMedeeArgumentsFromJson(
     Map<String, dynamic> json) {
   return PaginateMedeeArguments(
     page: json['page'] as int,
+    size: json['size'] as int,
   );
 }
 
@@ -73,4 +74,5 @@ Map<String, dynamic> _$PaginateMedeeArgumentsToJson(
         PaginateMedeeArguments instance) =>
     <String, dynamic>{
       'page': instance.page,
+      'size': instance.size,
     };

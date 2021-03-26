@@ -67,7 +67,7 @@ class PaginateMedee$Query with EquatableMixin {
 
 @JsonSerializable(explicitToJson: true)
 class PaginateMedeeArguments extends JsonSerializable with EquatableMixin {
-  PaginateMedeeArguments({@required this.page});
+  PaginateMedeeArguments({@required this.page, @required this.size});
 
   @override
   factory PaginateMedeeArguments.fromJson(Map<String, dynamic> json) =>
@@ -75,8 +75,10 @@ class PaginateMedeeArguments extends JsonSerializable with EquatableMixin {
 
   final int page;
 
+  final int size;
+
   @override
-  List<Object> get props => [page];
+  List<Object> get props => [page, size];
   @override
   Map<String, dynamic> toJson() => _$PaginateMedeeArgumentsToJson(this);
 }
@@ -93,6 +95,12 @@ class PaginateMedeeQuery
         variableDefinitions: [
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'page')),
+              type:
+                  NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
+              directives: []),
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'size')),
               type:
                   NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: true),
               defaultValue: DefaultValueNode(value: null),
@@ -122,7 +130,7 @@ class PaginateMedeeQuery
                     value: VariableNode(name: NameNode(value: 'page'))),
                 ArgumentNode(
                     name: NameNode(value: 'size'),
-                    value: IntValueNode(value: '10'))
+                    value: VariableNode(name: NameNode(value: 'size')))
               ],
               directives: [],
               selectionSet: SelectionSetNode(selections: [
