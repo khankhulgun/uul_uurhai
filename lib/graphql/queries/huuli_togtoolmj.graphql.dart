@@ -8,14 +8,13 @@ import 'package:gql/ast.dart';
 part 'huuli_togtoolmj.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Paginatemuhuuli$Query$Paginate$AaMUlsHuuli$SubMUlsHuuliZaalt
+class MUlsHuuli$Query$Paginate$AaMUlsHuuli$SubMUlsHuuliZaalt
     with EquatableMixin {
-  Paginatemuhuuli$Query$Paginate$AaMUlsHuuli$SubMUlsHuuliZaalt();
+  MUlsHuuli$Query$Paginate$AaMUlsHuuli$SubMUlsHuuliZaalt();
 
-  factory Paginatemuhuuli$Query$Paginate$AaMUlsHuuli$SubMUlsHuuliZaalt.fromJson(
+  factory MUlsHuuli$Query$Paginate$AaMUlsHuuli$SubMUlsHuuliZaalt.fromJson(
           Map<String, dynamic> json) =>
-      _$Paginatemuhuuli$Query$Paginate$AaMUlsHuuli$SubMUlsHuuliZaaltFromJson(
-          json);
+      _$MUlsHuuli$Query$Paginate$AaMUlsHuuli$SubMUlsHuuliZaaltFromJson(json);
 
   int id;
 
@@ -27,17 +26,16 @@ class Paginatemuhuuli$Query$Paginate$AaMUlsHuuli$SubMUlsHuuliZaalt
   @override
   List<Object> get props => [id, tableId, zaalt];
   Map<String, dynamic> toJson() =>
-      _$Paginatemuhuuli$Query$Paginate$AaMUlsHuuli$SubMUlsHuuliZaaltToJson(
-          this);
+      _$MUlsHuuli$Query$Paginate$AaMUlsHuuli$SubMUlsHuuliZaaltToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Paginatemuhuuli$Query$Paginate$AaMUlsHuuli with EquatableMixin {
-  Paginatemuhuuli$Query$Paginate$AaMUlsHuuli();
+class MUlsHuuli$Query$Paginate$AaMUlsHuuli with EquatableMixin {
+  MUlsHuuli$Query$Paginate$AaMUlsHuuli();
 
-  factory Paginatemuhuuli$Query$Paginate$AaMUlsHuuli.fromJson(
+  factory MUlsHuuli$Query$Paginate$AaMUlsHuuli.fromJson(
           Map<String, dynamic> json) =>
-      _$Paginatemuhuuli$Query$Paginate$AaMUlsHuuliFromJson(json);
+      _$MUlsHuuli$Query$Paginate$AaMUlsHuuliFromJson(json);
 
   String holboos;
 
@@ -48,21 +46,21 @@ class Paginatemuhuuli$Query$Paginate$AaMUlsHuuli with EquatableMixin {
   String zaalt;
 
   @JsonKey(name: 'sub_m_uls_huuli_zaalt')
-  List<Paginatemuhuuli$Query$Paginate$AaMUlsHuuli$SubMUlsHuuliZaalt>
+  List<MUlsHuuli$Query$Paginate$AaMUlsHuuli$SubMUlsHuuliZaalt>
       subMUlsHuuliZaalt;
 
   @override
   List<Object> get props => [holboos, huuli, id, zaalt, subMUlsHuuliZaalt];
   Map<String, dynamic> toJson() =>
-      _$Paginatemuhuuli$Query$Paginate$AaMUlsHuuliToJson(this);
+      _$MUlsHuuli$Query$Paginate$AaMUlsHuuliToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Paginatemuhuuli$Query$Paginate with EquatableMixin {
-  Paginatemuhuuli$Query$Paginate();
+class MUlsHuuli$Query$Paginate with EquatableMixin {
+  MUlsHuuli$Query$Paginate();
 
-  factory Paginatemuhuuli$Query$Paginate.fromJson(Map<String, dynamic> json) =>
-      _$Paginatemuhuuli$Query$PaginateFromJson(json);
+  factory MUlsHuuli$Query$Paginate.fromJson(Map<String, dynamic> json) =>
+      _$MUlsHuuli$Query$PaginateFromJson(json);
 
   int total;
 
@@ -70,35 +68,35 @@ class Paginatemuhuuli$Query$Paginate with EquatableMixin {
   int lastPage;
 
   @JsonKey(name: 'aa_m_uls_huuli')
-  List<Paginatemuhuuli$Query$Paginate$AaMUlsHuuli> aaMUlsHuuli;
+  List<MUlsHuuli$Query$Paginate$AaMUlsHuuli> aaMUlsHuuli;
 
   @override
   List<Object> get props => [total, lastPage, aaMUlsHuuli];
-  Map<String, dynamic> toJson() => _$Paginatemuhuuli$Query$PaginateToJson(this);
+  Map<String, dynamic> toJson() => _$MUlsHuuli$Query$PaginateToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Paginatemuhuuli$Query with EquatableMixin {
-  Paginatemuhuuli$Query();
+class MUlsHuuli$Query with EquatableMixin {
+  MUlsHuuli$Query();
 
-  factory Paginatemuhuuli$Query.fromJson(Map<String, dynamic> json) =>
-      _$Paginatemuhuuli$QueryFromJson(json);
+  factory MUlsHuuli$Query.fromJson(Map<String, dynamic> json) =>
+      _$MUlsHuuli$QueryFromJson(json);
 
-  Paginatemuhuuli$Query$Paginate paginate;
+  MUlsHuuli$Query$Paginate paginate;
 
   @override
   List<Object> get props => [paginate];
-  Map<String, dynamic> toJson() => _$Paginatemuhuuli$QueryToJson(this);
+  Map<String, dynamic> toJson() => _$MUlsHuuli$QueryToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginauihTogtool$Query$Paginate$AaUlsIhHuralTogtool$SubUihZaalt
+class UlsIhHuralTogtool$Query$Paginate$AaUlsIhHuralTogtool$SubUihZaalt
     with EquatableMixin {
-  PaginauihTogtool$Query$Paginate$AaUlsIhHuralTogtool$SubUihZaalt();
+  UlsIhHuralTogtool$Query$Paginate$AaUlsIhHuralTogtool$SubUihZaalt();
 
-  factory PaginauihTogtool$Query$Paginate$AaUlsIhHuralTogtool$SubUihZaalt.fromJson(
+  factory UlsIhHuralTogtool$Query$Paginate$AaUlsIhHuralTogtool$SubUihZaalt.fromJson(
           Map<String, dynamic> json) =>
-      _$PaginauihTogtool$Query$Paginate$AaUlsIhHuralTogtool$SubUihZaaltFromJson(
+      _$UlsIhHuralTogtool$Query$Paginate$AaUlsIhHuralTogtool$SubUihZaaltFromJson(
           json);
 
   int id;
@@ -111,17 +109,17 @@ class PaginauihTogtool$Query$Paginate$AaUlsIhHuralTogtool$SubUihZaalt
   @override
   List<Object> get props => [id, tableId, zaalt];
   Map<String, dynamic> toJson() =>
-      _$PaginauihTogtool$Query$Paginate$AaUlsIhHuralTogtool$SubUihZaaltToJson(
+      _$UlsIhHuralTogtool$Query$Paginate$AaUlsIhHuralTogtool$SubUihZaaltToJson(
           this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginauihTogtool$Query$Paginate$AaUlsIhHuralTogtool with EquatableMixin {
-  PaginauihTogtool$Query$Paginate$AaUlsIhHuralTogtool();
+class UlsIhHuralTogtool$Query$Paginate$AaUlsIhHuralTogtool with EquatableMixin {
+  UlsIhHuralTogtool$Query$Paginate$AaUlsIhHuralTogtool();
 
-  factory PaginauihTogtool$Query$Paginate$AaUlsIhHuralTogtool.fromJson(
+  factory UlsIhHuralTogtool$Query$Paginate$AaUlsIhHuralTogtool.fromJson(
           Map<String, dynamic> json) =>
-      _$PaginauihTogtool$Query$Paginate$AaUlsIhHuralTogtoolFromJson(json);
+      _$UlsIhHuralTogtool$Query$Paginate$AaUlsIhHuralTogtoolFromJson(json);
 
   String holhoos;
 
@@ -132,21 +130,22 @@ class PaginauihTogtool$Query$Paginate$AaUlsIhHuralTogtool with EquatableMixin {
   String zaalt;
 
   @JsonKey(name: 'sub_uih_zaalt')
-  List<PaginauihTogtool$Query$Paginate$AaUlsIhHuralTogtool$SubUihZaalt>
+  List<UlsIhHuralTogtool$Query$Paginate$AaUlsIhHuralTogtool$SubUihZaalt>
       subUihZaalt;
 
   @override
   List<Object> get props => [holhoos, id, togtool, zaalt, subUihZaalt];
   Map<String, dynamic> toJson() =>
-      _$PaginauihTogtool$Query$Paginate$AaUlsIhHuralTogtoolToJson(this);
+      _$UlsIhHuralTogtool$Query$Paginate$AaUlsIhHuralTogtoolToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginauihTogtool$Query$Paginate with EquatableMixin {
-  PaginauihTogtool$Query$Paginate();
+class UlsIhHuralTogtool$Query$Paginate with EquatableMixin {
+  UlsIhHuralTogtool$Query$Paginate();
 
-  factory PaginauihTogtool$Query$Paginate.fromJson(Map<String, dynamic> json) =>
-      _$PaginauihTogtool$Query$PaginateFromJson(json);
+  factory UlsIhHuralTogtool$Query$Paginate.fromJson(
+          Map<String, dynamic> json) =>
+      _$UlsIhHuralTogtool$Query$PaginateFromJson(json);
 
   int total;
 
@@ -154,26 +153,27 @@ class PaginauihTogtool$Query$Paginate with EquatableMixin {
   int lastPage;
 
   @JsonKey(name: 'aa_uls_ih_hural_togtool')
-  List<PaginauihTogtool$Query$Paginate$AaUlsIhHuralTogtool> aaUlsIhHuralTogtool;
+  List<UlsIhHuralTogtool$Query$Paginate$AaUlsIhHuralTogtool>
+      aaUlsIhHuralTogtool;
 
   @override
   List<Object> get props => [total, lastPage, aaUlsIhHuralTogtool];
   Map<String, dynamic> toJson() =>
-      _$PaginauihTogtool$Query$PaginateToJson(this);
+      _$UlsIhHuralTogtool$Query$PaginateToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginauihTogtool$Query with EquatableMixin {
-  PaginauihTogtool$Query();
+class UlsIhHuralTogtool$Query with EquatableMixin {
+  UlsIhHuralTogtool$Query();
 
-  factory PaginauihTogtool$Query.fromJson(Map<String, dynamic> json) =>
-      _$PaginauihTogtool$QueryFromJson(json);
+  factory UlsIhHuralTogtool$Query.fromJson(Map<String, dynamic> json) =>
+      _$UlsIhHuralTogtool$QueryFromJson(json);
 
-  PaginauihTogtool$Query$Paginate paginate;
+  UlsIhHuralTogtool$Query$Paginate paginate;
 
   @override
   List<Object> get props => [paginate];
-  Map<String, dynamic> toJson() => _$PaginauihTogtool$QueryToJson(this);
+  Map<String, dynamic> toJson() => _$UlsIhHuralTogtool$QueryToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -410,12 +410,12 @@ class PaginateduremJuram$Query with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginatemuhuuliArguments extends JsonSerializable with EquatableMixin {
-  PaginatemuhuuliArguments({@required this.page, @required this.size});
+class MUlsHuuliArguments extends JsonSerializable with EquatableMixin {
+  MUlsHuuliArguments({@required this.page, @required this.size});
 
   @override
-  factory PaginatemuhuuliArguments.fromJson(Map<String, dynamic> json) =>
-      _$PaginatemuhuuliArgumentsFromJson(json);
+  factory MUlsHuuliArguments.fromJson(Map<String, dynamic> json) =>
+      _$MUlsHuuliArgumentsFromJson(json);
 
   final int page;
 
@@ -424,18 +424,17 @@ class PaginatemuhuuliArguments extends JsonSerializable with EquatableMixin {
   @override
   List<Object> get props => [page, size];
   @override
-  Map<String, dynamic> toJson() => _$PaginatemuhuuliArgumentsToJson(this);
+  Map<String, dynamic> toJson() => _$MUlsHuuliArgumentsToJson(this);
 }
 
-class PaginatemuhuuliQuery
-    extends GraphQLQuery<Paginatemuhuuli$Query, PaginatemuhuuliArguments> {
-  PaginatemuhuuliQuery({this.variables});
+class MUlsHuuliQuery extends GraphQLQuery<MUlsHuuli$Query, MUlsHuuliArguments> {
+  MUlsHuuliQuery({this.variables});
 
   @override
   final DocumentNode document = DocumentNode(definitions: [
     OperationDefinitionNode(
         type: OperationType.query,
-        name: NameNode(value: 'paginatemuhuuli'),
+        name: NameNode(value: 'm_uls_huuli'),
         variableDefinitions: [
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'page')),
@@ -551,25 +550,25 @@ class PaginatemuhuuliQuery
   ]);
 
   @override
-  final String operationName = 'paginatemuhuuli';
+  final String operationName = 'm_uls_huuli';
 
   @override
-  final PaginatemuhuuliArguments variables;
+  final MUlsHuuliArguments variables;
 
   @override
   List<Object> get props => [document, operationName, variables];
   @override
-  Paginatemuhuuli$Query parse(Map<String, dynamic> json) =>
-      Paginatemuhuuli$Query.fromJson(json);
+  MUlsHuuli$Query parse(Map<String, dynamic> json) =>
+      MUlsHuuli$Query.fromJson(json);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginauihTogtoolArguments extends JsonSerializable with EquatableMixin {
-  PaginauihTogtoolArguments({@required this.page, @required this.size});
+class UlsIhHuralTogtoolArguments extends JsonSerializable with EquatableMixin {
+  UlsIhHuralTogtoolArguments({@required this.page, @required this.size});
 
   @override
-  factory PaginauihTogtoolArguments.fromJson(Map<String, dynamic> json) =>
-      _$PaginauihTogtoolArgumentsFromJson(json);
+  factory UlsIhHuralTogtoolArguments.fromJson(Map<String, dynamic> json) =>
+      _$UlsIhHuralTogtoolArgumentsFromJson(json);
 
   final int page;
 
@@ -578,18 +577,18 @@ class PaginauihTogtoolArguments extends JsonSerializable with EquatableMixin {
   @override
   List<Object> get props => [page, size];
   @override
-  Map<String, dynamic> toJson() => _$PaginauihTogtoolArgumentsToJson(this);
+  Map<String, dynamic> toJson() => _$UlsIhHuralTogtoolArgumentsToJson(this);
 }
 
-class PaginauihTogtoolQuery
-    extends GraphQLQuery<PaginauihTogtool$Query, PaginauihTogtoolArguments> {
-  PaginauihTogtoolQuery({this.variables});
+class UlsIhHuralTogtoolQuery
+    extends GraphQLQuery<UlsIhHuralTogtool$Query, UlsIhHuralTogtoolArguments> {
+  UlsIhHuralTogtoolQuery({this.variables});
 
   @override
   final DocumentNode document = DocumentNode(definitions: [
     OperationDefinitionNode(
         type: OperationType.query,
-        name: NameNode(value: 'paginauih_togtool'),
+        name: NameNode(value: 'uls_ih_hural_togtool'),
         variableDefinitions: [
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'page')),
@@ -705,16 +704,16 @@ class PaginauihTogtoolQuery
   ]);
 
   @override
-  final String operationName = 'paginauih_togtool';
+  final String operationName = 'uls_ih_hural_togtool';
 
   @override
-  final PaginauihTogtoolArguments variables;
+  final UlsIhHuralTogtoolArguments variables;
 
   @override
   List<Object> get props => [document, operationName, variables];
   @override
-  PaginauihTogtool$Query parse(Map<String, dynamic> json) =>
-      PaginauihTogtool$Query.fromJson(json);
+  UlsIhHuralTogtool$Query parse(Map<String, dynamic> json) =>
+      UlsIhHuralTogtool$Query.fromJson(json);
 }
 
 @JsonSerializable(explicitToJson: true)

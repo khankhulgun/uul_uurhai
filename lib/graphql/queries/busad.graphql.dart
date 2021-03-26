@@ -8,14 +8,12 @@ import 'package:gql/ast.dart';
 part 'busad.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class PaginatetusgaiZuvshuurul$Query$Paginate$AaTusgaiZovshoorol
-    with EquatableMixin {
-  PaginatetusgaiZuvshuurul$Query$Paginate$AaTusgaiZovshoorol();
+class TusgaiZovshoorol$Query$Paginate$AaTusgaiZovshoorol with EquatableMixin {
+  TusgaiZovshoorol$Query$Paginate$AaTusgaiZovshoorol();
 
-  factory PaginatetusgaiZuvshuurul$Query$Paginate$AaTusgaiZovshoorol.fromJson(
+  factory TusgaiZovshoorol$Query$Paginate$AaTusgaiZovshoorol.fromJson(
           Map<String, dynamic> json) =>
-      _$PaginatetusgaiZuvshuurul$Query$Paginate$AaTusgaiZovshoorolFromJson(
-          json);
+      _$TusgaiZovshoorol$Query$Paginate$AaTusgaiZovshoorolFromJson(json);
 
   @JsonKey(name: 'a_t_too')
   double aTToo;
@@ -67,16 +65,15 @@ class PaginatetusgaiZuvshuurul$Query$Paginate$AaTusgaiZovshoorol
         tzToo
       ];
   Map<String, dynamic> toJson() =>
-      _$PaginatetusgaiZuvshuurul$Query$Paginate$AaTusgaiZovshoorolToJson(this);
+      _$TusgaiZovshoorol$Query$Paginate$AaTusgaiZovshoorolToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginatetusgaiZuvshuurul$Query$Paginate with EquatableMixin {
-  PaginatetusgaiZuvshuurul$Query$Paginate();
+class TusgaiZovshoorol$Query$Paginate with EquatableMixin {
+  TusgaiZovshoorol$Query$Paginate();
 
-  factory PaginatetusgaiZuvshuurul$Query$Paginate.fromJson(
-          Map<String, dynamic> json) =>
-      _$PaginatetusgaiZuvshuurul$Query$PaginateFromJson(json);
+  factory TusgaiZovshoorol$Query$Paginate.fromJson(Map<String, dynamic> json) =>
+      _$TusgaiZovshoorol$Query$PaginateFromJson(json);
 
   int total;
 
@@ -84,37 +81,36 @@ class PaginatetusgaiZuvshuurul$Query$Paginate with EquatableMixin {
   int lastPage;
 
   @JsonKey(name: 'aa_tusgai_zovshoorol')
-  List<PaginatetusgaiZuvshuurul$Query$Paginate$AaTusgaiZovshoorol>
-      aaTusgaiZovshoorol;
+  List<TusgaiZovshoorol$Query$Paginate$AaTusgaiZovshoorol> aaTusgaiZovshoorol;
 
   @override
   List<Object> get props => [total, lastPage, aaTusgaiZovshoorol];
   Map<String, dynamic> toJson() =>
-      _$PaginatetusgaiZuvshuurul$Query$PaginateToJson(this);
+      _$TusgaiZovshoorol$Query$PaginateToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginatetusgaiZuvshuurul$Query with EquatableMixin {
-  PaginatetusgaiZuvshuurul$Query();
+class TusgaiZovshoorol$Query with EquatableMixin {
+  TusgaiZovshoorol$Query();
 
-  factory PaginatetusgaiZuvshuurul$Query.fromJson(Map<String, dynamic> json) =>
-      _$PaginatetusgaiZuvshuurul$QueryFromJson(json);
+  factory TusgaiZovshoorol$Query.fromJson(Map<String, dynamic> json) =>
+      _$TusgaiZovshoorol$QueryFromJson(json);
 
-  PaginatetusgaiZuvshuurul$Query$Paginate paginate;
+  TusgaiZovshoorol$Query$Paginate paginate;
 
   @override
   List<Object> get props => [paginate];
-  Map<String, dynamic> toJson() => _$PaginatetusgaiZuvshuurul$QueryToJson(this);
+  Map<String, dynamic> toJson() => _$TusgaiZovshoorol$QueryToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginatesongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt$SubSongonShalgaruulalt
+class SongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt$SubSongonShalgaruulalt
     with EquatableMixin {
-  PaginatesongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt$SubSongonShalgaruulalt();
+  SongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt$SubSongonShalgaruulalt();
 
-  factory PaginatesongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt$SubSongonShalgaruulalt.fromJson(
+  factory SongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt$SubSongonShalgaruulalt.fromJson(
           Map<String, dynamic> json) =>
-      _$PaginatesongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt$SubSongonShalgaruulaltFromJson(
+      _$SongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt$SubSongonShalgaruulaltFromJson(
           json);
 
   @JsonKey(name: 'aj_negj_too')
@@ -154,19 +150,18 @@ class PaginatesongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt$SubSongon
         zaralsanTalbai
       ];
   Map<String, dynamic> toJson() =>
-      _$PaginatesongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt$SubSongonShalgaruulaltToJson(
+      _$SongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt$SubSongonShalgaruulaltToJson(
           this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginatesongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt
+class SongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt
     with EquatableMixin {
-  PaginatesongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt();
+  SongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt();
 
-  factory PaginatesongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt.fromJson(
+  factory SongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt.fromJson(
           Map<String, dynamic> json) =>
-      _$PaginatesongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulaltFromJson(
-          json);
+      _$SongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulaltFromJson(json);
 
   int id;
 
@@ -194,7 +189,7 @@ class PaginatesongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt
   double ulsTosovTerbum;
 
   @JsonKey(name: 'sub_songon_shalgaruulalt')
-  List<PaginatesongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt$SubSongonShalgaruulalt>
+  List<SongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt$SubSongonShalgaruulalt>
       subSongonShalgaruulalt;
 
   @override
@@ -211,17 +206,16 @@ class PaginatesongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt
         subSongonShalgaruulalt
       ];
   Map<String, dynamic> toJson() =>
-      _$PaginatesongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulaltToJson(
-          this);
+      _$SongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulaltToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginatesongonShalgaruulalt$Query$Paginate with EquatableMixin {
-  PaginatesongonShalgaruulalt$Query$Paginate();
+class SongonShalgaruulalt$Query$Paginate with EquatableMixin {
+  SongonShalgaruulalt$Query$Paginate();
 
-  factory PaginatesongonShalgaruulalt$Query$Paginate.fromJson(
+  factory SongonShalgaruulalt$Query$Paginate.fromJson(
           Map<String, dynamic> json) =>
-      _$PaginatesongonShalgaruulalt$Query$PaginateFromJson(json);
+      _$SongonShalgaruulalt$Query$PaginateFromJson(json);
 
   int total;
 
@@ -229,39 +223,37 @@ class PaginatesongonShalgaruulalt$Query$Paginate with EquatableMixin {
   int lastPage;
 
   @JsonKey(name: 'aa_songon_shalgaruulalt')
-  List<PaginatesongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt>
+  List<SongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt>
       aaSongonShalgaruulalt;
 
   @override
   List<Object> get props => [total, lastPage, aaSongonShalgaruulalt];
   Map<String, dynamic> toJson() =>
-      _$PaginatesongonShalgaruulalt$Query$PaginateToJson(this);
+      _$SongonShalgaruulalt$Query$PaginateToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginatesongonShalgaruulalt$Query with EquatableMixin {
-  PaginatesongonShalgaruulalt$Query();
+class SongonShalgaruulalt$Query with EquatableMixin {
+  SongonShalgaruulalt$Query();
 
-  factory PaginatesongonShalgaruulalt$Query.fromJson(
-          Map<String, dynamic> json) =>
-      _$PaginatesongonShalgaruulalt$QueryFromJson(json);
+  factory SongonShalgaruulalt$Query.fromJson(Map<String, dynamic> json) =>
+      _$SongonShalgaruulalt$QueryFromJson(json);
 
-  PaginatesongonShalgaruulalt$Query$Paginate paginate;
+  SongonShalgaruulalt$Query$Paginate paginate;
 
   @override
   List<Object> get props => [paginate];
-  Map<String, dynamic> toJson() =>
-      _$PaginatesongonShalgaruulalt$QueryToJson(this);
+  Map<String, dynamic> toJson() => _$SongonShalgaruulalt$QueryToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubBu
+class EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubBu
     with EquatableMixin {
-  PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubBu();
+  EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubBu();
 
-  factory PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubBu.fromJson(
+  factory EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubBu.fromJson(
           Map<String, dynamic> json) =>
-      _$PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubBuFromJson(
+      _$EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubBuFromJson(
           json);
 
   String asuudal;
@@ -274,33 +266,22 @@ class PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubBu
 
   int id;
 
-  @JsonKey(name: 'table_id')
-  int tableId;
-
   String tolov;
 
-  @JsonKey(name: 'tolov_id')
-  int tolovId;
-
-  @JsonKey(name: 'tolov_id')
-  int tolovId;
-
   @override
-  List<Object> get props =>
-      [asuudal, asuudalD, bTorol, id, tableId, tolov, tolovId, tolovId];
+  List<Object> get props => [asuudal, asuudalD, bTorol, id, tolov];
   Map<String, dynamic> toJson() =>
-      _$PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubBuToJson(
-          this);
+      _$EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubBuToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubGt
+class EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubGt
     with EquatableMixin {
-  PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubGt();
+  EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubGt();
 
-  factory PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubGt.fromJson(
+  factory EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubGt.fromJson(
           Map<String, dynamic> json) =>
-      _$PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubGtFromJson(
+      _$EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubGtFromJson(
           json);
 
   @JsonKey(name: 'a_dugaar')
@@ -313,33 +294,22 @@ class PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubGt
 
   int id;
 
-  @JsonKey(name: 'table_id')
-  int tableId;
-
   String tolov;
 
-  @JsonKey(name: 'tolov_id')
-  int tolovId;
-
-  @JsonKey(name: 'tolov_id')
-  int tolovId;
-
   @override
-  List<Object> get props =>
-      [aDugaar, asuudal, gtTorol, id, tableId, tolov, tolovId, tolovId];
+  List<Object> get props => [aDugaar, asuudal, gtTorol, id, tolov];
   Map<String, dynamic> toJson() =>
-      _$PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubGtToJson(
-          this);
+      _$EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubGtToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubNoots
+class EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubNoots
     with EquatableMixin {
-  PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubNoots();
+  EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubNoots();
 
-  factory PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubNoots.fromJson(
+  factory EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubNoots.fromJson(
           Map<String, dynamic> json) =>
-      _$PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubNootsFromJson(
+      _$EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubNootsFromJson(
           json);
 
   @JsonKey(name: 'a_dugaar')
@@ -351,33 +321,23 @@ class PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubNoots
 
   int id;
 
-  @JsonKey(name: 'table_id')
-  int tableId;
-
   String tolov;
 
-  @JsonKey(name: 'tolov_id')
-  int tolovId;
-
-  @JsonKey(name: 'tolov_id')
-  int tolovId;
-
   @override
-  List<Object> get props =>
-      [aDugaar, asuudal, buteegdehuun, id, tableId, tolov, tolovId, tolovId];
+  List<Object> get props => [aDugaar, asuudal, buteegdehuun, id, tolov];
   Map<String, dynamic> toJson() =>
-      _$PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubNootsToJson(
+      _$EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubNootsToJson(
           this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubTezu
+class EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubTezu
     with EquatableMixin {
-  PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubTezu();
+  EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubTezu();
 
-  factory PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubTezu.fromJson(
+  factory EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubTezu.fromJson(
           Map<String, dynamic> json) =>
-      _$PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubTezuFromJson(
+      _$EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubTezuFromJson(
           json);
 
   @JsonKey(name: 'a_dugaar')
@@ -392,38 +352,24 @@ class PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubTezu
   @JsonKey(name: 'sub_b_torol_id')
   int subBTorolId;
 
-  @JsonKey(name: 'table_id')
-  int tableId;
-
   String tolov;
 
-  @JsonKey(name: 'tolov_id')
-  int tolovId;
-
   @override
-  List<Object> get props => [
-        aDugaar,
-        asuudal,
-        buteegdehuun,
-        id,
-        subBTorolId,
-        tableId,
-        tolov,
-        tolovId
-      ];
+  List<Object> get props =>
+      [aDugaar, asuudal, buteegdehuun, id, subBTorolId, tolov];
   Map<String, dynamic> toJson() =>
-      _$PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubTezuToJson(
+      _$EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubTezuToJson(
           this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubUhggsa
+class EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubUhggsa
     with EquatableMixin {
-  PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubUhggsa();
+  EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubUhggsa();
 
-  factory PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubUhggsa.fromJson(
+  factory EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubUhggsa.fromJson(
           Map<String, dynamic> json) =>
-      _$PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubUhggsaFromJson(
+      _$EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubUhggsaFromJson(
           json);
 
   @JsonKey(name: 'a_dugaar')
@@ -433,37 +379,25 @@ class PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubUhggsa
 
   int id;
 
-  @JsonKey(name: 'table_id')
-  int tableId;
-
-  @JsonKey(name: 'tolov_id')
-  int tolovId;
-
   String torol;
-
-  @JsonKey(name: 'tolov_id')
-  int tolovId;
 
   @JsonKey(name: 'uhggsa_tolov')
   String uhggsaTolov;
 
   @override
-  List<Object> get props =>
-      [aDugaar, asuudal, id, tableId, tolovId, torol, tolovId, uhggsaTolov];
+  List<Object> get props => [aDugaar, asuudal, id, torol, uhggsaTolov];
   Map<String, dynamic> toJson() =>
-      _$PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubUhggsaToJson(
+      _$EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubUhggsaToJson(
           this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol
-    with EquatableMixin {
-  PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol();
+class EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol with EquatableMixin {
+  EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol();
 
-  factory PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol.fromJson(
+  factory EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol.fromJson(
           Map<String, dynamic> json) =>
-      _$PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlolFromJson(
-          json);
+      _$EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlolFromJson(json);
 
   @JsonKey(name: 'ebmz_salbar_id')
   int ebmzSalbarId;
@@ -477,23 +411,20 @@ class PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol
   int jilId;
 
   @JsonKey(name: 'ds_sub_bu')
-  List<PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubBu>
-      dsSubBu;
+  List<EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubBu> dsSubBu;
 
   @JsonKey(name: 'ds_sub_gt')
-  List<PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubGt>
-      dsSubGt;
+  List<EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubGt> dsSubGt;
 
   @JsonKey(name: 'ds_sub_noots')
-  List<PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubNoots>
+  List<EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubNoots>
       dsSubNoots;
 
   @JsonKey(name: 'ds_sub_tezu')
-  List<PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubTezu>
-      dsSubTezu;
+  List<EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubTezu> dsSubTezu;
 
   @JsonKey(name: 'ds_sub_uhggsa')
-  List<PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubUhggsa>
+  List<EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubUhggsa>
       dsSubUhggsa;
 
   @override
@@ -509,16 +440,15 @@ class PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol
         dsSubUhggsa
       ];
   Map<String, dynamic> toJson() =>
-      _$PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlolToJson(this);
+      _$EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlolToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateebMergejilZovlol$Query$Paginate with EquatableMixin {
-  PaginateebMergejilZovlol$Query$Paginate();
+class EBMergejilZovlol$Query$Paginate with EquatableMixin {
+  EBMergejilZovlol$Query$Paginate();
 
-  factory PaginateebMergejilZovlol$Query$Paginate.fromJson(
-          Map<String, dynamic> json) =>
-      _$PaginateebMergejilZovlol$Query$PaginateFromJson(json);
+  factory EBMergejilZovlol$Query$Paginate.fromJson(Map<String, dynamic> json) =>
+      _$EBMergejilZovlol$Query$PaginateFromJson(json);
 
   int total;
 
@@ -526,38 +456,36 @@ class PaginateebMergejilZovlol$Query$Paginate with EquatableMixin {
   int lastPage;
 
   @JsonKey(name: 'aa_e_b_mergejil_zovlol')
-  List<PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol>
-      aaEBMergejilZovlol;
+  List<EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol> aaEBMergejilZovlol;
 
   @override
   List<Object> get props => [total, lastPage, aaEBMergejilZovlol];
   Map<String, dynamic> toJson() =>
-      _$PaginateebMergejilZovlol$Query$PaginateToJson(this);
+      _$EBMergejilZovlol$Query$PaginateToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateebMergejilZovlol$Query with EquatableMixin {
-  PaginateebMergejilZovlol$Query();
+class EBMergejilZovlol$Query with EquatableMixin {
+  EBMergejilZovlol$Query();
 
-  factory PaginateebMergejilZovlol$Query.fromJson(Map<String, dynamic> json) =>
-      _$PaginateebMergejilZovlol$QueryFromJson(json);
+  factory EBMergejilZovlol$Query.fromJson(Map<String, dynamic> json) =>
+      _$EBMergejilZovlol$QueryFromJson(json);
 
-  PaginateebMergejilZovlol$Query$Paginate paginate;
+  EBMergejilZovlol$Query$Paginate paginate;
 
   @override
   List<Object> get props => [paginate];
-  Map<String, dynamic> toJson() => _$PaginateebMergejilZovlol$QueryToJson(this);
+  Map<String, dynamic> toJson() => _$EBMergejilZovlol$QueryToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateajilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel
+class AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel
     with EquatableMixin {
-  PaginateajilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel();
+  AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel();
 
-  factory PaginateajilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel.fromJson(
+  factory AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel.fromJson(
           Map<String, dynamic> json) =>
-      _$PaginateajilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelelFromJson(
-          json);
+      _$AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelelFromJson(json);
 
   @JsonKey(name: 'aj_ahui_ner_id')
   String ajAhuiNerId;
@@ -584,17 +512,16 @@ class PaginateajilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel
   List<Object> get props =>
       [ajAhuiNerId, bTorol, huchToo, id, medeelel, uaChiglelId, uls, ulsId];
   Map<String, dynamic> toJson() =>
-      _$PaginateajilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelelToJson(
-          this);
+      _$AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelelToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateajilahHuchMedeelel$Query$Paginate with EquatableMixin {
-  PaginateajilahHuchMedeelel$Query$Paginate();
+class AjilahHuchMedeelel$Query$Paginate with EquatableMixin {
+  AjilahHuchMedeelel$Query$Paginate();
 
-  factory PaginateajilahHuchMedeelel$Query$Paginate.fromJson(
+  factory AjilahHuchMedeelel$Query$Paginate.fromJson(
           Map<String, dynamic> json) =>
-      _$PaginateajilahHuchMedeelel$Query$PaginateFromJson(json);
+      _$AjilahHuchMedeelel$Query$PaginateFromJson(json);
 
   int total;
 
@@ -602,40 +529,36 @@ class PaginateajilahHuchMedeelel$Query$Paginate with EquatableMixin {
   int lastPage;
 
   @JsonKey(name: 'ds_ajilah_huch_medeelel')
-  List<PaginateajilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel>
+  List<AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel>
       dsAjilahHuchMedeelel;
 
   @override
   List<Object> get props => [total, lastPage, dsAjilahHuchMedeelel];
   Map<String, dynamic> toJson() =>
-      _$PaginateajilahHuchMedeelel$Query$PaginateToJson(this);
+      _$AjilahHuchMedeelel$Query$PaginateToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateajilahHuchMedeelel$Query with EquatableMixin {
-  PaginateajilahHuchMedeelel$Query();
+class AjilahHuchMedeelel$Query with EquatableMixin {
+  AjilahHuchMedeelel$Query();
 
-  factory PaginateajilahHuchMedeelel$Query.fromJson(
-          Map<String, dynamic> json) =>
-      _$PaginateajilahHuchMedeelel$QueryFromJson(json);
+  factory AjilahHuchMedeelel$Query.fromJson(Map<String, dynamic> json) =>
+      _$AjilahHuchMedeelel$QueryFromJson(json);
 
-  PaginateajilahHuchMedeelel$Query$Paginate paginate;
+  AjilahHuchMedeelel$Query$Paginate paginate;
 
   @override
   List<Object> get props => [paginate];
-  Map<String, dynamic> toJson() =>
-      _$PaginateajilahHuchMedeelel$QueryToJson(this);
+  Map<String, dynamic> toJson() => _$AjilahHuchMedeelel$QueryToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginatetusgaiZuvshuurulArguments extends JsonSerializable
-    with EquatableMixin {
-  PaginatetusgaiZuvshuurulArguments({@required this.page, @required this.size});
+class TusgaiZovshoorolArguments extends JsonSerializable with EquatableMixin {
+  TusgaiZovshoorolArguments({@required this.page, @required this.size});
 
   @override
-  factory PaginatetusgaiZuvshuurulArguments.fromJson(
-          Map<String, dynamic> json) =>
-      _$PaginatetusgaiZuvshuurulArgumentsFromJson(json);
+  factory TusgaiZovshoorolArguments.fromJson(Map<String, dynamic> json) =>
+      _$TusgaiZovshoorolArgumentsFromJson(json);
 
   final int page;
 
@@ -644,19 +567,18 @@ class PaginatetusgaiZuvshuurulArguments extends JsonSerializable
   @override
   List<Object> get props => [page, size];
   @override
-  Map<String, dynamic> toJson() =>
-      _$PaginatetusgaiZuvshuurulArgumentsToJson(this);
+  Map<String, dynamic> toJson() => _$TusgaiZovshoorolArgumentsToJson(this);
 }
 
-class PaginatetusgaiZuvshuurulQuery extends GraphQLQuery<
-    PaginatetusgaiZuvshuurul$Query, PaginatetusgaiZuvshuurulArguments> {
-  PaginatetusgaiZuvshuurulQuery({this.variables});
+class TusgaiZovshoorolQuery
+    extends GraphQLQuery<TusgaiZovshoorol$Query, TusgaiZovshoorolArguments> {
+  TusgaiZovshoorolQuery({this.variables});
 
   @override
   final DocumentNode document = DocumentNode(definitions: [
     OperationDefinitionNode(
         type: OperationType.query,
-        name: NameNode(value: 'paginatetusgai_zuvshuurul'),
+        name: NameNode(value: 'tusgai_zovshoorol'),
         variableDefinitions: [
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'page')),
@@ -795,28 +717,26 @@ class PaginatetusgaiZuvshuurulQuery extends GraphQLQuery<
   ]);
 
   @override
-  final String operationName = 'paginatetusgai_zuvshuurul';
+  final String operationName = 'tusgai_zovshoorol';
 
   @override
-  final PaginatetusgaiZuvshuurulArguments variables;
+  final TusgaiZovshoorolArguments variables;
 
   @override
   List<Object> get props => [document, operationName, variables];
   @override
-  PaginatetusgaiZuvshuurul$Query parse(Map<String, dynamic> json) =>
-      PaginatetusgaiZuvshuurul$Query.fromJson(json);
+  TusgaiZovshoorol$Query parse(Map<String, dynamic> json) =>
+      TusgaiZovshoorol$Query.fromJson(json);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginatesongonShalgaruulaltArguments extends JsonSerializable
+class SongonShalgaruulaltArguments extends JsonSerializable
     with EquatableMixin {
-  PaginatesongonShalgaruulaltArguments(
-      {@required this.page, @required this.size});
+  SongonShalgaruulaltArguments({@required this.page, @required this.size});
 
   @override
-  factory PaginatesongonShalgaruulaltArguments.fromJson(
-          Map<String, dynamic> json) =>
-      _$PaginatesongonShalgaruulaltArgumentsFromJson(json);
+  factory SongonShalgaruulaltArguments.fromJson(Map<String, dynamic> json) =>
+      _$SongonShalgaruulaltArgumentsFromJson(json);
 
   final int page;
 
@@ -825,19 +745,18 @@ class PaginatesongonShalgaruulaltArguments extends JsonSerializable
   @override
   List<Object> get props => [page, size];
   @override
-  Map<String, dynamic> toJson() =>
-      _$PaginatesongonShalgaruulaltArgumentsToJson(this);
+  Map<String, dynamic> toJson() => _$SongonShalgaruulaltArgumentsToJson(this);
 }
 
-class PaginatesongonShalgaruulaltQuery extends GraphQLQuery<
-    PaginatesongonShalgaruulalt$Query, PaginatesongonShalgaruulaltArguments> {
-  PaginatesongonShalgaruulaltQuery({this.variables});
+class SongonShalgaruulaltQuery extends GraphQLQuery<SongonShalgaruulalt$Query,
+    SongonShalgaruulaltArguments> {
+  SongonShalgaruulaltQuery({this.variables});
 
   @override
   final DocumentNode document = DocumentNode(definitions: [
     OperationDefinitionNode(
         type: OperationType.query,
-        name: NameNode(value: 'paginatesongon_shalgaruulalt'),
+        name: NameNode(value: 'songon_shalgaruulalt'),
         variableDefinitions: [
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'page')),
@@ -1019,27 +938,25 @@ class PaginatesongonShalgaruulaltQuery extends GraphQLQuery<
   ]);
 
   @override
-  final String operationName = 'paginatesongon_shalgaruulalt';
+  final String operationName = 'songon_shalgaruulalt';
 
   @override
-  final PaginatesongonShalgaruulaltArguments variables;
+  final SongonShalgaruulaltArguments variables;
 
   @override
   List<Object> get props => [document, operationName, variables];
   @override
-  PaginatesongonShalgaruulalt$Query parse(Map<String, dynamic> json) =>
-      PaginatesongonShalgaruulalt$Query.fromJson(json);
+  SongonShalgaruulalt$Query parse(Map<String, dynamic> json) =>
+      SongonShalgaruulalt$Query.fromJson(json);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateebMergejilZovlolArguments extends JsonSerializable
-    with EquatableMixin {
-  PaginateebMergejilZovlolArguments({@required this.page, @required this.size});
+class EBMergejilZovlolArguments extends JsonSerializable with EquatableMixin {
+  EBMergejilZovlolArguments({@required this.page, @required this.size});
 
   @override
-  factory PaginateebMergejilZovlolArguments.fromJson(
-          Map<String, dynamic> json) =>
-      _$PaginateebMergejilZovlolArgumentsFromJson(json);
+  factory EBMergejilZovlolArguments.fromJson(Map<String, dynamic> json) =>
+      _$EBMergejilZovlolArgumentsFromJson(json);
 
   final int page;
 
@@ -1048,19 +965,18 @@ class PaginateebMergejilZovlolArguments extends JsonSerializable
   @override
   List<Object> get props => [page, size];
   @override
-  Map<String, dynamic> toJson() =>
-      _$PaginateebMergejilZovlolArgumentsToJson(this);
+  Map<String, dynamic> toJson() => _$EBMergejilZovlolArgumentsToJson(this);
 }
 
-class PaginateebMergejilZovlolQuery extends GraphQLQuery<
-    PaginateebMergejilZovlol$Query, PaginateebMergejilZovlolArguments> {
-  PaginateebMergejilZovlolQuery({this.variables});
+class EBMergejilZovlolQuery
+    extends GraphQLQuery<EBMergejilZovlol$Query, EBMergejilZovlolArguments> {
+  EBMergejilZovlolQuery({this.variables});
 
   @override
   final DocumentNode document = DocumentNode(definitions: [
     OperationDefinitionNode(
         type: OperationType.query,
-        name: NameNode(value: 'paginateeb_mergejil_zovlol'),
+        name: NameNode(value: 'e_b_mergejil_zovlol'),
         variableDefinitions: [
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'page')),
@@ -1176,25 +1092,7 @@ class PaginateebMergejilZovlolQuery extends GraphQLQuery<
                                 directives: [],
                                 selectionSet: null),
                             FieldNode(
-                                name: NameNode(value: 'table_id'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
                                 name: NameNode(value: 'tolov'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
-                                name: NameNode(value: 'tolov_id'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
-                                name: NameNode(value: 'tolov_id'),
                                 alias: null,
                                 arguments: [],
                                 directives: [],
@@ -1231,25 +1129,7 @@ class PaginateebMergejilZovlolQuery extends GraphQLQuery<
                                 directives: [],
                                 selectionSet: null),
                             FieldNode(
-                                name: NameNode(value: 'table_id'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
                                 name: NameNode(value: 'tolov'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
-                                name: NameNode(value: 'tolov_id'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
-                                name: NameNode(value: 'tolov_id'),
                                 alias: null,
                                 arguments: [],
                                 directives: [],
@@ -1286,25 +1166,7 @@ class PaginateebMergejilZovlolQuery extends GraphQLQuery<
                                 directives: [],
                                 selectionSet: null),
                             FieldNode(
-                                name: NameNode(value: 'table_id'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
                                 name: NameNode(value: 'tolov'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
-                                name: NameNode(value: 'tolov_id'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
-                                name: NameNode(value: 'tolov_id'),
                                 alias: null,
                                 arguments: [],
                                 directives: [],
@@ -1347,19 +1209,7 @@ class PaginateebMergejilZovlolQuery extends GraphQLQuery<
                                 directives: [],
                                 selectionSet: null),
                             FieldNode(
-                                name: NameNode(value: 'table_id'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
                                 name: NameNode(value: 'tolov'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
-                                name: NameNode(value: 'tolov_id'),
                                 alias: null,
                                 arguments: [],
                                 directives: [],
@@ -1390,25 +1240,7 @@ class PaginateebMergejilZovlolQuery extends GraphQLQuery<
                                 directives: [],
                                 selectionSet: null),
                             FieldNode(
-                                name: NameNode(value: 'table_id'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
-                                name: NameNode(value: 'tolov_id'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
                                 name: NameNode(value: 'torol'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
-                                name: NameNode(value: 'tolov_id'),
                                 alias: null,
                                 arguments: [],
                                 directives: [],
@@ -1426,28 +1258,25 @@ class PaginateebMergejilZovlolQuery extends GraphQLQuery<
   ]);
 
   @override
-  final String operationName = 'paginateeb_mergejil_zovlol';
+  final String operationName = 'e_b_mergejil_zovlol';
 
   @override
-  final PaginateebMergejilZovlolArguments variables;
+  final EBMergejilZovlolArguments variables;
 
   @override
   List<Object> get props => [document, operationName, variables];
   @override
-  PaginateebMergejilZovlol$Query parse(Map<String, dynamic> json) =>
-      PaginateebMergejilZovlol$Query.fromJson(json);
+  EBMergejilZovlol$Query parse(Map<String, dynamic> json) =>
+      EBMergejilZovlol$Query.fromJson(json);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateajilahHuchMedeelelArguments extends JsonSerializable
-    with EquatableMixin {
-  PaginateajilahHuchMedeelelArguments(
-      {@required this.page, @required this.size});
+class AjilahHuchMedeelelArguments extends JsonSerializable with EquatableMixin {
+  AjilahHuchMedeelelArguments({@required this.page, @required this.size});
 
   @override
-  factory PaginateajilahHuchMedeelelArguments.fromJson(
-          Map<String, dynamic> json) =>
-      _$PaginateajilahHuchMedeelelArgumentsFromJson(json);
+  factory AjilahHuchMedeelelArguments.fromJson(Map<String, dynamic> json) =>
+      _$AjilahHuchMedeelelArgumentsFromJson(json);
 
   final int page;
 
@@ -1456,19 +1285,18 @@ class PaginateajilahHuchMedeelelArguments extends JsonSerializable
   @override
   List<Object> get props => [page, size];
   @override
-  Map<String, dynamic> toJson() =>
-      _$PaginateajilahHuchMedeelelArgumentsToJson(this);
+  Map<String, dynamic> toJson() => _$AjilahHuchMedeelelArgumentsToJson(this);
 }
 
-class PaginateajilahHuchMedeelelQuery extends GraphQLQuery<
-    PaginateajilahHuchMedeelel$Query, PaginateajilahHuchMedeelelArguments> {
-  PaginateajilahHuchMedeelelQuery({this.variables});
+class AjilahHuchMedeelelQuery extends GraphQLQuery<AjilahHuchMedeelel$Query,
+    AjilahHuchMedeelelArguments> {
+  AjilahHuchMedeelelQuery({this.variables});
 
   @override
   final DocumentNode document = DocumentNode(definitions: [
     OperationDefinitionNode(
         type: OperationType.query,
-        name: NameNode(value: 'paginateajilah_huch_medeelel'),
+        name: NameNode(value: 'ajilah_huch_medeelel'),
         variableDefinitions: [
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'page')),
@@ -1583,14 +1411,14 @@ class PaginateajilahHuchMedeelelQuery extends GraphQLQuery<
   ]);
 
   @override
-  final String operationName = 'paginateajilah_huch_medeelel';
+  final String operationName = 'ajilah_huch_medeelel';
 
   @override
-  final PaginateajilahHuchMedeelelArguments variables;
+  final AjilahHuchMedeelelArguments variables;
 
   @override
   List<Object> get props => [document, operationName, variables];
   @override
-  PaginateajilahHuchMedeelel$Query parse(Map<String, dynamic> json) =>
-      PaginateajilahHuchMedeelel$Query.fromJson(json);
+  AjilahHuchMedeelel$Query parse(Map<String, dynamic> json) =>
+      AjilahHuchMedeelel$Query.fromJson(json);
 }

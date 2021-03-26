@@ -1,4 +1,4 @@
-query paginatemuhuuli($page:Int!, $size:Int!) {
+query m_uls_huuli($page:Int!, $size:Int!) {
     paginate(sorts: [{ column: "id", order: desc }],page:$page, size:$size) {
         total
         last_page
@@ -19,7 +19,7 @@ query paginatemuhuuli($page:Int!, $size:Int!) {
 }
 
 
-query paginauih_togtool($page: Int!, $size: Int!) {
+query uls_ih_hural_togtool($page: Int!, $size: Int!) {
     paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
         total
         last_page

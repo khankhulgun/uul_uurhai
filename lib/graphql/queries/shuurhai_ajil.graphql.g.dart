@@ -6,10 +6,10 @@ part of 'shuurhai_ajil.graphql.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PaginateShuurhaiajil$Query$Paginate$DsShuurkhaiAjil
-    _$PaginateShuurhaiajil$Query$Paginate$DsShuurkhaiAjilFromJson(
+ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil
+    _$ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjilFromJson(
         Map<String, dynamic> json) {
-  return PaginateShuurhaiajil$Query$Paginate$DsShuurkhaiAjil()
+  return ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil()
     ..ajil = json['ajil'] as String
     ..albanTushaal = json['alban_tushaal'] as String
     ..angilal = json['angilal'] as String
@@ -26,39 +26,37 @@ PaginateShuurhaiajil$Query$Paginate$DsShuurkhaiAjil
     ..tolovId = json['tolov_id'] as int;
 }
 
-Map<String, dynamic>
-    _$PaginateShuurhaiajil$Query$Paginate$DsShuurkhaiAjilToJson(
-            PaginateShuurhaiajil$Query$Paginate$DsShuurkhaiAjil instance) =>
-        <String, dynamic>{
-          'ajil': instance.ajil,
-          'alban_tushaal': instance.albanTushaal,
-          'angilal': instance.angilal,
-          'b_g_id': instance.bGId,
-          'id': instance.id,
-          'ognoo': instance.ognoo?.toIso8601String(),
-          'salbar': instance.salbar,
-          'shiidverleh_hugatsaa':
-              instance.shiidverlehHugatsaa?.toIso8601String(),
-          'shuurhai_cat_id': instance.shuurhaiCatId,
-          'status': instance.status,
-          'tolov_id': instance.tolovId,
-        };
+Map<String, dynamic> _$ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjilToJson(
+        ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil instance) =>
+    <String, dynamic>{
+      'ajil': instance.ajil,
+      'alban_tushaal': instance.albanTushaal,
+      'angilal': instance.angilal,
+      'b_g_id': instance.bGId,
+      'id': instance.id,
+      'ognoo': instance.ognoo?.toIso8601String(),
+      'salbar': instance.salbar,
+      'shiidverleh_hugatsaa': instance.shiidverlehHugatsaa?.toIso8601String(),
+      'shuurhai_cat_id': instance.shuurhaiCatId,
+      'status': instance.status,
+      'tolov_id': instance.tolovId,
+    };
 
-PaginateShuurhaiajil$Query$Paginate
-    _$PaginateShuurhaiajil$Query$PaginateFromJson(Map<String, dynamic> json) {
-  return PaginateShuurhaiajil$Query$Paginate()
+ShuurkhaiAjil$Query$Paginate _$ShuurkhaiAjil$Query$PaginateFromJson(
+    Map<String, dynamic> json) {
+  return ShuurkhaiAjil$Query$Paginate()
     ..total = json['total'] as int
     ..lastPage = json['last_page'] as int
     ..dsShuurkhaiAjil = (json['ds_shuurkhai_ajil'] as List)
         ?.map((e) => e == null
             ? null
-            : PaginateShuurhaiajil$Query$Paginate$DsShuurkhaiAjil.fromJson(
+            : ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil.fromJson(
                 e as Map<String, dynamic>))
         ?.toList();
 }
 
-Map<String, dynamic> _$PaginateShuurhaiajil$Query$PaginateToJson(
-        PaginateShuurhaiajil$Query$Paginate instance) =>
+Map<String, dynamic> _$ShuurkhaiAjil$Query$PaginateToJson(
+        ShuurkhaiAjil$Query$Paginate instance) =>
     <String, dynamic>{
       'total': instance.total,
       'last_page': instance.lastPage,
@@ -66,31 +64,30 @@ Map<String, dynamic> _$PaginateShuurhaiajil$Query$PaginateToJson(
           instance.dsShuurkhaiAjil?.map((e) => e?.toJson())?.toList(),
     };
 
-PaginateShuurhaiajil$Query _$PaginateShuurhaiajil$QueryFromJson(
-    Map<String, dynamic> json) {
-  return PaginateShuurhaiajil$Query()
+ShuurkhaiAjil$Query _$ShuurkhaiAjil$QueryFromJson(Map<String, dynamic> json) {
+  return ShuurkhaiAjil$Query()
     ..paginate = json['paginate'] == null
         ? null
-        : PaginateShuurhaiajil$Query$Paginate.fromJson(
+        : ShuurkhaiAjil$Query$Paginate.fromJson(
             json['paginate'] as Map<String, dynamic>);
 }
 
-Map<String, dynamic> _$PaginateShuurhaiajil$QueryToJson(
-        PaginateShuurhaiajil$Query instance) =>
+Map<String, dynamic> _$ShuurkhaiAjil$QueryToJson(
+        ShuurkhaiAjil$Query instance) =>
     <String, dynamic>{
       'paginate': instance.paginate?.toJson(),
     };
 
-PaginateShuurhaiajilArguments _$PaginateShuurhaiajilArgumentsFromJson(
+ShuurkhaiAjilArguments _$ShuurkhaiAjilArgumentsFromJson(
     Map<String, dynamic> json) {
-  return PaginateShuurhaiajilArguments(
+  return ShuurkhaiAjilArguments(
     page: json['page'] as int,
     size: json['size'] as int,
   );
 }
 
-Map<String, dynamic> _$PaginateShuurhaiajilArgumentsToJson(
-        PaginateShuurhaiajilArguments instance) =>
+Map<String, dynamic> _$ShuurkhaiAjilArgumentsToJson(
+        ShuurkhaiAjilArguments instance) =>
     <String, dynamic>{
       'page': instance.page,
       'size': instance.size,

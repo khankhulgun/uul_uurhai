@@ -8,12 +8,11 @@ import 'package:gql/ast.dart';
 part 'medee.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class PaginateMedee$Query$Paginate$DsMedee with EquatableMixin {
-  PaginateMedee$Query$Paginate$DsMedee();
+class Medee$Query$Paginate$DsMedee with EquatableMixin {
+  Medee$Query$Paginate$DsMedee();
 
-  factory PaginateMedee$Query$Paginate$DsMedee.fromJson(
-          Map<String, dynamic> json) =>
-      _$PaginateMedee$Query$Paginate$DsMedeeFromJson(json);
+  factory Medee$Query$Paginate$DsMedee.fromJson(Map<String, dynamic> json) =>
+      _$Medee$Query$Paginate$DsMedeeFromJson(json);
 
   int id;
 
@@ -27,16 +26,15 @@ class PaginateMedee$Query$Paginate$DsMedee with EquatableMixin {
 
   @override
   List<Object> get props => [id, medee, angilal, ognoo, tailbar];
-  Map<String, dynamic> toJson() =>
-      _$PaginateMedee$Query$Paginate$DsMedeeToJson(this);
+  Map<String, dynamic> toJson() => _$Medee$Query$Paginate$DsMedeeToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateMedee$Query$Paginate with EquatableMixin {
-  PaginateMedee$Query$Paginate();
+class Medee$Query$Paginate with EquatableMixin {
+  Medee$Query$Paginate();
 
-  factory PaginateMedee$Query$Paginate.fromJson(Map<String, dynamic> json) =>
-      _$PaginateMedee$Query$PaginateFromJson(json);
+  factory Medee$Query$Paginate.fromJson(Map<String, dynamic> json) =>
+      _$Medee$Query$PaginateFromJson(json);
 
   int total;
 
@@ -44,34 +42,34 @@ class PaginateMedee$Query$Paginate with EquatableMixin {
   int lastPage;
 
   @JsonKey(name: 'ds_medee')
-  List<PaginateMedee$Query$Paginate$DsMedee> dsMedee;
+  List<Medee$Query$Paginate$DsMedee> dsMedee;
 
   @override
   List<Object> get props => [total, lastPage, dsMedee];
-  Map<String, dynamic> toJson() => _$PaginateMedee$Query$PaginateToJson(this);
+  Map<String, dynamic> toJson() => _$Medee$Query$PaginateToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateMedee$Query with EquatableMixin {
-  PaginateMedee$Query();
+class Medee$Query with EquatableMixin {
+  Medee$Query();
 
-  factory PaginateMedee$Query.fromJson(Map<String, dynamic> json) =>
-      _$PaginateMedee$QueryFromJson(json);
+  factory Medee$Query.fromJson(Map<String, dynamic> json) =>
+      _$Medee$QueryFromJson(json);
 
-  PaginateMedee$Query$Paginate paginate;
+  Medee$Query$Paginate paginate;
 
   @override
   List<Object> get props => [paginate];
-  Map<String, dynamic> toJson() => _$PaginateMedee$QueryToJson(this);
+  Map<String, dynamic> toJson() => _$Medee$QueryToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateMedeeArguments extends JsonSerializable with EquatableMixin {
-  PaginateMedeeArguments({@required this.page, @required this.size});
+class MedeeArguments extends JsonSerializable with EquatableMixin {
+  MedeeArguments({@required this.page, @required this.size});
 
   @override
-  factory PaginateMedeeArguments.fromJson(Map<String, dynamic> json) =>
-      _$PaginateMedeeArgumentsFromJson(json);
+  factory MedeeArguments.fromJson(Map<String, dynamic> json) =>
+      _$MedeeArgumentsFromJson(json);
 
   final int page;
 
@@ -80,18 +78,17 @@ class PaginateMedeeArguments extends JsonSerializable with EquatableMixin {
   @override
   List<Object> get props => [page, size];
   @override
-  Map<String, dynamic> toJson() => _$PaginateMedeeArgumentsToJson(this);
+  Map<String, dynamic> toJson() => _$MedeeArgumentsToJson(this);
 }
 
-class PaginateMedeeQuery
-    extends GraphQLQuery<PaginateMedee$Query, PaginateMedeeArguments> {
-  PaginateMedeeQuery({this.variables});
+class MedeeQuery extends GraphQLQuery<Medee$Query, MedeeArguments> {
+  MedeeQuery({this.variables});
 
   @override
   final DocumentNode document = DocumentNode(definitions: [
     OperationDefinitionNode(
         type: OperationType.query,
-        name: NameNode(value: 'paginateMedee'),
+        name: NameNode(value: 'medee'),
         variableDefinitions: [
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'page')),
@@ -188,14 +185,13 @@ class PaginateMedeeQuery
   ]);
 
   @override
-  final String operationName = 'paginateMedee';
+  final String operationName = 'medee';
 
   @override
-  final PaginateMedeeArguments variables;
+  final MedeeArguments variables;
 
   @override
   List<Object> get props => [document, operationName, variables];
   @override
-  PaginateMedee$Query parse(Map<String, dynamic> json) =>
-      PaginateMedee$Query.fromJson(json);
+  Medee$Query parse(Map<String, dynamic> json) => Medee$Query.fromJson(json);
 }

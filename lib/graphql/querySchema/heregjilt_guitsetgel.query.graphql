@@ -1,4 +1,4 @@
-query paginateds_bodlogo_bb($page: Int!, $size: Int!) {
+query bodlogo_bb($page: Int!, $size: Int!) {
     paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
         total
         last_page
@@ -25,9 +25,7 @@ query paginateds_bodlogo_bb($page: Int!, $size: Int!) {
     }
 }
 
-
-
-query paginateaa_mu_huuli_hegejilt($page: Int!, $size: Int!) {
+query mu_huuli_hegejilt($page: Int!, $size: Int!) {
     paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
         total
         last_page
@@ -51,11 +49,7 @@ query paginateaa_mu_huuli_hegejilt($page: Int!, $size: Int!) {
     }
 }
 
-
-
-
-
-query paginateuih_togtool_heregjilt($page: Int!, $size: Int!) {
+query uih_togtool_heregjilt($page: Int!, $size: Int!) {
     paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
         total
         last_page
@@ -83,11 +77,7 @@ query paginateuih_togtool_heregjilt($page: Int!, $size: Int!) {
     }
 }
 
-
-
-
-
-query paginatezg_togtool_heregjilt($page: Int!, $size: Int!) {
+query zg_togtool_heregjilt($page: Int!, $size: Int!) {
     paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
         total
         last_page
@@ -114,48 +104,7 @@ query paginatezg_togtool_heregjilt($page: Int!, $size: Int!) {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-query paginateajil_heseg($page: Int!, $size: Int!) {
+query ajil_heseg($page: Int!, $size: Int!) {
     paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
         total
         last_page
@@ -178,9 +127,7 @@ query paginateajil_heseg($page: Int!, $size: Int!) {
     }
 }
 
-
-
-query paginatehor_or_tusul_hut($page: Int!, $size: Int!) {
+query horongo_oruulalt_t_h($page: Int!, $size: Int!) {
     paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
         total
         last_page

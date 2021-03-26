@@ -8,12 +8,12 @@ import 'package:gql/ast.dart';
 part 'shuurhai_ajil.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class PaginateShuurhaiajil$Query$Paginate$DsShuurkhaiAjil with EquatableMixin {
-  PaginateShuurhaiajil$Query$Paginate$DsShuurkhaiAjil();
+class ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil with EquatableMixin {
+  ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil();
 
-  factory PaginateShuurhaiajil$Query$Paginate$DsShuurkhaiAjil.fromJson(
+  factory ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil.fromJson(
           Map<String, dynamic> json) =>
-      _$PaginateShuurhaiajil$Query$Paginate$DsShuurkhaiAjilFromJson(json);
+      _$ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjilFromJson(json);
 
   String ajil;
 
@@ -57,16 +57,15 @@ class PaginateShuurhaiajil$Query$Paginate$DsShuurkhaiAjil with EquatableMixin {
         tolovId
       ];
   Map<String, dynamic> toJson() =>
-      _$PaginateShuurhaiajil$Query$Paginate$DsShuurkhaiAjilToJson(this);
+      _$ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjilToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateShuurhaiajil$Query$Paginate with EquatableMixin {
-  PaginateShuurhaiajil$Query$Paginate();
+class ShuurkhaiAjil$Query$Paginate with EquatableMixin {
+  ShuurkhaiAjil$Query$Paginate();
 
-  factory PaginateShuurhaiajil$Query$Paginate.fromJson(
-          Map<String, dynamic> json) =>
-      _$PaginateShuurhaiajil$Query$PaginateFromJson(json);
+  factory ShuurkhaiAjil$Query$Paginate.fromJson(Map<String, dynamic> json) =>
+      _$ShuurkhaiAjil$Query$PaginateFromJson(json);
 
   int total;
 
@@ -74,36 +73,34 @@ class PaginateShuurhaiajil$Query$Paginate with EquatableMixin {
   int lastPage;
 
   @JsonKey(name: 'ds_shuurkhai_ajil')
-  List<PaginateShuurhaiajil$Query$Paginate$DsShuurkhaiAjil> dsShuurkhaiAjil;
+  List<ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil> dsShuurkhaiAjil;
 
   @override
   List<Object> get props => [total, lastPage, dsShuurkhaiAjil];
-  Map<String, dynamic> toJson() =>
-      _$PaginateShuurhaiajil$Query$PaginateToJson(this);
+  Map<String, dynamic> toJson() => _$ShuurkhaiAjil$Query$PaginateToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateShuurhaiajil$Query with EquatableMixin {
-  PaginateShuurhaiajil$Query();
+class ShuurkhaiAjil$Query with EquatableMixin {
+  ShuurkhaiAjil$Query();
 
-  factory PaginateShuurhaiajil$Query.fromJson(Map<String, dynamic> json) =>
-      _$PaginateShuurhaiajil$QueryFromJson(json);
+  factory ShuurkhaiAjil$Query.fromJson(Map<String, dynamic> json) =>
+      _$ShuurkhaiAjil$QueryFromJson(json);
 
-  PaginateShuurhaiajil$Query$Paginate paginate;
+  ShuurkhaiAjil$Query$Paginate paginate;
 
   @override
   List<Object> get props => [paginate];
-  Map<String, dynamic> toJson() => _$PaginateShuurhaiajil$QueryToJson(this);
+  Map<String, dynamic> toJson() => _$ShuurkhaiAjil$QueryToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateShuurhaiajilArguments extends JsonSerializable
-    with EquatableMixin {
-  PaginateShuurhaiajilArguments({@required this.page, @required this.size});
+class ShuurkhaiAjilArguments extends JsonSerializable with EquatableMixin {
+  ShuurkhaiAjilArguments({@required this.page, @required this.size});
 
   @override
-  factory PaginateShuurhaiajilArguments.fromJson(Map<String, dynamic> json) =>
-      _$PaginateShuurhaiajilArgumentsFromJson(json);
+  factory ShuurkhaiAjilArguments.fromJson(Map<String, dynamic> json) =>
+      _$ShuurkhaiAjilArgumentsFromJson(json);
 
   final int page;
 
@@ -112,18 +109,18 @@ class PaginateShuurhaiajilArguments extends JsonSerializable
   @override
   List<Object> get props => [page, size];
   @override
-  Map<String, dynamic> toJson() => _$PaginateShuurhaiajilArgumentsToJson(this);
+  Map<String, dynamic> toJson() => _$ShuurkhaiAjilArgumentsToJson(this);
 }
 
-class PaginateShuurhaiajilQuery extends GraphQLQuery<PaginateShuurhaiajil$Query,
-    PaginateShuurhaiajilArguments> {
-  PaginateShuurhaiajilQuery({this.variables});
+class ShuurkhaiAjilQuery
+    extends GraphQLQuery<ShuurkhaiAjil$Query, ShuurkhaiAjilArguments> {
+  ShuurkhaiAjilQuery({this.variables});
 
   @override
   final DocumentNode document = DocumentNode(definitions: [
     OperationDefinitionNode(
         type: OperationType.query,
-        name: NameNode(value: 'paginateShuurhaiajil'),
+        name: NameNode(value: 'shuurkhai_ajil'),
         variableDefinitions: [
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'page')),
@@ -256,14 +253,14 @@ class PaginateShuurhaiajilQuery extends GraphQLQuery<PaginateShuurhaiajil$Query,
   ]);
 
   @override
-  final String operationName = 'paginateShuurhaiajil';
+  final String operationName = 'shuurkhai_ajil';
 
   @override
-  final PaginateShuurhaiajilArguments variables;
+  final ShuurkhaiAjilArguments variables;
 
   @override
   List<Object> get props => [document, operationName, variables];
   @override
-  PaginateShuurhaiajil$Query parse(Map<String, dynamic> json) =>
-      PaginateShuurhaiajil$Query.fromJson(json);
+  ShuurkhaiAjil$Query parse(Map<String, dynamic> json) =>
+      ShuurkhaiAjil$Query.fromJson(json);
 }

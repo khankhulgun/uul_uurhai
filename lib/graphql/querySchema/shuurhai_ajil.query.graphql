@@ -1,4 +1,4 @@
-query paginateShuurhaiajil($page:Int!, $size:Int!) {
+query shuurkhai_ajil($page:Int!, $size:Int!) {
     paginate(sorts: [{ column: "id", order: desc }],page:$page, size:$size) {
         total
         last_page

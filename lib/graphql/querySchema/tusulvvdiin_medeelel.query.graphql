@@ -1,4 +1,4 @@
-query paginateolborlolt_uurhai($page: Int!, $size: Int!) {
+query olborlolt_uurkhai($page: Int!, $size: Int!) {
     paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
         total
         last_page
@@ -34,7 +34,7 @@ query paginateolborlolt_uurhai($page: Int!, $size: Int!) {
 }
 
 
-query paginateuildver($page: Int!, $size: Int!) {
+query uildver($page: Int!, $size: Int!) {
     paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
         total
         last_page

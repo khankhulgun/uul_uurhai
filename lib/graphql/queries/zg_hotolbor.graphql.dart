@@ -8,13 +8,13 @@ import 'package:gql/ast.dart';
 part 'zg_hotolbor.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuulelt
+class ZgHotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuulelt
     with EquatableMixin {
-  Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuulelt();
+  ZgHotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuulelt();
 
-  factory Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuulelt.fromJson(
+  factory ZgHotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuulelt.fromJson(
           Map<String, dynamic> json) =>
-      _$Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuuleltFromJson(
+      _$ZgHotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuuleltFromJson(
           json);
 
   @JsonKey(name: 'h_tuvshin')
@@ -39,17 +39,16 @@ class Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuulelt
   List<Object> get props =>
       [hTuvshin, heregjilt, heregjiltTailan, hotolborId, id, jilId, tosov];
   Map<String, dynamic> toJson() =>
-      _$Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuuleltToJson(
-          this);
+      _$ZgHotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuuleltToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor with EquatableMixin {
-  Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor();
+class ZgHotolbor$Query$Paginate$DsZgHotolbor with EquatableMixin {
+  ZgHotolbor$Query$Paginate$DsZgHotolbor();
 
-  factory Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor.fromJson(
+  factory ZgHotolbor$Query$Paginate$DsZgHotolbor.fromJson(
           Map<String, dynamic> json) =>
-      _$Paginatedszhhotolbor$Query$Paginate$DsZgHotolborFromJson(json);
+      _$ZgHotolbor$Query$Paginate$DsZgHotolborFromJson(json);
 
   @JsonKey(name: 'arga_hemjee')
   String argaHemjee;
@@ -60,8 +59,7 @@ class Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor with EquatableMixin {
   @JsonKey(name: 'e_uusver')
   String eUusver;
 
-  @JsonKey(name: 'h_baiguullaga_id')
-  String hBaiguullagaId;
+  String lbaiguullaga;
 
   String hotolbor;
 
@@ -83,7 +81,7 @@ class Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor with EquatableMixin {
   String zorilt;
 
   @JsonKey(name: 'sub_hotolbor_uzuulelt')
-  List<Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuulelt>
+  List<ZgHotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuulelt>
       subHotolborUzuulelt;
 
   @override
@@ -91,7 +89,7 @@ class Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor with EquatableMixin {
         argaHemjee,
         dedZorilt,
         eUusver,
-        hBaiguullagaId,
+        lbaiguullaga,
         hotolbor,
         hugatsaa,
         id,
@@ -103,16 +101,15 @@ class Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor with EquatableMixin {
         subHotolborUzuulelt
       ];
   Map<String, dynamic> toJson() =>
-      _$Paginatedszhhotolbor$Query$Paginate$DsZgHotolborToJson(this);
+      _$ZgHotolbor$Query$Paginate$DsZgHotolborToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Paginatedszhhotolbor$Query$Paginate with EquatableMixin {
-  Paginatedszhhotolbor$Query$Paginate();
+class ZgHotolbor$Query$Paginate with EquatableMixin {
+  ZgHotolbor$Query$Paginate();
 
-  factory Paginatedszhhotolbor$Query$Paginate.fromJson(
-          Map<String, dynamic> json) =>
-      _$Paginatedszhhotolbor$Query$PaginateFromJson(json);
+  factory ZgHotolbor$Query$Paginate.fromJson(Map<String, dynamic> json) =>
+      _$ZgHotolbor$Query$PaginateFromJson(json);
 
   int total;
 
@@ -120,36 +117,34 @@ class Paginatedszhhotolbor$Query$Paginate with EquatableMixin {
   int lastPage;
 
   @JsonKey(name: 'ds_zg_hotolbor')
-  List<Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor> dsZgHotolbor;
+  List<ZgHotolbor$Query$Paginate$DsZgHotolbor> dsZgHotolbor;
 
   @override
   List<Object> get props => [total, lastPage, dsZgHotolbor];
-  Map<String, dynamic> toJson() =>
-      _$Paginatedszhhotolbor$Query$PaginateToJson(this);
+  Map<String, dynamic> toJson() => _$ZgHotolbor$Query$PaginateToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Paginatedszhhotolbor$Query with EquatableMixin {
-  Paginatedszhhotolbor$Query();
+class ZgHotolbor$Query with EquatableMixin {
+  ZgHotolbor$Query();
 
-  factory Paginatedszhhotolbor$Query.fromJson(Map<String, dynamic> json) =>
-      _$Paginatedszhhotolbor$QueryFromJson(json);
+  factory ZgHotolbor$Query.fromJson(Map<String, dynamic> json) =>
+      _$ZgHotolbor$QueryFromJson(json);
 
-  Paginatedszhhotolbor$Query$Paginate paginate;
+  ZgHotolbor$Query$Paginate paginate;
 
   @override
   List<Object> get props => [paginate];
-  Map<String, dynamic> toJson() => _$Paginatedszhhotolbor$QueryToJson(this);
+  Map<String, dynamic> toJson() => _$ZgHotolbor$QueryToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginatedszhhotolborArguments extends JsonSerializable
-    with EquatableMixin {
-  PaginatedszhhotolborArguments({@required this.page, @required this.size});
+class ZgHotolborArguments extends JsonSerializable with EquatableMixin {
+  ZgHotolborArguments({@required this.page, @required this.size});
 
   @override
-  factory PaginatedszhhotolborArguments.fromJson(Map<String, dynamic> json) =>
-      _$PaginatedszhhotolborArgumentsFromJson(json);
+  factory ZgHotolborArguments.fromJson(Map<String, dynamic> json) =>
+      _$ZgHotolborArgumentsFromJson(json);
 
   final int page;
 
@@ -158,18 +153,18 @@ class PaginatedszhhotolborArguments extends JsonSerializable
   @override
   List<Object> get props => [page, size];
   @override
-  Map<String, dynamic> toJson() => _$PaginatedszhhotolborArgumentsToJson(this);
+  Map<String, dynamic> toJson() => _$ZgHotolborArgumentsToJson(this);
 }
 
-class PaginatedszhhotolborQuery extends GraphQLQuery<Paginatedszhhotolbor$Query,
-    PaginatedszhhotolborArguments> {
-  PaginatedszhhotolborQuery({this.variables});
+class ZgHotolborQuery
+    extends GraphQLQuery<ZgHotolbor$Query, ZgHotolborArguments> {
+  ZgHotolborQuery({this.variables});
 
   @override
   final DocumentNode document = DocumentNode(definitions: [
     OperationDefinitionNode(
         type: OperationType.query,
-        name: NameNode(value: 'paginatedszhhotolbor'),
+        name: NameNode(value: 'zg_hotolbor'),
         variableDefinitions: [
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'page')),
@@ -249,7 +244,7 @@ class PaginatedszhhotolborQuery extends GraphQLQuery<Paginatedszhhotolbor$Query,
                           directives: [],
                           selectionSet: null),
                       FieldNode(
-                          name: NameNode(value: 'h_baiguullaga_id'),
+                          name: NameNode(value: 'lbaiguullaga'),
                           alias: null,
                           arguments: [],
                           directives: [],
@@ -357,14 +352,14 @@ class PaginatedszhhotolborQuery extends GraphQLQuery<Paginatedszhhotolbor$Query,
   ]);
 
   @override
-  final String operationName = 'paginatedszhhotolbor';
+  final String operationName = 'zg_hotolbor';
 
   @override
-  final PaginatedszhhotolborArguments variables;
+  final ZgHotolborArguments variables;
 
   @override
   List<Object> get props => [document, operationName, variables];
   @override
-  Paginatedszhhotolbor$Query parse(Map<String, dynamic> json) =>
-      Paginatedszhhotolbor$Query.fromJson(json);
+  ZgHotolbor$Query parse(Map<String, dynamic> json) =>
+      ZgHotolbor$Query.fromJson(json);
 }

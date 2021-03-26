@@ -8,13 +8,13 @@ import 'package:gql/ast.dart';
 part 'tusulvvdiin_medeelel.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class PaginateolborloltUurhai$Query$Paginate$DsOlborloltUurkhai$DsSubOlborlolt
+class OlborloltUurkhai$Query$Paginate$DsOlborloltUurkhai$DsSubOlborlolt
     with EquatableMixin {
-  PaginateolborloltUurhai$Query$Paginate$DsOlborloltUurkhai$DsSubOlborlolt();
+  OlborloltUurkhai$Query$Paginate$DsOlborloltUurkhai$DsSubOlborlolt();
 
-  factory PaginateolborloltUurhai$Query$Paginate$DsOlborloltUurkhai$DsSubOlborlolt.fromJson(
+  factory OlborloltUurkhai$Query$Paginate$DsOlborloltUurkhai$DsSubOlborlolt.fromJson(
           Map<String, dynamic> json) =>
-      _$PaginateolborloltUurhai$Query$Paginate$DsOlborloltUurkhai$DsSubOlborloltFromJson(
+      _$OlborloltUurkhai$Query$Paginate$DsOlborloltUurkhai$DsSubOlborloltFromJson(
           json);
 
   @JsonKey(name: 'ajilchin_too')
@@ -72,18 +72,17 @@ class PaginateolborloltUurhai$Query$Paginate$DsOlborloltUurkhai$DsSubOlborlolt
         zurag
       ];
   Map<String, dynamic> toJson() =>
-      _$PaginateolborloltUurhai$Query$Paginate$DsOlborloltUurkhai$DsSubOlborloltToJson(
+      _$OlborloltUurkhai$Query$Paginate$DsOlborloltUurkhai$DsSubOlborloltToJson(
           this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateolborloltUurhai$Query$Paginate$DsOlborloltUurkhai
-    with EquatableMixin {
-  PaginateolborloltUurhai$Query$Paginate$DsOlborloltUurkhai();
+class OlborloltUurkhai$Query$Paginate$DsOlborloltUurkhai with EquatableMixin {
+  OlborloltUurkhai$Query$Paginate$DsOlborloltUurkhai();
 
-  factory PaginateolborloltUurhai$Query$Paginate$DsOlborloltUurkhai.fromJson(
+  factory OlborloltUurkhai$Query$Paginate$DsOlborloltUurkhai.fromJson(
           Map<String, dynamic> json) =>
-      _$PaginateolborloltUurhai$Query$Paginate$DsOlborloltUurkhaiFromJson(json);
+      _$OlborloltUurkhai$Query$Paginate$DsOlborloltUurkhaiFromJson(json);
 
   @JsonKey(name: 'ah_negj_id')
   int ahNegjId;
@@ -112,7 +111,7 @@ class PaginateolborloltUurhai$Query$Paginate$DsOlborloltUurkhai
   String uurkhainNer;
 
   @JsonKey(name: 'ds_sub_olborlolt')
-  List<PaginateolborloltUurhai$Query$Paginate$DsOlborloltUurkhai$DsSubOlborlolt>
+  List<OlborloltUurkhai$Query$Paginate$DsOlborloltUurkhai$DsSubOlborlolt>
       dsSubOlborlolt;
 
   @override
@@ -130,16 +129,15 @@ class PaginateolborloltUurhai$Query$Paginate$DsOlborloltUurkhai
         dsSubOlborlolt
       ];
   Map<String, dynamic> toJson() =>
-      _$PaginateolborloltUurhai$Query$Paginate$DsOlborloltUurkhaiToJson(this);
+      _$OlborloltUurkhai$Query$Paginate$DsOlborloltUurkhaiToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateolborloltUurhai$Query$Paginate with EquatableMixin {
-  PaginateolborloltUurhai$Query$Paginate();
+class OlborloltUurkhai$Query$Paginate with EquatableMixin {
+  OlborloltUurkhai$Query$Paginate();
 
-  factory PaginateolborloltUurhai$Query$Paginate.fromJson(
-          Map<String, dynamic> json) =>
-      _$PaginateolborloltUurhai$Query$PaginateFromJson(json);
+  factory OlborloltUurkhai$Query$Paginate.fromJson(Map<String, dynamic> json) =>
+      _$OlborloltUurkhai$Query$PaginateFromJson(json);
 
   int total;
 
@@ -147,37 +145,35 @@ class PaginateolborloltUurhai$Query$Paginate with EquatableMixin {
   int lastPage;
 
   @JsonKey(name: 'ds_olborlolt_uurkhai')
-  List<PaginateolborloltUurhai$Query$Paginate$DsOlborloltUurkhai>
-      dsOlborloltUurkhai;
+  List<OlborloltUurkhai$Query$Paginate$DsOlborloltUurkhai> dsOlborloltUurkhai;
 
   @override
   List<Object> get props => [total, lastPage, dsOlborloltUurkhai];
   Map<String, dynamic> toJson() =>
-      _$PaginateolborloltUurhai$Query$PaginateToJson(this);
+      _$OlborloltUurkhai$Query$PaginateToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateolborloltUurhai$Query with EquatableMixin {
-  PaginateolborloltUurhai$Query();
+class OlborloltUurkhai$Query with EquatableMixin {
+  OlborloltUurkhai$Query();
 
-  factory PaginateolborloltUurhai$Query.fromJson(Map<String, dynamic> json) =>
-      _$PaginateolborloltUurhai$QueryFromJson(json);
+  factory OlborloltUurkhai$Query.fromJson(Map<String, dynamic> json) =>
+      _$OlborloltUurkhai$QueryFromJson(json);
 
-  PaginateolborloltUurhai$Query$Paginate paginate;
+  OlborloltUurkhai$Query$Paginate paginate;
 
   @override
   List<Object> get props => [paginate];
-  Map<String, dynamic> toJson() => _$PaginateolborloltUurhai$QueryToJson(this);
+  Map<String, dynamic> toJson() => _$OlborloltUurkhai$QueryToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Paginateuildver$Query$Paginate$DsUildver$DsSubUildverlel
-    with EquatableMixin {
-  Paginateuildver$Query$Paginate$DsUildver$DsSubUildverlel();
+class Uildver$Query$Paginate$DsUildver$DsSubUildverlel with EquatableMixin {
+  Uildver$Query$Paginate$DsUildver$DsSubUildverlel();
 
-  factory Paginateuildver$Query$Paginate$DsUildver$DsSubUildverlel.fromJson(
+  factory Uildver$Query$Paginate$DsUildver$DsSubUildverlel.fromJson(
           Map<String, dynamic> json) =>
-      _$Paginateuildver$Query$Paginate$DsUildver$DsSubUildverlelFromJson(json);
+      _$Uildver$Query$Paginate$DsUildver$DsSubUildverlelFromJson(json);
 
   @JsonKey(name: 'ajilchin_too')
   double ajilchinToo;
@@ -237,16 +233,16 @@ class Paginateuildver$Query$Paginate$DsUildver$DsSubUildverlel
         zurag
       ];
   Map<String, dynamic> toJson() =>
-      _$Paginateuildver$Query$Paginate$DsUildver$DsSubUildverlelToJson(this);
+      _$Uildver$Query$Paginate$DsUildver$DsSubUildverlelToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Paginateuildver$Query$Paginate$DsUildver with EquatableMixin {
-  Paginateuildver$Query$Paginate$DsUildver();
+class Uildver$Query$Paginate$DsUildver with EquatableMixin {
+  Uildver$Query$Paginate$DsUildver();
 
-  factory Paginateuildver$Query$Paginate$DsUildver.fromJson(
+  factory Uildver$Query$Paginate$DsUildver.fromJson(
           Map<String, dynamic> json) =>
-      _$Paginateuildver$Query$Paginate$DsUildverFromJson(json);
+      _$Uildver$Query$Paginate$DsUildverFromJson(json);
 
   @JsonKey(name: 'aimag_id')
   int aimagId;
@@ -272,8 +268,7 @@ class Paginateuildver$Query$Paginate$DsUildver with EquatableMixin {
   String uildverNer;
 
   @JsonKey(name: 'ds_sub_uildverlel')
-  List<Paginateuildver$Query$Paginate$DsUildver$DsSubUildverlel>
-      dsSubUildverlel;
+  List<Uildver$Query$Paginate$DsUildver$DsSubUildverlel> dsSubUildverlel;
 
   @override
   List<Object> get props => [
@@ -289,15 +284,15 @@ class Paginateuildver$Query$Paginate$DsUildver with EquatableMixin {
         dsSubUildverlel
       ];
   Map<String, dynamic> toJson() =>
-      _$Paginateuildver$Query$Paginate$DsUildverToJson(this);
+      _$Uildver$Query$Paginate$DsUildverToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Paginateuildver$Query$Paginate with EquatableMixin {
-  Paginateuildver$Query$Paginate();
+class Uildver$Query$Paginate with EquatableMixin {
+  Uildver$Query$Paginate();
 
-  factory Paginateuildver$Query$Paginate.fromJson(Map<String, dynamic> json) =>
-      _$Paginateuildver$Query$PaginateFromJson(json);
+  factory Uildver$Query$Paginate.fromJson(Map<String, dynamic> json) =>
+      _$Uildver$Query$PaginateFromJson(json);
 
   int total;
 
@@ -305,36 +300,34 @@ class Paginateuildver$Query$Paginate with EquatableMixin {
   int lastPage;
 
   @JsonKey(name: 'ds_uildver')
-  List<Paginateuildver$Query$Paginate$DsUildver> dsUildver;
+  List<Uildver$Query$Paginate$DsUildver> dsUildver;
 
   @override
   List<Object> get props => [total, lastPage, dsUildver];
-  Map<String, dynamic> toJson() => _$Paginateuildver$Query$PaginateToJson(this);
+  Map<String, dynamic> toJson() => _$Uildver$Query$PaginateToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Paginateuildver$Query with EquatableMixin {
-  Paginateuildver$Query();
+class Uildver$Query with EquatableMixin {
+  Uildver$Query();
 
-  factory Paginateuildver$Query.fromJson(Map<String, dynamic> json) =>
-      _$Paginateuildver$QueryFromJson(json);
+  factory Uildver$Query.fromJson(Map<String, dynamic> json) =>
+      _$Uildver$QueryFromJson(json);
 
-  Paginateuildver$Query$Paginate paginate;
+  Uildver$Query$Paginate paginate;
 
   @override
   List<Object> get props => [paginate];
-  Map<String, dynamic> toJson() => _$Paginateuildver$QueryToJson(this);
+  Map<String, dynamic> toJson() => _$Uildver$QueryToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateolborloltUurhaiArguments extends JsonSerializable
-    with EquatableMixin {
-  PaginateolborloltUurhaiArguments({@required this.page, @required this.size});
+class OlborloltUurkhaiArguments extends JsonSerializable with EquatableMixin {
+  OlborloltUurkhaiArguments({@required this.page, @required this.size});
 
   @override
-  factory PaginateolborloltUurhaiArguments.fromJson(
-          Map<String, dynamic> json) =>
-      _$PaginateolborloltUurhaiArgumentsFromJson(json);
+  factory OlborloltUurkhaiArguments.fromJson(Map<String, dynamic> json) =>
+      _$OlborloltUurkhaiArgumentsFromJson(json);
 
   final int page;
 
@@ -343,19 +336,18 @@ class PaginateolborloltUurhaiArguments extends JsonSerializable
   @override
   List<Object> get props => [page, size];
   @override
-  Map<String, dynamic> toJson() =>
-      _$PaginateolborloltUurhaiArgumentsToJson(this);
+  Map<String, dynamic> toJson() => _$OlborloltUurkhaiArgumentsToJson(this);
 }
 
-class PaginateolborloltUurhaiQuery extends GraphQLQuery<
-    PaginateolborloltUurhai$Query, PaginateolborloltUurhaiArguments> {
-  PaginateolborloltUurhaiQuery({this.variables});
+class OlborloltUurkhaiQuery
+    extends GraphQLQuery<OlborloltUurkhai$Query, OlborloltUurkhaiArguments> {
+  OlborloltUurkhaiQuery({this.variables});
 
   @override
   final DocumentNode document = DocumentNode(definitions: [
     OperationDefinitionNode(
         type: OperationType.query,
-        name: NameNode(value: 'paginateolborlolt_uurhai'),
+        name: NameNode(value: 'olborlolt_uurkhai'),
         variableDefinitions: [
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'page')),
@@ -573,25 +565,25 @@ class PaginateolborloltUurhaiQuery extends GraphQLQuery<
   ]);
 
   @override
-  final String operationName = 'paginateolborlolt_uurhai';
+  final String operationName = 'olborlolt_uurkhai';
 
   @override
-  final PaginateolborloltUurhaiArguments variables;
+  final OlborloltUurkhaiArguments variables;
 
   @override
   List<Object> get props => [document, operationName, variables];
   @override
-  PaginateolborloltUurhai$Query parse(Map<String, dynamic> json) =>
-      PaginateolborloltUurhai$Query.fromJson(json);
+  OlborloltUurkhai$Query parse(Map<String, dynamic> json) =>
+      OlborloltUurkhai$Query.fromJson(json);
 }
 
 @JsonSerializable(explicitToJson: true)
-class PaginateuildverArguments extends JsonSerializable with EquatableMixin {
-  PaginateuildverArguments({@required this.page, @required this.size});
+class UildverArguments extends JsonSerializable with EquatableMixin {
+  UildverArguments({@required this.page, @required this.size});
 
   @override
-  factory PaginateuildverArguments.fromJson(Map<String, dynamic> json) =>
-      _$PaginateuildverArgumentsFromJson(json);
+  factory UildverArguments.fromJson(Map<String, dynamic> json) =>
+      _$UildverArgumentsFromJson(json);
 
   final int page;
 
@@ -600,18 +592,17 @@ class PaginateuildverArguments extends JsonSerializable with EquatableMixin {
   @override
   List<Object> get props => [page, size];
   @override
-  Map<String, dynamic> toJson() => _$PaginateuildverArgumentsToJson(this);
+  Map<String, dynamic> toJson() => _$UildverArgumentsToJson(this);
 }
 
-class PaginateuildverQuery
-    extends GraphQLQuery<Paginateuildver$Query, PaginateuildverArguments> {
-  PaginateuildverQuery({this.variables});
+class UildverQuery extends GraphQLQuery<Uildver$Query, UildverArguments> {
+  UildverQuery({this.variables});
 
   @override
   final DocumentNode document = DocumentNode(definitions: [
     OperationDefinitionNode(
         type: OperationType.query,
-        name: NameNode(value: 'paginateuildver'),
+        name: NameNode(value: 'uildver'),
         variableDefinitions: [
           VariableDefinitionNode(
               variable: VariableNode(name: NameNode(value: 'page')),
@@ -829,14 +820,14 @@ class PaginateuildverQuery
   ]);
 
   @override
-  final String operationName = 'paginateuildver';
+  final String operationName = 'uildver';
 
   @override
-  final PaginateuildverArguments variables;
+  final UildverArguments variables;
 
   @override
   List<Object> get props => [document, operationName, variables];
   @override
-  Paginateuildver$Query parse(Map<String, dynamic> json) =>
-      Paginateuildver$Query.fromJson(json);
+  Uildver$Query parse(Map<String, dynamic> json) =>
+      Uildver$Query.fromJson(json);
 }

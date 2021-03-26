@@ -1,40 +1,21 @@
+import 'package:catalog/graphql/queries/shuurhai_ajil.dart';
 import 'package:catalog/ui/components/header.dart';
-import 'package:catalog/ui/views/main.dart';
-import 'package:catalog/utils/number.dart';
 import 'package:flutter/material.dart';
-import 'package:catalog/ui/components/map_widgets/esri_icons_icons.dart';
-import 'package:catalog/ui/styles/_colors.dart' as prefix0;
 import 'package:catalog/ui/styles/_colors.dart';
 import 'package:flutter_icons/feather.dart';
-import 'package:flutter_icons/ionicons.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lambda/modules/network_util.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import '../../components/sidebar.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:lambda/plugins/data_form/loader.dart';
-import 'dart:async';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-
 import 'package:catalog/utils/date.dart';
 import 'package:catalog/ui/common/paginate.dart';
-
-
 import 'package:catalog/graphql/config.dart';
-import 'package:catalog/graphql/queries/shuurhai_ajil.dart';
-
-import '../../../main.dart';
-
 
 
 class ShuurhaiAjil extends StatefulWidget {
-  //final ProjectInfo project;
 
-  //const ShuurhaiAjil({Key key, this.project}) : super(key: key);
 
   @override
   _ShuurhaiAjilState createState() => _ShuurhaiAjilState();
@@ -44,7 +25,7 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   NetworkUtil _http = new NetworkUtil();
 
-  List<PaginateShuurhaiajil$Query$Paginate$DsShuurkhaiAjil> shuurhais = [];
+  List<ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil> shuurhais = [];
 
   bool loading = true;
   int currentPage = 1;
@@ -69,7 +50,7 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
     setState(() {
       loading = true;
     });
-    final response = await client.execute(PaginateShuurhaiajilQuery(variables: PaginateShuurhaiajilArguments(page: page, size: 4)));
+    final response = await client.execute(ShuurkhaiAjilQuery(variables: ShuurkhaiAjilArguments(page: page, size: 4)));
 
     setState(() {
       shuurhais = response.data.paginate.dsShuurkhaiAjil;

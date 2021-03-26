@@ -175,10 +175,11 @@ type DsExportMedee {
   code: String
   eh_survalj_id: Int
   exp_une_dun: Float
-  export_baiguullaga: String
+  export_baiguullaga: Int
   export_hemjee: Float
   hemjih_negj_id: Int
   id: Int!
+  lbaiguullaga: String
   negj: String
   ognoo: Time
   survalj: String
@@ -255,9 +256,11 @@ type DsOlborloltMedee {
   b_id: Int
   b_torol_id: Int
   buteegdehuun: String
+  code: String
   eh_survalj_id: Int
   hemjih_negj_id: Int
   id: Int!
+  lbaiguullaga: String
   negj: String
   ognoo: Time
   olborlolt_b_id: Int
@@ -499,10 +502,11 @@ type DsZgHotolbor {
   arga_hemjee: String
   ded_zorilt: String
   e_uusver: String
-  h_baiguullaga_id: String
+  h_baiguullaga_id: Int
   hotolbor: String
   hugatsaa: String
   id: Int!
+  lbaiguullaga: String
   niit_tosov: Float
   status: String
   suuri_tuvshin: String

@@ -1,4 +1,4 @@
-query paginatehud_av_ajilgaa($page: Int!, $size: Int!) {
+query hudaldan_avah_ajilgaa($page: Int!, $size: Int!) {
     paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
         total
         last_page
@@ -20,7 +20,7 @@ query paginatehud_av_ajilgaa($page: Int!, $size: Int!) {
 }
 
 
-query paginatetosviin_orlogo($page: Int!, $size: Int!) {
+query tosviin_orlogo($page: Int!, $size: Int!) {
     paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
         total
         last_page

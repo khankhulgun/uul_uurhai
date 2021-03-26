@@ -61,7 +61,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
 
   //GRAPHQL Pagination
 
-  List<Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor> zghutulbur = [];
+  List<ZgHotolbor$Query$Paginate$DsZgHotolbor> zghutulbur = [];
   bool loading = true;
   int currentPage = 1;
   int lastPage = 0;
@@ -77,7 +77,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
     setState(() {
       loading = true;
     });
-    final response = await client.execute(PaginatedszhhotolborQuery(variables: PaginatedszhhotolborArguments(page: page, size: 4)));
+    final response = await client.execute(ZgHotolborQuery(variables: ZgHotolborArguments(page: page, size: 4)));
 
     setState(() {
       zghutulbur = response.data.paginate.dsZgHotolbor;

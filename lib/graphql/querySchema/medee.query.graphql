@@ -1,4 +1,4 @@
-query paginateMedee($page:Int!, $size:Int!) {
+query medee($page:Int!, $size:Int!) {
   paginate(sorts: [{ column: "id", order: desc }], page:$page, size:$size) {
     total,
     last_page,

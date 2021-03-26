@@ -1,83 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:catalog/ui/components/header.dart';
-import 'package:catalog/ui/views/page/shuurhai_ajil.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:catalog/ui/styles/_colors.dart';
-import 'package:flutter_icons/feather.dart';
-import 'package:flutter_icons/ionicons.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lambda/modules/network_util.dart';
 import '../components/sidebar.dart';
 import 'package:flutter/rendering.dart';
-import 'package:lambda/plugins/bubble_bar/BubbleBar.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:lambda/plugins/data_form/loader.dart';
-import 'dart:async';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'page/Tusuv_HAA/zarlaga.dart';
-import 'page/ZG_vil_ajilganii_hutulbur.dart';
-import 'page/home.dart';
-import 'page/news.dart';
-import 'package:catalog/graphql/config.dart';
-import 'package:catalog/graphql/queries/medee.dart';
 
 class statistic {
   final String title;
 
   statistic(
-      this.title,
-      );
+    this.title,
+  );
 }
+
 class mainScreen extends StatefulWidget {
   @override
   _mainScreenState createState() => _mainScreenState();
-
 }
+
 class _mainScreenState extends State<mainScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
 //  NetworkUtil _http = new NetworkUtil();
   bool loading = true;
-  List<PaginateMedee$Query$Paginate$DsMedee> news = [];
-
-//  int _currentIndex = 0;
-//
-//  final List<Widget> _screens= [
-//    Home(),
-//    ShuurhaiAjil(),
-//    ZGhutulbur(),
-//    News(),
-//  ];
-//
-//  void changePage(int index) {
-//    setState(() {
-//      _currentIndex = index;
-//    });
-//  }
 
   @override
   void initState() {
     super.initState();
-
-    getData();
   }
 
-  void getData() async {
-
-    final response = await client.execute(PaginateMedeeQuery(variables: PaginateMedeeArguments(page: 1)));
-
-    print(response.data.paginate.lastPage);
-    print(response.data.paginate.total);
-    print(response.data.paginate.dsMedee[0].id);
-    print(response.data.paginate.dsMedee[0].angilal);
-    print(response.data.paginate.dsMedee[0].medee);
-  }
   final List<statistic> statistics = [
-    statistic("Экспортын мэдээ",),
-    statistic("Олборлолтын мэдээ",),
-    statistic("МБ-ны худалдан авалт",),
+    statistic(
+      "Экспортын мэдээ",
+    ),
+    statistic(
+      "Олборлолтын мэдээ",
+    ),
+    statistic(
+      "МБ-ны худалдан авалт",
+    ),
   ];
-
 
   @override
   Widget build(BuildContext context) {
@@ -116,16 +79,15 @@ class _mainScreenState extends State<mainScreen> {
 //      ),
 
       body: Container(
-        width: MediaQuery.of(context).size.width,
-        margin: EdgeInsets.only(top: 6, right: 10, left: 10, bottom: 10),
+          width: MediaQuery.of(context).size.width,
+          margin: EdgeInsets.only(top: 6, right: 10, left: 10, bottom: 10),
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: statistics.length,
             padding: EdgeInsets.all(0.0),
-              itemBuilder: (BuildContext context, int index) =>
-              buildTripCard(context, index),
-          )
-      ),
+            itemBuilder: (BuildContext context, int index) =>
+                buildTripCard(context, index),
+          )),
 
 //      body: Container(
 //          margin: EdgeInsets.only(top: 6, right: 10, left: 10, bottom: 10),
@@ -477,79 +439,74 @@ class _mainScreenState extends State<mainScreen> {
 //              ]
 //          )
 //      ),
-
     );
-
   }
-
-
 
   void _onButtonPressed() {
     showModalBottomSheet(
-        context: context, builder: (context,) {
-      return StatefulBuilder(builder:
-          (BuildContext context, StateSetter setStateOfBottomSheet) {
-        return SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Expanded(
-                  flex: 9,
-                  child: Container(
-                    padding: EdgeInsets.only(top: 7.0),
-                    margin: EdgeInsets.only(right: 5.0),
-                    height: 42.0,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(8),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(width: 1),
-                            borderRadius:
-                            BorderRadius.circular(4)),
-                        labelText: 'Хайх',
-                        //  labelStyle: TextStyle(color:primaryColor),
-                        hintStyle: TextStyle(
-                            color: Color.fromRGBO(147, 157, 186, .78),
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(width: 1)),
-                        errorStyle: TextStyle(height: 0),
-
+        context: context,
+        builder: (
+          context,
+        ) {
+          return StatefulBuilder(builder:
+              (BuildContext context, StateSetter setStateOfBottomSheet) {
+            return SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(
+                      flex: 9,
+                      child: Container(
+                        padding: EdgeInsets.only(top: 7.0),
+                        margin: EdgeInsets.only(right: 5.0),
+                        height: 42.0,
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(8),
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(width: 1),
+                                borderRadius: BorderRadius.circular(4)),
+                            labelText: 'Хайх',
+                            //  labelStyle: TextStyle(color:primaryColor),
+                            hintStyle: TextStyle(
+                                color: Color.fromRGBO(147, 157, 186, .78),
+                                fontSize: 18,
+                                fontWeight: FontWeight.w400),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20),
+                                borderSide: BorderSide(width: 1)),
+                            errorStyle: TextStyle(height: 0),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-                Expanded(
-                  flex: 3,
-                    child: MaterialButton(
-                      height: 34.0,
-                      padding: EdgeInsets.all(0.0),
-                      color: mainColor,
-                      textColor: Colors.white,
-                      child: new Text(
-                        "Хайх",
-                        style: TextStyle(fontSize: 15),
-                      ),
-                      onPressed: () {
+                    Expanded(
+                        flex: 3,
+                        child: MaterialButton(
+                          height: 34.0,
+                          padding: EdgeInsets.all(0.0),
+                          color: mainColor,
+                          textColor: Colors.white,
+                          child: new Text(
+                            "Хайх",
+                            style: TextStyle(fontSize: 15),
+                          ),
+                          onPressed: () {
 //                      setStateOfBottomSheet(() {
 //                        this.saveData(true);
 //                      });
-                      },
-                    )
-                )
-              ],
-            ),
-          ),
-        );
-      });
-    });
+                          },
+                        ))
+                  ],
+                ),
+              ),
+            );
+          });
+        });
   }
-
 
   Widget buildTripCard(BuildContext context, int index) {
     final statistic = statistics[index];
@@ -567,14 +524,20 @@ class _mainScreenState extends State<mainScreen> {
                 children: <Widget>[
                   Expanded(
                       flex: 3,
-                      child: Text(statistics[index].title.toUpperCase(), style: TextStyle(color: textColor, fontSize: 14),)
-                  ),
+                      child: Text(
+                        statistics[index].title.toUpperCase(),
+                        style: TextStyle(color: textColor, fontSize: 14),
+                      )),
                   Expanded(
                     flex: 3,
                     child: Container(
                       width: MediaQuery.of(context).size.width,
                       padding: EdgeInsets.only(left: 10.0, right: 10.0),
-                      child: Text('2020-12-11 ~ 12-18', textAlign: TextAlign.right, style: TextStyle(color: textColor, fontSize: 14),),
+                      child: Text(
+                        '2020-12-11 ~ 12-18',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(color: textColor, fontSize: 14),
+                      ),
                     ),
                   ),
                 ],
@@ -583,7 +546,8 @@ class _mainScreenState extends State<mainScreen> {
               Container(
                 height: 220,
                 color: Colors.grey[200],
-                child: Image.asset('assets/uuhvy_img/chart.png', height: 220, fit: BoxFit.contain),
+                child: Image.asset('assets/uuhvy_img/chart.png',
+                    height: 220, fit: BoxFit.contain),
               ),
               SizedBox(height: 10),
               Container(
@@ -596,7 +560,14 @@ class _mainScreenState extends State<mainScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text('НҮҮРС', textAlign: TextAlign.right, style: TextStyle(color: primaryColor, fontSize: 12, fontWeight: FontWeight.w600),),
+                    Text(
+                      'НҮҮРС',
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                          color: primaryColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -609,13 +580,22 @@ class _mainScreenState extends State<mainScreen> {
                             children: <Widget>[
                               Expanded(
                                   flex: 4,
-                                  child: SvgPicture.asset('assets/uuhvy_img/auto_teever.svg', width: 28,  fit: BoxFit.contain)
-                              ),
+                                  child: SvgPicture.asset(
+                                      'assets/uuhvy_img/auto_teever.svg',
+                                      width: 28,
+                                      fit: BoxFit.contain)),
                               Expanded(
                                 flex: 4,
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 6.0),
-                                  child: Text('300', textAlign: TextAlign.right, style: TextStyle(color: primaryColor, fontSize: 14, fontWeight: FontWeight.w500),),
+                                  child: Text(
+                                    '300',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: primaryColor,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
+                                  ),
                                 ),
                               ),
                             ],
@@ -630,13 +610,22 @@ class _mainScreenState extends State<mainScreen> {
                             children: <Widget>[
                               Expanded(
                                   flex: 4,
-                                  child: SvgPicture.asset('assets/uuhvy_img/tumur_zam.svg', width: 28,  fit: BoxFit.contain)
-                              ),
+                                  child: SvgPicture.asset(
+                                      'assets/uuhvy_img/tumur_zam.svg',
+                                      width: 28,
+                                      fit: BoxFit.contain)),
                               Expanded(
                                 flex: 4,
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 6.0),
-                                  child: Text('609.6', textAlign: TextAlign.right, style: TextStyle(color: primaryColor, fontSize: 14, fontWeight: FontWeight.w500),),
+                                  child: Text(
+                                    '609.6',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: primaryColor,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
+                                  ),
                                 ),
                               ),
                             ],
@@ -649,8 +638,22 @@ class _mainScreenState extends State<mainScreen> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text('Нийт', textAlign: TextAlign.right, style: TextStyle(color: textColor, fontSize: 12, fontWeight: FontWeight.w400),),
-                                Text('909.6', textAlign: TextAlign.right, style: TextStyle(color: primaryColor, fontSize: 14, fontWeight: FontWeight.w500),),
+                                Text(
+                                  'Нийт',
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                      color: textColor,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                Text(
+                                  '909.6',
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                      color: primaryColor,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500),
+                                ),
                               ],
                             ),
                           ),
@@ -665,24 +668,51 @@ class _mainScreenState extends State<mainScreen> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text('Өссөн дүн', textAlign: TextAlign.right, style: TextStyle(color: textColor, fontSize: 12, fontWeight: FontWeight.w400),),
-                                  Expanded(child: Text('24,235.1', textAlign: TextAlign.right, style: TextStyle(color: primaryColor, fontSize: 14, fontWeight: FontWeight.w500),)),
+                                  Text(
+                                    'Өссөн дүн',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: textColor,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                  Expanded(
+                                      child: Text(
+                                    '24,235.1',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: primaryColor,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
+                                  )),
                                 ],
                               ),
-
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text('Өмнөх оноос', textAlign: TextAlign.right, style: TextStyle(color: textColor, fontSize: 12, fontWeight: FontWeight.w400),),
-                                  Expanded(child: Text('+23.1%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500),)),
+                                  Text(
+                                    'Өмнөх оноос',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: textColor,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                  Expanded(
+                                      child: Text(
+                                    '+23.1%',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: Colors.green,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
+                                  )),
                                 ],
                               ),
-
                             ],
                           ),
                         ),
-
                       ],
                     ),
                   ],
@@ -699,7 +729,14 @@ class _mainScreenState extends State<mainScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text('ЗЭСИЙН БАЯЖМАЛ', textAlign: TextAlign.right, style: TextStyle(color: textOrange, fontSize: 12, fontWeight: FontWeight.w600),),
+                    Text(
+                      'ЗЭСИЙН БАЯЖМАЛ',
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                          color: textOrange,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -712,13 +749,22 @@ class _mainScreenState extends State<mainScreen> {
                             children: <Widget>[
                               Expanded(
                                   flex: 4,
-                                  child: SvgPicture.asset('assets/uuhvy_img/auto_teever.svg', width: 28,  fit: BoxFit.contain)
-                              ),
+                                  child: SvgPicture.asset(
+                                      'assets/uuhvy_img/auto_teever.svg',
+                                      width: 28,
+                                      fit: BoxFit.contain)),
                               Expanded(
                                 flex: 4,
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 6.0),
-                                  child: Text('300', textAlign: TextAlign.right, style: TextStyle(color: textOrange, fontSize: 14, fontWeight: FontWeight.w500),),
+                                  child: Text(
+                                    '300',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: textOrange,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
+                                  ),
                                 ),
                               ),
                             ],
@@ -733,13 +779,22 @@ class _mainScreenState extends State<mainScreen> {
                             children: <Widget>[
                               Expanded(
                                   flex: 4,
-                                  child: SvgPicture.asset('assets/uuhvy_img/tumur_zam.svg', width: 28,  fit: BoxFit.contain)
-                              ),
+                                  child: SvgPicture.asset(
+                                      'assets/uuhvy_img/tumur_zam.svg',
+                                      width: 28,
+                                      fit: BoxFit.contain)),
                               Expanded(
                                 flex: 4,
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 6.0),
-                                  child: Text('609.6', textAlign: TextAlign.right, style: TextStyle(color: textOrange, fontSize: 14, fontWeight: FontWeight.w500),),
+                                  child: Text(
+                                    '609.6',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: textOrange,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
+                                  ),
                                 ),
                               ),
                             ],
@@ -752,8 +807,22 @@ class _mainScreenState extends State<mainScreen> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text('Нийт', textAlign: TextAlign.right, style: TextStyle(color: textColor, fontSize: 12, fontWeight: FontWeight.w400),),
-                                Text('909.6', textAlign: TextAlign.right, style: TextStyle(color: textOrange, fontSize: 14, fontWeight: FontWeight.w500),),
+                                Text(
+                                  'Нийт',
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                      color: textColor,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                Text(
+                                  '909.6',
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                      color: textOrange,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500),
+                                ),
                               ],
                             ),
                           ),
@@ -768,24 +837,51 @@ class _mainScreenState extends State<mainScreen> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text('Өссөн дүн', textAlign: TextAlign.right, style: TextStyle(color: textColor, fontSize: 12, fontWeight: FontWeight.w400),),
-                                  Expanded(child: Text('24,235.1', textAlign: TextAlign.right, style: TextStyle(color: textOrange, fontSize: 14, fontWeight: FontWeight.w500),)),
+                                  Text(
+                                    'Өссөн дүн',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: textColor,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                  Expanded(
+                                      child: Text(
+                                    '24,235.1',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: textOrange,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
+                                  )),
                                 ],
                               ),
-
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text('Өмнөх оноос', textAlign: TextAlign.right, style: TextStyle(color: textColor, fontSize: 12, fontWeight: FontWeight.w400),),
-                                  Expanded(child: Text('+23.1%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500),)),
+                                  Text(
+                                    'Өмнөх оноос',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: textColor,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                  Expanded(
+                                      child: Text(
+                                    '+23.1%',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: Colors.green,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
+                                  )),
                                 ],
                               ),
-
                             ],
                           ),
                         ),
-
                       ],
                     ),
                   ],
@@ -802,7 +898,14 @@ class _mainScreenState extends State<mainScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text('ТӨМРИЙН ХҮДЭР', textAlign: TextAlign.right, style: TextStyle(color: textBlueGrey, fontSize: 12, fontWeight: FontWeight.w600),),
+                    Text(
+                      'ТӨМРИЙН ХҮДЭР',
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                          color: textBlueGrey,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -815,13 +918,22 @@ class _mainScreenState extends State<mainScreen> {
                             children: <Widget>[
                               Expanded(
                                   flex: 4,
-                                  child: SvgPicture.asset('assets/uuhvy_img/auto_teever.svg', width: 28,  fit: BoxFit.contain)
-                              ),
+                                  child: SvgPicture.asset(
+                                      'assets/uuhvy_img/auto_teever.svg',
+                                      width: 28,
+                                      fit: BoxFit.contain)),
                               Expanded(
                                 flex: 4,
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 6.0),
-                                  child: Text('300', textAlign: TextAlign.right, style: TextStyle(color: textBlueGrey, fontSize: 14, fontWeight: FontWeight.w500),),
+                                  child: Text(
+                                    '300',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: textBlueGrey,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
+                                  ),
                                 ),
                               ),
                             ],
@@ -836,13 +948,22 @@ class _mainScreenState extends State<mainScreen> {
                             children: <Widget>[
                               Expanded(
                                   flex: 4,
-                                  child: SvgPicture.asset('assets/uuhvy_img/tumur_zam.svg', width: 28,  fit: BoxFit.contain)
-                              ),
+                                  child: SvgPicture.asset(
+                                      'assets/uuhvy_img/tumur_zam.svg',
+                                      width: 28,
+                                      fit: BoxFit.contain)),
                               Expanded(
                                 flex: 4,
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 6.0),
-                                  child: Text('609.6', textAlign: TextAlign.right, style: TextStyle(color: textBlueGrey, fontSize: 14, fontWeight: FontWeight.w500),),
+                                  child: Text(
+                                    '609.6',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: textBlueGrey,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
+                                  ),
                                 ),
                               ),
                             ],
@@ -855,8 +976,22 @@ class _mainScreenState extends State<mainScreen> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text('Нийт', textAlign: TextAlign.right, style: TextStyle(color: textColor, fontSize: 12, fontWeight: FontWeight.w400),),
-                                Text('909.6', textAlign: TextAlign.right, style: TextStyle(color: textBlueGrey, fontSize: 14, fontWeight: FontWeight.w500),),
+                                Text(
+                                  'Нийт',
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                      color: textColor,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                Text(
+                                  '909.6',
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                      color: textBlueGrey,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500),
+                                ),
                               ],
                             ),
                           ),
@@ -871,24 +1006,51 @@ class _mainScreenState extends State<mainScreen> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text('Өссөн дүн', textAlign: TextAlign.right, style: TextStyle(color: textColor, fontSize: 12, fontWeight: FontWeight.w400),),
-                                  Expanded(child: Text('24,235.1', textAlign: TextAlign.right, style: TextStyle(color: textBlueGrey, fontSize: 14, fontWeight: FontWeight.w500),)),
+                                  Text(
+                                    'Өссөн дүн',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: textColor,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                  Expanded(
+                                      child: Text(
+                                    '24,235.1',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: textBlueGrey,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
+                                  )),
                                 ],
                               ),
-
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text('Өмнөх оноос', textAlign: TextAlign.right, style: TextStyle(color: textColor, fontSize: 12, fontWeight: FontWeight.w400),),
-                                  Expanded(child: Text('+23.1%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500),)),
+                                  Text(
+                                    'Өмнөх оноос',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: textColor,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                  Expanded(
+                                      child: Text(
+                                    '+23.1%',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                        color: Colors.green,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500),
+                                  )),
                                 ],
                               ),
-
                             ],
                           ),
                         ),
-
                       ],
                     ),
                   ],
@@ -898,19 +1060,11 @@ class _mainScreenState extends State<mainScreen> {
               Container(
                 height: 220,
                 color: Colors.grey[200],
-                child: SvgPicture.asset('assets/uuhvy_img/chart1.svg', height: 220,  fit: BoxFit.contain),
+                child: SvgPicture.asset('assets/uuhvy_img/chart1.svg',
+                    height: 220, fit: BoxFit.contain),
               ),
-            ]
-        ),
+            ]),
       ),
     );
   }
-
 }
-
-
-
-
-
-
-

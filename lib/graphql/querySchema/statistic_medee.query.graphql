@@ -1,4 +1,4 @@
-query paginatedurem_juram($page: Int!, $size: Int!) {
+query export_medee($page: Int!, $size: Int!) {
     paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
         total
         last_page
@@ -12,7 +12,7 @@ query paginatedurem_juram($page: Int!, $size: Int!) {
             code
             eh_survalj_id
             exp_une_dun
-            export_baiguullaga
+            lbaiguullaga
             export_hemjee
             hemjih_negj_id
             id
@@ -27,7 +27,7 @@ query paginatedurem_juram($page: Int!, $size: Int!) {
     }
 }
 
-query paginateolborlolt_medee($page: Int!, $size: Int!) {
+query olborlolt_medee($page: Int!, $size: Int!) {
     paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
         total
         last_page
@@ -40,14 +40,14 @@ query paginateolborlolt_medee($page: Int!, $size: Int!) {
             id
             negj
             ognoo
-            olborlolt_b_id
+            lbaiguullaga
             olborlolt_hemjee
         }
     }
 }
 
 
-query paginatembanl_hud_avalt($page: Int!, $size: Int!) {
+query m_bank_hudaldan_avalt($page: Int!, $size: Int!) {
     paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
         total
         last_page
@@ -68,7 +68,7 @@ query paginatembanl_hud_avalt($page: Int!, $size: Int!) {
 
 
 
-query paginatetaamag_une($page: Int!, $size: Int!) {
+query taamag_une($page: Int!, $size: Int!) {
     paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
         total
         last_page

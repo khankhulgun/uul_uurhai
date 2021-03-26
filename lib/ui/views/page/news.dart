@@ -26,7 +26,7 @@ class _NewsState extends State<News> {
 
 
   //GRAPHQL Pagination
-  List<PaginateMedee$Query$Paginate$DsMedee> news = [];
+  List<Medee$Query$Paginate$DsMedee> news = [];
   bool loading = true;
   int currentPage = 1;
   int lastPage = 0;
@@ -43,7 +43,7 @@ class _NewsState extends State<News> {
     setState(() {
       loading = true;
     });
-    final response = await client.execute(PaginateMedeeQuery(variables: PaginateMedeeArguments(page: page, size: 4)));
+    final response = await client.execute(MedeeQuery(variables: MedeeArguments(page: page, size: 4)));
 
     setState(() {
       news = response.data.paginate.dsMedee;

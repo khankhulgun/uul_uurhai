@@ -1,4 +1,4 @@
-query paginatedszhhotolbor($page:Int!, $size:Int!) {
+query zg_hotolbor($page:Int!, $size:Int!) {
     paginate(sorts: [{ column: "id", order: desc }],page:$page, size:$size) {
         total
         last_page
@@ -7,7 +7,7 @@ query paginatedszhhotolbor($page:Int!, $size:Int!) {
             arga_hemjee
             ded_zorilt
             e_uusver
-            h_baiguullaga_id
+            lbaiguullaga
             hotolbor
             hugatsaa
             id

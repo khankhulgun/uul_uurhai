@@ -6,10 +6,10 @@ part of 'zg_hotolbor.graphql.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuulelt
-    _$Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuuleltFromJson(
+ZgHotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuulelt
+    _$ZgHotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuuleltFromJson(
         Map<String, dynamic> json) {
-  return Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuulelt()
+  return ZgHotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuulelt()
     ..hTuvshin = json['h_tuvshin'] as String
     ..heregjilt = (json['heregjilt'] as num)?.toDouble()
     ..heregjiltTailan = json['heregjilt_tailan'] as String
@@ -19,28 +19,27 @@ Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuulelt
     ..tosov = (json['tosov'] as num)?.toDouble();
 }
 
-Map<String, dynamic>
-    _$Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuuleltToJson(
-            Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuulelt
-                instance) =>
-        <String, dynamic>{
-          'h_tuvshin': instance.hTuvshin,
-          'heregjilt': instance.heregjilt,
-          'heregjilt_tailan': instance.heregjiltTailan,
-          'hotolbor_id': instance.hotolborId,
-          'id': instance.id,
-          'jil_id': instance.jilId,
-          'tosov': instance.tosov,
-        };
+Map<String,
+    dynamic> _$ZgHotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuuleltToJson(
+        ZgHotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuulelt instance) =>
+    <String, dynamic>{
+      'h_tuvshin': instance.hTuvshin,
+      'heregjilt': instance.heregjilt,
+      'heregjilt_tailan': instance.heregjiltTailan,
+      'hotolbor_id': instance.hotolborId,
+      'id': instance.id,
+      'jil_id': instance.jilId,
+      'tosov': instance.tosov,
+    };
 
-Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor
-    _$Paginatedszhhotolbor$Query$Paginate$DsZgHotolborFromJson(
+ZgHotolbor$Query$Paginate$DsZgHotolbor
+    _$ZgHotolbor$Query$Paginate$DsZgHotolborFromJson(
         Map<String, dynamic> json) {
-  return Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor()
+  return ZgHotolbor$Query$Paginate$DsZgHotolbor()
     ..argaHemjee = json['arga_hemjee'] as String
     ..dedZorilt = json['ded_zorilt'] as String
     ..eUusver = json['e_uusver'] as String
-    ..hBaiguullagaId = json['h_baiguullaga_id'] as String
+    ..lbaiguullaga = json['lbaiguullaga'] as String
     ..hotolbor = json['hotolbor'] as String
     ..hugatsaa = json['hugatsaa'] as String
     ..id = json['id'] as int
@@ -52,18 +51,18 @@ Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor
     ..subHotolborUzuulelt = (json['sub_hotolbor_uzuulelt'] as List)
         ?.map((e) => e == null
             ? null
-            : Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuulelt
+            : ZgHotolbor$Query$Paginate$DsZgHotolbor$SubHotolborUzuulelt
                 .fromJson(e as Map<String, dynamic>))
         ?.toList();
 }
 
-Map<String, dynamic> _$Paginatedszhhotolbor$Query$Paginate$DsZgHotolborToJson(
-        Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor instance) =>
+Map<String, dynamic> _$ZgHotolbor$Query$Paginate$DsZgHotolborToJson(
+        ZgHotolbor$Query$Paginate$DsZgHotolbor instance) =>
     <String, dynamic>{
       'arga_hemjee': instance.argaHemjee,
       'ded_zorilt': instance.dedZorilt,
       'e_uusver': instance.eUusver,
-      'h_baiguullaga_id': instance.hBaiguullagaId,
+      'lbaiguullaga': instance.lbaiguullaga,
       'hotolbor': instance.hotolbor,
       'hugatsaa': instance.hugatsaa,
       'id': instance.id,
@@ -76,21 +75,21 @@ Map<String, dynamic> _$Paginatedszhhotolbor$Query$Paginate$DsZgHotolborToJson(
           instance.subHotolborUzuulelt?.map((e) => e?.toJson())?.toList(),
     };
 
-Paginatedszhhotolbor$Query$Paginate
-    _$Paginatedszhhotolbor$Query$PaginateFromJson(Map<String, dynamic> json) {
-  return Paginatedszhhotolbor$Query$Paginate()
+ZgHotolbor$Query$Paginate _$ZgHotolbor$Query$PaginateFromJson(
+    Map<String, dynamic> json) {
+  return ZgHotolbor$Query$Paginate()
     ..total = json['total'] as int
     ..lastPage = json['last_page'] as int
     ..dsZgHotolbor = (json['ds_zg_hotolbor'] as List)
         ?.map((e) => e == null
             ? null
-            : Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor.fromJson(
+            : ZgHotolbor$Query$Paginate$DsZgHotolbor.fromJson(
                 e as Map<String, dynamic>))
         ?.toList();
 }
 
-Map<String, dynamic> _$Paginatedszhhotolbor$Query$PaginateToJson(
-        Paginatedszhhotolbor$Query$Paginate instance) =>
+Map<String, dynamic> _$ZgHotolbor$Query$PaginateToJson(
+        ZgHotolbor$Query$Paginate instance) =>
     <String, dynamic>{
       'total': instance.total,
       'last_page': instance.lastPage,
@@ -98,31 +97,28 @@ Map<String, dynamic> _$Paginatedszhhotolbor$Query$PaginateToJson(
           instance.dsZgHotolbor?.map((e) => e?.toJson())?.toList(),
     };
 
-Paginatedszhhotolbor$Query _$Paginatedszhhotolbor$QueryFromJson(
-    Map<String, dynamic> json) {
-  return Paginatedszhhotolbor$Query()
+ZgHotolbor$Query _$ZgHotolbor$QueryFromJson(Map<String, dynamic> json) {
+  return ZgHotolbor$Query()
     ..paginate = json['paginate'] == null
         ? null
-        : Paginatedszhhotolbor$Query$Paginate.fromJson(
+        : ZgHotolbor$Query$Paginate.fromJson(
             json['paginate'] as Map<String, dynamic>);
 }
 
-Map<String, dynamic> _$Paginatedszhhotolbor$QueryToJson(
-        Paginatedszhhotolbor$Query instance) =>
+Map<String, dynamic> _$ZgHotolbor$QueryToJson(ZgHotolbor$Query instance) =>
     <String, dynamic>{
       'paginate': instance.paginate?.toJson(),
     };
 
-PaginatedszhhotolborArguments _$PaginatedszhhotolborArgumentsFromJson(
-    Map<String, dynamic> json) {
-  return PaginatedszhhotolborArguments(
+ZgHotolborArguments _$ZgHotolborArgumentsFromJson(Map<String, dynamic> json) {
+  return ZgHotolborArguments(
     page: json['page'] as int,
     size: json['size'] as int,
   );
 }
 
-Map<String, dynamic> _$PaginatedszhhotolborArgumentsToJson(
-        PaginatedszhhotolborArguments instance) =>
+Map<String, dynamic> _$ZgHotolborArgumentsToJson(
+        ZgHotolborArguments instance) =>
     <String, dynamic>{
       'page': instance.page,
       'size': instance.size,
