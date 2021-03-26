@@ -4,13 +4,10 @@ query export_medee($page: Int!, $size: Int!) {
         last_page
         ds_export_medee {
             a_heregsel
-            b_id
-            b_torol_id
             boomt
-            boomt_id
             buteegdehuun
+            torol
             code
-            eh_survalj_id
             exp_une_dun
             lbaiguullaga
             export_hemjee
@@ -19,10 +16,8 @@ query export_medee($page: Int!, $size: Int!) {
             negj
             ognoo
             survalj
-            t_heregsel_id
             teever_too
             uls
-            uls_id
         }
     }
 }

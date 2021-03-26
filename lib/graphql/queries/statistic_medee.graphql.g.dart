@@ -11,13 +11,10 @@ ExportMedee$Query$Paginate$DsExportMedee
         Map<String, dynamic> json) {
   return ExportMedee$Query$Paginate$DsExportMedee()
     ..aHeregsel = json['a_heregsel'] as String
-    ..bId = json['b_id'] as int
-    ..bTorolId = json['b_torol_id'] as int
     ..boomt = json['boomt'] as String
-    ..boomtId = json['boomt_id'] as int
     ..buteegdehuun = json['buteegdehuun'] as String
+    ..torol = json['torol'] as String
     ..code = json['code'] as String
-    ..ehSurvaljId = json['eh_survalj_id'] as int
     ..expUneDun = (json['exp_une_dun'] as num)?.toDouble()
     ..lbaiguullaga = json['lbaiguullaga'] as String
     ..exportHemjee = (json['export_hemjee'] as num)?.toDouble()
@@ -27,23 +24,18 @@ ExportMedee$Query$Paginate$DsExportMedee
     ..ognoo =
         json['ognoo'] == null ? null : DateTime.parse(json['ognoo'] as String)
     ..survalj = json['survalj'] as String
-    ..tHeregselId = json['t_heregsel_id'] as int
     ..teeverToo = json['teever_too'] as int
-    ..uls = json['uls'] as String
-    ..ulsId = json['uls_id'] as int;
+    ..uls = json['uls'] as String;
 }
 
 Map<String, dynamic> _$ExportMedee$Query$Paginate$DsExportMedeeToJson(
         ExportMedee$Query$Paginate$DsExportMedee instance) =>
     <String, dynamic>{
       'a_heregsel': instance.aHeregsel,
-      'b_id': instance.bId,
-      'b_torol_id': instance.bTorolId,
       'boomt': instance.boomt,
-      'boomt_id': instance.boomtId,
       'buteegdehuun': instance.buteegdehuun,
+      'torol': instance.torol,
       'code': instance.code,
-      'eh_survalj_id': instance.ehSurvaljId,
       'exp_une_dun': instance.expUneDun,
       'lbaiguullaga': instance.lbaiguullaga,
       'export_hemjee': instance.exportHemjee,
@@ -52,10 +44,8 @@ Map<String, dynamic> _$ExportMedee$Query$Paginate$DsExportMedeeToJson(
       'negj': instance.negj,
       'ognoo': instance.ognoo?.toIso8601String(),
       'survalj': instance.survalj,
-      't_heregsel_id': instance.tHeregselId,
       'teever_too': instance.teeverToo,
       'uls': instance.uls,
-      'uls_id': instance.ulsId,
     };
 
 ExportMedee$Query$Paginate _$ExportMedee$Query$PaginateFromJson(

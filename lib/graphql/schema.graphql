@@ -185,6 +185,7 @@ type DsExportMedee {
   survalj: String
   t_heregsel_id: Int
   teever_too: Int
+  torol: String
   uls: String
   uls_id: Int
 }

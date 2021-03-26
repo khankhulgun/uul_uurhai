@@ -18,23 +18,13 @@ class ExportMedee$Query$Paginate$DsExportMedee with EquatableMixin {
   @JsonKey(name: 'a_heregsel')
   String aHeregsel;
 
-  @JsonKey(name: 'b_id')
-  int bId;
-
-  @JsonKey(name: 'b_torol_id')
-  int bTorolId;
-
   String boomt;
-
-  @JsonKey(name: 'boomt_id')
-  int boomtId;
 
   String buteegdehuun;
 
-  String code;
+  String torol;
 
-  @JsonKey(name: 'eh_survalj_id')
-  int ehSurvaljId;
+  String code;
 
   @JsonKey(name: 'exp_une_dun')
   double expUneDun;
@@ -55,27 +45,18 @@ class ExportMedee$Query$Paginate$DsExportMedee with EquatableMixin {
 
   String survalj;
 
-  @JsonKey(name: 't_heregsel_id')
-  int tHeregselId;
-
   @JsonKey(name: 'teever_too')
   int teeverToo;
 
   String uls;
 
-  @JsonKey(name: 'uls_id')
-  int ulsId;
-
   @override
   List<Object> get props => [
         aHeregsel,
-        bId,
-        bTorolId,
         boomt,
-        boomtId,
         buteegdehuun,
+        torol,
         code,
-        ehSurvaljId,
         expUneDun,
         lbaiguullaga,
         exportHemjee,
@@ -84,10 +65,8 @@ class ExportMedee$Query$Paginate$DsExportMedee with EquatableMixin {
         negj,
         ognoo,
         survalj,
-        tHeregselId,
         teeverToo,
-        uls,
-        ulsId
+        uls
       ];
   Map<String, dynamic> toJson() =>
       _$ExportMedee$Query$Paginate$DsExportMedeeToJson(this);
@@ -476,25 +455,7 @@ class ExportMedeeQuery
                           directives: [],
                           selectionSet: null),
                       FieldNode(
-                          name: NameNode(value: 'b_id'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'b_torol_id'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
                           name: NameNode(value: 'boomt'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'boomt_id'),
                           alias: null,
                           arguments: [],
                           directives: [],
@@ -506,13 +467,13 @@ class ExportMedeeQuery
                           directives: [],
                           selectionSet: null),
                       FieldNode(
-                          name: NameNode(value: 'code'),
+                          name: NameNode(value: 'torol'),
                           alias: null,
                           arguments: [],
                           directives: [],
                           selectionSet: null),
                       FieldNode(
-                          name: NameNode(value: 'eh_survalj_id'),
+                          name: NameNode(value: 'code'),
                           alias: null,
                           arguments: [],
                           directives: [],
@@ -566,12 +527,6 @@ class ExportMedeeQuery
                           directives: [],
                           selectionSet: null),
                       FieldNode(
-                          name: NameNode(value: 't_heregsel_id'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
                           name: NameNode(value: 'teever_too'),
                           alias: null,
                           arguments: [],
@@ -579,12 +534,6 @@ class ExportMedeeQuery
                           selectionSet: null),
                       FieldNode(
                           name: NameNode(value: 'uls'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'uls_id'),
                           alias: null,
                           arguments: [],
                           directives: [],
