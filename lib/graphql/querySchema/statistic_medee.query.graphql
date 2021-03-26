@@ -1,0 +1,97 @@
+query paginatedurem_juram($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        ds_export_medee {
+            a_heregsel
+            b_id
+            b_torol_id
+            boomt
+            boomt_id
+            buteegdehuun
+            code
+            eh_survalj_id
+            exp_une_dun
+            export_baiguullaga
+            export_hemjee
+            hemjih_negj_id
+            id
+            negj
+            ognoo
+            survalj
+            t_heregsel_id
+            teever_too
+            uls
+            uls_id
+        }
+    }
+}
+
+query paginateolborlolt_medee($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        ds_olborlolt_medee{
+            b_id
+            b_torol_id
+            buteegdehuun
+            eh_survalj_id
+            hemjih_negj_id
+            id
+            negj
+            ognoo
+            olborlolt_b_id
+            olborlolt_hemjee
+        }
+    }
+}
+
+
+query paginatembanl_hud_avalt($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        ds_m_bank_hudaldan_avalt{
+            a_maltlam_id
+            buteegdehuun
+            eh_survalj_id
+            h_avsan_hemjee
+            hemjih_negj_id
+            id
+            negj
+            ognoo
+            survalj
+            une
+        }
+    }
+}
+
+
+
+query paginatetaamag_une($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        ds_taamag_une{
+            ashigt_m_id
+            ashigt_maltmal
+            dollar_tn
+            eh_survalj_id
+            h_negj_id
+            id
+            jil
+            negj
+            ognoo
+            on_id
+            sar
+            sar_id
+            survalj
+            valiut
+            valiut_id
+        }
+    }
+}
+
+
+
+

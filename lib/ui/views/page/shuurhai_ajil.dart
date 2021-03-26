@@ -19,6 +19,12 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import 'package:catalog/utils/date.dart';
+import 'package:catalog/ui/common/paginate.dart';
+
+
+import 'package:catalog/graphql/config.dart';
+import 'package:catalog/graphql/queries/shuurhai_ajil.dart';
 
 import '../../../main.dart';
 
@@ -55,12 +61,50 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
   //List<Project> projects = [];
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   NetworkUtil _http = new NetworkUtil();
+
+  List<PaginateShuurhaiajil$Query$Paginate$DsShuurkhaiAjil> shuurhais = [];
+
   bool loading = true;
+  int currentPage = 1;
+  int lastPage = 0;
+  int total = 0;
+
+  bool _isVisible = false;
+
+  void showToast() {
+    setState(() {
+      _isVisible = !_isVisible;
+    });
+  }
 
   @override
   void initState() {
     super.initState();
+
+    getData(1);
   }
+
+  void getData(int page) async {
+    setState(() {
+      loading = true;
+    });
+    final response = await client.execute(PaginateShuurhaiajilQuery(variables: PaginateShuurhaiajilArguments(page: page, size: 4)));
+
+
+
+    setState(() {
+      shuurhais = response.data.paginate.dsShuurkhaiAjil;
+      currentPage = page;
+      lastPage = response.data.paginate.lastPage;
+      total = response.data.paginate.total;
+      loading = false;
+      print("-----------");
+      print(shuurhais);
+    });
+
+  }
+
+
   final List<data> datas = [
     data(
       "assets/uuhvy_img/to.png",
@@ -103,13 +147,7 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
       "50",
     ),
   ];
-  bool _isVisible = false;
 
-  void showToast() {
-    setState(() {
-      _isVisible = !_isVisible;
-    });
-  }
 
 
   @override
@@ -137,7 +175,7 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.only(left: 10.0, right: 10.0),
         child: ListView.builder(
-          itemCount: datas == null ? 0 : datas.length,
+          itemCount: shuurhais == null ? 0 : shuurhais.length,
           itemBuilder: (BuildContext context, int index) =>
               buildTripCard(context, index),
         ),

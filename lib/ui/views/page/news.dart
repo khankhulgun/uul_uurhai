@@ -43,8 +43,7 @@ class _NewsState extends State<News> {
     setState(() {
       loading = true;
     });
-    final response = await client.execute(PaginateMedeeQuery(
-        variables: PaginateMedeeArguments(page: page, size: 4)));
+    final response = await client.execute(PaginateMedeeQuery(variables: PaginateMedeeArguments(page: page, size: 4)));
 
     setState(() {
       news = response.data.paginate.dsMedee;

@@ -1,0 +1,43 @@
+query paginateajil_heseg($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        ds_ajil_heseg{
+            a_heseg_id
+            ah_chig_id
+            ajil_heseg
+            b_gazar_id
+            g_huvi
+            id
+            jil
+            jil_id
+            salbar
+            status
+            tolov_id
+            tu_dugaar
+            yvnts_ognoo
+            yvts_tailan
+        }
+    }
+}
+
+
+
+query paginatehor_or_tusul_hut($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        ds_horongo_oruulalt_t_h{
+            h_baidal
+            h_eh_uusver_id
+            heregjilt_huvi
+            heregjuulegch
+            horongooruulalt
+            hugatsaa
+            id
+            tosliin_zardal
+            tosol_ner
+            tosovt_ortog
+        }
+    }
+}

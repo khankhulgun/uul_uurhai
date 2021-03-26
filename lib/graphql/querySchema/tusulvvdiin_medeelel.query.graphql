@@ -1,0 +1,70 @@
+query paginateolborlolt_uurhai($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        ds_olborlolt_uurkhai{
+            ah_negj_id
+            aimag_id
+            aimagname
+            bag_id
+            bagname
+            id
+            sum_id
+            sumname
+            tz_dugaar
+            uurkhain_ner
+            ds_sub_olborlolt{
+                ajilchin_too
+                b_noots
+                b_torol_id
+                buteegdehuun
+                buteegdehuun_id
+                code
+                id
+                o_ehelsen_on
+                o_huch_chadal
+                table_id
+                tezu_b_on
+                torol
+                torol_code
+                zurag
+            }
+        }
+    }
+}
+
+
+query paginateuildver($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        ds_uildver{
+            aimag_id
+            aimagname
+            aj_ahui_id
+            bag_id
+            bagname
+            id
+            sum_id
+            sumname
+            uildver_ner
+            ds_sub_uildverlel{
+                ajilchin_too
+                b_huchin_chadal
+                b_noots
+                b_torol_id
+                buteegdehuun
+                buteegdehuun_id
+                code
+                id
+                table_id
+                tezu
+                torol
+                torol_code
+                u_ehelsen
+                uildverlel_tolov_id
+                zurag
+            }
+        }
+    }
+}

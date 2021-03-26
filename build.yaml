@@ -21,6 +21,32 @@ targets:
             - output: lib/graphql/queries/medee.dart
               schema: lib/graphql/schema.graphql
               queries_glob: lib/graphql/querySchema/medee.query.graphql
+            - output: lib/graphql/queries/shuurhai_ajil.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/shuurhai_ajil.query.graphql
+            - output: lib/graphql/queries/zg_hotolbor.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/zg_hotolbor.query.graphql
+            - output: lib/graphql/queries/huuli_togtoolmj.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/huuli_togtoolmj.query.graphql
+            - output: lib/graphql/queries/statistic_medee.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/statistic_medee.query.graphql
+            - output: lib/graphql/queries/heregjilt_guitsetgel.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/heregjilt_guitsetgel.query.graphql
+            - output: lib/graphql/queries/tusuv_hudav_ajilgaa.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/tusuv_hudav_ajilgaa.query.graphql
+            - output: lib/graphql/queries/tusulvvdiin_medeelel.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/tusulvvdiin_medeelel.query.graphql
+            - output: lib/graphql/queries/busad.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/busad.query.graphql
+
+
 
           custom_parser_import: 'package:catalog/graphql/utils/coercers.dart'
           scalar_mapping:

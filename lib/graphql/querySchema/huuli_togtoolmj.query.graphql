@@ -1,0 +1,96 @@
+query paginatemuhuuli($page:Int!, $size:Int!) {
+    paginate(sorts: [{ column: "id", order: desc }],page:$page, size:$size) {
+        total
+        last_page
+
+        aa_m_uls_huuli  {
+            holboos
+            huuli
+            id
+            zaalt
+            sub_m_uls_huuli_zaalt{
+                id
+                table_id
+                zaalt
+            }
+
+        }
+    }
+}
+
+
+query paginauih_togtool($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+
+        aa_uls_ih_hural_togtool {
+            holhoos
+            id
+            togtool
+            zaalt
+            sub_uih_zaalt {
+                id
+                table_id
+                zaalt
+            }
+        }
+    }
+}
+
+
+
+query paginatebodbarbichig($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        ds_bodlogo_barimt_bichig {
+            b_ognoo
+            holboos
+            id
+            ner
+            salbar
+            salbar_id
+            t_hugatsaa
+            t_hugatsaa_id
+            t_sh_dugaar
+        }
+    }
+}
+
+
+query paginatezg_togtool($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        aa_zg_togtool {
+            holboos
+            id
+            togtool
+            zaalt
+            sub_zg_togtool{
+                id
+                table_id
+                zaalt
+            }
+        }
+    }
+}
+
+
+
+query paginatedurem_juram($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        ds_durem_juram {
+            akt
+            dugaar
+            e_zuin_akt_id
+            file
+            id
+            ognoo
+            tuhai
+        }
+    }
+}

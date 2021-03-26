@@ -1,0 +1,30 @@
+query paginatedszhhotolbor($page:Int!, $size:Int!) {
+    paginate(sorts: [{ column: "id", order: desc }],page:$page, size:$size) {
+        total
+        last_page
+
+        ds_zg_hotolbor  {
+            arga_hemjee
+            ded_zorilt
+            e_uusver
+            h_baiguullaga_id
+            hotolbor
+            hugatsaa
+            id
+            niit_tosov
+            status
+            suuri_tuvshin
+            tolov_id
+            zorilt
+            sub_hotolbor_uzuulelt{
+                h_tuvshin
+                heregjilt
+                heregjilt_tailan
+                hotolbor_id
+                id
+                jil_id
+                tosov
+            }
+        }
+    }
+}

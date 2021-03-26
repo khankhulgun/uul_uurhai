@@ -1,0 +1,19 @@
+query paginateShuurhaiajil($page:Int!, $size:Int!) {
+    paginate(sorts: [{ column: "id", order: desc }],page:$page, size:$size) {
+        total
+        last_page
+        ds_shuurkhai_ajil {
+            ajil
+            alban_tushaal
+            angilal
+            b_g_id
+            id
+            ognoo
+            salbar
+            shiidverleh_hugatsaa
+            shuurhai_cat_id
+            status
+            tolov_id
+        }
+    }
+}

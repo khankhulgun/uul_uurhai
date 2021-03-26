@@ -1,0 +1,58 @@
+query paginatehud_av_ajilgaa($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        ds_hudaldan_avah_ajilgaa{
+            b_u_ner
+            batlagdsan_ortog_ortov
+            gereen_dun
+            guitsetgegch_b
+            haa_torol
+            hab_u_id
+            id
+            ognoo
+            s_shalagruulalt_id
+            shalagruulalt
+            tailbar
+            tender_ognoo
+        }
+    }
+}
+
+
+query paginatetosviin_orlogo($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        ds_tosviin_orlogo{
+            b_tosov
+            id
+            jileer
+            ognoo
+            orlogo_torol
+            orlogo_torol_id
+            t_tosov
+            t_uy_tolovlogoo
+            tailan_uy_guitsetgel
+            tailant_uy
+        }
+    }
+}
+
+
+query paginatetosov_zarlaga($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        ds_tosov_zarlaga{
+            b_tosov
+            guitsetgel
+            guitstgel
+            id
+            ognoo
+            t_tosov
+            torol
+            zardal_torol_id
+        }
+    }
+}

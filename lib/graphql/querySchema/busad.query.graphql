@@ -1,0 +1,132 @@
+query paginatetusgai_zuvshuurul($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        aa_tusgai_zovshoorol{
+            a_t_too
+            a_t_zovshoorol
+            ashiglat_tz_huvi
+            haiguul_huvi
+            haiguul_t_z
+            ht_zovshoorol
+            id
+            niit_gazar_huvi
+            object_id
+            ognoo
+            t_hemjee_say
+            tz_too
+        }
+    }
+}
+
+
+query paginatesongon_shalgaruulalt($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        aa_songon_shalgaruulalt{
+            id
+            object_id
+            ognoo
+            ologson_hegmjee_ga
+            ologson_z_too
+            s_sh_bagts
+            s_sh_hemjee_ga
+            s_sh_talbai
+            uls_tosov_terbum
+            sub_songon_shalgaruulalt{
+                aj_negj_too
+                id
+                o_t_hemjee
+                ognoo
+                s_sh_dugaar
+                table_id
+                tovolruulsen
+                z_t_too
+                zaralsan_talbai
+            }
+        }
+    }
+}
+
+query paginateeb_mergejil_zovlol($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        aa_e_b_mergejil_zovlol{
+            ebmz_salbar_id
+            hh_asuudal_too
+            id
+            jil_id
+            ds_sub_bu{
+                asuudal
+                asuudal_d
+                b_torol
+                id
+                table_id
+                tolov
+                tolov_id
+                tolov_id
+            }
+            ds_sub_gt{
+                a_dugaar
+                asuudal
+                gt_torol
+                id
+                table_id
+                tolov
+                tolov_id
+                tolov_id
+            }
+            ds_sub_noots{
+                a_dugaar
+                asuudal
+                buteegdehuun
+                id
+                table_id
+                tolov
+                tolov_id
+                tolov_id
+            }
+            ds_sub_tezu{
+                a_dugaar
+                asuudal
+                buteegdehuun
+                id
+                sub_b_torol_id
+                table_id
+                tolov
+                tolov_id
+            }
+            ds_sub_uhggsa{
+                a_dugaar
+                asuudal
+                id
+                table_id
+                tolov_id
+                torol
+                tolov_id
+                uhggsa_tolov
+            }
+        }
+    }
+}
+
+
+
+query paginateajilah_huch_medeelel($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        ds_ajilah_huch_medeelel{
+            aj_ahui_ner_id
+            b_torol
+            huch_too
+            id
+            medeelel
+            ua_chiglel_id
+            uls
+            uls_id
+        }
+    }
+}
