@@ -17,14 +17,10 @@ PaginateolborloltUurhai$Query$Paginate$DsOlborloltUurkhai$DsSubOlborlolt
     ..buteegdehuunId = json['buteegdehuun_id'] as int
     ..code = json['code'] as String
     ..id = json['id'] as int
-    ..oEhelsenOn = json['o_ehelsen_on'] == null
-        ? null
-        : DateTime.parse(json['o_ehelsen_on'] as String)
+    ..oEhelsenOn = json['o_ehelsen_on'] as String
     ..oHuchChadal = (json['o_huch_chadal'] as num)?.toDouble()
     ..tableId = json['table_id'] as int
-    ..tezuBOn = json['tezu_b_on'] == null
-        ? null
-        : DateTime.parse(json['tezu_b_on'] as String)
+    ..tezuBOn = json['tezu_b_on'] as String
     ..torol = json['torol'] as String
     ..torolCode = json['torol_code'] as String
     ..zurag = json['zurag'] as String;
@@ -42,10 +38,10 @@ Map<String, dynamic>
           'buteegdehuun_id': instance.buteegdehuunId,
           'code': instance.code,
           'id': instance.id,
-          'o_ehelsen_on': instance.oEhelsenOn?.toIso8601String(),
+          'o_ehelsen_on': instance.oEhelsenOn,
           'o_huch_chadal': instance.oHuchChadal,
           'table_id': instance.tableId,
-          'tezu_b_on': instance.tezuBOn?.toIso8601String(),
+          'tezu_b_on': instance.tezuBOn,
           'torol': instance.torol,
           'torol_code': instance.torolCode,
           'zurag': instance.zurag,
@@ -142,13 +138,10 @@ Paginateuildver$Query$Paginate$DsUildver$DsSubUildverlel
     ..code = json['code'] as String
     ..id = json['id'] as int
     ..tableId = json['table_id'] as int
-    ..tezu =
-        json['tezu'] == null ? null : DateTime.parse(json['tezu'] as String)
+    ..tezu = json['tezu'] as String
     ..torol = json['torol'] as String
     ..torolCode = json['torol_code'] as String
-    ..uEhelsen = json['u_ehelsen'] == null
-        ? null
-        : DateTime.parse(json['u_ehelsen'] as String)
+    ..uEhelsen = json['u_ehelsen'] as String
     ..uildverlelTolovId = json['uildverlel_tolov_id'] as int
     ..zurag = json['zurag'] as String;
 }
@@ -166,10 +159,10 @@ Map<String,
       'code': instance.code,
       'id': instance.id,
       'table_id': instance.tableId,
-      'tezu': instance.tezu?.toIso8601String(),
+      'tezu': instance.tezu,
       'torol': instance.torol,
       'torol_code': instance.torolCode,
-      'u_ehelsen': instance.uEhelsen?.toIso8601String(),
+      'u_ehelsen': instance.uEhelsen,
       'uildverlel_tolov_id': instance.uildverlelTolovId,
       'zurag': instance.zurag,
     };

@@ -36,7 +36,7 @@ class PaginateolborloltUurhai$Query$Paginate$DsOlborloltUurkhai$DsSubOlborlolt
   int id;
 
   @JsonKey(name: 'o_ehelsen_on')
-  DateTime oEhelsenOn;
+  String oEhelsenOn;
 
   @JsonKey(name: 'o_huch_chadal')
   double oHuchChadal;
@@ -45,7 +45,7 @@ class PaginateolborloltUurhai$Query$Paginate$DsOlborloltUurkhai$DsSubOlborlolt
   int tableId;
 
   @JsonKey(name: 'tezu_b_on')
-  DateTime tezuBOn;
+  String tezuBOn;
 
   String torol;
 
@@ -203,7 +203,7 @@ class Paginateuildver$Query$Paginate$DsUildver$DsSubUildverlel
   @JsonKey(name: 'table_id')
   int tableId;
 
-  DateTime tezu;
+  String tezu;
 
   String torol;
 
@@ -211,7 +211,7 @@ class Paginateuildver$Query$Paginate$DsUildver$DsSubUildverlel
   String torolCode;
 
   @JsonKey(name: 'u_ehelsen')
-  DateTime uEhelsen;
+  String uEhelsen;
 
   @JsonKey(name: 'uildverlel_tolov_id')
   int uildverlelTolovId;

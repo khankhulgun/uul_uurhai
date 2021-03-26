@@ -104,7 +104,7 @@ type deleted {
 }
 
 type DsAjilahHuchMedeelel {
-  aj_ahui_ner_id: Int
+  aj_ahui_ner_id: String
   b_torol: String
   huch_too: Int
   id: Int!
@@ -141,6 +141,18 @@ type DsBodlogoBarimtBichig {
   t_hugatsaa: String
   t_hugatsaa_id: Int
   t_sh_dugaar: String
+}
+
+type DsBodlogoBb {
+  b_gazar_id: Int
+  id: Int!
+  ner_barimt: String
+  salbar: String
+  salbar_id: Int
+  t_hugatsaa: String
+  t_hugatsaa_id: Int
+  tolov_id: Int
+  ds_sub_heregjilt_bodlog_barimt_bichig: [DsSubHeregjiltBodlogBarimtBichig!]
 }
 
 type DsDuremJuram {
@@ -226,6 +238,19 @@ type DsMedee {
   tailbar: String
 }
 
+type DsMongolUlsHuuliHer {
+  b_salbar_id: Int
+  huuli: String
+  id: Int!
+  m_huuli_id: Int
+  salbar: String
+  status: String
+  t_hugatsaa: String
+  t_hugatsaa_id: String
+  tolov_id: Int
+  ds_sub_heregjilt: [DsSubHeregjilt!]
+}
+
 type DsOlborloltMedee {
   b_id: Int
   b_torol_id: Int
@@ -265,6 +290,7 @@ type DsShuurkhaiAjil {
   shuurhai_cat_id: Int
   status: String
   tolov_id: Int
+  sub_a_shuurhai_heregjilt: [SubAShuurhaiHeregjilt!]
 }
 
 type DsSubBu {
@@ -292,7 +318,40 @@ type DsSubGt {
 type DsSubHeregjilt {
   heregjilt_id: Int
   id: Int!
-  ognoo: Time
+  ognoo: String
+  salbar: String
+  salbar_id: Int
+  shat: String
+  table_id: Int
+  tailan: String
+}
+
+type DsSubHeregjiltBodlogBarimtBichig {
+  heregjilt_id: Int
+  id: Int!
+  ognoo: String
+  salbar: String
+  salbar_id: Int
+  shat: String
+  table_id: Int
+  tailan: String
+}
+
+type DsSubHeregjiltUlsIhHural {
+  heregjilt_id: Int
+  id: Int!
+  ognoo: String
+  salbar: String
+  salbar_id: Int
+  shat: String
+  table_id: Int
+  tailan: String
+}
+
+type DsSubHeregjiltZgTogtool {
+  heregjilt_id: Int
+  id: Int!
+  ognoo: String
   salbar: String
   salbar_id: Int
   shat: String
@@ -319,10 +378,10 @@ type DsSubOlborlolt {
   buteegdehuun_id: Int
   code: String
   id: Int!
-  o_ehelsen_on: Time
+  o_ehelsen_on: String
   o_huch_chadal: Float
   table_id: Int
-  tezu_b_on: Time
+  tezu_b_on: String
   torol: String
   torol_code: String
   zurag: String
@@ -360,10 +419,10 @@ type DsSubUildverlel {
   code: String
   id: Int!
   table_id: Int
-  tezu: Time
+  tezu: String
   torol: String
   torol_code: String
-  u_ehelsen: Time
+  u_ehelsen: String
   uildverlel_tolov_id: Int
   zurag: String
 }
@@ -410,6 +469,19 @@ type DsTosviinOrlogo {
   tailant_uy: Float
 }
 
+type DsUihTogtoolHeregjilt {
+  b_gazar_id: Int
+  id: Int!
+  salbar: String
+  status: String
+  t_hugatsaa: String
+  t_hugatsaa_id: Int
+  togtool: String
+  togtool_id: Int
+  tolov_id: Int
+  ds_sub_heregjilt_uls_ih_hural: [DsSubHeregjiltUlsIhHural!]
+}
+
 type DsUildver {
   aimag_id: Int
   aimagname: String
@@ -427,7 +499,7 @@ type DsZgHotolbor {
   arga_hemjee: String
   ded_zorilt: String
   e_uusver: String
-  h_baiguullaga_id: Int
+  h_baiguullaga_id: String
   hotolbor: String
   hugatsaa: String
   id: Int!
@@ -437,6 +509,19 @@ type DsZgHotolbor {
   tolov_id: Int
   zorilt: String
   sub_hotolbor_uzuulelt: [SubHotolborUzuulelt!]
+}
+
+type DsZgTogtoolHeregjilt {
+  b_gazar_id: Int
+  id: Int!
+  salbar: String
+  status: String
+  t_hugatsaa: String
+  t_hugatsaa_id: Int
+  togtool: String
+  tolov_id: Int
+  zg_togtool_id: Int
+  ds_sub_heregjilt_zg_togtool: [DsSubHeregjiltZgTogtool!]
 }
 
 input filter {
@@ -471,7 +556,6 @@ type paginate {
   ds_m_bank_hudaldan_avalt: [DsMBankHudaldanAvalt!]
   ds_taamag_une: [DsTaamagUne!]
   aa_mu_huuli_hegejilt: [AaMuHuuliHegejilt!]
-  ds_sub_heregjilt: [DsSubHeregjilt!]
   ds_horongo_oruulalt_t_h: [DsHorongoOruulaltTH!]
   ds_ajil_heseg: [DsAjilHeseg!]
   ds_hudaldan_avah_ajilgaa: [DsHudaldanAvahAjilgaa!]
@@ -492,6 +576,15 @@ type paginate {
   ds_sub_gt: [DsSubGt!]
   ds_sub_bu: [DsSubBu!]
   ds_ajilah_huch_medeelel: [DsAjilahHuchMedeelel!]
+  sub_a_shuurhai_heregjilt: [SubAShuurhaiHeregjilt!]
+  ds_sub_heregjilt: [DsSubHeregjilt!]
+  ds_sub_heregjilt_bodlog_barimt_bichig: [DsSubHeregjiltBodlogBarimtBichig!]
+  ds_sub_heregjilt_uls_ih_hural: [DsSubHeregjiltUlsIhHural!]
+  ds_sub_heregjilt_zg_togtool: [DsSubHeregjiltZgTogtool!]
+  ds_mongol_uls_huuli_her: [DsMongolUlsHuuliHer!]
+  ds_uih_togtool_heregjilt: [DsUihTogtoolHeregjilt!]
+  ds_bodlogo_bb: [DsBodlogoBb!]
+  ds_zg_togtool_heregjilt: [DsZgTogtoolHeregjilt!]
 }
 
 type Query {
@@ -504,6 +597,8 @@ type Query {
   ds_shuurkhai_ajil(
     sorts: [sort]
     filters: [filter]
+    subSorts: [subSort]
+    subFilters: [subFilter]
     limit: Int
     offset: Int
   ): [DsShuurkhaiAjil!]
@@ -607,12 +702,6 @@ type Query {
     limit: Int
     offset: Int
   ): [AaMuHuuliHegejilt!]
-  ds_sub_heregjilt(
-    sorts: [sort]
-    filters: [filter]
-    limit: Int
-    offset: Int
-  ): [DsSubHeregjilt!]
   ds_horongo_oruulalt_t_h(
     sorts: [sort]
     filters: [filter]
@@ -741,6 +830,68 @@ type Query {
     limit: Int
     offset: Int
   ): [DsAjilahHuchMedeelel!]
+  sub_a_shuurhai_heregjilt(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [SubAShuurhaiHeregjilt!]
+  ds_sub_heregjilt(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsSubHeregjilt!]
+  ds_sub_heregjilt_bodlog_barimt_bichig(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsSubHeregjiltBodlogBarimtBichig!]
+  ds_sub_heregjilt_uls_ih_hural(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsSubHeregjiltUlsIhHural!]
+  ds_sub_heregjilt_zg_togtool(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [DsSubHeregjiltZgTogtool!]
+  ds_mongol_uls_huuli_her(
+    sorts: [sort]
+    filters: [filter]
+    subSorts: [subSort]
+    subFilters: [subFilter]
+    limit: Int
+    offset: Int
+  ): [DsMongolUlsHuuliHer!]
+  ds_uih_togtool_heregjilt(
+    sorts: [sort]
+    filters: [filter]
+    subSorts: [subSort]
+    subFilters: [subFilter]
+    limit: Int
+    offset: Int
+  ): [DsUihTogtoolHeregjilt!]
+  ds_bodlogo_bb(
+    sorts: [sort]
+    filters: [filter]
+    subSorts: [subSort]
+    subFilters: [subFilter]
+    limit: Int
+    offset: Int
+  ): [DsBodlogoBb!]
+  ds_zg_togtool_heregjilt(
+    sorts: [sort]
+    filters: [filter]
+    subSorts: [subSort]
+    subFilters: [subFilter]
+    limit: Int
+    offset: Int
+  ): [DsZgTogtoolHeregjilt!]
   paginate(
     sorts: [sort]
     filters: [filter]
@@ -754,6 +905,14 @@ type Query {
 input sort {
   column: String!
   order: order!
+}
+
+type SubAShuurhaiHeregjilt {
+  h_baidal: String
+  h_g_huvi: Float
+  id: ID!
+  ognoo: String
+  shuurhai_id: Int
 }
 
 input subFilter {

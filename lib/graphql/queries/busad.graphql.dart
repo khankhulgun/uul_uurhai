@@ -282,6 +282,8 @@ class PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubBu
   @JsonKey(name: 'tolov_id')
   int tolovId;
 
+  @JsonKey(name: 'tolov_id')
+  int tolovId;
 
   @override
   List<Object> get props =>
@@ -319,6 +321,8 @@ class PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubGt
   @JsonKey(name: 'tolov_id')
   int tolovId;
 
+  @JsonKey(name: 'tolov_id')
+  int tolovId;
 
   @override
   List<Object> get props =>
@@ -355,7 +359,8 @@ class PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubNoots
   @JsonKey(name: 'tolov_id')
   int tolovId;
 
-
+  @JsonKey(name: 'tolov_id')
+  int tolovId;
 
   @override
   List<Object> get props =>
@@ -436,7 +441,8 @@ class PaginateebMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubUhggsa
 
   String torol;
 
-
+  @JsonKey(name: 'tolov_id')
+  int tolovId;
 
   @JsonKey(name: 'uhggsa_tolov')
   String uhggsaTolov;
@@ -554,7 +560,7 @@ class PaginateajilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel
           json);
 
   @JsonKey(name: 'aj_ahui_ner_id')
-  int ajAhuiNerId;
+  String ajAhuiNerId;
 
   @JsonKey(name: 'b_torol')
   String bTorol;

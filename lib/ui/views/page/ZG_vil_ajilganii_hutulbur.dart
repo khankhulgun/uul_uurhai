@@ -1,23 +1,23 @@
+
 import 'package:catalog/ui/components/header.dart';
-import 'package:catalog/ui/views/main.dart';
 import 'package:flutter/material.dart';
-import 'package:catalog/ui/components/map_widgets/esri_icons_icons.dart';
-import 'package:catalog/ui/styles/_colors.dart' as prefix0;
 import 'package:catalog/ui/styles/_colors.dart';
 import 'package:flutter_icons/feather.dart';
-import 'package:flutter_icons/ionicons.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lambda/modules/network_util.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import '../../components/sidebar.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:lambda/plugins/data_form/loader.dart';
-import 'dart:async';
-import 'dart:convert';
 import 'package:http/http.dart' as http;
+
+//PAGINATION
+import 'package:catalog/utils/date.dart';
+import 'package:catalog/ui/common/paginate.dart';
+
+//GRAPHQL
+import 'package:catalog/graphql/config.dart';
+import 'package:catalog/graphql/queries/zg_hotolbor.dart';
+
 
 
 import '../../../main.dart';
@@ -55,14 +55,40 @@ class ZGhutulbur extends StatefulWidget {
 }
 class _ZGhutulburState extends State<ZGhutulbur> {
   //List<Project> projects = [];
+
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   NetworkUtil _http = new NetworkUtil();
+
+  //GRAPHQL Pagination
+
+  List<Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor> zghutulbur = [];
   bool loading = true;
+  int currentPage = 1;
+  int lastPage = 0;
+  int total = 0;
 
   @override
   void initState() {
     super.initState();
+    getData(1);
   }
+
+  void getData(int page) async {
+    setState(() {
+      loading = true;
+    });
+    final response = await client.execute(PaginatedszhhotolborQuery(variables: PaginatedszhhotolborArguments(page: page, size: 4)));
+
+    setState(() {
+      zghutulbur = response.data.paginate.dsZgHotolbor;
+      currentPage = page;
+      lastPage = response.data.paginate.lastPage;
+      total = response.data.paginate.total;
+      loading = false;
+    });
+    print(zghutulbur);
+  }
+
   final List<data> datas = [
     data(
       "assets/uuhvy_img/zg.png",
@@ -125,7 +151,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.only(left: 10.0, right: 10.0),
         child: ListView.builder(
-          itemCount: datas == null ? 0 : datas.length,
+          itemCount: zghutulbur == null ? 0 : zghutulbur.length,
           itemBuilder: (BuildContext context, int index) =>
               buildTripCard(context, index),
         ),
@@ -252,7 +278,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
 //                                    bottomRight: Radius.circular(6)
 //                                ),
 //                              ),
-                              child: Image.asset(data.image, width: 80, fit: BoxFit.cover)
+                              child: Image.asset("assets/uuhvy_img/zg.png", width: 80, fit: BoxFit.cover)
                           )
                       ),
                       SizedBox(width: 10.0),

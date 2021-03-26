@@ -1,5 +1,6 @@
 import 'package:catalog/ui/components/header.dart';
 import 'package:catalog/ui/views/main.dart';
+import 'package:catalog/utils/number.dart';
 import 'package:flutter/material.dart';
 import 'package:catalog/ui/components/map_widgets/esri_icons_icons.dart';
 import 'package:catalog/ui/styles/_colors.dart' as prefix0;
@@ -28,26 +29,7 @@ import 'package:catalog/graphql/queries/shuurhai_ajil.dart';
 
 import '../../../main.dart';
 
-class data{
-  final String image;
-  final String ognoo;
-  final String shortDesc;
-  final String heregjvvlegch;
-  final String hugatsaa;
-  final String desc;
-  final String heregjvvlsenOgnoo;
-  final String heregjiltiinHuvi;
-  data(
-      this.image,
-      this.ognoo,
-      this.shortDesc,
-      this.heregjvvlegch,
-      this.hugatsaa,
-      this.desc,
-      this.heregjvvlsenOgnoo,
-      this.heregjiltiinHuvi,
-      );
-}
+
 
 class ShuurhaiAjil extends StatefulWidget {
   //final ProjectInfo project;
@@ -80,7 +62,6 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
   @override
   void initState() {
     super.initState();
-
     getData(1);
   }
 
@@ -90,65 +71,212 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
     });
     final response = await client.execute(PaginateShuurhaiajilQuery(variables: PaginateShuurhaiajilArguments(page: page, size: 4)));
 
-
-
     setState(() {
       shuurhais = response.data.paginate.dsShuurkhaiAjil;
       currentPage = page;
       lastPage = response.data.paginate.lastPage;
       total = response.data.paginate.total;
       loading = false;
-      print("-----------");
-      print(shuurhais);
-    });
 
+    });
   }
 
 
-  final List<data> datas = [
-    data(
-      "assets/uuhvy_img/to.png",
-      "2020-11-24",
-      "Энэ хүрээнд шуурхай ажлын хэсэг болон эмч, эмнэлгийн ажилчид хилийн бүсэд ажиллаж эхний ээлжинд 854 жолоочийг шинжилгээнд хамруулж.... ",
-      "ГБГ",
-      "2020-12-01",
-      "БНХАУ-ын тал нүүрс тээврийн жолоочдыг хил нэвтрэх үед ковид-19-ийн шинжилгээнд хамрагдсан байхыг шаардсан. Энэ хүрээнд шуурхай ажлын хэсэг болон эмч, эмнэлгийн ажилчид хилийн бүсэд ажиллаж эхний ээлжинд 854 жолоочийг шинжилгээнд хамруулж хилээр нэвтрэх боломжийг бүрдүүллээ. 11 дүгээр сарын 23-ны байдлаар Гашуунсухайт боомтоор 211 нүүрс тээврийн, ",
-      "2020-12-12",
-      "96",
-    ),
-    data(
-      "assets/uuhvy_img/yamnii.png",
-      "2020-11-24",
-      "Энэ хүрээнд шуурхай ажлын хэсэг болон эмч, эмнэлгийн ажилчид хилийн бүсэд ажиллаж эхний ээлжинд 854 жолоочийг шинжилгээнд хамруулж.... ",
-      "ГБГ",
-      "2020-12-01",
-      "БНХАУ-ын тал нүүрс тээврийн жолоочдыг хил нэвтрэх үед ковид-19-ийн шинжилгээнд хамрагдсан байхыг шаардсан. Энэ хүрээнд шуурхай ажлын хэсэг болон эмч, эмнэлгийн ажилчид хилийн бүсэд ажиллаж эхний ээлжинд 854 жолоочийг шинжилгээнд хамруулж хилээр нэвтрэх боломжийг бүрдүүллээ. 11 дүгээр сарын 23-ны байдлаар Гашуунсухайт боомтоор 211 нүүрс тээврийн, ",
-      "2020-12-12",
-      "82",
-    ),
-    data(
-      "assets/uuhvy_img/to.png",
-      "2020-11-24",
-      "Энэ хүрээнд шуурхай ажлын хэсэг болон эмч, эмнэлгийн ажилчид хилийн бүсэд ажиллаж эхний ээлжинд 854 жолоочийг шинжилгээнд хамруулж.... ",
-      "ГБГ",
-      "2020-12-01",
-      "БНХАУ-ын тал нүүрс тээврийн жолоочдыг хил нэвтрэх үед ковид-19-ийн шинжилгээнд хамрагдсан байхыг шаардсан. Энэ хүрээнд шуурхай ажлын хэсэг болон эмч, эмнэлгийн ажилчид хилийн бүсэд ажиллаж эхний ээлжинд 854 жолоочийг шинжилгээнд хамруулж хилээр нэвтрэх боломжийг бүрдүүллээ. 11 дүгээр сарын 23-ны байдлаар Гашуунсухайт боомтоор 211 нүүрс тээврийн, ",
-      "2020-12-12",
-      "75",
-    ),
-    data(
-      "assets/uuhvy_img/yamnii.png",
-      "2020-11-24",
-      "Энэ хүрээнд шуурхай ажлын хэсэг болон эмч, эмнэлгийн ажилчид хилийн бүсэд ажиллаж эхний ээлжинд 854 жолоочийг шинжилгээнд хамруулж.... ",
-      "ГБГ",
-      "2020-12-01",
-      "БНХАУ-ын тал нүүрс тээврийн жолоочдыг хил нэвтрэх үед ковид-19-ийн шинжилгээнд хамрагдсан байхыг шаардсан. Энэ хүрээнд шуурхай ажлын хэсэг болон эмч, эмнэлгийн ажилчид хилийн бүсэд ажиллаж эхний ээлжинд 854 жолоочийг шинжилгээнд хамруулж хилээр нэвтрэх боломжийг бүрдүүллээ. 11 дүгээр сарын 23-ны байдлаар Гашуунсухайт боомтоор 211 нүүрс тээврийн, ",
-      "2020-12-12",
-      "50",
-    ),
-  ];
 
+  Widget buildTripCard(BuildContext context, int index) {
+    final shuurhai = shuurhais[index];
 
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.only(top: 5.0),
+      margin: EdgeInsets.only(bottom: 0.0),
+      child: Card(
+        elevation: 2.0,
+        child: Container(
+          padding: const EdgeInsets.only(top: 8.0, right: 8.0, left: 8.0),
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(width: 1.0, color: Colors.grey[300]),
+            ),
+            color: Colors.white,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+
+                      Expanded(
+                          flex: 2,
+                          child: Container(
+                              child: Image.asset('assets/uuhvy_img/yamnii.png', height: 90,  fit: BoxFit.cover)
+                          )
+                      ),
+                      SizedBox(width: 10.0),
+                      Expanded(
+                        flex: 4,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text('${date(shuurhai.ognoo)}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),),
+                            Container(child: Text(shuurhai.ajil, style: TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 12),)),
+                          ],
+                        ),
+                      ),
+                      SizedBox(width: 5.0),
+                      Expanded(
+                        flex: 2,
+                        child: CircularPercentIndicator(
+                          radius: 55.0,
+                          animationDuration: 1500,
+                          lineWidth: 4.0,
+                          animation: true,
+                          //percent: data.heregjiltiinHuvi != null ? int.parse(data.heregjiltiinHuvi) / 100 : 0,
+                          percent: 0.5,
+                          center: Text(
+                            '50%',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.greenAccent[700],),
+                          ),
+                          footer: Text(
+                            'Биелсэн',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                              color: Colors.greenAccent[700],),
+                          ),
+                          circularStrokeCap: CircularStrokeCap.round,
+//                            progressColor: currentProgressColor(),
+
+                          progressColor: Colors.greenAccent[700],
+                        ),
+                      ),
+
+                    ],
+                  ),
+                  SizedBox(height: 4.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Expanded(
+                          flex: 6,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text('Хэрэгжүүлэгч:', style: TextStyle(color: textColor, fontSize: 12),),
+                              SizedBox(width: 4.0),
+                              Text(shuurhai.salbar, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12)),
+                            ],
+                          )
+                      ),
+                      SizedBox(width: 5.0),
+                      Expanded(
+                          flex: 4,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Expanded(flex: 0, child: Text('Хугацаа:', style: TextStyle(color: textColor, fontSize: 12),)),
+                              SizedBox(width: 4.0),
+                              Expanded(flex: 4, child: Text('${date(shuurhai.ognoo)}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12))),
+                            ],
+                          )
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10.0),
+                ],
+              ),
+
+              ExpansionTile(
+//                 backgroundColor: Colors.grey[50],
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Text('Хэрэгжилт', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
+                  ],
+                ),
+                children: <Widget>[
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(shuurhai.ajil, style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
+                      SizedBox(height: 10.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Expanded(flex: 2, child: Text('Хэрэгжүүлсэн огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
+                          Expanded(flex: 4, child: Text('${shuurhai.ognoo}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                        ],
+                      ),
+                      SizedBox(height: 5.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Expanded(flex: 2, child: Text('Хэрэгжилтийн хувь:', style: TextStyle(color: textColor, fontSize: 12),)),
+                          Expanded(flex: 4, child: Text('76%', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                        ],
+                      ),
+                      SizedBox(height: 10.0),
+                    ],
+                  ),
+
+                  Container(
+                    height: 30,
+                    margin: EdgeInsets.only(top: 10, bottom: 20),
+                    decoration: BoxDecoration(
+                      color: Colors.greenAccent[700],
+                      borderRadius:
+                      new BorderRadius.circular(10.0),
+                    ),
+                    child: FlatButton(
+                      child: Container(
+                        child: Stack(
+                          fit: StackFit.expand,
+                          children: <Widget>[
+                            Center(
+                              child: Text(
+                                'Биелсэн',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Color.fromRGBO(
+                                        255, 255, 255, 1),
+                                    fontSize: 16,
+                                    fontWeight:
+                                    FontWeight.w400),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      onPressed: () {},
+
+                    ),
+                  ),
+
+                ],
+
+              ),
+
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -171,15 +299,23 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
         child: Icon(Feather.getIconData('search')),
         backgroundColor: mainColor,
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.only(left: 10.0, right: 10.0),
-        child: ListView.builder(
-          itemCount: shuurhais == null ? 0 : shuurhais.length,
-          itemBuilder: (BuildContext context, int index) =>
-              buildTripCard(context, index),
-        ),
-      ),
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          height: double.infinity,
+          padding: EdgeInsets.only(left: 10.0, right: 10.0),
+          child: loading ? Loader() : Pagination(
+            lastPage: lastPage,
+            currentPage: currentPage,
+            total: total,
+            loading: loading,
+            getData: getData,
+            itemBuilder: ListView.builder(
+              itemCount: shuurhais == null ? 0 : shuurhais.length,
+              itemBuilder: (BuildContext context, int index) =>
+                  buildTripCard(context, index),
+            ),
+          ),
+        )
     );
 
   }
@@ -296,210 +432,7 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
     });
   }
 
-  Widget buildTripCard(BuildContext context, int index) {
-    final data = datas[index];
 
-
-//    currentProgressColor() {
-//      if (data.heregjiltiinHuvi >= 90) {
-//        return Colors.green;
-//      } else{
-//        return Colors.red;
-//      }
-//    }
-
-
-
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.only(top: 5.0),
-      margin: EdgeInsets.only(bottom: 0.0),
-      child: Card(
-        elevation: 2.0,
-        child: Container(
-          padding: const EdgeInsets.only(top: 8.0, right: 8.0, left: 8.0),
-          decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(width: 1.0, color: Colors.grey[300]),
-            ),
-            color: Colors.white,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-
-                      Expanded(
-                        flex: 2,
-                        child: Container(
-                            child: Image.asset(data.image, height: 90,  fit: BoxFit.cover)
-                        )
-                      ),
-                      SizedBox(width: 10.0),
-                      Expanded(
-                        flex: 4,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(data.ognoo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),),
-                            Container(height: 70, child: Text(data.shortDesc, style: TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 12),)),
-                          ],
-                        ),
-                      ),
-                      SizedBox(width: 5.0),
-                      Expanded(
-                          flex: 2,
-                          child: CircularPercentIndicator(
-                            radius: 55.0,
-                            animationDuration: 1500,
-                            lineWidth: 4.0,
-                            animation: true,
-                            percent: data.heregjiltiinHuvi != null ? int.parse(data.heregjiltiinHuvi) / 100 : 0,
-                            center: Text(
-                              '${data.heregjiltiinHuvi}%',
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.greenAccent[700],),
-                            ),
-                            footer: Text(
-                              'Биелсэн',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 14,
-                                  color: Colors.greenAccent[700],),
-                            ),
-                            circularStrokeCap: CircularStrokeCap.round,
-//                            progressColor: currentProgressColor(),
-
-                            progressColor: Colors.greenAccent[700],
-                          ),
-                      ),
-
-                    ],
-                  ),
-                  SizedBox(height: 4.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Expanded(
-                          flex: 6,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text('Хэрэгжүүлэгч:', style: TextStyle(color: textColor, fontSize: 12),),
-                              SizedBox(width: 4.0),
-                              Text(data.heregjvvlegch, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12)),
-                            ],
-                          )
-                      ),
-                      SizedBox(width: 5.0),
-                      Expanded(
-                          flex: 4,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text('Хугацаа:', style: TextStyle(color: textColor, fontSize: 12),),
-                              SizedBox(width: 4.0),
-                              Text(data.hugatsaa, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12)),
-                            ],
-                          )
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 10.0),
-                ],
-              ),
-
-              ExpansionTile(
-//                 backgroundColor: Colors.grey[50],
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Text('Хэрэгжилт', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
-                  ],
-                ),
-                children: <Widget>[
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(data.desc, style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
-                      SizedBox(height: 10.0),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 2, child: Text('Хэрэгжүүлсэн огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
-                          Expanded(flex: 4, child: Text(data.heregjvvlsenOgnoo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 5.0),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 2, child: Text('Хэрэгжилтийн хувь:', style: TextStyle(color: textColor, fontSize: 12),)),
-                          Expanded(flex: 4, child: Text('${data.heregjiltiinHuvi}%', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 10.0),
-                    ],
-                  ),
-
-                  Container(
-                    height: 30,
-                    margin: EdgeInsets.only(top: 10, bottom: 20),
-                    decoration: BoxDecoration(
-                      color: Colors.greenAccent[700],
-                      borderRadius:
-                      new BorderRadius.circular(10.0),
-                    ),
-                    child: FlatButton(
-                      child: Container(
-                        child: Stack(
-                          fit: StackFit.expand,
-                          children: <Widget>[
-                            Center(
-                              child: Text(
-                                'Биелсэн',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Color.fromRGBO(
-                                        255, 255, 255, 1),
-                                    fontSize: 16,
-                                    fontWeight:
-                                    FontWeight.w400),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      onPressed: () {},
-
-                    ),
-                  ),
-
-                ],
-
-              ),
-
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 }
 
 

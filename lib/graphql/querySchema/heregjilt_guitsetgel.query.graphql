@@ -1,3 +1,160 @@
+query paginateds_bodlogo_bb($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        ds_bodlogo_bb{
+            b_gazar_id
+            id
+            ner_barimt
+            salbar
+            salbar_id
+            t_hugatsaa
+            t_hugatsaa_id
+            tolov_id
+            ds_sub_heregjilt_bodlog_barimt_bichig{
+                heregjilt_id
+                id
+                ognoo
+                salbar
+                salbar_id
+                shat
+                table_id
+                tailan
+            }
+        }
+    }
+}
+
+
+
+query paginateaa_mu_huuli_hegejilt($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        aa_mu_huuli_hegejilt{
+            b_salbar_id
+            id
+            m_huuli_id
+            t_hugatsaa_id
+            tolov_id
+            ds_sub_heregjilt{
+                heregjilt_id
+                id
+                ognoo
+                salbar
+                salbar_id
+                shat
+                table_id
+                tailan
+            }
+        }
+    }
+}
+
+
+
+
+
+query paginateuih_togtool_heregjilt($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        ds_uih_togtool_heregjilt{
+            b_gazar_id
+            id
+            salbar
+            status
+            t_hugatsaa
+            t_hugatsaa_id
+            togtool
+            togtool_id
+            tolov_id
+            ds_sub_heregjilt_uls_ih_hural{
+                heregjilt_id
+                id
+                ognoo
+                salbar
+                salbar_id
+                shat
+                table_id
+                tailan
+            }
+        }
+    }
+}
+
+
+
+
+
+query paginatezg_togtool_heregjilt($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        ds_zg_togtool_heregjilt{
+            b_gazar_id
+            id
+            salbar
+            status
+            t_hugatsaa
+            t_hugatsaa_id
+            togtool
+            tolov_id
+            zg_togtool_id
+            ds_sub_heregjilt_zg_togtool{
+                heregjilt_id
+                id
+                ognoo
+                salbar
+                salbar_id
+                shat
+                table_id
+                tailan
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 query paginateajil_heseg($page: Int!, $size: Int!) {
     paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
         total

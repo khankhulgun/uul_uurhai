@@ -1,3 +1,4 @@
+import 'package:catalog/ui/styles/_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:lambda/plugins/data_form/loader.dart';
@@ -46,7 +47,7 @@ class _PaginationState extends State<Pagination> {
         }
       },
       child: Icon(FontAwesome.getIconData("angle-left"),
-          color: isFirstPage ? Color(0xFF999999) : Colors.blue, size: 25),
+          color: isFirstPage ? mainColor : Colors.blue, size: 25),
       shape: new CircleBorder(),
       elevation: 2.0,
       fillColor: Colors.white,
@@ -79,11 +80,11 @@ class _PaginationState extends State<Pagination> {
         child: Text(
           i.toString(),
           style: TextStyle(
-              color: widget.currentPage == i ? Colors.white : Colors.blue),
+              color: widget.currentPage == i ? Colors.white : mainColor),
         ),
         shape: new CircleBorder(),
         elevation: 2.0,
-        fillColor: widget.currentPage == i ? Colors.blue : Colors.white,
+        fillColor: widget.currentPage == i ? mainColor: Colors.white,
         padding: const EdgeInsets.all(15.0),
         constraints: BoxConstraints(),
       ));
@@ -96,7 +97,7 @@ class _PaginationState extends State<Pagination> {
         }
       },
       child: Icon(FontAwesome.getIconData("angle-right"),
-          color: isLastPage ? Color(0xFF999999) : Colors.blue, size: 25),
+          color: isLastPage ? Color(0xFF999999) : mainColor, size: 25),
       shape: new CircleBorder(),
       elevation: 2.0,
       fillColor: Colors.white,

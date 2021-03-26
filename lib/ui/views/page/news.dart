@@ -159,7 +159,8 @@ class _NewsState extends State<News> {
                   buildNews(context, index),
             ),
           ),
-        ));
+        )
+    );
   }
 
   void _onButtonPressed() {

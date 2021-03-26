@@ -417,7 +417,7 @@ PaginateajilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel
     _$PaginateajilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelelFromJson(
         Map<String, dynamic> json) {
   return PaginateajilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel()
-    ..ajAhuiNerId = json['aj_ahui_ner_id'] as int
+    ..ajAhuiNerId = json['aj_ahui_ner_id'] as String
     ..bTorol = json['b_torol'] as String
     ..huchToo = json['huch_too'] as int
     ..id = json['id'] as int

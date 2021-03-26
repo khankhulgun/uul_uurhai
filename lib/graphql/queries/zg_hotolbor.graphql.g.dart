@@ -40,7 +40,7 @@ Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor
     ..argaHemjee = json['arga_hemjee'] as String
     ..dedZorilt = json['ded_zorilt'] as String
     ..eUusver = json['e_uusver'] as String
-    ..hBaiguullagaId = json['h_baiguullaga_id'] as int
+    ..hBaiguullagaId = json['h_baiguullaga_id'] as String
     ..hotolbor = json['hotolbor'] as String
     ..hugatsaa = json['hugatsaa'] as String
     ..id = json['id'] as int

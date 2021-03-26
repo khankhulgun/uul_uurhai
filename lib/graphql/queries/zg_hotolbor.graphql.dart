@@ -61,7 +61,7 @@ class Paginatedszhhotolbor$Query$Paginate$DsZgHotolbor with EquatableMixin {
   String eUusver;
 
   @JsonKey(name: 'h_baiguullaga_id')
-  int hBaiguullagaId;
+  String hBaiguullagaId;
 
   String hotolbor;
 

@@ -84,7 +84,7 @@ class PaginateShuurhaiajil$Query$Paginate with EquatableMixin {
 
 @JsonSerializable(explicitToJson: true)
 class PaginateShuurhaiajil$Query with EquatableMixin {
-  PaginateShuurhaiajil$Query({PaginateShuurhaiajilArguments variables});
+  PaginateShuurhaiajil$Query();
 
   factory PaginateShuurhaiajil$Query.fromJson(Map<String, dynamic> json) =>
       _$PaginateShuurhaiajil$QueryFromJson(json);
