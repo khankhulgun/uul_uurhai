@@ -317,7 +317,7 @@ class _SidebarScreenState extends State<SidebarScreen> {
                                                   child: FlatButton(
                                                     padding: EdgeInsets.all(0.0),
                                                     onPressed: () {
-//                                              Navigator.pushNamed(context, '/baiguullaga');
+                                                          Navigator.pushNamed(context, '/mgl');
                                                     },
                                                     child: Row(
                                                       children: <Widget>[
@@ -335,7 +335,7 @@ class _SidebarScreenState extends State<SidebarScreen> {
                                                   child: FlatButton(
                                                     padding: EdgeInsets.all(0.0),
                                                     onPressed: () {
-//                                              Navigator.pushNamed(context, '/baiguullaga');
+                                                        Navigator.pushNamed(context, '/hural');
                                                     },
                                                     child: Row(
                                                       children: <Widget>[
@@ -389,7 +389,7 @@ class _SidebarScreenState extends State<SidebarScreen> {
                                                   child: FlatButton(
                                                     padding: EdgeInsets.all(0.0),
                                                     onPressed: () {
-//                                              Navigator.pushNamed(context, '/baiguullaga');
+                                                        Navigator.pushNamed(context, '/dvrem');
                                                     },
                                                     child: Row(
                                                       children: <Widget>[
@@ -546,11 +546,15 @@ class _SidebarScreenState extends State<SidebarScreen> {
                                           SizedBox(
                                             width: 10,
                                           ),
-                                          Text('Хэрэгжилт гүйцэтгэл',
-                                              style: TextStyle(
-                                                  fontSize: 14,
-                                                  color: Color(0xff363636),
-                                                  fontWeight: FontWeight.w500)),
+                                          Expanded(
+                                            flex: 4,
+                                            child: Text('Хэрэгжилт гүйцэтгэл',
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Color(0xff363636),
+                                                    fontWeight: FontWeight.w500)),
+                                          ),
                                         ],
                                       ),
                                       children: <Widget>[
@@ -584,47 +588,11 @@ class _SidebarScreenState extends State<SidebarScreen> {
                                                   child: FlatButton(
                                                     padding: EdgeInsets.all(0.0),
                                                     onPressed: () {
-//                                              Navigator.pushNamed(context, '/baiguullaga');
-                                                    },
-                                                    child: Row(
-                                                      children: <Widget>[
-                                                        Text('- Хууль тогтоомж',
-                                                            style: TextStyle(
-                                                                fontSize: 14,
-                                                                color: Color(0xff363636),
-                                                                fontWeight: FontWeight.w500))
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  height: 32,
-                                                  child: FlatButton(
-                                                    padding: EdgeInsets.all(0.0),
-                                                    onPressed: () {
-//                                              Navigator.pushNamed(context, '/baiguullaga');
-                                                    },
-                                                    child: Row(
-                                                      children: <Widget>[
-                                                        Text('- Улсын их хурлын тогтоол',
-                                                            style: TextStyle(
-                                                                fontSize: 14,
-                                                                color: Color(0xff363636),
-                                                                fontWeight: FontWeight.w500))
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  height: 32,
-                                                  child: FlatButton(
-                                                    padding: EdgeInsets.all(0.0),
-                                                    onPressed: () {
                                                       Navigator.pushNamed(context, '/zg');
                                                     },
                                                     child: Row(
                                                       children: <Widget>[
-                                                        Text('- Засгийн газрын тогтоол',
+                                                        Text('- Засгийн газрын тогтоолын хэрэгжилт',
                                                             style: TextStyle(
                                                                 fontSize: 14,
                                                                 color: Color(0xff363636),
@@ -695,11 +663,14 @@ class _SidebarScreenState extends State<SidebarScreen> {
                                           SizedBox(
                                             width: 10,
                                           ),
-                                          Text('Төсөв, Худалдан авах ажиллагаа',
-                                              style: TextStyle(
-                                                  fontSize: 14,
-                                                  color: Color(0xff363636),
-                                                  fontWeight: FontWeight.w500)),
+                                          Expanded(
+                                            flex: 4,
+                                            child: Text('Төсөв, Худалдан авах ажиллагаа',
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    color: Color(0xff363636),
+                                                    fontWeight: FontWeight.w500)),
+                                          ),
                                         ],
                                       ),
                                       children: <Widget>[

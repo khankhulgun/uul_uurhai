@@ -17,29 +17,14 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import 'package:catalog/utils/date.dart';
+import 'package:catalog/ui/common/paginate.dart';
 
-import '../../main.dart';
+//GRAPHQL
+import 'package:catalog/graphql/config.dart';
+import 'package:catalog/graphql/queries/heregjilt_guitsetgel.dart';
 
-class data{
-  final String title;
-  final String ajiliinHeseg;
-  final String on;
-  final String bodlogiinGazar;
-  final String dugaar;
-  final String desc;
-  final String ywtsiinOgnoo;
-  final String huvi;
-  data(
-      this.title,
-      this.ajiliinHeseg,
-      this.on,
-      this.bodlogiinGazar,
-      this.dugaar,
-      this.desc,
-      this.ywtsiinOgnoo,
-      this.huvi,
-      );
-}
+
 
 class Ajiliin_heseg extends StatefulWidget {
   @override
@@ -48,35 +33,36 @@ class Ajiliin_heseg extends StatefulWidget {
 class _Ajiliin_hesegState extends State<Ajiliin_heseg> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   NetworkUtil _http = new NetworkUtil();
+  List<AjilHeseg$Query$Paginate$DsAjilHeseg> datas = [];
+
   bool loading = true;
+  int currentPage = 1;
+  int lastPage = 0;
+  int total = 0;
 
   @override
   void initState() {
     super.initState();
+    getData(1);
   }
-  final List<data> datas = [
-    data(
-      "Үйлдвэрлэл технологийн паркийн барилгын ажлыг хүлээн авах",
-      "Сайдын тушаалаар",
-      "2020",
-      "ГБ, УУ",
-      "А/163",
-      "БНХАУ-ын тал нүүрс тээврийн жолоочдыг хил нэвтрэх үед ковид-19-ийн шинжилгээнд хамрагдсан байхыг шаардсан. Энэ хүрээнд шуурхай ажлын хэсэг болон эмч, эмнэлгийн ажилчид хилийн бүсэд ажиллаж эхний ээлжинд 854 жолоочийг шинжилгээнд хамруулж хилээр нэвтрэх боломжийг бүрдүүллээ. 11 дүгээр сарын 23-ны байдлаар Гашуунсухайт боомтоор 211 нүүрс тээврийн, 95 зэсийн баяжмалын тээвэр, Шивээхүрэн боомтоор 216 нүүрсний тээврийн хэрэгсэл хилээр нэвтэрчээ. Цаашид 5000 орчим жолоочийг шинжилгээнд бүрэн хамруулахаар ажиллаж байна.",
-      "2020-12-12",
-      "96"
-    ),
-    data(
-      "Үйлдвэрлэл технологийн паркийн барилгын ажлыг хүлээн авах",
-      "Сайдын тушаалаар",
-      "2020",
-      "ГБ, УУ",
-      "А/163",
-      "БНХАУ-ын тал нүүрс тээврийн жолоочдыг хил нэвтрэх үед ковид-19-ийн шинжилгээнд хамрагдсан байхыг шаардсан. Энэ хүрээнд шуурхай ажлын хэсэг болон эмч, эмнэлгийн ажилчид хилийн бүсэд ажиллаж эхний ээлжинд 854 жолоочийг шинжилгээнд хамруулж хилээр нэвтрэх боломжийг бүрдүүллээ. 11 дүгээр сарын 23-ны байдлаар Гашуунсухайт боомтоор 211 нүүрс тээврийн, 95 зэсийн баяжмалын тээвэр, Шивээхүрэн боомтоор 216 нүүрсний тээврийн хэрэгсэл хилээр нэвтэрчээ. Цаашид 5000 орчим жолоочийг шинжилгээнд бүрэн хамруулахаар ажиллаж байна.",
-      "2020-12-12",
-        "96"
-    ),
-  ];
+
+  void getData(int page) async {
+    setState(() {
+      loading = true;
+    });
+    final response = await client.execute(AjilHesegQuery(variables: AjilHesegArguments(page: page, size: 10)));
+    setState(() {
+      datas = response.data.paginate.dsAjilHeseg;
+
+      currentPage = page;
+      lastPage = response.data.paginate.lastPage;
+      total = response.data.paginate.total;
+      loading = false;
+    });
+  }
   bool _isVisible = false;
+
+
 
   void showToast() {
     setState(() {
@@ -105,15 +91,25 @@ class _Ajiliin_hesegState extends State<Ajiliin_heseg> {
         child: Icon(Feather.getIconData('search')),
         backgroundColor: mainColor,
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.only(left: 10.0, right: 10.0),
-        child: ListView.builder(
-          itemCount: datas == null ? 0 : datas.length,
-          itemBuilder: (BuildContext context, int index) =>
-              buildTripCard(context, index),
-        ),
-      ),
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.all(0.0),
+          //padding: EdgeInsets.only(left: 10.0, right: 10.0),
+          height: double.infinity,
+          margin: EdgeInsets.all(0.0),
+          child: loading ? Loader() : Pagination(
+            lastPage: lastPage,
+            currentPage: currentPage,
+            total: total,
+            loading: loading,
+            getData: getData,
+            itemBuilder: ListView.builder(
+              itemCount: datas == null ? 0 : datas.length,
+              itemBuilder: (BuildContext context, int index) =>
+                  buildTripCard(context, index),
+            ),
+          ),
+        )
     );
 
   }
@@ -241,7 +237,7 @@ class _Ajiliin_hesegState extends State<Ajiliin_heseg> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Text(data.title, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 14),),
+                  Text(data.salbar, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 14),),
                   SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -265,7 +261,7 @@ class _Ajiliin_hesegState extends State<Ajiliin_heseg> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Expanded(flex: 3, child: Text('Ажлын хэсэг:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                        Expanded(flex: 4, child: Text(data.ajiliinHeseg, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                        Expanded(flex: 4, child: Text(data.ajilHeseg, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                       ],
                                     ),
                                     SizedBox(height: 4),
@@ -274,7 +270,7 @@ class _Ajiliin_hesegState extends State<Ajiliin_heseg> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Expanded(flex: 3, child: Text('Он:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                        Expanded(flex: 4, child: Text(data.on, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                        Expanded(flex: 4, child: Text(data.jil, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                       ],
                                     ),
                                     SizedBox(height: 4),
@@ -283,7 +279,7 @@ class _Ajiliin_hesegState extends State<Ajiliin_heseg> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Expanded(flex: 3, child: Text('Бодлогын газар:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                        Expanded(flex: 4, child: Text(data.bodlogiinGazar, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                        Expanded(flex: 4, child: Text('', style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                       ],
                                     ),
                                     SizedBox(height: 4),
@@ -292,7 +288,7 @@ class _Ajiliin_hesegState extends State<Ajiliin_heseg> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Expanded(flex: 3, child: Text('Тушаалын дугаар:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                        Expanded(flex: 4, child: Text(data.dugaar, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                        Expanded(flex: 4, child: Text(data.tuDugaar, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                       ],
                                     ),
                                   ],
@@ -305,23 +301,26 @@ class _Ajiliin_hesegState extends State<Ajiliin_heseg> {
                                  animationDuration: 1500,
                                  lineWidth: 4.0,
                                  animation: true,
-                                 percent: data.huvi != null ? int.parse(data.huvi) / 100 : 0,
+                                 percent: data.gHuvi != null ? int.parse(data.gHuvi) / 100 : 0,
                                  center: Text(
-                                  '${data.huvi}%',
+                                  '${data.gHuvi}%',
                                   style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,
-                                      color: Color(0xFF00E676)),
+                                      color: data.status == 'Биелсэн' ? Color(0xFF00E676) : Color(0xfffcb85f)
+                                  ),
                                  ),
                                  footer: Text(
-                                  'Биелсэн',
+                                   data.status,
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w500,
-                                      fontSize: 14,
-                                      color: Color(0xFF00E676)),
+                                      fontSize: 10,
+                                      color: data.status == 'Биелсэн' ? Color(0xFF00E676) : Color(0xfffcb85f)
+                                  ),
                                  ),
                                  circularStrokeCap: CircularStrokeCap.round,
-                                  progressColor: Color(0xFF00E676),
+                                  progressColor: data.status == 'Биелсэн' ? Color(0xFF00E676) : Color(0xfffcb85f),
                               ),
                               ),
 
@@ -333,73 +332,41 @@ class _Ajiliin_hesegState extends State<Ajiliin_heseg> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10.0),
                 ],
               ),
 
-              ExpansionTile(
+              Theme(
+                data: ThemeData().copyWith(dividerColor: Colors.transparent),
+                child: ExpansionTile(
 //                 backgroundColor: Colors.grey[50],
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Text('Явцын тайлан', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
-                  ],
-                ),
-                children: <Widget>[
-                  Column(
+                  title: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(data.desc, style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
-                      SizedBox(height: 10.0),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 2, child: Text('Явцын огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
-                          Expanded(flex: 4, child: Text(data.ywtsiinOgnoo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 10.0),
+                      Text('Явцын тайлан', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
                     ],
                   ),
-                  Divider(),
-
-
-                  Container(
-                    height: 30,
-                    margin: EdgeInsets.only(top: 10, bottom: 20),
-                    decoration: BoxDecoration(
-                      color: Colors.greenAccent[700],
-                      borderRadius:
-                      new BorderRadius.circular(10.0),
-                    ),
-                    child: FlatButton(
-                      child: Container(
-                        child: Stack(
-                          fit: StackFit.expand,
+                  children: <Widget>[
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(data.yvtsTailan, style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
+                        SizedBox(height: 10.0),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Center(
-                              child: Text(
-                                'Биелсэн',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Color.fromRGBO(
-                                        255, 255, 255, 1),
-                                    fontSize: 16,
-                                    fontWeight:
-                                    FontWeight.w400),
-                              ),
-                            ),
+                            Expanded(flex: 2, child: Text('Явцын огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
+                            Expanded(flex: 4, child: Text(date(data.yvntsOgnoo), style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                           ],
                         ),
-                      ),
-                      onPressed: () {},
-
+                        SizedBox(height: 10.0),
+                      ],
                     ),
-                  ),
-                ],
 
+                  ],
+
+                ),
               ),
 
             ],

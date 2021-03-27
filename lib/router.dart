@@ -11,6 +11,9 @@ import './ui/views/page/news.dart';
 import './ui/views/page/shuurhai_ajil.dart';
 import './ui/views/page/ZG_vil_ajilganii_hutulbur.dart';
 import './ui/views/page/law/zasgiin_gazriin_togtool.dart';
+import './ui/views/page/law/MGL_huuli.dart';
+import './ui/views/page/law/dvrem_juram.dart';
+import './ui/views/page/law/ih_hural.dart';
 import './ui/views/page/law/bodlogiin_barimt_bichig.dart';
 import './ui/views/page/statistic/export.dart';
 import './ui/views/page/statistic/olborlolt.dart';
@@ -40,6 +43,9 @@ class Router {
     '/main': (context) => mainScreen(),
     '/news': (context) => News(),
     '/law': (context) => zasgiin_gazriin_togtool(),
+    '/hural': (context) => IH_hural(),
+    '/mgl': (context) => MGLhuuli(),
+    '/dvrem': (context) => DvremJuram(),
     '/bodlogo_b_b': (context) => bodlogiin_b_b(),
     '/export': (context) => Export(),
     '/olborlolt': (context) => Olborlolt(),

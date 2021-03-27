@@ -19,19 +19,14 @@ import 'package:vector_math/vector_math_64.dart' as math;
 
 import '../../main.dart';
 
-class law {
-  final String title;
-  final String shortDesc;
-  final String created_at;
-  final String file;
+//PAGINATION
+import 'package:catalog/utils/date.dart';
+import 'package:catalog/ui/common/paginate.dart';
 
-  law(
-      this.title,
-      this.shortDesc,
-      this.created_at,
-      this.file,
-      );
-}
+//GRAPHQL
+import 'package:catalog/graphql/config.dart';
+import 'package:catalog/graphql/queries/huuli_togtoolmj.dart';
+
 class zasgiin_gazriin_togtool extends StatefulWidget {
   @override
   _zasgiin_gazriin_togtoolState createState() => _zasgiin_gazriin_togtoolState();
@@ -39,23 +34,32 @@ class zasgiin_gazriin_togtool extends StatefulWidget {
 }
 class _zasgiin_gazriin_togtoolState extends State<zasgiin_gazriin_togtool> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  NetworkUtil _http = new NetworkUtil();
+
+  List<PaginatezgTogtool$Query$Paginate$AaZgTogtool> huuls = [];
   bool loading = true;
+  int currentPage = 1;
+  int lastPage = 0;
+  int total = 0;
 
+  @override
+  void initState() {
+    super.initState();
+    getData(1);
+  }
 
-
-  final List<law> laws = [
-    law("Үйлдвэрлэл технологийн паркийн эрх зүйн байдлын тухай", "2.1 Үйлдвэрлэл технологийн паркийн эрх зүйн байдлын тухай", "2020-12-01",
-        "http://www.africau.edu/images/default/sample.pdf"
-    ),
-    law("Үйлдвэрлэл технологийн паркийн эрх зүйн байдлын тухай", "2.1 Үйлдвэрлэл технологийн паркийн эрх зүйн байдлын тухай", "2020-12-01",
-        "http://www.africau.edu/images/default/sample.pdf"
-    ),
-    law("Үйлдвэрлэл технологийн паркийн эрх зүйн байдлын тухай", "2.1 Үйлдвэрлэл технологийн паркийн эрх зүйн байдлын тухай", "2020-12-01",
-        "http://www.africau.edu/images/default/sample.pdf"
-    ),
-  ];
-
+  void getData(int page) async {
+    setState(() {
+      loading = true;
+    });
+    final response = await client.execute(PaginatezgTogtoolQuery(variables: PaginatezgTogtoolArguments(page: page, size: 10)));
+    setState(() {
+      huuls = response.data.paginate.aaZgTogtool;
+      currentPage = page;
+      lastPage = response.data.paginate.lastPage;
+      total = response.data.paginate.total;
+      loading = false;
+    });
+  }
 
   _launchURL(String url) async {
     if (await canLaunch(url)) {
@@ -65,9 +69,39 @@ class _zasgiin_gazriin_togtoolState extends State<zasgiin_gazriin_togtool> {
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
+  Widget buildTripCard(BuildContext context, int index) {
+    final law = huuls[index];
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.symmetric(horizontal: 0.0),
+      child: ListTile(
+        title: Text(law.togtool, style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.w600)),
+        subtitle: new Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0, top: 5.0),
+                child: new Text(law.zaalt,  style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w400)),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  Icon(Icons.today, size: 14, color: mainColor),
+                  //Text(' ${law.created_at}',  style: new TextStyle(fontSize: 12.0, fontWeight: FontWeight.normal)),
+                  Text('2020-12-01',  style: new TextStyle(fontSize: 12.0, fontWeight: FontWeight.normal)),
+                ],
+              )
+            ]
+        ),
+        trailing: Icon(Icons.picture_as_pdf, color: Colors.red,),
+        onTap: (){
+          _launchURL('${law.holboos}');
+          //_launchURL('${_http.dio.options.baseUrl}${law.holboos}');
+        },
+      ),
+    );
   }
 
   @override
@@ -91,15 +125,23 @@ class _zasgiin_gazriin_togtoolState extends State<zasgiin_gazriin_togtool> {
         child: Icon(Feather.getIconData('search')),
         backgroundColor: mainColor,
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.all(0.0),
-        child: ListView.builder(
-          itemCount: laws == null ? 0 : laws.length,
-          itemBuilder: (BuildContext context, int index) =>
-              buildTripCard(context, index),
-        ),
-      )
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          height: double.infinity,
+          padding: EdgeInsets.all(0.0),
+          child: loading ? Loader() : Pagination(
+            lastPage: lastPage,
+            currentPage: currentPage,
+            total: total,
+            loading: loading,
+            getData: getData,
+            itemBuilder: ListView.builder(
+              itemCount: huuls == null ? 0 : huuls.length,
+              itemBuilder: (BuildContext context, int index) =>
+                  buildTripCard(context, index),
+            ),
+          ),
+        )
     );
 
   }
@@ -209,39 +251,6 @@ class _zasgiin_gazriin_togtoolState extends State<zasgiin_gazriin_togtool> {
     });
   }
 
-  Widget buildTripCard(BuildContext context, int index) {
-    final law = laws[index];
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.symmetric(horizontal: 0.0),
-      child: ListTile(
-        title: Text(law.title, style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.w600)),
-        subtitle: new Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0, top: 5.0),
-                child: new Text(law.shortDesc,  style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w400)),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  Icon(Icons.today, size: 14, color: mainColor),
-                  Text(' ${law.created_at}',  style: new TextStyle(fontSize: 12.0, fontWeight: FontWeight.normal)),
-                ],
-              )
-            ]
-        ),
-        trailing: Icon(Icons.picture_as_pdf, color: Colors.red,),
-        onTap: (){
-          _launchURL('${law.file}');
-//          _launchURL('${_http.dio.options.baseUrl}${law.file}');
-        },
-      ),
-    );
-  }
 }
 
 

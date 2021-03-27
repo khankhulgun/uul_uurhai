@@ -1,4 +1,5 @@
 import 'package:catalog/ui/components/header.dart';
+import 'package:catalog/utils/number.dart';
 import 'package:flutter/material.dart';
 import 'package:catalog/ui/components/map_widgets/esri_icons_icons.dart';
 import 'package:catalog/ui/styles/_colors.dart';
@@ -15,28 +16,17 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+//PAGINATION
+import 'package:catalog/utils/date.dart';
+import 'package:catalog/ui/common/paginate.dart';
+
+//GRAPHQL
+import 'package:catalog/graphql/config.dart';
+import 'package:catalog/graphql/queries/statistic_medee.dart';
 
 import '../../main.dart';
 
-class ex_port{
-  final String boomt;
-  final String created_at;
-  final String turul;
-  final String hemjee;
-  final String company;
-  final String teever;
-  final String eh_survalj;
 
-  ex_port(
-      this.boomt,
-      this.created_at,
-      this.turul,
-      this.hemjee,
-      this.company,
-      this.teever,
-      this.eh_survalj,
-      );
-}
 
 class Olborlolt extends StatefulWidget {
   @override
@@ -46,8 +36,33 @@ class Olborlolt extends StatefulWidget {
 class _OlborloltState extends State<Olborlolt> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   NetworkUtil _http = new NetworkUtil();
-  bool loading = true;
 
+  List<OlborloltMedee$Query$Paginate$DsOlborloltMedee> olborlolt = [];
+
+  bool loading = true;
+  int currentPage = 1;
+  int lastPage = 0;
+  int total = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    getData(1);
+  }
+
+  void getData(int page) async {
+    setState(() {
+      loading = true;
+    });
+    final response = await client.execute(OlborloltMedeeQuery(variables: OlborloltMedeeArguments(page: page, size: 10)));
+    setState(() {
+      olborlolt = response.data.paginate.dsOlborloltMedee;
+      currentPage = page;
+      lastPage = response.data.paginate.lastPage;
+      total = response.data.paginate.total;
+      loading = false;
+    });
+  }
 
   bool _isExpanded = false;
 
@@ -57,19 +72,6 @@ class _OlborloltState extends State<Olborlolt> {
       _isExpanded = !_isExpanded;
     });
   }
-
-  @override
-  void initState() {
-    super.initState();
-  }
-  final List<ex_port> exports = [
-    ex_port("Өмнөговь", "2020-01-19",  "Нүүрс",  "5,799",  "Тийсс ХХК",  "Авто тээвэр", "Тийсс ХХК"),
-    ex_port("Өмнөговь", "2020-01-19",  "Нүүрс",  "5,799",  "Тийсс ХХК",  "Авто тээвэр", "Тийсс ХХК"),
-    ex_port("Өмнөговь", "2020-01-19",  "Нүүрс",  "5,799",  "Тийсс ХХК",  "Авто тээвэр", "Тийсс ХХК"),
-    ex_port("Өмнөговь", "2020-01-19",  "Нүүрс",  "5,799",  "Тийсс ХХК",  "Авто тээвэр", "Тийсс ХХК"),
-    ex_port("Өмнөговь", "2020-01-19",  "Нүүрс",  "5,799",  "Тийсс ХХК",  "Авто тээвэр", "Тийсс ХХК"),
-  ];
-
 
   @override
   Widget build(BuildContext context) {
@@ -92,15 +94,25 @@ class _OlborloltState extends State<Olborlolt> {
         child: Icon(Feather.getIconData('search')),
         backgroundColor: mainColor,
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.only(left: 10.0, right: 10.0),
-        child: ListView.builder(
-          itemCount: exports == null ? 0 : exports.length,
-          itemBuilder: (BuildContext context, int index) =>
-              buildTripCard(context, index),
-        ),
-      ),
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.all(0.0),
+          //padding: EdgeInsets.only(left: 10.0, right: 10.0),
+          height: double.infinity,
+          margin: EdgeInsets.all(0.0),
+          child: loading ? Loader() : Pagination(
+            lastPage: lastPage,
+            currentPage: currentPage,
+            total: total,
+            loading: loading,
+            getData: getData,
+            itemBuilder: ListView.builder(
+              itemCount: olborlolt == null ? 0 : olborlolt.length,
+              itemBuilder: (BuildContext context, int index) =>
+                  buildTripCard(context, index),
+            ),
+          ),
+        )
     );
 
   }
@@ -206,7 +218,7 @@ class _OlborloltState extends State<Olborlolt> {
   }
 
   Widget buildTripCard(BuildContext context, int index) {
-    final ex_port = exports[index];
+    final ex_port = olborlolt[index];
     return Container(
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.symmetric(horizontal: 5.0),
@@ -231,7 +243,7 @@ class _OlborloltState extends State<Olborlolt> {
                 children: <Widget>[
                   Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
                   Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
-                  Expanded(flex: 4, child: Text(ex_port.created_at, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 4, child: Text(date(ex_port.ognoo), style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                   Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
@@ -243,7 +255,7 @@ class _OlborloltState extends State<Olborlolt> {
                   Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
                   Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                   Expanded(flex: 4, child: Text('Бүтээгдэхүүн:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 2,child: Text(ex_port.turul, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 2,child: Text(ex_port.buteegdehuun, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 2),
@@ -254,7 +266,7 @@ class _OlborloltState extends State<Olborlolt> {
                   Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
                   Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                   Expanded(flex: 4, child: Text('Олборлолтын хэмжээ:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 2, child: Text(ex_port.hemjee, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text(number(ex_port.olborloltHemjee), style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 2),
@@ -265,7 +277,7 @@ class _OlborloltState extends State<Olborlolt> {
                   Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
                   Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                   Expanded(flex: 4, child: Text('Олборлогч байгууллага:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 2, child: Text(ex_port.company, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text(ex_port.lbaiguullaga, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 2),
@@ -275,8 +287,8 @@ class _OlborloltState extends State<Olborlolt> {
                 children: <Widget>[
                   Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
                   Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
-                  Expanded(flex: 4, child: Text('Тээврийн хэрэгсэл:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 2, child: Text(ex_port.teever, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 4, child: Text('Нэгж:', style: TextStyle(color: textColor, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text(ex_port.negj, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 2),
@@ -285,12 +297,12 @@ class _OlborloltState extends State<Olborlolt> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(flex: 1, child: Text('Боомт:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 2, child: Text(ex_port.boomt, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                   Expanded(flex: 4, child: Padding(
                     padding: const EdgeInsets.only(right: 10.0),
                     child: Text('Эх сурвалж:', textAlign: TextAlign.right, style: TextStyle(color: textColor, fontSize: 12),),
                   )),
-                  Expanded(flex: 2, child: Text(ex_port.eh_survalj, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
             ],

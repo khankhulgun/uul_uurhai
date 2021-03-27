@@ -1,4 +1,5 @@
 import 'package:catalog/ui/components/header.dart';
+import 'package:catalog/utils/number.dart';
 import 'package:flutter/material.dart';
 import 'package:catalog/ui/components/map_widgets/esri_icons_icons.dart';
 import 'package:catalog/ui/styles/_colors.dart';
@@ -18,25 +19,14 @@ import 'package:http/http.dart' as http;
 
 import '../../main.dart';
 
-class ex_port{
-  final String boomt;
-  final String created_at;
-  final String turul;
-  final String hemjee;
-  final String company;
-  final String teever;
-  final String eh_survalj;
+//PAGINATION
+import 'package:catalog/utils/date.dart';
+import 'package:catalog/ui/common/paginate.dart';
 
-  ex_port(
-      this.boomt,
-      this.created_at,
-      this.turul,
-      this.hemjee,
-      this.company,
-      this.teever,
-      this.eh_survalj,
-      );
-}
+//GRAPHQL
+import 'package:catalog/graphql/config.dart';
+import 'package:catalog/graphql/queries/statistic_medee.dart';
+
 
 class Export extends StatefulWidget {
   @override
@@ -46,7 +36,33 @@ class Export extends StatefulWidget {
 class _ExportState extends State<Export> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   NetworkUtil _http = new NetworkUtil();
+
+  List<ExportMedee$Query$Paginate$DsExportMedee> exports = [];
+
   bool loading = true;
+  int currentPage = 1;
+  int lastPage = 0;
+  int total = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    getData(1);
+  }
+
+  void getData(int page) async {
+    setState(() {
+      loading = true;
+    });
+    final response = await client.execute(ExportMedeeQuery(variables: ExportMedeeArguments(page: page, size: 10)));
+    setState(() {
+      exports = response.data.paginate.dsExportMedee;
+      currentPage = page;
+      lastPage = response.data.paginate.lastPage;
+      total = response.data.paginate.total;
+      loading = false;
+    });
+  }
 
 
   bool _isExpanded = false;
@@ -57,18 +73,6 @@ class _ExportState extends State<Export> {
       _isExpanded = !_isExpanded;
     });
   }
-
-  @override
-  void initState() {
-    super.initState();
-  }
-  final List<ex_port> exports = [
-    ex_port("Өмнөговь", "2020-01-19",  "Нүүрс",  "5,799",  "Тийсс ХХК",  "Авто тээвэр", "Тийсс ХХК"),
-    ex_port("Өмнөговь", "2020-01-19",  "Нүүрс",  "5,799",  "Тийсс ХХК",  "Авто тээвэр", "Тийсс ХХК"),
-    ex_port("Өмнөговь", "2020-01-19",  "Нүүрс",  "5,799",  "Тийсс ХХК",  "Авто тээвэр", "Тийсс ХХК"),
-    ex_port("Өмнөговь", "2020-01-19",  "Нүүрс",  "5,799",  "Тийсс ХХК",  "Авто тээвэр", "Тийсс ХХК"),
-    ex_port("Өмнөговь", "2020-01-19",  "Нүүрс",  "5,799",  "Тийсс ХХК",  "Авто тээвэр", "Тийсс ХХК"),
-  ];
 
 
   @override
@@ -92,15 +96,25 @@ class _ExportState extends State<Export> {
         child: Icon(Feather.getIconData('search')),
         backgroundColor: mainColor,
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.only(left: 10.0, right: 10.0),
-        child: ListView.builder(
-          itemCount: exports == null ? 0 : exports.length,
-          itemBuilder: (BuildContext context, int index) =>
-              buildTripCard(context, index),
-        ),
-      ),
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.all(0.0),
+          //padding: EdgeInsets.only(left: 10.0, right: 10.0),
+          height: double.infinity,
+          margin: EdgeInsets.all(0.0),
+          child: loading ? Loader() : Pagination(
+            lastPage: lastPage,
+            currentPage: currentPage,
+            total: total,
+            loading: loading,
+            getData: getData,
+            itemBuilder: ListView.builder(
+              itemCount: exports == null ? 0 : exports.length,
+              itemBuilder: (BuildContext context, int index) =>
+                  buildTripCard(context, index),
+            ),
+          ),
+        )
     );
 
   }
@@ -231,8 +245,19 @@ class _ExportState extends State<Export> {
                 children: <Widget>[
                   Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
                   Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
-                  Expanded(flex: 4, child: Text(ex_port.created_at, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 4, child: Text(date(ex_port.ognoo), style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                   Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                ],
+              ),
+              SizedBox(height: 2),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 4, child: Text('Код:', style: TextStyle(color: textColor, fontSize: 12),)),
+                  Expanded(flex: 2,child: Text(ex_port.code, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 2),
@@ -243,7 +268,7 @@ class _ExportState extends State<Export> {
                   Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
                   Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                   Expanded(flex: 4, child: Text('Бүтээгдэхүүн:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 2,child: Text(ex_port.turul, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 2,child: Text(ex_port.buteegdehuun, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 2),
@@ -254,7 +279,7 @@ class _ExportState extends State<Export> {
                   Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
                   Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                   Expanded(flex: 4, child: Text('Экспортын хэмжээ:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 2, child: Text(ex_port.hemjee, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text(number(ex_port.exportHemjee), style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 2),
@@ -265,7 +290,51 @@ class _ExportState extends State<Export> {
                   Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
                   Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                   Expanded(flex: 4, child: Text('Экспортлогч байгууллага:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 2, child: Text(ex_port.company, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text(ex_port.lbaiguullaga, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                ],
+              ),
+              SizedBox(height: 2),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 4, child: Text('Үнийн дүн:', style: TextStyle(color: textColor, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text('${number(ex_port.expUneDun)}', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                ],
+              ),
+              SizedBox(height: 2),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 4, child: Text('Тоо хэмжээ:', style: TextStyle(color: textColor, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text(number(ex_port.teeverToo), style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                ],
+              ),
+              SizedBox(height: 2),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 4, child: Text('Улс:', style: TextStyle(color: textColor, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text(ex_port.uls, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                ],
+              ),
+              SizedBox(height: 2),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 4, child: Text('Нэгж:', style: TextStyle(color: textColor, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text(ex_port.negj, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 2),
@@ -276,7 +345,7 @@ class _ExportState extends State<Export> {
                   Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
                   Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                   Expanded(flex: 4, child: Text('Тээврийн хэрэгсэл:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 2, child: Text(ex_port.teever, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text(ex_port.aHeregsel, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 2),
@@ -286,11 +355,11 @@ class _ExportState extends State<Export> {
                 children: <Widget>[
                   Expanded(flex: 1, child: Text('Боомт:', style: TextStyle(color: textColor, fontSize: 12),)),
                   Expanded(flex: 2, child: Text(ex_port.boomt, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
-                  Expanded(flex: 4, child: Padding(
+                  Expanded(flex: 2, child: Padding(
                     padding: const EdgeInsets.only(right: 10.0),
                     child: Text('Эх сурвалж:', textAlign: TextAlign.right, style: TextStyle(color: textColor, fontSize: 12),),
                   )),
-                  Expanded(flex: 2, child: Text(ex_port.eh_survalj, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 4, child: Text(ex_port.survalj, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
             ],

@@ -1,4 +1,5 @@
 import 'package:catalog/ui/components/header.dart';
+import 'package:catalog/utils/number.dart';
 import 'package:flutter/material.dart';
 import 'package:catalog/ui/components/map_widgets/esri_icons_icons.dart';
 import 'package:catalog/ui/styles/_colors.dart';
@@ -18,26 +19,12 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 
-import '../../main.dart';
+import 'package:catalog/utils/date.dart';
+import 'package:catalog/ui/common/paginate.dart';
 
-class data{
-  final String title;
-  final String hugatsaa;
-  final String hurunguEhVvswer;
-  final String tusuvtUrtug;
-  final String Heregjvvlegch;
-  final String desc;
-  final String huvi;
-  data(
-      this.title,
-      this.hugatsaa,
-      this.hurunguEhVvswer,
-      this.tusuvtUrtug,
-      this.Heregjvvlegch,
-      this.desc,
-      this.huvi,
-      );
-}
+//GRAPHQL
+import 'package:catalog/graphql/config.dart';
+import 'package:catalog/graphql/queries/heregjilt_guitsetgel.dart';
 
 class Hurungu_oruulalt extends StatefulWidget {
   @override
@@ -46,42 +33,32 @@ class Hurungu_oruulalt extends StatefulWidget {
 class _Hurungu_oruulaltState extends State<Hurungu_oruulalt> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   NetworkUtil _http = new NetworkUtil();
+  List<HorongoOruulaltTH$Query$Paginate$DsHorongoOruulaltTH> datas = [];
+
   bool loading = true;
+  int currentPage = 1;
+  int lastPage = 0;
+  int total = 0;
 
   @override
   void initState() {
     super.initState();
+    getData(1);
   }
-  final List<data> datas = [
-    data(
-      "“АЛТ-2” ХӨТӨЛБӨР",
-      "2021-2025",
-      "Гадаадын хөрөнгө оруулалт, олон улсын банк, санхүүгийн байгууллагын зээлээр",
-      "1,462,473.9 ",
-      "Монгол алт",
-      "БНХАУ-ын тал нүүрс тээврийн жолоочдыг хил нэвтрэх үед ковид-19-ийн шинжилгээнд хамрагдсан байхыг шаардсан. Энэ хүрээнд шуурхай ажлын хэсэг болон эмч, эмнэлгийн ажилчид хилийн бүсэд ажиллаж эхний ээлжинд 854 жолоочийг шинжилгээнд хамруулж хилээр нэвтрэх боломжийг бүрдүүллээ. 11 дүгээр сарын 23-ны байдлаар Гашуунсухайт боомтоор 211 нүүрс тээврийн, 95 зэсийн баяжмалын тээвэр, Шивээхүрэн боомтоор 216 нүүрсний тээврийн хэрэгсэл хилээр нэвтэрчээ. Цаашид 5000 орчим жолоочийг шинжилгээнд бүрэн хамруулахаар ажиллаж байна.",
-        "96"
-    ),
-    data(
-      "“АЛТ-2” ХӨТӨЛБӨР",
-      "2021-2025",
-      "Гадаадын хөрөнгө оруулалт, олон улсын банк, санхүүгийн байгууллагын зээлээр",
-      "1,462,473.9 ",
-      "Монгол алт",
-      "БНХАУ-ын тал нүүрс тээврийн жолоочдыг хил нэвтрэх үед ковид-19-ийн шинжилгээнд хамрагдсан байхыг шаардсан. Энэ хүрээнд шуурхай ажлын хэсэг болон эмч, эмнэлгийн ажилчид хилийн бүсэд ажиллаж эхний ээлжинд 854 жолоочийг шинжилгээнд хамруулж хилээр нэвтрэх боломжийг бүрдүүллээ. 11 дүгээр сарын 23-ны байдлаар Гашуунсухайт боомтоор 211 нүүрс тээврийн, 95 зэсийн баяжмалын тээвэр, Шивээхүрэн боомтоор 216 нүүрсний тээврийн хэрэгсэл хилээр нэвтэрчээ. Цаашид 5000 орчим жолоочийг шинжилгээнд бүрэн хамруулахаар ажиллаж байна.",
-        "96"
-    ),
-    data(
-      "“АЛТ-2” ХӨТӨЛБӨР",
-      "2021-2025",
-      "Гадаадын хөрөнгө оруулалт, олон улсын банк, санхүүгийн байгууллагын зээлээр",
-      "1,462,473.9 ",
-      "Монгол алт",
-      "БНХАУ-ын тал нүүрс тээврийн жолоочдыг хил нэвтрэх үед ковид-19-ийн шинжилгээнд хамрагдсан байхыг шаардсан. Энэ хүрээнд шуурхай ажлын хэсэг болон эмч, эмнэлгийн ажилчид хилийн бүсэд ажиллаж эхний ээлжинд 854 жолоочийг шинжилгээнд хамруулж хилээр нэвтрэх боломжийг бүрдүүллээ. 11 дүгээр сарын 23-ны байдлаар Гашуунсухайт боомтоор 211 нүүрс тээврийн, 95 зэсийн баяжмалын тээвэр, Шивээхүрэн боомтоор 216 нүүрсний тээврийн хэрэгсэл хилээр нэвтэрчээ. Цаашид 5000 орчим жолоочийг шинжилгээнд бүрэн хамруулахаар ажиллаж байна.",
-        "96"
-    ),
 
-  ];
+  void getData(int page) async {
+    setState(() {
+      loading = true;
+    });
+    final response = await client.execute(HorongoOruulaltTHQuery(variables: HorongoOruulaltTHArguments(page: page, size: 10)));
+    setState(() {
+      datas = response.data.paginate.dsHorongoOruulaltTH;
+      currentPage = page;
+      lastPage = response.data.paginate.lastPage;
+      total = response.data.paginate.total;
+      loading = false;
+    });
+  }
   bool _isVisible = false;
 
   void showToast() {
@@ -248,7 +225,7 @@ class _Hurungu_oruulaltState extends State<Hurungu_oruulalt> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(data.title, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 14),),
+                  Text(data.tosolNer, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 14),),
                   SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -281,7 +258,7 @@ class _Hurungu_oruulaltState extends State<Hurungu_oruulalt> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Expanded(flex: 2, child: Text('Хөрөнгийн эх үүсвэр:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                        Expanded(flex: 4, child: Text(data.hurunguEhVvswer, style: TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 12),)),
+                                        Expanded(flex: 4, child: Text(data.horongooruulalt, style: TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 12),)),
                                       ],
                                     ),
                                     SizedBox(height: 4),
@@ -290,7 +267,7 @@ class _Hurungu_oruulaltState extends State<Hurungu_oruulalt> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Expanded(flex: 2, child: Text('Төсөвт өртөг:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                        Expanded(flex: 4, child: Text(data.tusuvtUrtug, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                        Expanded(flex: 4, child: Text(number(data.tosovtOrtog), style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                       ],
                                     ),
                                     SizedBox(height: 4),
@@ -299,7 +276,16 @@ class _Hurungu_oruulaltState extends State<Hurungu_oruulalt> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Expanded(flex: 2, child: Text('Хэрэгжүүлэгч:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                        Expanded(flex: 4, child: Text(data.Heregjvvlegch, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                        Expanded(flex: 4, child: Text(data.heregjuulegch, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                      ],
+                                    ),
+                                    SizedBox(height: 4),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Expanded(flex: 2, child: Text('Төслийн зардал:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                        Expanded(flex: 4, child: Text(number(data.tosliinZardal), style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                       ],
                                     ),
                                   ],
@@ -312,16 +298,16 @@ class _Hurungu_oruulaltState extends State<Hurungu_oruulalt> {
                                   animationDuration: 1500,
                                   lineWidth: 4.0,
                                   animation: true,
-                                  percent: data.huvi != null ? int.parse(data.huvi) / 100 : 0,
+                                  percent: data.heregjiltHuvi != null ? int.parse(data.heregjiltHuvi) / 100 : 0,
                                   center: Text(
-                                    '${data.huvi}%',
+                                    '${data.heregjiltHuvi}%',
                                     style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w500,
-                                        color: Color(0xFF00E676)),
+                                        color: Color(0xfffcb85f)),
                                   ),
                                   circularStrokeCap: CircularStrokeCap.round,
-                                  progressColor: Color(0xFF00E676),
+                                  progressColor: Color(0xfffcb85f),
                                 ),
                               ),
 
@@ -333,29 +319,31 @@ class _Hurungu_oruulaltState extends State<Hurungu_oruulalt> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10.0),
                 ],
               ),
 
-              ExpansionTile(
+              Theme(
+                data: ThemeData().copyWith(dividerColor: Colors.transparent),
+                child: ExpansionTile(
 //                 backgroundColor: Colors.grey[50],
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Text('Хэрэгжилт', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
-                  ],
-                ),
-                children: <Widget>[
-                  Column(
+                  title: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(data.desc, style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
-                      SizedBox(height: 10.0),
+                      Text('Хэрэгжилт', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
                     ],
                   ),
-                ],
+                  children: <Widget>[
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(data.hBaidal, style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
+                        SizedBox(height: 10.0),
+                      ],
+                    ),
+                  ],
 
+                ),
               ),
 
             ],

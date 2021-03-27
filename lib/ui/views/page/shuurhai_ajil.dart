@@ -52,7 +52,7 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
     setState(() {
       loading = true;
     });
-    final response = await client.execute(ShuurkhaiAjilQuery(variables: ShuurkhaiAjilArguments(page: page, size: 4)));
+    final response = await client.execute(ShuurkhaiAjilQuery(variables: ShuurkhaiAjilArguments(page: page, size: 10)));
 
     setState(() {
       shuurhais = response.data.paginate.dsShuurkhaiAjil;
@@ -128,19 +128,21 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
-                              color: Colors.greenAccent[700],),
+                                color: shuurhai.status == 'Биелсэн' ? Color(0xFF00E676) : Color(0xfffcb85f)
+                            ),
                           ),
                           footer: Text(
-                            'Биелсэн',
+                            shuurhai.status,
                             style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 14,
-                              color: Colors.greenAccent[700],),
+                                fontWeight: FontWeight.w500,
+                                fontSize: 10,
+                                color: shuurhai.status == 'Биелсэн' ? Color(0xFF00E676) : Color(0xfffcb85f)
+                            ),
                           ),
                           circularStrokeCap: CircularStrokeCap.round,
 //                            progressColor: currentProgressColor(),
 
-                          progressColor: Colors.greenAccent[700],
+                          progressColor: shuurhai.status == 'Биелсэн' ? Color(0xFF00E676) : Color(0xfffcb85f),
                         ),
                       ),
 
@@ -178,81 +180,83 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10.0),
                 ],
               ),
 
-              ExpansionTile(
+              Theme(
+                data: ThemeData().copyWith(dividerColor: Colors.transparent),
+                child: ExpansionTile(
 //                 backgroundColor: Colors.grey[50],
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Text('Хэрэгжилт', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
-                  ],
-                ),
-                children: <Widget>[
-                  Column(
+                  title: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(shuurhai.ajil, style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
-                      SizedBox(height: 10.0),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 2, child: Text('Хэрэгжүүлсэн огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
-                          Expanded(flex: 4, child: Text('${shuurhai.ognoo}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 5.0),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 2, child: Text('Хэрэгжилтийн хувь:', style: TextStyle(color: textColor, fontSize: 12),)),
-                          Expanded(flex: 4, child: Text('76%', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 10.0),
+                      Text('Хэрэгжилт', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
                     ],
                   ),
-
-                  Container(
-                    height: 30,
-                    margin: EdgeInsets.only(top: 10, bottom: 20),
-                    decoration: BoxDecoration(
-                      color: Colors.greenAccent[700],
-                      borderRadius:
-                      new BorderRadius.circular(10.0),
-                    ),
-                    child: FlatButton(
-                      child: Container(
-                        child: Stack(
-                          fit: StackFit.expand,
+                  children: <Widget>[
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(shuurhai.ajil, style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
+                        SizedBox(height: 10.0),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Center(
-                              child: Text(
-                                'Биелсэн',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Color.fromRGBO(
-                                        255, 255, 255, 1),
-                                    fontSize: 16,
-                                    fontWeight:
-                                    FontWeight.w400),
-                              ),
-                            ),
+                            Expanded(flex: 2, child: Text('Хэрэгжүүлсэн огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
+                            Expanded(flex: 4, child: Text('${shuurhai.ognoo}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                           ],
                         ),
-                      ),
-                      onPressed: () {},
-
+                        SizedBox(height: 5.0),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Expanded(flex: 2, child: Text('Хэрэгжилтийн хувь:', style: TextStyle(color: textColor, fontSize: 12),)),
+                            Expanded(flex: 4, child: Text('50%', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                          ],
+                        ),
+                        SizedBox(height: 10.0),
+                      ],
                     ),
-                  ),
 
-                ],
+                    // Container(
+                    //   height: 30,
+                    //   margin: EdgeInsets.only(top: 10, bottom: 20),
+                    //   decoration: BoxDecoration(
+                    //     color: Colors.greenAccent[700],
+                    //     borderRadius:
+                    //     new BorderRadius.circular(10.0),
+                    //   ),
+                    //   child: FlatButton(
+                    //     child: Container(
+                    //       child: Stack(
+                    //         fit: StackFit.expand,
+                    //         children: <Widget>[
+                    //           Center(
+                    //             child: Text(
+                    //               'Биелсэн',
+                    //               textAlign: TextAlign.center,
+                    //               style: TextStyle(
+                    //                   color: Color.fromRGBO(
+                    //                       255, 255, 255, 1),
+                    //                   fontSize: 16,
+                    //                   fontWeight:
+                    //                   FontWeight.w400),
+                    //             ),
+                    //           ),
+                    //         ],
+                    //       ),
+                    //     ),
+                    //     onPressed: () {},
+                    //
+                    //   ),
+                    // ),
 
+                  ],
+
+                ),
               ),
 
             ],

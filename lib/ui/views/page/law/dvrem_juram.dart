@@ -27,36 +27,15 @@ import 'package:catalog/ui/common/paginate.dart';
 import 'package:catalog/graphql/config.dart';
 import 'package:catalog/graphql/queries/huuli_togtoolmj.dart';
 
-
-class law {
-  final String title;
-  final String salbar;
-  final String hugatsaa;
-  final String batlagdanOgnoo;
-  final String toot;
-  final String file;
-  final String created_at;
-
-  law(
-      this.title,
-      this.salbar,
-      this.hugatsaa,
-      this.batlagdanOgnoo,
-      this.toot,
-      this.file,
-      this.created_at,
-      );
-}
-class bodlogiin_b_b extends StatefulWidget {
+class DvremJuram extends StatefulWidget {
   @override
-  _zasgiin_gazriin_togtoolState createState() => _zasgiin_gazriin_togtoolState();
+  _DvremJuramState createState() => _DvremJuramState();
 
 }
-class _zasgiin_gazriin_togtoolState extends State<bodlogiin_b_b> {
+class _DvremJuramState extends State<DvremJuram> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   NetworkUtil _http = new NetworkUtil();
-
-  List<Paginatebodbarbichig$Query$Paginate$DsBodlogoBarimtBichig> barimtbichig = [];
+  List<PaginateduremJuram$Query$Paginate$DsDuremJuram> huuls = [];
   bool loading = true;
   int currentPage = 1;
   int lastPage = 0;
@@ -72,15 +51,16 @@ class _zasgiin_gazriin_togtoolState extends State<bodlogiin_b_b> {
     setState(() {
       loading = true;
     });
-    final response = await client.execute(PaginatebodbarbichigQuery(variables: PaginatebodbarbichigArguments(page: page, size: 10)));
+    final response = await client.execute(PaginateduremJuramQuery(variables: PaginateduremJuramArguments(page: page, size: 10)));
     setState(() {
-      barimtbichig = response.data.paginate.dsBodlogoBarimtBichig;
+      huuls = response.data.paginate.dsDuremJuram;
       currentPage = page;
       lastPage = response.data.paginate.lastPage;
       total = response.data.paginate.total;
       loading = false;
     });
   }
+
   _launchURL(String url) async {
     if (await canLaunch(url)) {
       await launch(url);
@@ -90,59 +70,33 @@ class _zasgiin_gazriin_togtoolState extends State<bodlogiin_b_b> {
   }
 
   Widget buildTripCard(BuildContext context, int index) {
-    final law = barimtbichig[index];
+    final law = huuls[index];
     return Container(
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.symmetric(horizontal: 0.0),
       child: ListTile(
-        title: Text(law.ner, style: TextStyle(fontSize: 14, color: Colors.black87, fontWeight: FontWeight.w600)),
+        title: Text(law.akt, style: TextStyle(fontSize: 14, color: Colors.black87, fontWeight: FontWeight.w600)),
         subtitle: new Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               SizedBox(height: 10.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(flex: 2, child: Text('Салбар:',  style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w400))),
-                  Expanded(flex: 3, child: Text(law.salbar,  style: TextStyle(fontSize: 12, color: mainColor, fontWeight: FontWeight.w600)))
-                ],
-              ),
-              SizedBox(height: 5.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(flex: 2, child: Text('Төлөвлөгөөт хугацаа:',  style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w400))),
-                  Expanded(flex: 3, child: Text('${law.tHugatsaa}',  style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w600)))
-                ],
-              ),
-              SizedBox(height: 5.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(flex: 2, child: Text('Батлагдсан огноо:',  style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w400))),
-                  Expanded(flex: 3, child: Text(date(law.bOgnoo),  style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w600)))
-                ],
-              ),
-              SizedBox(height: 5.0),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(flex: 4, child: Text('Тушаалын дугаар:',  style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w400))),
-                  Expanded(flex: 3, child: Text('${law.tShDugaar}',  style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w600))),
+                  Expanded(flex: 3, child: Text('${law.dugaar}',  style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w600))),
                   Expanded(
                       flex: 3,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
-                          // Icon(Icons.calendar_today, size: 14, color: mainColor),
-                          // SizedBox(width: 4,),
-                          // Text('${law.created_at}',  style: new TextStyle(fontSize: 12.0, fontWeight: FontWeight.normal)),
+                          Icon(Icons.calendar_today, size: 14, color: mainColor),
+                          SizedBox(width: 4,),
+                          Text(date(law.ognoo),  style: new TextStyle(fontSize: 12.0, fontWeight: FontWeight.normal)),
                         ],
                       )
                   )
@@ -153,8 +107,7 @@ class _zasgiin_gazriin_togtoolState extends State<bodlogiin_b_b> {
         ),
         trailing: Icon(Icons.picture_as_pdf, color: Colors.red,),
         onTap: (){
-          _launchURL('${law.holboos}');
-//          _launchURL('${_http.dio.options.baseUrl}${law.file}');
+          _launchURL('${_http.dio.options.baseUrl}${law.file}');
         },
       ),
     );
@@ -163,28 +116,29 @@ class _zasgiin_gazriin_togtoolState extends State<bodlogiin_b_b> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      key: _scaffoldKey,
-      drawer: Drawer(
-        elevation: 5,
-        child: SidebarScreen(),
-      ),
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50.0),
-        child: Header(
-          title: "ХУУЛЬ ТОГТООМЖ / Бодлогын баримт бичиг",
-          scaffold: _scaffoldKey,
+        backgroundColor: Colors.white,
+        key: _scaffoldKey,
+        drawer: Drawer(
+          elevation: 5,
+          child: SidebarScreen(),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _onButtonPressed(),
-        child: Icon(Feather.getIconData('search')),
-        backgroundColor: mainColor,
-      ),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(50.0),
+          child: Header(
+            title: "ХУУЛЬ ТОГТООМЖ / МУ-н",
+            scaffold: _scaffoldKey,
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => _onButtonPressed(),
+          child: Icon(Feather.getIconData('search')),
+          backgroundColor: mainColor,
+        ),
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: double.infinity,
           padding: EdgeInsets.all(0.0),
+          margin: EdgeInsets.all(0.0),
           child: loading ? Loader() : Pagination(
             lastPage: lastPage,
             currentPage: currentPage,
@@ -192,7 +146,7 @@ class _zasgiin_gazriin_togtoolState extends State<bodlogiin_b_b> {
             loading: loading,
             getData: getData,
             itemBuilder: ListView.builder(
-              itemCount: barimtbichig == null ? 0 : barimtbichig.length,
+              itemCount: huuls == null ? 0 : huuls.length,
               itemBuilder: (BuildContext context, int index) =>
                   buildTripCard(context, index),
             ),
@@ -201,6 +155,7 @@ class _zasgiin_gazriin_togtoolState extends State<bodlogiin_b_b> {
     );
 
   }
+
 
   void _onButtonPressed() {
     showModalBottomSheet(
@@ -305,6 +260,7 @@ class _zasgiin_gazriin_togtoolState extends State<bodlogiin_b_b> {
       });
     });
   }
+
 }
 
 

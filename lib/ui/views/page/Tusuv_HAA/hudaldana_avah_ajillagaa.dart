@@ -1,4 +1,5 @@
 import 'package:catalog/ui/components/header.dart';
+import 'package:catalog/utils/number.dart';
 import 'package:flutter/material.dart';
 import 'package:catalog/ui/components/map_widgets/esri_icons_icons.dart';
 import 'package:catalog/ui/styles/_colors.dart';
@@ -16,25 +17,15 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 
-import '../../main.dart';
+//PAGINATION
+import 'package:catalog/utils/date.dart';
+import 'package:catalog/ui/common/paginate.dart';
 
-class ex_port{
-  final String title;
-  final String turulZardal;
-  final String created_at;
-  final String tusuv;
-  final String gereeniidvn;
-  final String gvitsetgegch;
+//GRAPHQL
+import 'package:catalog/graphql/config.dart';
+import 'package:catalog/graphql/queries/tusuv_hudav_ajilgaa.dart';
 
-  ex_port(
-      this.title,
-      this.turulZardal,
-      this.created_at,
-      this.tusuv,
-      this.gereeniidvn,
-      this.gvitsetgegch,
-      );
-}
+
 
 class Buy extends StatefulWidget {
   @override
@@ -44,8 +35,33 @@ class Buy extends StatefulWidget {
 class _BuyState extends State<Buy> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   NetworkUtil _http = new NetworkUtil();
-  bool loading = true;
 
+  List<HudaldanAvahAjilgaa$Query$Paginate$DsHudaldanAvahAjilgaa> buys = [];
+
+  bool loading = true;
+  int currentPage = 1;
+  int lastPage = 0;
+  int total = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    getData(1);
+  }
+
+  void getData(int page) async {
+    setState(() {
+      loading = true;
+    });
+    final response = await client.execute(HudaldanAvahAjilgaaQuery(variables: HudaldanAvahAjilgaaArguments(page: page, size: 10)));
+    setState(() {
+      buys = response.data.paginate.dsHudaldanAvahAjilgaa;
+      currentPage = page;
+      lastPage = response.data.paginate.lastPage;
+      total = response.data.paginate.total;
+      loading = false;
+    });
+  }
 
   bool _isExpanded = false;
 
@@ -56,16 +72,6 @@ class _BuyState extends State<Buy> {
     });
   }
 
-  @override
-  void initState() {
-    super.initState();
-  }
-  final List<ex_port> exports = [
-    ex_port("Багц-2. Бичгийн хэргийн материал", "Урсгал зардал", "2020-01-19",  "1,462,473.9 ",  "1,462,47.9 ",  "Чирун ХХК"),
-    ex_port("Багц-2. Бичгийн хэргийн материал", "Урсгал зардал", "2020-01-19",  "1,462,473.9 ",  "1,462,47.9 ",  "Чирун ХХК"),
-    ex_port("Багц-2. Бичгийн хэргийн материал", "Урсгал зардал", "2020-01-19",  "1,462,473.9 ",  "1,462,47.9 ",  "Чирун ХХК"),
-    ex_port("Багц-2. Бичгийн хэргийн материал", "Урсгал зардал", "2020-01-19",  "1,462,473.9 ",  "1,462,47.9 ",  "Чирун ХХК"),
-  ];
 
 
   @override
@@ -89,15 +95,25 @@ class _BuyState extends State<Buy> {
         child: Icon(Feather.getIconData('search')),
         backgroundColor: mainColor,
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.only(left: 10.0, right: 10.0),
-        child: ListView.builder(
-          itemCount: exports == null ? 0 : exports.length,
-          itemBuilder: (BuildContext context, int index) =>
-              buildTripCard(context, index),
-        ),
-      ),
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.all(0.0),
+          //padding: EdgeInsets.only(left: 10.0, right: 10.0),
+          height: double.infinity,
+          margin: EdgeInsets.all(0.0),
+          child: loading ? Loader() : Pagination(
+            lastPage: lastPage,
+            currentPage: currentPage,
+            total: total,
+            loading: loading,
+            getData: getData,
+            itemBuilder: ListView.builder(
+              itemCount: buys == null ? 0 : buys.length,
+              itemBuilder: (BuildContext context, int index) =>
+                  buildTripCard(context, index),
+            ),
+          ),
+        )
     );
 
   }
@@ -199,7 +215,7 @@ class _BuyState extends State<Buy> {
 
 
   Widget buildTripCard(BuildContext context, int index) {
-    final ex_port = exports[index];
+    final ex_port = buys[index];
     return Container(
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.symmetric(horizontal: 5.0),
@@ -217,7 +233,7 @@ class _BuyState extends State<Buy> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(ex_port.title, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),),
+              //Text('${ex_port.b_u_ner}', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),),
               SizedBox(height: 2),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -227,7 +243,7 @@ class _BuyState extends State<Buy> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Expanded(flex: 4, child: Text('Худалдан авалтын төрөл:', style: TextStyle(color: textColor, fontSize: 12),)),
-                      Expanded(flex: 4, child: Text(ex_port.turulZardal, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                      Expanded(flex: 4, child: Text(ex_port.haaTorol, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                     ],
                   ),
                   SizedBox(height: 2),
@@ -236,7 +252,7 @@ class _BuyState extends State<Buy> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Expanded(flex: 4, child: Text('Огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
-                      Expanded(flex: 4, child: Text(ex_port.created_at, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                      Expanded(flex: 4, child: Text(date(ex_port.ognoo), style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                     ],
                   ),
                   SizedBox(height: 2),
@@ -245,7 +261,7 @@ class _BuyState extends State<Buy> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Expanded(flex: 4, child: Text('Батлагдсан төсөвт өртөг:', style: TextStyle(color: textColor, fontSize: 12),)),
-                      Expanded(flex: 4, child: Text(ex_port.tusuv, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                      Expanded(flex: 4, child: Text(number(ex_port.batlagdsanOrtogOrtov), style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                     ],
                   ),
                   SizedBox(height: 2),
@@ -254,7 +270,7 @@ class _BuyState extends State<Buy> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Expanded(flex: 4, child: Text('Гэрээний дүн:', style: TextStyle(color: textColor, fontSize: 12),)),
-                      Expanded(flex: 4, child: Text(ex_port.gereeniidvn, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                      Expanded(flex: 4, child: Text(number(ex_port.gereenDun), style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                     ],
                   ),
                   SizedBox(height: 2),
@@ -263,11 +279,15 @@ class _BuyState extends State<Buy> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Expanded(flex: 4, child: Text('Гүйцэтгэгч:', style: TextStyle(color: textColor, fontSize: 12),)),
-                      Expanded(flex: 4, child: Text(ex_port.gvitsetgegch, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                      Expanded(flex: 4, child: Text(ex_port.guitsetgegchB, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                     ],
                   ),
                   SizedBox(height: 2),
                 ],
+              ),
+              Html(
+                data: ex_port.tailbar,
+                defaultTextStyle: TextStyle(fontSize: 12,),
               ),
             ],
           ),

@@ -1,4 +1,5 @@
 import 'package:catalog/ui/components/header.dart';
+import 'package:catalog/utils/number.dart';
 import 'package:flutter/material.dart';
 import 'package:catalog/ui/components/map_widgets/esri_icons_icons.dart';
 import 'package:catalog/ui/styles/_colors.dart';
@@ -16,25 +17,16 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+//PAGINATION
+import 'package:catalog/utils/date.dart';
+import 'package:catalog/ui/common/paginate.dart';
+
+//GRAPHQL
+import 'package:catalog/graphql/config.dart';
+import 'package:catalog/graphql/queries/tusuv_hudav_ajilgaa.dart';
 
 import '../../main.dart';
 
-class zarlaga{
-  final String title;
-  final String created_at;
-  final String batlagdsanTusuv;
-  final String todotgosonTusuv;
-  final String ussunDvn;
-  final String huvi;
-  zarlaga(
-      this.title,
-      this.created_at,
-      this.batlagdsanTusuv,
-      this.todotgosonTusuv,
-      this.ussunDvn,
-      this.huvi,
-      );
-}
 
 class Zarlaga extends StatefulWidget {
   @override
@@ -44,22 +36,35 @@ class Zarlaga extends StatefulWidget {
 class _ZarlagaState extends State<Zarlaga> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   NetworkUtil _http = new NetworkUtil();
+
+  List<PaginatetosovZarlaga$Query$Paginate$DsTosovZarlaga> zarlagas = [];
+
   bool loading = true;
+  int currentPage = 1;
+  int lastPage = 0;
+  int total = 0;
 
-
+  bool _isVisible = false;
 
   @override
   void initState() {
     super.initState();
+    getData(1);
   }
-  final List<zarlaga> zarlaguud = [
-    zarlaga("УУХҮЯ-ны зардал", "2020-01-19",  "1,462,473.9",  "1,462,47.9 ", "1,462,473.9",  "79.8"),
-    zarlaga("АМГТГ-ын зардал", "2020-01-19",  "1,462,473.9",  "1,462,47.9 ", "1,462,473.9",  "79.8"),
-    zarlaga("АМГТГ-ын зардал", "2020-01-19",  "1,462,473.9",  "1,462,47.9 ", "1,462,473.9",  "79.8"),
-    zarlaga("АМГТГ-ын зардал", "2020-01-19",  "1,462,473.9",  "1,462,47.9 ", "1,462,473.9",  "79.8"),
-    zarlaga("АМГТГ-ын зардал", "2020-01-19",  "1,462,473.9",  "1,462,47.9 ", "1,462,473.9",  "79.8"),
-  ];
-  bool _isVisible = false;
+
+  void getData(int page) async {
+    setState(() {
+      loading = true;
+    });
+    final response = await client.execute(PaginatetosovZarlagaQuery(variables: PaginatetosovZarlagaArguments(page: page, size: 10)));
+    setState(() {
+      zarlagas = response.data.paginate.dsTosovZarlaga;
+      currentPage = page;
+      lastPage = response.data.paginate.lastPage;
+      total = response.data.paginate.total;
+      loading = false;
+    });
+  }
 
   void showToast() {
     setState(() {
@@ -88,15 +93,25 @@ class _ZarlagaState extends State<Zarlaga> {
         child: Icon(Feather.getIconData('search')),
         backgroundColor: mainColor,
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.only(left: 10.0, right: 10.0),
-        child: ListView.builder(
-          itemCount: zarlaguud == null ? 0 : zarlaguud.length,
-          itemBuilder: (BuildContext context, int index) =>
-              buildTripCard(context, index),
-        ),
-      ),
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.all(0.0),
+          //padding: EdgeInsets.only(left: 10.0, right: 10.0),
+          height: double.infinity,
+          margin: EdgeInsets.all(0.0),
+          child: loading ? Loader() : Pagination(
+            lastPage: lastPage,
+            currentPage: currentPage,
+            total: total,
+            loading: loading,
+            getData: getData,
+            itemBuilder: ListView.builder(
+              itemCount: zarlagas == null ? 0 : zarlagas.length,
+              itemBuilder: (BuildContext context, int index) =>
+                  buildTripCard(context, index),
+            ),
+          ),
+        )
     );
 
   }
@@ -198,7 +213,7 @@ class _ZarlagaState extends State<Zarlaga> {
   }
 
   Widget buildTripCard(BuildContext context, int index) {
-    final zarlaga = zarlaguud[index];
+    final zarlaga = zarlagas[index];
 
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -217,7 +232,7 @@ class _ZarlagaState extends State<Zarlaga> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(zarlaga.title, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 14),),
+              Text(zarlaga.torol, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 14),),
               SizedBox(height: 8),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -227,7 +242,7 @@ class _ZarlagaState extends State<Zarlaga> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Expanded(flex: 3, child: Text('Огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
-                      Expanded(flex: 4, child: Text(zarlaga.created_at, style: TextStyle(color: textColor, fontSize: 12, fontWeight: FontWeight.w600,),)),
+                      Expanded(flex: 4, child: Text(date(zarlaga.ognoo), style: TextStyle(color: textColor, fontSize: 12, fontWeight: FontWeight.w600,),)),
                     ],
                   ),
                   SizedBox(height: 5),
@@ -236,7 +251,7 @@ class _ZarlagaState extends State<Zarlaga> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Expanded(flex: 3, child: Text('Батлагдсан төсөв:', style: TextStyle(color: textColor, fontSize: 12),)),
-                      Expanded(flex: 4, child: Text(zarlaga.batlagdsanTusuv, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                      Expanded(flex: 4, child: Text(number(zarlaga.bTosov), style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                     ],
                   ),
                   SizedBox(height: 5),
@@ -245,7 +260,7 @@ class _ZarlagaState extends State<Zarlaga> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Expanded(flex: 3, child: Text('Тодотгосон төсөв:', style: TextStyle(color: textColor, fontSize: 12),)),
-                      Expanded(flex: 4, child: Text(zarlaga.todotgosonTusuv, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                      Expanded(flex: 4, child: Text(number(zarlaga.tTosov), style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                     ],
                   ),
                   SizedBox(height: 15),
@@ -264,7 +279,7 @@ class _ZarlagaState extends State<Zarlaga> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Expanded(flex: 5, child: Text('Гүйцэтгэл  /өссөн дүнгээр/ :', style: TextStyle(color: textColor, fontSize: 12),)),
-                              Expanded(flex: 4, child: Text(zarlaga.ussunDvn, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                              Expanded(flex: 4, child: Text(number(zarlaga.guitsetgel), style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                             ],
                           ),
                           SizedBox(height: 4),
@@ -273,7 +288,7 @@ class _ZarlagaState extends State<Zarlaga> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Expanded(flex: 5, child: Text('Гүйцэтгэл  /хувиар/ :', style: TextStyle(color: textColor, fontSize: 12),)),
-                              Expanded(flex: 4, child: Text(zarlaga.huvi, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                              Expanded(flex: 4, child: Text(number(zarlaga.guitstgel)+'%', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                             ],
                           ),
                         ],
