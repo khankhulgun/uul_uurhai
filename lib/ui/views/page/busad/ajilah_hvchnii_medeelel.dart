@@ -16,6 +16,15 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+//PAGINATION
+import 'package:catalog/utils/date.dart';
+import 'package:catalog/ui/common/paginate.dart';
+
+//GRAPHQL
+import 'package:catalog/graphql/config.dart';
+import 'package:catalog/graphql/queries/busad.dart';
+
+
 
 import '../../main.dart';
 
@@ -42,18 +51,44 @@ class AjillahHvch extends StatefulWidget {
 class _AjillahHvchState extends State<AjillahHvch> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   NetworkUtil _http = new NetworkUtil();
+
+
+  /*--------------------------------------------------------------------------------------------------*/
+  /*--------------------------------------------------------------------------------------------------*/
   bool loading = true;
+  int currentPage = 1;
+  int lastPage = 0;
+  int total = 0;
+
+  bool _isVisible = false;
+
+  List<AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel> aj_huch_med = [];
 
   @override
   void initState() {
     super.initState();
+    getData(1);
   }
-  final List<zarlaga> zarlaguud = [
-    zarlaga("Тийсс ХХК", "678434",  "БНХАУ-ын тал нүүрс тээврийн жолоочдыг хил нэвтрэх үед ковид-19-ийн шинжилгээнд хамрагдсан байхыг шаардсан. Энэ хүрээнд шуурхай ажлын ",  "БНАСУ", "678"),
-    zarlaga("Тийсс ХХК", "678434",  "БНХАУ-ын тал нүүрс тээврийн жолоочдыг хил нэвтрэх үед ковид-19-ийн шинжилгээнд хамрагдсан байхыг шаардсан. Энэ хүрээнд шуурхай ажлын ",  "БНАСУ", "678"),
-    zarlaga("Тийсс ХХК", "678434",  "БНХАУ-ын тал нүүрс тээврийн жолоочдыг хил нэвтрэх үед ковид-19-ийн шинжилгээнд хамрагдсан байхыг шаардсан. Энэ хүрээнд шуурхай ажлын ",  "БНАСУ", "678"),
-  ];
-  bool _isVisible = false;
+  void getData(int page) async {
+    setState(() {
+      loading = true;
+    });
+    final response = await client.execute(AjilahHuchMedeelelQuery(variables: AjilahHuchMedeelelArguments(page: page, size: 10)));
+    setState(() {
+      aj_huch_med = response.data.paginate.dsAjilahHuchMedeelel;
+      currentPage = page;
+      lastPage = response.data.paginate.lastPage;
+      total = response.data.paginate.total;
+      loading = false;
+
+      print(aj_huch_med);
+    });
+  }
+
+
+
+  /*--------------------------------------------------------------------------------------------------*/
+  /*--------------------------------------------------------------------------------------------------*/
 
   void showToast() {
     setState(() {
@@ -82,15 +117,23 @@ class _AjillahHvchState extends State<AjillahHvch> {
         child: Icon(Feather.getIconData('search')),
         backgroundColor: mainColor,
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.only(left: 10.0, right: 10.0),
-        child: ListView.builder(
-          itemCount: zarlaguud == null ? 0 : zarlaguud.length,
-          itemBuilder: (BuildContext context, int index) =>
-              buildTripCard(context, index),
-        ),
-      ),
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.only(left: 10.0, right: 10.0),
+          child: loading ? Loader() : Pagination(
+            lastPage: lastPage,
+            currentPage: currentPage,
+            total: total,
+            loading: loading,
+            getData: getData,
+            itemBuilder:  ListView.builder(
+              itemCount: aj_huch_med == null ? 0 : aj_huch_med.length,
+              itemBuilder: (BuildContext context, int index) =>
+                  buildTripCard(context, index),
+            ),
+          ),
+        )
+
     );
 
   }
@@ -196,7 +239,8 @@ class _AjillahHvchState extends State<AjillahHvch> {
   }
 
   Widget buildTripCard(BuildContext context, int index) {
-    final zarlaga = zarlaguud[index];
+    //final zarlaga = zarlaguud[index];
+    final aj_huch_med_i = aj_huch_med[index];
 
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -220,7 +264,7 @@ class _AjillahHvchState extends State<AjillahHvch> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(flex: 3, child: Text('Аж ахуй нэгж:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 4, child: Text(zarlaga.AAN, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 4, child: Text(aj_huch_med_i.ajAhuiNerId, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 5),
@@ -229,18 +273,18 @@ class _AjillahHvchState extends State<AjillahHvch> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(flex: 3, child: Text('Үйл ажиллагааны чиглэл:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 4, child: Text(zarlaga.chiglel, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 4, child: Text('${aj_huch_med_i.uaChiglelId}', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 15.0),
-              Text(zarlaga.medeelel, style: TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 12),),
+              Text(aj_huch_med_i.medeelel, style: TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 12),),
               SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(flex: 3, child: Text('Ажиллах хүч авах улс:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 4, child: Text(zarlaga.country, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 4, child: Text(aj_huch_med_i.uls, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 5),
@@ -249,7 +293,7 @@ class _AjillahHvchState extends State<AjillahHvch> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(flex: 3, child: Text('Ажиллах хүчний тоо:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 4, child: Text(zarlaga.ajillahHvchniiToo, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 4, child: Text('${aj_huch_med_i.huchToo}', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 15),
