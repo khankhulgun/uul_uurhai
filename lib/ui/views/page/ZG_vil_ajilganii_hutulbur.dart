@@ -8,6 +8,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import '../../components/sidebar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
+import 'package:lambda/plugins/data_form/loader.dart';
 import 'package:http/http.dart' as http;
 
 //PAGINATION
@@ -77,7 +78,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
     setState(() {
       loading = true;
     });
-    final response = await client.execute(ZgHotolborQuery(variables: ZgHotolborArguments(page: page, size: 4)));
+    final response = await client.execute(ZgHotolborQuery(variables: ZgHotolborArguments(page: page, size: 2)));
 
     setState(() {
       zghutulbur = response.data.paginate.dsZgHotolbor;
@@ -124,8 +125,6 @@ class _ZGhutulburState extends State<ZGhutulbur> {
       _isVisible = !_isVisible;
     });
   }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -147,20 +146,26 @@ class _ZGhutulburState extends State<ZGhutulbur> {
         child: Icon(Feather.getIconData('search')),
         backgroundColor: mainColor,
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.only(left: 10.0, right: 10.0),
-        child: ListView.builder(
-          itemCount: zghutulbur == null ? 0 : zghutulbur.length,
-          itemBuilder: (BuildContext context, int index) =>
-              buildTripCard(context, index),
-        ),
-      ),
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          height: double.infinity,
+          padding: EdgeInsets.only(left: 0.0, right: 0.0),
+          child: loading ? Loader() : Pagination(
+            lastPage: lastPage,
+            currentPage: currentPage,
+            total: total,
+            loading: loading,
+            getData: getData,
+            itemBuilder: ListView.builder(
+              itemCount: zghutulbur == null ? 0 : zghutulbur.length,
+              itemBuilder: (BuildContext context, int index) =>
+                  buildTripCard(context, index),
+            ),
+          ),
+        )
     );
 
   }
-
-
   void _onButtonPressed() {
     showModalBottomSheet(
         context: context, builder: (context,) {
@@ -226,21 +231,8 @@ class _ZGhutulburState extends State<ZGhutulbur> {
       });
     });
   }
-
   Widget buildTripCard(BuildContext context, int index) {
     final data = datas[index];
-
-
-//    currentProgressColor() {
-//      if (data.heregjiltiinHuvi >= 90) {
-//        return Colors.green;
-//      } else{
-//        return Colors.red;
-//      }
-//    }
-
-
-
     return Container(
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.only(top: 5.0),
@@ -269,22 +261,26 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                       Expanded(
                           flex: 2,
                           child: Container(
-//                              decoration: BoxDecoration(
-//                                color: Colors.grey,
-//                                borderRadius: BorderRadius.only(
-//                                    topLeft: Radius.circular(6),
-//                                    topRight: Radius.circular(6),
-//                                    bottomLeft: Radius.circular(6),
-//                                    bottomRight: Radius.circular(6)
-//                                ),
-//                              ),
-                              child: Image.asset("assets/uuhvy_img/zg.png", width: 80, fit: BoxFit.cover)
+                             decoration: BoxDecoration(
+                               color: Colors.white,
+                               borderRadius: BorderRadius.only(
+                                   topLeft: Radius.circular(6),
+                                   topRight: Radius.circular(6),
+                                   bottomLeft: Radius.circular(6),
+                                   bottomRight: Radius.circular(6)
+                               ),
+                             ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(6.0),
+                                  child: Image.asset("assets/uuhvy_img/zg.png",  fit: BoxFit.cover)
+                              ),
+
                           )
                       ),
                       SizedBox(width: 10.0),
                       Expanded(
                         flex: 4,
-                        child: Container(height: 85, child: Text(data.shortDesc, style: TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 12),)),
+                        child: Container(child: Text(data.shortDesc, style: TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 12),)),
                       ),
                       SizedBox(width: 5.0),
                       Expanded(

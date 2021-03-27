@@ -14,6 +14,8 @@ import 'package:catalog/ui/common/paginate.dart';
 import 'package:catalog/graphql/config.dart';
 
 
+
+
 class ShuurhaiAjil extends StatefulWidget {
 
 
@@ -72,7 +74,7 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
       padding: EdgeInsets.only(top: 5.0),
       margin: EdgeInsets.only(bottom: 0.0),
       child: Card(
-        elevation: 2.0,
+        elevation: 1.0,
         child: Container(
           padding: const EdgeInsets.only(top: 8.0, right: 8.0, left: 8.0),
           decoration: BoxDecoration(
@@ -95,7 +97,8 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
                       Expanded(
                           flex: 2,
                           child: Container(
-                              child: Image.asset('assets/uuhvy_img/yamnii.png', height: 90,  fit: BoxFit.cover)
+                              child: Image.asset('assets/uuhvy_img/yamnii.png',  fit: BoxFit.cover),
+                              //child: Image.asset('assets/uuhvy_img/yamnii.png', height: 90,  fit: BoxFit.cover),
                           )
                       ),
                       SizedBox(width: 10.0),
@@ -283,7 +286,7 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: double.infinity,
-          padding: EdgeInsets.only(left: 10.0, right: 10.0),
+          padding: EdgeInsets.only(left: 0.0, right: 0.0),
           child: loading ? Loader() : Pagination(
             lastPage: lastPage,
             currentPage: currentPage,

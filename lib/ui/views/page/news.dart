@@ -59,7 +59,7 @@ class _NewsState extends State<News> {
     final medee = news[index];
     return Container(
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.only(right: 10.0, bottom: 15.0, left: 10.0),
+      margin: EdgeInsets.only(right: 0.0, bottom: 15.0, left: 0.0),
       padding: const EdgeInsets.only(top: 15.0),
       decoration: BoxDecoration(
         border: Border(
