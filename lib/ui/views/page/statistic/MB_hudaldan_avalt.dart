@@ -15,6 +15,15 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+//PAGINATION
+import 'package:catalog/utils/date.dart';
+import 'package:catalog/ui/common/paginate.dart';
+
+//GRAPHQL
+import 'package:catalog/graphql/config.dart';
+import 'package:catalog/graphql/queries/statistic_medee.dart';
+
+
 
 import '../../main.dart';
 
@@ -46,7 +55,44 @@ class Mbank extends StatefulWidget {
 class _MbankState extends State<Mbank> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   NetworkUtil _http = new NetworkUtil();
+  /*--------------------------------------------------------------------------------------------------*/
+  /*--------------------------------------------------------------------------------------------------*/
   bool loading = true;
+  int currentPage = 1;
+  int lastPage = 0;
+  int total = 0;
+
+  bool _isVisible = false;
+
+//  List<AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel> aj_huch_med = [];
+  List<MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvalt> mbhud_avalt = [];
+
+  @override
+  void initState() {
+    super.initState();
+    getData(1);
+  }
+  void getData(int page) async {
+    setState(() {
+      loading = true;
+    });
+//    final response = await client.execute(AjilahHuchMedeelelQuery(variables: AjilahHuchMedeelelArguments(page: page, size: 10)));
+    final response = await client.execute(MBankHudaldanAvaltQuery(variables: MBankHudaldanAvaltArguments(page: page, size: 10)));
+    setState(() {
+      mbhud_avalt = response.data.paginate.dsMBankHudaldanAvalt;
+      currentPage = page;
+      lastPage = response.data.paginate.lastPage;
+      total = response.data.paginate.total;
+      loading = false;
+
+      print(mbhud_avalt);
+    });
+  }
+
+
+
+  /*--------------------------------------------------------------------------------------------------*/
+  /*--------------------------------------------------------------------------------------------------*/
 
 
   bool _isExpanded = false;
@@ -58,10 +104,6 @@ class _MbankState extends State<Mbank> {
     });
   }
 
-  @override
-  void initState() {
-    super.initState();
-  }
   final List<ex_port> exports = [
     ex_port("Өмнөговь", "2020-01-19",  "Нүүрс",  "5,799",  "Тийсс ХХК",  "Авто тээвэр", "Тийсс ХХК"),
     ex_port("Өмнөговь", "2020-01-19",  "Нүүрс",  "5,799",  "Тийсс ХХК",  "Авто тээвэр", "Тийсс ХХК"),
@@ -95,12 +137,21 @@ class _MbankState extends State<Mbank> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.only(left: 10.0, right: 10.0),
-        child: ListView.builder(
-          itemCount: exports == null ? 0 : exports.length,
-          itemBuilder: (BuildContext context, int index) =>
-              buildTripCard(context, index),
+        child: loading ? Loader() : Pagination(
+          lastPage: lastPage,
+          currentPage: currentPage,
+          total: total,
+          loading: loading,
+          getData: getData,
+          itemBuilder:  ListView.builder(
+            itemCount: mbhud_avalt == null ? 0 : mbhud_avalt.length,
+            itemBuilder: (BuildContext context, int index) =>
+                buildTripCard(context, index),
+          ),
         ),
-      ),
+      )
+
+
     );
 
   }
@@ -206,7 +257,7 @@ class _MbankState extends State<Mbank> {
   }
 
   Widget buildTripCard(BuildContext context, int index) {
-    final ex_port = exports[index];
+    final mbhud_avalt_i = mbhud_avalt[index];
     return Container(
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.symmetric(horizontal: 5.0),
@@ -231,7 +282,7 @@ class _MbankState extends State<Mbank> {
                 children: <Widget>[
                   Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
                   Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
-                  Expanded(flex: 4, child: Text(ex_port.created_at, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 4, child: Text(date(mbhud_avalt_i.ognoo), style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                   Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
@@ -243,7 +294,7 @@ class _MbankState extends State<Mbank> {
                   Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
                   Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                   Expanded(flex: 4, child: Text('Бүтээгдэхүүн:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 2,child: Text(ex_port.turul, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 2,child: Text(mbhud_avalt_i.ashigtMaltmal, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 2),
@@ -254,7 +305,7 @@ class _MbankState extends State<Mbank> {
                   Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
                   Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                   Expanded(flex: 4, child: Text('Олборлолтын хэмжээ:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 2, child: Text(ex_port.hemjee, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text('${mbhud_avalt_i.hAvsanHemjee}', style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 2),
@@ -265,7 +316,7 @@ class _MbankState extends State<Mbank> {
                   Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
                   Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                   Expanded(flex: 4, child: Text('Олборлогч байгууллага:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 2, child: Text(ex_port.company, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 2),
@@ -276,7 +327,7 @@ class _MbankState extends State<Mbank> {
                   Expanded(flex: 1, child: Text('', style: TextStyle(color: textColor, fontSize: 12),)),
                   Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                   Expanded(flex: 4, child: Text('Тээврийн хэрэгсэл:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 2, child: Text(ex_port.teever, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 2),
@@ -285,12 +336,12 @@ class _MbankState extends State<Mbank> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(flex: 1, child: Text('Боомт:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 2, child: Text(ex_port.boomt, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                   Expanded(flex: 4, child: Padding(
                     padding: const EdgeInsets.only(right: 10.0),
                     child: Text('Эх сурвалж:', textAlign: TextAlign.right, style: TextStyle(color: textColor, fontSize: 12),),
                   )),
-                  Expanded(flex: 2, child: Text(ex_port.eh_survalj, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 2, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
             ],

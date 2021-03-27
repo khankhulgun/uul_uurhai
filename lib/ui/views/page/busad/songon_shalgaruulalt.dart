@@ -16,6 +16,14 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+//PAGINATION
+import 'package:catalog/utils/date.dart';
+import 'package:catalog/ui/common/paginate.dart';
+
+//GRAPHQL
+import 'package:catalog/graphql/config.dart';
+import 'package:catalog/graphql/queries/busad.dart';
+
 
 import '../../main.dart';
 
@@ -54,17 +62,52 @@ class SongonShalgaruulalt extends StatefulWidget {
 class _SongonShalgaruulaltState extends State<SongonShalgaruulalt> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   NetworkUtil _http = new NetworkUtil();
+
+  /*--------------------------------------------------------------------------------------------------*/
+  /*--------------------------------------------------------------------------------------------------*/
   bool loading = true;
+  int currentPage = 1;
+  int lastPage = 0;
+  int total = 0;
+
+  bool _isVisible = false;
+
+  //List<AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel> aj_huch_med = [];
+  List<SongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt> son_shalgaruulalt = [];
 
   @override
   void initState() {
     super.initState();
+    getData(1);
   }
+  void getData(int page) async {
+    setState(() {
+      loading = true;
+    });
+//    final response = await client.execute(AjilahHuchMedeelelQuery(variables: AjilahHuchMedeelelArguments(page: page, size: 10)));
+    final response = await client.execute(SongonShalgaruulaltQuery(variables: SongonShalgaruulaltArguments(page: page, size: 4)));
+    setState(() {
+      son_shalgaruulalt = response.data.paginate.aaSongonShalgaruulalt;
+      currentPage = page;
+      lastPage = response.data.paginate.lastPage;
+      total = response.data.paginate.total;
+      loading = false;
+
+      print(son_shalgaruulalt);
+    });
+  }
+
+
+
+  /*--------------------------------------------------------------------------------------------------*/
+  /*--------------------------------------------------------------------------------------------------*/
+
+
   final List<tusgai> tusgaiZuvshuuruls = [
     tusgai("2012-12", "2011-12-22",  "11222",  "2015-12-12", "2011-12-12",  "201,112,12.09", "1,112,12.09", "1,112", "201,112,12.09", "1,112,12.09", "1,112" ),
     tusgai("2012-12", "2011-12-22",  "11222",  "2015-12-12", "2011-12-12",  "201,112,12.09", "1,112,12.09", "1,112", "201,112,12.09", "1,112,12.09", "1,112" ),
   ];
-  bool _isVisible = false;
+
 
   void showToast() {
     setState(() {

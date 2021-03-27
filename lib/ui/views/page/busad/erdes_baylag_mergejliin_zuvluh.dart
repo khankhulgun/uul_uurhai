@@ -16,6 +16,14 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+//PAGINATION
+import 'package:catalog/utils/date.dart';
+import 'package:catalog/ui/common/paginate.dart';
+
+//GRAPHQL
+import 'package:catalog/graphql/config.dart';
+import 'package:catalog/graphql/queries/busad.dart';
+
 
 import '../../main.dart';
 
@@ -46,19 +54,56 @@ class ErdesBaylagMergejliinZuvlul extends StatefulWidget {
 class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlul> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   NetworkUtil _http = new NetworkUtil();
-  bool loading = true;
 
-  @override
-  void initState() {
-    super.initState();
-  }
+
   final List<tusgai> tusgaiZuvshuuruls = [
     tusgai("УХГГСА", "2011-12-22",  "5",  "2012-12",  "Ашиглалт",
         "БНХАУ-ын тал нүүрс тээврийн жолоочдыг хил нэвтрэх үед ковид-19-ийн шинжилгээнд хамрагдсан байхыг шаардсан. Энэ хүрээнд шуурхай ажлын хэсэг болон эмч, эмнэлгийн ажилчид хилийн бүсэд ажиллаж эхний ээлжинд 854 жолоочийг шинжилгээнд хамруулж хилээр нэвтрэх ", "Засвартай хүлээж авсан"),
     tusgai("УХГГСА", "2011-12-22",  "5",  "2012-12",  "Ашиглалт",
         "БНХАУ-ын тал нүүрс тээврийн жолоочдыг хил нэвтрэх үед ковид-19-ийн шинжилгээнд хамрагдсан байхыг шаардсан. Энэ хүрээнд шуурхай ажлын хэсэг болон эмч, эмнэлгийн ажилчид хилийн бүсэд ажиллаж эхний ээлжинд 854 жолоочийг шинжилгээнд хамруулж хилээр нэвтрэх ", "Засвартай хүлээж авсан"),
   ];
+
+
+
+  /*--------------------------------------------------------------------------------------------------*/
+  /*--------------------------------------------------------------------------------------------------*/
+  bool loading = true;
+  int currentPage = 1;
+  int lastPage = 0;
+  int total = 0;
+
   bool _isVisible = false;
+
+//  List<AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel> aj_huch_med = [];
+  List<EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol> erdes_baylag_mer_zuv = [];
+
+  @override
+  void initState() {
+    super.initState();
+    getData(1);
+  }
+  void getData(int page) async {
+    setState(() {
+      loading = true;
+    });
+    //final response = await client.execute(AjilahHuchMedeelelQuery(variables: AjilahHuchMedeelelArguments(page: page, size: 10)));
+    final response = await client.execute(EBMergejilZovlolQuery(variables: EBMergejilZovlolArguments(page: page, size: 10)));
+    setState(() {
+      erdes_baylag_mer_zuv = response.data.paginate.aaEBMergejilZovlol;
+      currentPage = page;
+      lastPage = response.data.paginate.lastPage;
+      total = response.data.paginate.total;
+      loading = false;
+
+      print(erdes_baylag_mer_zuv);
+    });
+  }
+
+
+
+  /*--------------------------------------------------------------------------------------------------*/
+  /*--------------------------------------------------------------------------------------------------*/
+
 
   void showToast() {
     setState(() {
