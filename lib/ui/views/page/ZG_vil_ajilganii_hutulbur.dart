@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:catalog/ui/styles/_colors.dart';
 import 'package:flutter_icons/feather.dart';
 import 'package:lambda/modules/network_util.dart';
+import 'package:lambda/utils/number.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import '../../components/sidebar.dart';
 import 'package:flutter/cupertino.dart';
@@ -78,7 +79,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
     setState(() {
       loading = true;
     });
-    final response = await client.execute(ZgHotolborQuery(variables: ZgHotolborArguments(page: page, size: 2)));
+    final response = await client.execute(ZgHotolborQuery(variables: ZgHotolborArguments(page: page, size: 10)));
 
     setState(() {
       zghutulbur = response.data.paginate.dsZgHotolbor;
@@ -232,7 +233,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
     });
   }
   Widget buildTripCard(BuildContext context, int index) {
-    final data = datas[index];
+    final data = zghutulbur[index];
     return Container(
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.only(top: 5.0),
@@ -280,7 +281,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                       SizedBox(width: 10.0),
                       Expanded(
                         flex: 4,
-                        child: Container(child: Text(data.shortDesc, style: TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 12),)),
+                        child: Container(child: Text(data.hotolbor, style: TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 12),)),
                       ),
                       SizedBox(width: 5.0),
                       Expanded(
@@ -290,25 +291,28 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                           animationDuration: 1500,
                           lineWidth: 4.0,
                           animation: true,
-                          percent: data.huvi != null ? int.parse(data.huvi) / 100 : 0,
+                          //percent: data.huvi != null ? int.parse(data.huvi) / 100 : 0,
+                          percent: 0.5,
                           center: Text(
-                            '${data.huvi}%',
+                            '50%',
                             style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
-                                color: Color(0xFF00E676)),
+                                color: data.status == 'Биелсэн' ? Color(0xFF00E676) : Color(0xfffcb85f)
+                            ),
                           ),
                           footer: Text(
-                            'Биелсэн',
+                            data.status,
                             style: TextStyle(
                                 fontWeight: FontWeight.w500,
-                                fontSize: 14,
-                                color: Color(0xFF00E676)),
+                                fontSize: 10,
+                                color:  data.status == 'Биелсэн' ? Color(0xFF00E676) : Color(0xfffcb85f)
+                            ),
                           ),
                           circularStrokeCap: CircularStrokeCap.round,
 //                            progressColor: currentProgressColor(),
 
-                          progressColor: Color(0xFF00E676),
+                          progressColor: data.status == 'Биелсэн' ? Color(0xFF00E676) : Color(0xfffcb85f)
                         ),
                       ),
 
@@ -317,147 +321,130 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                   SizedBox(height: 4.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Expanded(flex: 2, child: Text('Хэрэгжих хугацаа:', style: TextStyle(color: textColor, fontSize: 12),)),
                       SizedBox(width: 4.0),
-                      Expanded(flex: 4, child: Text(data.heregjihHugatsaa, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12))),
+                      Expanded(flex: 4, child: Text(data.hugatsaa, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12))),
                     ],
                   ),
                   SizedBox(height: 4.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Expanded(flex: 2, child: Text('Эх үүсвэр:', style: TextStyle(color: textColor, fontSize: 12),)),
                       SizedBox(width: 4.0),
-                      Expanded(flex: 4, child: Text(data.ehVvsver, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12))),
+                      Expanded(flex: 4, child: Text(data.eUusver, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12))),
                     ],
                   ),
                   SizedBox(height: 4.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Expanded(flex: 2, child: Text('Нийт төсөв, сая.төг:', style: TextStyle(color: textColor, fontSize: 12),)),
                       SizedBox(width: 4.0),
-                      Expanded(flex: 4, child: Text(data.tusuv, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12))),
+                      Expanded(flex: 4, child: Text('${data.niitTosov}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12))),
                     ],
                   ),
                   SizedBox(height: 4.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Expanded(flex: 2, child: Text('Суурь түвшин:', style: TextStyle(color: textColor, fontSize: 12),)),
                       SizedBox(width: 4.0),
-                      Expanded(flex: 4, child: Text(data.suuriTvwshin, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12))),
+                      Expanded(flex: 4, child: Text(data.suuriTuvshin, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12))),
                     ],
                   ),
-                  SizedBox(height: 10.0),
                 ],
               ),
 
-              ExpansionTile(
+              Theme(
+                data: ThemeData().copyWith(dividerColor: Colors.transparent),
+                child: ExpansionTile(
 //                 backgroundColor: Colors.grey[50],
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Text('Хүрэх түвшин', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
+                    ],
+                  ),
                   children: <Widget>[
-                    Text('Хүрэх түвшин', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
-                  ],
-                ),
-                children: <Widget>[
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 2, child: Text('Эх үүсвэр:', style: TextStyle(color: textColor, fontSize: 12),)),
-                          Expanded(flex: 4, child: Text(data.ehVvsver, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 5.0),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 2, child: Text('Нийт төсөв, сая.төг:', style: TextStyle(color: textColor, fontSize: 12),)),
-                          Expanded(flex: 4, child: Text(data.tusuv, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 5.0),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 2, child: Text('Суурь түвшин:', style: TextStyle(color: textColor, fontSize: 12),)),
-                          Expanded(flex: 4, child: Text(data.suuriTvwshin, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 10.0),
-                    ],
-                  ),
-                  SizedBox(height: 20.0),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15),
-                        child: Text('Хэрэгжилт', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
-                      ),
-                      SizedBox(height: 10.0),
-                      Text(data.desc, style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
-                      SizedBox(height: 10.0),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 2, child: Text('Хэрэгжилтийн хувь:', style: TextStyle(color: textColor, fontSize: 12),)),
-                          Expanded(flex: 4, child: Text('${data.huvi}%', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                    ],
-                  ),
-
-                  Container(
-                    height: 30,
-                    margin: EdgeInsets.only(top: 10, bottom: 20),
-                    decoration: BoxDecoration(
-                      color: Colors.greenAccent[700],
-                      borderRadius:
-                      new BorderRadius.circular(10.0),
-                    ),
-                    child: FlatButton(
-                      child: Container(
-                        child: Stack(
-                          fit: StackFit.expand,
-                          children: <Widget>[
-                            Center(
-                              child: Text(
-                                'Биелсэн',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Color.fromRGBO(
-                                        255, 255, 255, 1),
-                                    fontSize: 16,
-                                    fontWeight:
-                                    FontWeight.w400),
+                    zghutulbur.length <= 0 ? Container() : ListView.builder(
+                        shrinkWrap: true,
+                        physics: ScrollPhysics(),
+                        itemCount: zghutulbur[index].subHotolborUzuulelt == null ? 0 : zghutulbur[index].subHotolborUzuulelt.length,
+                        padding: EdgeInsets.all(0.0),
+                        itemBuilder: (BuildContext context, int index) {
+                          return  Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Expanded(flex: 2, child: Text('Эх үүсвэр:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                      Expanded(flex: 4, child: Text('', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                    ],
+                                  ),
+                                  SizedBox(height: 5.0),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Expanded(flex: 2, child: Text('Нийт төсөв, сая.төг:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                      Expanded(flex: 4, child: Text('${zghutulbur[index].subHotolborUzuulelt[index].tosov}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                    ],
+                                  ),
+                                  SizedBox(height: 5.0),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Expanded(flex: 2, child: Text('Суурь түвшин:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                      Expanded(flex: 4, child: Text(zghutulbur[index].subHotolborUzuulelt[index].hTuvshin, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                    ],
+                                  ),
+                                  SizedBox(height: 10.0),
+                                ],
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      onPressed: () {},
-
+                              SizedBox(height: 20.0),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 15),
+                                    child: Text('Хэрэгжилт', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
+                                  ),
+                                  SizedBox(height: 10.0),
+                                  Text(zghutulbur[index].subHotolborUzuulelt[index].heregjiltTailan, style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
+                                  SizedBox(height: 10.0),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Expanded(flex: 2, child: Text('Хэрэгжилтийн хувь:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                      Expanded(flex: 4, child: Text('${zghutulbur[index].subHotolborUzuulelt[index].heregjilt}%', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          );
+                        }
                     ),
-                  ),
 
-                ],
+                  ],
 
+                ),
               ),
 
             ],

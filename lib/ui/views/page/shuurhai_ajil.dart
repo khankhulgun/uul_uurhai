@@ -214,7 +214,7 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Expanded(flex: 2, child: Text('Хэрэгжилтийн хувь:', style: TextStyle(color: textColor, fontSize: 12),)),
-                            Expanded(flex: 4, child: Text('50%', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                            Expanded(flex: 4, child: Text('', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                           ],
                         ),
                         SizedBox(height: 10.0),

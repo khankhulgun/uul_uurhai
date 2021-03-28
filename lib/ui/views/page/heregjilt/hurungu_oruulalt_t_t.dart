@@ -79,7 +79,7 @@ class _Hurungu_oruulaltState extends State<Hurungu_oruulalt> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
         child: Header(
-          title: "ХЭРЭГЖИЛТ ГҮЙЦЭТГЭЛ / Хөрөнгө оруулалтын төсөл, хөтөлбөр",
+          title: "Хөрөнгө оруулалтын төсөл, хөтөлбөр",
           scaffold: _scaffoldKey,
         ),
       ),

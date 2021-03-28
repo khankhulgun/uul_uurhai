@@ -35,6 +35,7 @@ class _BodlogiinBichigBarimtState extends State<BodlogiinBichigBarimt> {
   NetworkUtil _http = new NetworkUtil();
   List<BodlogoBb$Query$Paginate$DsBodlogoBb> b_datas = [];
 
+
   bool loading = true;
   int currentPage = 1;
   int lastPage = 0;
@@ -44,6 +45,7 @@ class _BodlogiinBichigBarimtState extends State<BodlogiinBichigBarimt> {
   void initState() {
     super.initState();
     getData(1);
+
   }
 
   void getData(int page) async {
@@ -53,7 +55,6 @@ class _BodlogiinBichigBarimtState extends State<BodlogiinBichigBarimt> {
     final response = await client.execute(BodlogoBbQuery(variables: BodlogoBbArguments(page: page, size: 10)));
     setState(() {
       b_datas = response.data.paginate.dsBodlogoBb;
-
       currentPage = page;
       lastPage = response.data.paginate.lastPage;
       total = response.data.paginate.total;
@@ -68,6 +69,35 @@ class _BodlogiinBichigBarimtState extends State<BodlogiinBichigBarimt> {
       _isVisible = !_isVisible;
     });
   }
+  // Widget getListPoints(BuildContext context, BodlogoBb$Query$Paginate$DsBodlogoBb$DsSubHeregjiltBodlogBarimtBichig point) {
+  //
+  //   return Column(
+  //     mainAxisAlignment: MainAxisAlignment.start,
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: <Widget>[
+  //       Text(point.tailan, style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
+  //       SizedBox(height: 10.0),
+  //       Row(
+  //         mainAxisAlignment: MainAxisAlignment.start,
+  //         crossAxisAlignment: CrossAxisAlignment.start,
+  //         children: <Widget>[
+  //           Expanded(flex: 3, child: Text('Хэрэгжүүлсэн огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
+  //           Expanded(flex: 4, child: Text(point.ognoo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+  //         ],
+  //       ),
+  //       SizedBox(height: 4),
+  //       Row(
+  //         mainAxisAlignment: MainAxisAlignment.start,
+  //         crossAxisAlignment: CrossAxisAlignment.start,
+  //         children: <Widget>[
+  //           Expanded(flex: 3, child: Text('Хэрэгжилтийн шат:', style: TextStyle(color: textColor, fontSize: 12),)),
+  //           Expanded(flex: 4, child: Text(point.shat, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+  //         ],
+  //       ),
+  //       SizedBox(height: 10.0),
+  //     ],
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +111,7 @@ class _BodlogiinBichigBarimtState extends State<BodlogiinBichigBarimt> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
         child: Header(
-          title: "ХЭРЭГЖИЛТ ГҮЙЦЭТГЭЛ / Бодлогын баримт бичиг",
+          title: "Бодлогын баримт бичиг",
           scaffold: _scaffoldKey,
         ),
       ),
@@ -93,9 +123,9 @@ class _BodlogiinBichigBarimtState extends State<BodlogiinBichigBarimt> {
         body: Container(
           width: MediaQuery.of(context).size.width,
           padding: EdgeInsets.all(0.0),
+          margin: EdgeInsets.only(bottom: 50),
           //padding: EdgeInsets.only(left: 10.0, right: 10.0),
           height: double.infinity,
-          margin: EdgeInsets.all(0.0),
           child: loading ? Loader() : Pagination(
             lastPage: lastPage,
             currentPage: currentPage,
@@ -293,108 +323,59 @@ class _BodlogiinBichigBarimtState extends State<BodlogiinBichigBarimt> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10.0),
                 ],
               ),
 
-//               ExpansionTile(
-// //                 backgroundColor: Colors.grey[50],
-//                 title: Row(
-//                   mainAxisAlignment: MainAxisAlignment.start,
-//                   children: <Widget>[
-//                     Text('Хэрэгжилт', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
-//                   ],
-//                 ),
-//                 children: <Widget>[
-//                   Column(
-//                     mainAxisAlignment: MainAxisAlignment.start,
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     children: <Widget>[
-//                       Text(data.desc, style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
-//                       SizedBox(height: 10.0),
-//                       Row(
-//                         mainAxisAlignment: MainAxisAlignment.start,
-//                         crossAxisAlignment: CrossAxisAlignment.start,
-//                         children: <Widget>[
-//                           Expanded(flex: 3, child: Text('Хэрэгжүүлсэн огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
-//                           Expanded(flex: 4, child: Text(data.heregjvvlsenOn, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-//                         ],
-//                       ),
-//                       SizedBox(height: 4),
-//                       Row(
-//                         mainAxisAlignment: MainAxisAlignment.start,
-//                         crossAxisAlignment: CrossAxisAlignment.start,
-//                         children: <Widget>[
-//                           Expanded(flex: 3, child: Text('Хэрэгжилтийн шат:', style: TextStyle(color: textColor, fontSize: 12),)),
-//                           Expanded(flex: 4, child: Text(data.heregjiltiinShat, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-//                         ],
-//                       ),
-//                       SizedBox(height: 10.0),
-//                     ],
-//                   ),
-//                   Divider(),
-//                   Column(
-//                     mainAxisAlignment: MainAxisAlignment.start,
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     children: <Widget>[
-//                       Text(data.desc, style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
-//                       SizedBox(height: 10.0),
-//                       Row(
-//                         mainAxisAlignment: MainAxisAlignment.start,
-//                         crossAxisAlignment: CrossAxisAlignment.start,
-//                         children: <Widget>[
-//                           Expanded(flex: 3, child: Text('Хэрэгжүүлсэн огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
-//                           Expanded(flex: 4, child: Text(data.heregjvvlsenOn, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-//                         ],
-//                       ),
-//                       SizedBox(height: 4),
-//                       Row(
-//                         mainAxisAlignment: MainAxisAlignment.start,
-//                         crossAxisAlignment: CrossAxisAlignment.start,
-//                         children: <Widget>[
-//                           Expanded(flex: 3, child: Text('Хэрэгжилтийн шат:', style: TextStyle(color: textColor, fontSize: 12),)),
-//                           Expanded(flex: 4, child: Text(data.heregjiltiinShat, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-//                         ],
-//                       ),
-//                       SizedBox(height: 10.0),
-//                     ],
-//                   ),
-//
-//                   Container(
-//                     height: 30,
-//                     margin: EdgeInsets.only(top: 10, bottom: 20),
-//                     decoration: BoxDecoration(
-//                       color: Colors.greenAccent[700],
-//                       borderRadius:
-//                       new BorderRadius.circular(10.0),
-//                     ),
-//                     child: FlatButton(
-//                       child: Container(
-//                         child: Stack(
-//                           fit: StackFit.expand,
-//                           children: <Widget>[
-//                             Center(
-//                               child: Text(
-//                                 'Биелсэн',
-//                                 textAlign: TextAlign.center,
-//                                 style: TextStyle(
-//                                     color: Color.fromRGBO(
-//                                         255, 255, 255, 1),
-//                                     fontSize: 16,
-//                                     fontWeight:
-//                                     FontWeight.w400),
-//                               ),
-//                             ),
-//                           ],
-//                         ),
-//                       ),
-//                       onPressed: () {},
-//
-//                     ),
-//                   ),
-//                 ],
-//
-//               ),
+              Theme(
+                data: ThemeData().copyWith(dividerColor: Colors.transparent),
+                child: ExpansionTile(
+//                 backgroundColor: Colors.grey[50],
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Text('Хэрэгжилт', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
+                    ],
+                  ),
+                  children: <Widget>[
+                    b_datas.length <= 0 ? Container() : ListView.builder(
+                      shrinkWrap: true,
+                      physics: ScrollPhysics(),
+                        itemCount: b_datas[index].dsSubHeregjiltBodlogBarimtBichig == null ? 0 : b_datas[index].dsSubHeregjiltBodlogBarimtBichig.length,
+                      padding: EdgeInsets.all(0.0),
+                      itemBuilder: (BuildContext context, int index) {
+                            return Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(b_datas[index].dsSubHeregjiltBodlogBarimtBichig[index].tailan, style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
+                                SizedBox(height: 10.0),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Expanded(flex: 3, child: Text('Хэрэгжүүлсэн огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                    Expanded(flex: 4, child: Text(b_datas[index].dsSubHeregjiltBodlogBarimtBichig[index].ognoo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  ],
+                                ),
+                                SizedBox(height: 4),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Expanded(flex: 3, child: Text('Хэрэгжилтийн шат:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                    Expanded(flex: 4, child: Text(b_datas[index].dsSubHeregjiltBodlogBarimtBichig[index].shat, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  ],
+                                ),
+                                SizedBox(height: 10.0),
+                              ],
+                            );
+                      }
+                    ),
+                    Divider(),
+                  ],
+
+                ),
+              ),
 
             ],
           ),
@@ -403,6 +384,8 @@ class _BodlogiinBichigBarimtState extends State<BodlogiinBichigBarimt> {
     );
   }
 }
+
+
 
 
 

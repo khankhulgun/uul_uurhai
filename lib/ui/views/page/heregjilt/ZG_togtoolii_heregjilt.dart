@@ -81,7 +81,7 @@ class _ZG_togtooliin_heregjiltState extends State<ZG_togtooliin_heregjilt> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(50.0),
         child: Header(
-          title: "ХЭРЭГЖИЛТ ГҮЙЦЭТГЭЛ / ЗГ-ын тогтоолын хэрэгжилт",
+          title: "Засгийн газрын тогтоолын хэрэгжилт",
           scaffold: _scaffoldKey,
         ),
       ),
@@ -280,7 +280,7 @@ class _ZG_togtooliin_heregjiltState extends State<ZG_togtooliin_heregjilt> {
                                     '${data.status}',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        color: Colors.greenAccent[700],
+                                        color: data.status == 'Биелсэн' ? Color(0xFF00E676) : Color(0xfffcb85f),
                                         fontSize: 14,
                                         fontWeight:
                                         FontWeight.w500),
@@ -296,108 +296,58 @@ class _ZG_togtooliin_heregjiltState extends State<ZG_togtooliin_heregjilt> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10.0),
                 ],
               ),
 
-//               ExpansionTile(
-// //                 backgroundColor: Colors.grey[50],
-//                 title: Row(
-//                   mainAxisAlignment: MainAxisAlignment.start,
-//                   children: <Widget>[
-//                     Text('Хэрэгжилт', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
-//                   ],
-//                 ),
-//                 children: <Widget>[
-//                   Column(
-//                     mainAxisAlignment: MainAxisAlignment.start,
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     children: <Widget>[
-//                       Text(data.desc, style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
-//                       SizedBox(height: 10.0),
-//                       Row(
-//                         mainAxisAlignment: MainAxisAlignment.start,
-//                         crossAxisAlignment: CrossAxisAlignment.start,
-//                         children: <Widget>[
-//                           Expanded(flex: 3, child: Text('Хэрэгжүүлсэн огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
-//                           Expanded(flex: 4, child: Text(data.heregjvvlsenOn, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-//                         ],
-//                       ),
-//                       SizedBox(height: 4),
-//                       Row(
-//                         mainAxisAlignment: MainAxisAlignment.start,
-//                         crossAxisAlignment: CrossAxisAlignment.start,
-//                         children: <Widget>[
-//                           Expanded(flex: 3, child: Text('Хэрэгжилтийн шат:', style: TextStyle(color: textColor, fontSize: 12),)),
-//                           Expanded(flex: 4, child: Text(data.heregjiltiinShat, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-//                         ],
-//                       ),
-//                       SizedBox(height: 10.0),
-//                     ],
-//                   ),
-//                   Divider(),
-//                   Column(
-//                     mainAxisAlignment: MainAxisAlignment.start,
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     children: <Widget>[
-//                       Text(data.desc, style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
-//                       SizedBox(height: 10.0),
-//                       Row(
-//                         mainAxisAlignment: MainAxisAlignment.start,
-//                         crossAxisAlignment: CrossAxisAlignment.start,
-//                         children: <Widget>[
-//                           Expanded(flex: 3, child: Text('Хэрэгжүүлсэн огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
-//                           Expanded(flex: 4, child: Text(data.heregjvvlsenOn, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-//                         ],
-//                       ),
-//                       SizedBox(height: 4),
-//                       Row(
-//                         mainAxisAlignment: MainAxisAlignment.start,
-//                         crossAxisAlignment: CrossAxisAlignment.start,
-//                         children: <Widget>[
-//                           Expanded(flex: 3, child: Text('Хэрэгжилтийн шат:', style: TextStyle(color: textColor, fontSize: 12),)),
-//                           Expanded(flex: 4, child: Text(data.heregjiltiinShat, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-//                         ],
-//                       ),
-//                       SizedBox(height: 10.0),
-//                     ],
-//                   ),
-//
-//                   Container(
-//                     height: 30,
-//                     margin: EdgeInsets.only(top: 10, bottom: 20),
-//                     decoration: BoxDecoration(
-//                       color: Colors.greenAccent[700],
-//                       borderRadius:
-//                       new BorderRadius.circular(10.0),
-//                     ),
-//                     child: FlatButton(
-//                       child: Container(
-//                         child: Stack(
-//                           fit: StackFit.expand,
-//                           children: <Widget>[
-//                             Center(
-//                               child: Text(
-//                                 'Биелсэн',
-//                                 textAlign: TextAlign.center,
-//                                 style: TextStyle(
-//                                     color: Color.fromRGBO(
-//                                         255, 255, 255, 1),
-//                                     fontSize: 16,
-//                                     fontWeight:
-//                                     FontWeight.w400),
-//                               ),
-//                             ),
-//                           ],
-//                         ),
-//                       ),
-//                       onPressed: () {},
-//
-//                     ),
-//                   ),
-//                 ],
-//
-//               ),
+              Theme(
+                data: ThemeData().copyWith(dividerColor: Colors.transparent),
+                child: ExpansionTile(
+//                 backgroundColor: Colors.grey[50],
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Text('Хэрэгжилт', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
+                    ],
+                  ),
+                  children: <Widget>[
+                    datas.length <= 0 ? Container() : ListView.builder(
+                        shrinkWrap: true,
+                        physics: ScrollPhysics(),
+                        itemCount: datas[index].dsSubHeregjiltZgTogtool == null ? 0 : datas[index].dsSubHeregjiltZgTogtool.length,
+                        padding: EdgeInsets.all(0.0),
+                        itemBuilder: (BuildContext context, int index) {
+                          return Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(datas[index].dsSubHeregjiltZgTogtool[index].tailan, style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
+                              SizedBox(height: 10.0),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 3, child: Text('Хэрэгжүүлсэн огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(datas[index].dsSubHeregjiltZgTogtool[index].ognoo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 3, child: Text('Хэрэгжилтийн шат:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(datas[index].dsSubHeregjiltZgTogtool[index].shat, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 10.0),
+                            ],
+                          );
+                        }
+                    ),
+                  ],
+
+                ),
+              ),
 
             ],
           ),

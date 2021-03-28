@@ -6,6 +6,7 @@ import 'package:flutter_icons/feather.dart';
 import 'package:flutter_icons/ionicons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lambda/modules/network_util.dart';
+import 'package:lambda/utils/number.dart';
 import '../../../components/sidebar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -63,16 +64,12 @@ class _SongonShalgaruulaltState extends State<SongonShalgaruulalt> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   NetworkUtil _http = new NetworkUtil();
 
-  /*--------------------------------------------------------------------------------------------------*/
-  /*--------------------------------------------------------------------------------------------------*/
   bool loading = true;
   int currentPage = 1;
   int lastPage = 0;
   int total = 0;
 
   bool _isVisible = false;
-
-  //List<AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel> aj_huch_med = [];
   List<SongonShalgaruulalt$Query$Paginate$AaSongonShalgaruulalt> son_shalgaruulalt = [];
 
   @override
@@ -84,8 +81,7 @@ class _SongonShalgaruulaltState extends State<SongonShalgaruulalt> {
     setState(() {
       loading = true;
     });
-//    final response = await client.execute(AjilahHuchMedeelelQuery(variables: AjilahHuchMedeelelArguments(page: page, size: 10)));
-    final response = await client.execute(SongonShalgaruulaltQuery(variables: SongonShalgaruulaltArguments(page: page, size: 4)));
+    final response = await client.execute(SongonShalgaruulaltQuery(variables: SongonShalgaruulaltArguments(page: page, size: 10)));
     setState(() {
       son_shalgaruulalt = response.data.paginate.aaSongonShalgaruulalt;
       currentPage = page;
@@ -97,16 +93,6 @@ class _SongonShalgaruulaltState extends State<SongonShalgaruulalt> {
     });
   }
 
-
-
-  /*--------------------------------------------------------------------------------------------------*/
-  /*--------------------------------------------------------------------------------------------------*/
-
-
-  final List<tusgai> tusgaiZuvshuuruls = [
-    tusgai("2012-12", "2011-12-22",  "11222",  "2015-12-12", "2011-12-12",  "201,112,12.09", "1,112,12.09", "1,112", "201,112,12.09", "1,112,12.09", "1,112" ),
-    tusgai("2012-12", "2011-12-22",  "11222",  "2015-12-12", "2011-12-12",  "201,112,12.09", "1,112,12.09", "1,112", "201,112,12.09", "1,112,12.09", "1,112" ),
-  ];
 
 
   void showToast() {
@@ -136,15 +122,25 @@ class _SongonShalgaruulaltState extends State<SongonShalgaruulalt> {
         child: Icon(Feather.getIconData('search')),
         backgroundColor: mainColor,
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.only(left: 10.0, right: 10.0),
-        child: ListView.builder(
-          itemCount: tusgaiZuvshuuruls == null ? 0 : tusgaiZuvshuuruls.length,
-          itemBuilder: (BuildContext context, int index) =>
-              buildTripCard(context, index),
-        ),
-      ),
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.all(0.0),
+          //padding: EdgeInsets.only(left: 10.0, right: 10.0),
+          height: double.infinity,
+          margin: EdgeInsets.all(0.0),
+          child: loading ? Loader() : Pagination(
+            lastPage: lastPage,
+            currentPage: currentPage,
+            total: total,
+            loading: loading,
+            getData: getData,
+            itemBuilder: ListView.builder(
+              itemCount: son_shalgaruulalt == null ? 0 : son_shalgaruulalt.length,
+              itemBuilder: (BuildContext context, int index) =>
+                  buildTripCard(context, index),
+            ),
+          ),
+        )
     );
 
   }
@@ -250,7 +246,7 @@ class _SongonShalgaruulaltState extends State<SongonShalgaruulalt> {
   }
 
   Widget buildTripCard(BuildContext context, int index) {
-    final tusgai = tusgaiZuvshuuruls[index];
+    final tusgai = son_shalgaruulalt[index];
 
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -287,10 +283,10 @@ class _SongonShalgaruulaltState extends State<SongonShalgaruulalt> {
                               SizedBox(height: 10),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
                                   Expanded(flex: 4, child: Text('ЗГ-ын тогтоол:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 4, child: Text(tusgai.togtool, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text('${tusgai.ologsonZToo}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 4),
@@ -299,7 +295,7 @@ class _SongonShalgaruulaltState extends State<SongonShalgaruulalt> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Expanded(flex: 4, child: Text('Огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 4, child: Text(tusgai.ognoo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(date(tusgai.ognoo), style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 4),
@@ -307,8 +303,26 @@ class _SongonShalgaruulaltState extends State<SongonShalgaruulalt> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
+                                  Expanded(flex: 4, child: Text('Олгосон хэмжээ:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text('${tusgai.ologsonHegmjeeGa}га', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Expanded(flex: 4, child: Text('Сонгон шалгарууласан талбай:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text('${tusgai.sShTalbai}га', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
                                   Expanded(flex: 4, child: Text('Батлагдсан талбайн хэмжээ:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 4, child: Text(tusgai.batlagdsanTalbainHemjee, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text('${tusgai.sShTalbai}га', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 4),
@@ -319,364 +333,146 @@ class _SongonShalgaruulaltState extends State<SongonShalgaruulalt> {
                       ),
                     ],
                   ),
-
-                  SizedBox(height: 10.0),
                 ],
               ),
 
-              ExpansionTile(
+              Theme(
+                data: ThemeData().copyWith(dividerColor: Colors.transparent),
+                child: ExpansionTile(
 //                 backgroundColor: Colors.grey[50],
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Text('Сонгон шалгаруулалт', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
+                    ],
+                  ),
                   children: <Widget>[
-                    Text('Сонгон шалгаруулалт', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
-                  ],
-                ),
-                children: <Widget>[
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Дугаар:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.dugaar, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Огноо:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.date, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Оролцсон ААН-ийн тоо:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.oroltssonAANToo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Зарласан талбайн хэмжээ:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.zarlasanTalbainHemjee, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Зарласан талбайн тоо:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.zarlasanTalbainToo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Зарласан талбайн хэмжээ:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.zarlasanTalbainHemjee, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Олгогдсон талбайн хэмжээ:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.olgodsonTalbainHemjee, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Олгогдсон талбайн тоо:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.olgogdsonTalbainToo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Төвлөрүүлсэн орлого:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.TuvlujvvlsenOrlogo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 20.0),
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Дугаар:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.dugaar, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Огноо:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.date, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Оролцсон ААН-ийн тоо:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.oroltssonAANToo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Зарласан талбайн хэмжээ:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.zarlasanTalbainHemjee, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Зарласан талбайн тоо:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.zarlasanTalbainToo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Зарласан талбайн хэмжээ:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.zarlasanTalbainHemjee, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Олгогдсон талбайн хэмжээ:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.olgodsonTalbainHemjee, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Олгогдсон талбайн тоо:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.olgogdsonTalbainToo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Төвлөрүүлсэн орлого:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.TuvlujvvlsenOrlogo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 20.0),
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Дугаар:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.dugaar, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Огноо:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.date, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Оролцсон ААН-ийн тоо:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.oroltssonAANToo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Зарласан талбайн хэмжээ:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.zarlasanTalbainHemjee, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Зарласан талбайн тоо:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.zarlasanTalbainToo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Зарласан талбайн хэмжээ:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.zarlasanTalbainHemjee, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Олгогдсон талбайн хэмжээ:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.olgodsonTalbainHemjee, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Олгогдсон талбайн тоо:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.olgogdsonTalbainToo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 5, child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text('Төвлөрүүлсэн орлого:', style: TextStyle(color: textColor, fontSize: 12),),
-                          )),
-                          Expanded(flex: 4, child: Text(tusgai.TuvlujvvlsenOrlogo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 20.0),
-                    ],
-                  ),
-                ],
+                    son_shalgaruulalt.length <= 0 ? Container() : ListView.builder(
+                        shrinkWrap: true,
+                        physics: ScrollPhysics(),
+                        itemCount: son_shalgaruulalt[index].subSongonShalgaruulalt == null ? 0 : son_shalgaruulalt[index].subSongonShalgaruulalt.length,
+                        padding: EdgeInsets.all(0.0),
+                        itemBuilder: (BuildContext context, int index) {
+                          return  Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 5, child: Padding(
+                                    padding: const EdgeInsets.only(left: 20.0),
+                                    child: Text('Дугаар:', style: TextStyle(color: textColor, fontSize: 12),),
+                                  )),
+                                  Expanded(flex: 4, child: Text('${son_shalgaruulalt[index].subSongonShalgaruulalt[index].sShDugaar}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 5, child: Padding(
+                                    padding: const EdgeInsets.only(left: 20.0),
+                                    child: Text('Огноо:', style: TextStyle(color: textColor, fontSize: 12),),
+                                  )),
+                                  Expanded(flex: 4, child: Text(son_shalgaruulalt[index].subSongonShalgaruulalt[index].ognoo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 5, child: Padding(
+                                    padding: const EdgeInsets.only(left: 20.0),
+                                    child: Text('Оролцсон ААН-ийн тоо:', style: TextStyle(color: textColor, fontSize: 12),),
+                                  )),
+                                  Expanded(flex: 4, child: Text('${son_shalgaruulalt[index].subSongonShalgaruulalt[index].ajNegjToo}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 5, child: Padding(
+                                    padding: const EdgeInsets.only(left: 20.0),
+                                    child: Text('Зарласан талбайн хэмжээ:', style: TextStyle(color: textColor, fontSize: 12),),
+                                  )),
+                                  Expanded(flex: 4, child: Text('${son_shalgaruulalt[index].subSongonShalgaruulalt[index].oTHemjee}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 5, child: Padding(
+                                    padding: const EdgeInsets.only(left: 20.0),
+                                    child: Text('Зарласан талбайн тоо:', style: TextStyle(color: textColor, fontSize: 12),),
+                                  )),
+                                  Expanded(flex: 4, child: Text('${son_shalgaruulalt[index].subSongonShalgaruulalt[index].zTToo}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 5, child: Padding(
+                                    padding: const EdgeInsets.only(left: 20.0),
+                                    child: Text('Зарласан талбайн хэмжээ:', style: TextStyle(color: textColor, fontSize: 12),),
+                                  )),
+                                  Expanded(flex: 4, child: Text('${son_shalgaruulalt[index].subSongonShalgaruulalt[index].zaralsanTalbai}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 5, child: Padding(
+                                    padding: const EdgeInsets.only(left: 20.0),
+                                    child: Text('Олгогдсон талбайн хэмжээ:', style: TextStyle(color: textColor, fontSize: 12),),
+                                  )),
+                                  Expanded(flex: 4, child: Text('${son_shalgaruulalt[index].subSongonShalgaruulalt[index].oTHemjee}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 5, child: Padding(
+                                    padding: const EdgeInsets.only(left: 20.0),
+                                    child: Text('Олгогдсон талбайн тоо:', style: TextStyle(color: textColor, fontSize: 12),),
+                                  )),
+                                  Expanded(flex: 4, child: Text('', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 5, child: Padding(
+                                    padding: const EdgeInsets.only(left: 20.0),
+                                    child: Text('Төвлөрүүлсэн орлого:', style: TextStyle(color: textColor, fontSize: 12),),
+                                  )),
+                                  Expanded(flex: 4, child: Text('${son_shalgaruulalt[index].subSongonShalgaruulalt[index].tovolruulsen}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 20.0),
+                            ],
+                          );
+                        }
+                    ),
 
+                  ],
+
+                ),
               ),
 
             ],

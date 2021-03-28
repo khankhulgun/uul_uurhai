@@ -24,28 +24,6 @@ import 'package:catalog/ui/common/paginate.dart';
 import 'package:catalog/graphql/config.dart';
 import 'package:catalog/graphql/queries/busad.dart';
 
-
-import '../../main.dart';
-
-class tusgai{
-  final String salbar;
-  final String on;
-  final String heleltssenAsuudliinToo;
-  final String asuudliinDugaar;
-  final String turul;
-  final String desc;
-  final String tuluv;
-  tusgai(
-      this.salbar,
-      this.on,
-      this.heleltssenAsuudliinToo,
-      this.asuudliinDugaar,
-      this.turul,
-      this.desc,
-      this.tuluv,
-      );
-}
-
 class ErdesBaylagMergejliinZuvlul extends StatefulWidget {
   @override
   _ErdesBaylagMergejliinZuvlulState createState() => _ErdesBaylagMergejliinZuvlulState();
@@ -55,26 +33,12 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   NetworkUtil _http = new NetworkUtil();
 
-
-  final List<tusgai> tusgaiZuvshuuruls = [
-    tusgai("УХГГСА", "2011-12-22",  "5",  "2012-12",  "Ашиглалт",
-        "БНХАУ-ын тал нүүрс тээврийн жолоочдыг хил нэвтрэх үед ковид-19-ийн шинжилгээнд хамрагдсан байхыг шаардсан. Энэ хүрээнд шуурхай ажлын хэсэг болон эмч, эмнэлгийн ажилчид хилийн бүсэд ажиллаж эхний ээлжинд 854 жолоочийг шинжилгээнд хамруулж хилээр нэвтрэх ", "Засвартай хүлээж авсан"),
-    tusgai("УХГГСА", "2011-12-22",  "5",  "2012-12",  "Ашиглалт",
-        "БНХАУ-ын тал нүүрс тээврийн жолоочдыг хил нэвтрэх үед ковид-19-ийн шинжилгээнд хамрагдсан байхыг шаардсан. Энэ хүрээнд шуурхай ажлын хэсэг болон эмч, эмнэлгийн ажилчид хилийн бүсэд ажиллаж эхний ээлжинд 854 жолоочийг шинжилгээнд хамруулж хилээр нэвтрэх ", "Засвартай хүлээж авсан"),
-  ];
-
-
-
-  /*--------------------------------------------------------------------------------------------------*/
-  /*--------------------------------------------------------------------------------------------------*/
   bool loading = true;
   int currentPage = 1;
   int lastPage = 0;
   int total = 0;
 
   bool _isVisible = false;
-
-//  List<AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel> aj_huch_med = [];
   List<EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol> erdes_baylag_mer_zuv = [];
 
   @override
@@ -86,7 +50,6 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
     setState(() {
       loading = true;
     });
-    //final response = await client.execute(AjilahHuchMedeelelQuery(variables: AjilahHuchMedeelelArguments(page: page, size: 10)));
     final response = await client.execute(EBMergejilZovlolQuery(variables: EBMergejilZovlolArguments(page: page, size: 10)));
     setState(() {
       erdes_baylag_mer_zuv = response.data.paginate.aaEBMergejilZovlol;
@@ -98,13 +61,6 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
       print(erdes_baylag_mer_zuv);
     });
   }
-
-
-
-  /*--------------------------------------------------------------------------------------------------*/
-  /*--------------------------------------------------------------------------------------------------*/
-
-
   void showToast() {
     setState(() {
       _isVisible = !_isVisible;
@@ -132,15 +88,25 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
         child: Icon(Feather.getIconData('search')),
         backgroundColor: mainColor,
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.only(left: 10.0, right: 10.0),
-        child: ListView.builder(
-          itemCount: tusgaiZuvshuuruls == null ? 0 : tusgaiZuvshuuruls.length,
-          itemBuilder: (BuildContext context, int index) =>
-              buildTripCard(context, index),
-        ),
-      ),
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.all(0.0),
+          //padding: EdgeInsets.only(left: 10.0, right: 10.0),
+          height: double.infinity,
+          margin: EdgeInsets.all(0.0),
+          child: loading ? Loader() : Pagination(
+            lastPage: lastPage,
+            currentPage: currentPage,
+            total: total,
+            loading: loading,
+            getData: getData,
+            itemBuilder: ListView.builder(
+              itemCount: erdes_baylag_mer_zuv == null ? 0 : erdes_baylag_mer_zuv.length,
+              itemBuilder: (BuildContext context, int index) =>
+                  buildTripCard(context, index),
+            ),
+          ),
+        )
     );
 
   }
@@ -247,7 +213,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
 
 
   Widget buildTripCard(BuildContext context, int index) {
-    final tusgai = tusgaiZuvshuuruls[index];
+    final tusgai = erdes_baylag_mer_zuv[index];
 
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -284,28 +250,28 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                               SizedBox(height: 10),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
                                   Expanded(flex: 4, child: Text('ЭБМЗ-ын салбар:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 4, child: Text(tusgai.salbar, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text('', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 4),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
                                   Expanded(flex: 4, child: Text('Он:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 4, child: Text(tusgai.on, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text('', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 4),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
                                   Expanded(flex: 4, child: Text('Хэлэлцсан асуудлын тоо:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 4, child: Text(tusgai.heleltssenAsuudliinToo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text('${tusgai.hhAsuudalToo}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 4),
@@ -316,61 +282,257 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                       ),
                     ],
                   ),
-
-                  SizedBox(height: 10.0),
                 ],
               ),
 
-              ExpansionTile(
+              Theme(
+                data: ThemeData().copyWith(dividerColor: Colors.transparent),
+                child: ExpansionTile(
 //                 backgroundColor: Colors.grey[50],
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Text('Хэлэлцсэн асуудлууд', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
-                  ],
-                ),
-                children: <Widget>[
-                  Column(
+                  title: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 2, child: Text('Асуудлын дугаар:', style: TextStyle(color: textColor, fontSize: 12))),
-                          Expanded(flex: 4, child: Text(tusgai.asuudliinDugaar, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 4),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 2, child: Text('Төрөл:', style: TextStyle(color: textColor, fontSize: 12),),),
-                          Expanded(flex: 4, child: Text(tusgai.turul, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      Text(tusgai.desc, style: TextStyle(color: textColor, fontSize: 12),),
-                      SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Expanded(flex: 0, child: Padding(
-                            padding: const EdgeInsets.only(right: 10.0),
-                            child: Text('Төлөв:', style: TextStyle(color: textColor, fontSize: 12),),
-                          ),),
-                          Expanded(flex: 4, child: Text(tusgai.tuluv, style: TextStyle(color: Colors.green, fontWeight: FontWeight.w600, fontSize: 12),)),
-                        ],
-                      ),
-                      SizedBox(height: 20.0),
+                      Text('Хэлэлцсэн асуудлууд', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
                     ],
                   ),
+                  children: <Widget>[
+                    erdes_baylag_mer_zuv.length <= 0 ? Container() : ListView.builder(
+                        shrinkWrap: true,
+                        physics: ScrollPhysics(),
+                        itemCount: erdes_baylag_mer_zuv[index].dsSubTezu == null ? 0 : erdes_baylag_mer_zuv[index].dsSubTezu.length,
+                        padding: EdgeInsets.all(0.0),
+                        itemBuilder: (BuildContext context, int index) {
+                          return                     Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 2, child: Text('Асуудлын дугаар:', style: TextStyle(color: textColor, fontSize: 12))),
+                                  Expanded(flex: 4, child: Text("${erdes_baylag_mer_zuv[index].dsSubTezu[index].aDugaar}", style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 2, child: Text('Төрөл:', style: TextStyle(color: textColor, fontSize: 12),),),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubTezu[index].buteegdehuun, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 10),
+                              Text(erdes_baylag_mer_zuv[index].dsSubTezu[index].asuudal, style: TextStyle(color: textColor, fontSize: 12),),
+                              SizedBox(height: 10),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 0, child: Padding(
+                                    padding: const EdgeInsets.only(right: 10.0),
+                                    child: Text('Төлөв:', style: TextStyle(color: textColor, fontSize: 12),),
+                                  ),),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubTezu[index].tolov, style: TextStyle(color: Colors.green, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 20.0),
+                            ],
+                          );
+                        }
+                    ),
+                    SizedBox(height: 10),
+                    erdes_baylag_mer_zuv.length <= 0 ? Container() : ListView.builder(
+                        shrinkWrap: true,
+                        physics: ScrollPhysics(),
+                        itemCount: erdes_baylag_mer_zuv[index].dsSubBu == null ? 0 : erdes_baylag_mer_zuv[index].dsSubBu.length,
+                        padding: EdgeInsets.all(0.0),
+                        itemBuilder: (BuildContext context, int index) {
+                          return                     Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 2, child: Text('Асуудлын дугаар:', style: TextStyle(color: textColor, fontSize: 12))),
+                                  Expanded(flex: 4, child: Text("${erdes_baylag_mer_zuv[index].dsSubBu[index].asuudalD}", style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 2, child: Text('Төрөл:', style: TextStyle(color: textColor, fontSize: 12),),),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubBu[index].bTorol, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 10),
+                              Text(erdes_baylag_mer_zuv[index].dsSubBu[index].asuudal, style: TextStyle(color: textColor, fontSize: 12),),
+                              SizedBox(height: 10),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 0, child: Padding(
+                                    padding: const EdgeInsets.only(right: 10.0),
+                                    child: Text('Төлөв:', style: TextStyle(color: textColor, fontSize: 12),),
+                                  ),),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubBu[index].tolov, style: TextStyle(color: Colors.green, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 20.0),
+                            ],
+                          );
+                        }
+                    ),
+                    SizedBox(height: 10),
+                    erdes_baylag_mer_zuv.length <= 0 ? Container() : ListView.builder(
+                        shrinkWrap: true,
+                        physics: ScrollPhysics(),
+                        itemCount: erdes_baylag_mer_zuv[index].dsSubGt == null ? 0 : erdes_baylag_mer_zuv[index].dsSubGt.length,
+                        padding: EdgeInsets.all(0.0),
+                        itemBuilder: (BuildContext context, int index) {
+                          return                     Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 2, child: Text('Асуудлын дугаар:', style: TextStyle(color: textColor, fontSize: 12))),
+                                  Expanded(flex: 4, child: Text("${erdes_baylag_mer_zuv[index].dsSubGt[index].aDugaar}", style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 2, child: Text('Төрөл:', style: TextStyle(color: textColor, fontSize: 12),),),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubGt[index].gtTorol, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 10),
+                              Text(erdes_baylag_mer_zuv[index].dsSubGt[index].asuudal, style: TextStyle(color: textColor, fontSize: 12),),
+                              SizedBox(height: 10),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 0, child: Padding(
+                                    padding: const EdgeInsets.only(right: 10.0),
+                                    child: Text('Төлөв:', style: TextStyle(color: textColor, fontSize: 12),),
+                                  ),),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubGt[index].tolov, style: TextStyle(color: Colors.green, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 20.0),
+                            ],
+                          );
+                        }
+                    ),
+                    // SizedBox(height: 10),
+                    // erdes_baylag_mer_zuv.length <= 0 ? Container() : ListView.builder(
+                    //     shrinkWrap: true,
+                    //     physics: ScrollPhysics(),
+                    //     itemCount: erdes_baylag_mer_zuv[index].dsSubNoots == null ? 0 : erdes_baylag_mer_zuv[index].dsSubNoots.length,
+                    //     padding: EdgeInsets.all(0.0),
+                    //     itemBuilder: (BuildContext context, int index) {
+                    //       return                     Column(
+                    //         mainAxisAlignment: MainAxisAlignment.start,
+                    //         crossAxisAlignment: CrossAxisAlignment.start,
+                    //         children: <Widget>[
+                    //           Row(
+                    //             mainAxisAlignment: MainAxisAlignment.start,
+                    //             crossAxisAlignment: CrossAxisAlignment.start,
+                    //             children: <Widget>[
+                    //               Expanded(flex: 2, child: Text('Асуудлын дугаар:', style: TextStyle(color: textColor, fontSize: 12))),
+                    //               Expanded(flex: 4, child: Text("${erdes_baylag_mer_zuv[index].dsSubNoots[index].aDugaar}", style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                    //             ],
+                    //           ),
+                    //           SizedBox(height: 4),
+                    //           Row(
+                    //             mainAxisAlignment: MainAxisAlignment.start,
+                    //             crossAxisAlignment: CrossAxisAlignment.start,
+                    //             children: <Widget>[
+                    //               Expanded(flex: 2, child: Text('Төрөл:', style: TextStyle(color: textColor, fontSize: 12),),),
+                    //               Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubNoots[index].buteegdehuun, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                    //             ],
+                    //           ),
+                    //           SizedBox(height: 10),
+                    //           Text(erdes_baylag_mer_zuv[index].dsSubNoots[index].asuudal, style: TextStyle(color: textColor, fontSize: 12),),
+                    //           SizedBox(height: 10),
+                    //           Row(
+                    //             mainAxisAlignment: MainAxisAlignment.start,
+                    //             crossAxisAlignment: CrossAxisAlignment.start,
+                    //             children: <Widget>[
+                    //               Expanded(flex: 0, child: Padding(
+                    //                 padding: const EdgeInsets.only(right: 10.0),
+                    //                 child: Text('Төлөв:', style: TextStyle(color: textColor, fontSize: 12),),
+                    //               ),),
+                    //               Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubNoots[index].tolov, style: TextStyle(color: Colors.green, fontWeight: FontWeight.w600, fontSize: 12),)),
+                    //             ],
+                    //           ),
+                    //           SizedBox(height: 20.0),
+                    //         ],
+                    //       );
+                    //     }
+                    // ),
+                    SizedBox(height: 10),
+                    erdes_baylag_mer_zuv.length <= 0 ? Container() : ListView.builder(
+                        shrinkWrap: true,
+                        physics: ScrollPhysics(),
+                        itemCount: erdes_baylag_mer_zuv[index].dsSubUhggsa == null ? 0 : erdes_baylag_mer_zuv[index].dsSubUhggsa.length,
+                        padding: EdgeInsets.all(0.0),
+                        itemBuilder: (BuildContext context, int index) {
+                          return                     Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 2, child: Text('Асуудлын дугаар:', style: TextStyle(color: textColor, fontSize: 12))),
+                                  Expanded(flex: 4, child: Text("${erdes_baylag_mer_zuv[index].dsSubUhggsa[index].aDugaar}", style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 2, child: Text('Төрөл:', style: TextStyle(color: textColor, fontSize: 12),),),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubUhggsa[index].torol, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 10),
+                              Text(erdes_baylag_mer_zuv[index].dsSubUhggsa[index].asuudal, style: TextStyle(color: textColor, fontSize: 12),),
+                              SizedBox(height: 10),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 0, child: Padding(
+                                    padding: const EdgeInsets.only(right: 10.0),
+                                    child: Text('Төлөв:', style: TextStyle(color: textColor, fontSize: 12),),
+                                  ),),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubUhggsa[index].uhggsaTolov, style: TextStyle(color: Colors.green, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 20.0),
+                            ],
+                          );
+                        }
+                    ),
+                  ],
 
-                ],
-
+                ),
               ),
 
             ],

@@ -6,6 +6,7 @@ import 'package:flutter_icons/feather.dart';
 import 'package:flutter_icons/ionicons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lambda/modules/network_util.dart';
+import 'package:lambda/utils/number.dart';
 import '../../../components/sidebar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -273,7 +274,7 @@ class _AjillahHvchState extends State<AjillahHvch> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(flex: 3, child: Text('Үйл ажиллагааны чиглэл:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 4, child: Text('${aj_huch_med_i.uaChiglelId}', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 4, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 15.0),
@@ -293,7 +294,7 @@ class _AjillahHvchState extends State<AjillahHvch> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(flex: 3, child: Text('Ажиллах хүчний тоо:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 4, child: Text('${aj_huch_med_i.huchToo}', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 4, child: Text(number(aj_huch_med_i.huchToo), style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 15),

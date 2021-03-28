@@ -588,6 +588,24 @@ class _SidebarScreenState extends State<SidebarScreen> {
                                                   child: FlatButton(
                                                     padding: EdgeInsets.all(0.0),
                                                     onPressed: () {
+                                                      Navigator.pushNamed(context, '/ih');
+                                                    },
+                                                    child: Row(
+                                                      children: <Widget>[
+                                                        Text('- УИХ-н тогтоолын хэрэгжилт',
+                                                            style: TextStyle(
+                                                                fontSize: 14,
+                                                                color: Color(0xff363636),
+                                                                fontWeight: FontWeight.w500))
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  height: 32,
+                                                  child: FlatButton(
+                                                    padding: EdgeInsets.all(0.0),
+                                                    onPressed: () {
                                                       Navigator.pushNamed(context, '/zg');
                                                     },
                                                     child: Row(
