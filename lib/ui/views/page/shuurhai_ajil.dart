@@ -109,7 +109,8 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text('${date(shuurhai.ognoo)}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),),
-                            Container(child: Text(shuurhai.ajil, style: TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 12),)),
+                            Container(child: Text(shuurhai.ajil,  maxLines: 4,
+                              overflow: TextOverflow.ellipsis, style: TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 12),)),
                           ],
                         ),
                       ),
@@ -148,7 +149,7 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
 
                     ],
                   ),
-                  SizedBox(height: 4.0),
+                  SizedBox(height: 10.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -308,46 +309,7 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
 
   }
 
-  void _onButtonDeDtses() {
-    showModalBottomSheet(
-        context: context, builder: (context,) {
-      return StatefulBuilder(builder:
-          (BuildContext context, StateSetter setStateOfBottomSheet) {
-        return SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.all(10.0),
-            child: Row(
-              children: <Widget>[
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    FlatButton(
-                      onPressed: (){},
-                      child: Text('- Бодлогын баримт бичиг'),
-                    ),
-                    FlatButton(
-                      onPressed: (){},
-                      child: Text('- Засгийн газрын тогтоол'),
-                    ),
-                    FlatButton(
-//                      onPressed: () => _onButtonDeDtses(),
-                      onPressed: (){},
-                      child: Text('- Ажлын хэсэг'),
-                    ),
-                    FlatButton(
-                      onPressed: (){},
-                      child: Text('- Хөрөнгө оруулалтын төсөл, хөтөлбөр'),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        );
-      });
-    });
-  }
+
 
   void _onButtonPressed() {
     showModalBottomSheet(
@@ -356,64 +318,64 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
           (BuildContext context, StateSetter setStateOfBottomSheet) {
         return SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-            child: Column(
+            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Expanded(
-                      flex: 9,
-                      child: Container(
-                        padding: EdgeInsets.only(top: 7.0),
-                        margin: EdgeInsets.only(right: 5.0),
-                        height: 42.0,
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(8),
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(width: 1),
-                                borderRadius:
-                                BorderRadius.circular(4)),
-                            labelText: 'Хайх',
-                            //  labelStyle: TextStyle(color:primaryColor),
-                            hintStyle: TextStyle(
-                                color: Color.fromRGBO(147, 157, 186, .78),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w400),
+                Expanded(
+                  flex: 6,
+                  child: Container(
+                      height: 34.0,
+                      child: TextFormField(
+                        scrollPadding: EdgeInsets.all(0.0),
+                        style: TextStyle(fontSize: 14.0, color: Color.fromRGBO(68, 68, 68, 1), fontWeight: FontWeight.w400),
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 10.0),
                             focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                                borderSide: BorderSide(width: 1)),
-                            errorStyle: TextStyle(height: 0),
-
-                          ),
+                              borderSide: BorderSide(color: Color.fromRGBO(223, 223, 223, 1)),
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Color.fromRGBO(223, 223, 223, 1)),
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                                borderSide: BorderSide(
+                                    width: 1, color: Colors.red)),
+                            fillColor: Colors.red,
+                            hintText: 'Хайх',
+                            hintStyle: TextStyle(
+                                color:
+                                Color.fromRGBO(68, 68, 68, 1),
+                                fontSize: 13,
+                                fontWeight: FontWeight.w400)
                         ),
+                      )
+                  ),
+                ),
+                SizedBox(width: 4),
+                Expanded(
+                    flex: 2,
+                    child: MaterialButton(
+                      height: 34.0,
+                      padding: EdgeInsets.all(0.0),
+                      color: mainColor,
+                      textColor: Colors.white,
+                      child: new Text(
+                        "Хайх",
+                        style: TextStyle(fontSize: 15),
                       ),
-                    ),
-                    Expanded(
-                        flex: 3,
-                        child: MaterialButton(
-                          height: 34.0,
-                          padding: EdgeInsets.all(0.0),
-                          color: mainColor,
-                          textColor: Colors.white,
-                          child: new Text(
-                            "Хайх",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          onPressed: () {
+                      onPressed: () {
 //                      setStateOfBottomSheet(() {
 //                        this.saveData(true);
 //                      });
-                          },
-                        )
+                      },
                     )
-                  ],
-                ),
+                )
               ],
             ),
-
           ),
         );
       });

@@ -24,6 +24,8 @@ import 'package:catalog/ui/common/paginate.dart';
 import 'package:catalog/graphql/config.dart';
 import 'package:catalog/graphql/queries/busad.dart';
 
+import 'search_busad.dart';
+
 class ErdesBaylagMergejliinZuvlul extends StatefulWidget {
   @override
   _ErdesBaylagMergejliinZuvlulState createState() => _ErdesBaylagMergejliinZuvlulState();
@@ -117,95 +119,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
       return StatefulBuilder(builder:
           (BuildContext context, StateSetter setStateOfBottomSheet) {
         return SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-            child: Column(
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        FlatButton(
-                          onPressed: (){},
-                          child: Text('- Тусгай зөвшөөрөл '),
-                        ),
-                        FlatButton(
-                          onPressed: (){},
-                          child: Text('- Сонгон шалгаруулалт'),
-                        ),
-                        FlatButton(
-//                      onPressed: () => _onButtonDeDtses(),
-                          onPressed: (){},
-                          child: Text('- Эрдэс баялаг мэргэжлийн зөвлөл'),
-                        ),
-                        FlatButton(
-                          onPressed: (){},
-                          child: Text('- Ажиллах хүчний мэдээлэл'),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Expanded(
-                      flex: 9,
-                      child: Container(
-                        padding: EdgeInsets.only(top: 7.0),
-                        margin: EdgeInsets.only(right: 5.0),
-                        height: 42.0,
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(8),
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(width: 1),
-                                borderRadius:
-                                BorderRadius.circular(4)),
-                            labelText: 'Хайх',
-                            //  labelStyle: TextStyle(color:primaryColor),
-                            hintStyle: TextStyle(
-                                color: Color.fromRGBO(147, 157, 186, .78),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w400),
-                            focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                                borderSide: BorderSide(width: 1)),
-                            errorStyle: TextStyle(height: 0),
-
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                        flex: 3,
-                        child: MaterialButton(
-                          height: 34.0,
-                          padding: EdgeInsets.all(0.0),
-                          color: mainColor,
-                          textColor: Colors.white,
-                          child: new Text(
-                            "Хайх",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          onPressed: () {
-//                      setStateOfBottomSheet(() {
-//                        this.saveData(true);
-//                      });
-                          },
-                        )
-                    )
-                  ],
-                ),
-              ],
-            ),
-
-          ),
+          child: searchBusad(),
         );
       });
     });

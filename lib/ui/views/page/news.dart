@@ -173,39 +173,46 @@ class _NewsState extends State<News> {
               (BuildContext context, StateSetter setStateOfBottomSheet) {
             return SingleChildScrollView(
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+                padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Expanded(
-                      flex: 9,
+                      flex: 6,
                       child: Container(
-                        padding: EdgeInsets.only(top: 7.0),
-                        margin: EdgeInsets.only(right: 5.0),
-                        height: 42.0,
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(8),
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(width: 1),
-                                borderRadius: BorderRadius.circular(4)),
-                            labelText: 'Хайх',
-                            //  labelStyle: TextStyle(color:primaryColor),
-                            hintStyle: TextStyle(
-                                color: Color.fromRGBO(147, 157, 186, .78),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w400),
-                            focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                                borderSide: BorderSide(width: 1)),
-                            errorStyle: TextStyle(height: 0),
-                          ),
-                        ),
+                          height: 34.0,
+                          child: TextFormField(
+                            scrollPadding: EdgeInsets.all(0.0),
+                            style: TextStyle(fontSize: 14.0, color: Color.fromRGBO(68, 68, 68, 1), fontWeight: FontWeight.w400),
+                            decoration: InputDecoration(
+                                contentPadding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 10.0),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Color.fromRGBO(223, 223, 223, 1)),
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Color.fromRGBO(223, 223, 223, 1)),
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    borderSide: BorderSide(
+                                        width: 1, color: Colors.red)),
+                                fillColor: Colors.red,
+                                hintText: 'Хайх',
+                                hintStyle: TextStyle(
+                                    color:
+                                    Color.fromRGBO(68, 68, 68, 1),
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w400)
+                            ),
+                          )
                       ),
                     ),
+                    SizedBox(width: 4),
                     Expanded(
-                        flex: 3,
+                        flex: 2,
                         child: MaterialButton(
                           height: 34.0,
                           padding: EdgeInsets.all(0.0),
@@ -220,7 +227,8 @@ class _NewsState extends State<News> {
 //                        this.saveData(true);
 //                      });
                           },
-                        ))
+                        )
+                    )
                   ],
                 ),
               ),

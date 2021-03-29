@@ -19,6 +19,8 @@ import 'package:catalog/ui/common/paginate.dart';
 import 'package:catalog/graphql/config.dart';
 import 'package:catalog/graphql/queries/tusulvvdiin_medeelel.dart';
 
+import 'search_t_m.dart';
+
 
 
 
@@ -115,86 +117,7 @@ class _UurhaiState extends State<Uurhai> {
       return StatefulBuilder(builder:
           (BuildContext context, StateSetter setStateOfBottomSheet) {
         return SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-            child: Column(
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        FlatButton(
-                          onPressed: (){},
-                          child: Text('- Олборлолт явуулж байгаа уурхай'),
-                        ),
-                        FlatButton(
-                          onPressed: (){},
-                          child: Text('- Үйлдвэр'),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Expanded(
-                      flex: 9,
-                      child: Container(
-                        padding: EdgeInsets.only(top: 7.0),
-                        margin: EdgeInsets.only(right: 5.0),
-                        height: 42.0,
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.all(8),
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(width: 1),
-                                borderRadius:
-                                BorderRadius.circular(4)),
-                            labelText: 'Хайх',
-                            //  labelStyle: TextStyle(color:primaryColor),
-                            hintStyle: TextStyle(
-                                color: Color.fromRGBO(147, 157, 186, .78),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w400),
-                            focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20),
-                                borderSide: BorderSide(width: 1)),
-                            errorStyle: TextStyle(height: 0),
-
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                        flex: 3,
-                        child: MaterialButton(
-                          height: 34.0,
-                          padding: EdgeInsets.all(0.0),
-                          color: mainColor,
-                          textColor: Colors.white,
-                          child: new Text(
-                            "Хайх",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          onPressed: () {
-//                      setStateOfBottomSheet(() {
-//                        this.saveData(true);
-//                      });
-                          },
-                        )
-                    )
-                  ],
-                ),
-              ],
-            ),
-
-          ),
+          child: searchTuslvvdiinMedeelel(),
         );
       });
     });
@@ -324,51 +247,59 @@ class _UurhaiState extends State<Uurhai> {
                             children: <Widget>[
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Expanded(flex: 2, child: Text('Нүүрс', style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                                  Expanded(flex: 5, child: Text('Олборлолт эхэлсэн огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 3, child: Text(olborlolt[index].dsSubOlborlolt[index].oEhelsenOn, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                                ],
-                              ),
-                              SizedBox(height: 4),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Expanded(flex: 2, child: Text('', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                                  Expanded(flex: 5, child: Text('ТЭЗҮ батлагдсан огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 3, child: Text(olborlolt[index].dsSubOlborlolt[index].tezuBOn, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                                ],
-                              ),
-                              SizedBox(height: 4),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Expanded(flex: 2, child: Text('', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                                  Expanded(flex: 5, child: Text('Батлагдсан нөөц:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 3, child: Text('${olborlolt[index].dsSubOlborlolt[index].bNoots}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                                ],
-                              ),
-                              SizedBox(height: 4),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Expanded(flex: 2, child: Text('', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                                  Expanded(flex: 5, child: Text('Хүчин чадал:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 3, child: Text('${olborlolt[index].dsSubOlborlolt[index].oHuchChadal}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                                ],
-                              ),
-                              SizedBox(height: 4),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Expanded(flex: 2, child: Text('', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                                  Expanded(flex: 5, child: Text('Ажилчдын тоо:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 3, child: Text('${olborlolt[index].dsSubOlborlolt[index].ajilchinToo}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Expanded(flex: 2, child: Text(olborlolt[index].dsSubOlborlolt[index].torol, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 5,
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Expanded(flex: 5, child: Text('Олборлолт эхэлсэн огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                            Expanded(flex: 3, child: Text(olborlolt[index].dsSubOlborlolt[index].oEhelsenOn, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                          ],
+                                        ),
+                                        SizedBox(height: 4),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Expanded(flex: 5, child: Text('ТЭЗҮ батлагдсан огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                            Expanded(flex: 3, child: Text(olborlolt[index].dsSubOlborlolt[index].tezuBOn, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                          ],
+                                        ),
+                                        SizedBox(height: 4),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Expanded(flex: 5, child: Text('Батлагдсан нөөц:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                            Expanded(flex: 3, child: Text('${olborlolt[index].dsSubOlborlolt[index].bNoots}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                          ],
+                                        ),
+                                        SizedBox(height: 4),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Expanded(flex: 5, child: Text('Хүчин чадал:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                            Expanded(flex: 3, child: Text('${olborlolt[index].dsSubOlborlolt[index].oHuchChadal}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                          ],
+                                        ),
+                                        SizedBox(height: 4),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Expanded(flex: 5, child: Text('Ажилчдын тоо:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                            Expanded(flex: 3, child: Text('${olborlolt[index].dsSubOlborlolt[index].ajilchinToo}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ],
                               ),
                               SizedBox(height: 10.0),

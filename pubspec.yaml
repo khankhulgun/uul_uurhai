@@ -104,7 +104,6 @@ flutter:
     - assets/images/send.jpg
     - assets/images/register.png
     - assets/images/password.png
-    - assets/images/placeholder.png
     - assets/images/mark.png
     - assets/uuhvy_img/yam.png
     - assets/uuhvy_img/uurhai.png
@@ -119,6 +118,7 @@ flutter:
     - assets/uuhvy_img/chart1.svg
     - assets/uuhvy_img/auto_teever.svg
     - assets/uuhvy_img/tumur_zam.svg
+    - assets/uuhvy_img/placeholder.png
 
 
 

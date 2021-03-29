@@ -24,32 +24,6 @@ import 'package:catalog/graphql/queries/zg_hotolbor.dart';
 
 import '../../../main.dart';
 
-class data{
-  final String image;
-  final String shortDesc;
-  final String huvi;
-  final String heregjihHugatsaa;
-  final String ehVvsver;
-  final String tusuv;
-  final String suuriTvwshin;
-  final String on;
-  final String vrdvn;
-  final String tusuvsay;
-  final String desc;
-  data(
-      this.image,
-      this.shortDesc,
-      this.huvi,
-      this.heregjihHugatsaa,
-      this.ehVvsver,
-      this.tusuv,
-      this.suuriTvwshin,
-      this.on,
-      this.vrdvn,
-      this.tusuvsay,
-      this.desc,
-      );
-}
 
 class ZGhutulbur extends StatefulWidget {
   @override
@@ -88,37 +62,9 @@ class _ZGhutulburState extends State<ZGhutulbur> {
       total = response.data.paginate.total;
       loading = false;
     });
-    print(zghutulbur);
+
   }
 
-  final List<data> datas = [
-    data(
-      "assets/uuhvy_img/zg.png",
-      "3.2.1.1 Оюутолгойн төслийг Монгол Улсын хууль тогтоомжид нийцүүлж, далд уурхайг ашиглалтад оруулна. Монгол Улсын хууль тогтоомжид нийцүүлж, далд уурхайг ашиглалтад оруулна.",
-      "96",
-      "2020-12-01",
-      "Гадаадын хөрөнгө оруулалт, олон улсын банк, санхүүгийн байгууллагын зээлээр",
-      "1,462,473.9",
-      "Далд уурхайн бүтээн байгуулалт 26 хувь.",
-      "2021",
-      "Далд уурхайн бүтээн байгуулалт 54 хувь.",
-      "1,232,006.2 ",
-      "Салбарын сайд Г.Ёндон, дэд сайд О.Батнайрамдал нар 2020 оны 12 дугаар сарын 14-ний өдөр “Эрдэнэт үйлдвэр” ТӨҮГ-ын",
-    ),
-    data(
-      "assets/uuhvy_img/zg.png",
-      "3.2.1.1 Оюутолгойн төслийг Монгол Улсын хууль тогтоомжид нийцүүлж, далд уурхайг ашиглалтад оруулна. Монгол Улсын хууль тогтоомжид нийцүүлж, далд уурхайг ашиглалтад оруулна.",
-      "86",
-      "2020-12-01",
-      "Гадаадын хөрөнгө оруулалт, олон улсын банк, санхүүгийн байгууллагын зээлээр",
-      "1,462,473.9",
-      "Далд уурхайн бүтээн байгуулалт 26 хувь.",
-      "2021",
-      "Далд уурхайн бүтээн байгуулалт 54 хувь.",
-      "1,232,006.2 ",
-      "Салбарын сайд Г.Ёндон, дэд сайд О.Батнайрамдал нар 2020 оны 12 дугаар сарын 14-ний өдөр “Эрдэнэт үйлдвэр” ТӨҮГ-ын",
-    ),
-  ];
   bool _isVisible = false;
 
   void showToast() {
@@ -165,8 +111,8 @@ class _ZGhutulburState extends State<ZGhutulbur> {
           ),
         )
     );
-
   }
+
   void _onButtonPressed() {
     showModalBottomSheet(
         context: context, builder: (context,) {
@@ -174,41 +120,46 @@ class _ZGhutulburState extends State<ZGhutulbur> {
           (BuildContext context, StateSetter setStateOfBottomSheet) {
         return SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-            child: Row(
+            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+            child:   Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Expanded(
-                  flex: 9,
+                  flex: 6,
                   child: Container(
-                    padding: EdgeInsets.only(top: 7.0),
-                    margin: EdgeInsets.only(right: 5.0),
-                    height: 42.0,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(8),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(width: 1),
-                            borderRadius:
-                            BorderRadius.circular(4)),
-                        labelText: 'Хайх',
-                        //  labelStyle: TextStyle(color:primaryColor),
-                        hintStyle: TextStyle(
-                            color: Color.fromRGBO(147, 157, 186, .78),
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(width: 1)),
-                        errorStyle: TextStyle(height: 0),
-
-                      ),
-                    ),
+                      height: 34.0,
+                      child: TextFormField(
+                        scrollPadding: EdgeInsets.all(0.0),
+                        style: TextStyle(fontSize: 14.0, color: Color.fromRGBO(68, 68, 68, 1), fontWeight: FontWeight.w400),
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 10.0),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Color.fromRGBO(223, 223, 223, 1)),
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Color.fromRGBO(223, 223, 223, 1)),
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                                borderSide: BorderSide(
+                                    width: 1, color: Colors.red)),
+                            fillColor: Colors.red,
+                            hintText: 'Хайх',
+                            hintStyle: TextStyle(
+                                color:
+                                Color.fromRGBO(68, 68, 68, 1),
+                                fontSize: 13,
+                                fontWeight: FontWeight.w400)
+                        ),
+                      )
                   ),
                 ),
+                SizedBox(width: 4),
                 Expanded(
-                    flex: 3,
+                    flex: 2,
                     child: MaterialButton(
                       height: 34.0,
                       padding: EdgeInsets.all(0.0),
@@ -232,6 +183,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
       });
     });
   }
+
   Widget buildTripCard(BuildContext context, int index) {
     final data = zghutulbur[index];
     return Container(
@@ -273,7 +225,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                              ),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(6.0),
-                                  child: Image.asset("assets/uuhvy_img/zg.png",  fit: BoxFit.cover)
+                                  child: Image.asset("assets/uuhvy_img/placeholder.png",  fit: BoxFit.cover)
                               ),
 
                           )
@@ -281,7 +233,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                       SizedBox(width: 10.0),
                       Expanded(
                         flex: 4,
-                        child: Container(child: Text(data.hotolbor, style: TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 12),)),
+                        child: Text(data.zorilt,  style: TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 12),),
                       ),
                       SizedBox(width: 5.0),
                       Expanded(
@@ -318,7 +270,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
 
                     ],
                   ),
-                  SizedBox(height: 4.0),
+                  SizedBox(height: 10.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,

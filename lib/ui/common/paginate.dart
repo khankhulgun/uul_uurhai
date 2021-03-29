@@ -47,11 +47,11 @@ class _PaginationState extends State<Pagination> {
         }
       },
       child: Icon(FontAwesome.getIconData("angle-left"),
-          color: isFirstPage ? mainColor : Colors.blue, size: 25),
+          color: isFirstPage ? mainColor : mainColor, size: 15),
       shape: new CircleBorder(),
       elevation: 2.0,
       fillColor: Colors.white,
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(6.0),
       constraints: BoxConstraints(),
     ));
 
@@ -85,7 +85,7 @@ class _PaginationState extends State<Pagination> {
         shape: new CircleBorder(),
         elevation: 2.0,
         fillColor: widget.currentPage == i ? mainColor: Colors.white,
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(10.0),
         constraints: BoxConstraints(),
       ));
     }
@@ -97,11 +97,11 @@ class _PaginationState extends State<Pagination> {
         }
       },
       child: Icon(FontAwesome.getIconData("angle-right"),
-          color: isLastPage ? Color(0xFF999999) : mainColor, size: 25),
+          color: isLastPage ? Color(0xFF999999) : mainColor, size: 15),
       shape: new CircleBorder(),
       elevation: 2.0,
       fillColor: Colors.white,
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(6.0),
       constraints: BoxConstraints(),
     ));
 
@@ -131,9 +131,9 @@ class _PaginationState extends State<Pagination> {
                     width: 1.0, color: Color(0xFFCCCCCC)),
               ),
             ),
-            height: 70,
+            height: 50,
             padding: EdgeInsets.only(
-                right: 10, top: 5, left: 10, bottom: 15),
+                right: 10, top: 0, left: 0, bottom: 0),
             child: Row(
               children: getPagination(),
             ),
