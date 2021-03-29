@@ -97,7 +97,7 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
                       Expanded(
                           flex: 2,
                           child: Container(
-                              child: Image.asset('assets/uuhvy_img/yamnii.png',  fit: BoxFit.cover),
+                              child: Image.asset('assets/uuhvy_img/placeholder.png',  fit: BoxFit.cover),
                               //child: Image.asset('assets/uuhvy_img/yamnii.png', height: 90,  fit: BoxFit.cover),
                           )
                       ),
