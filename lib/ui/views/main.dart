@@ -101,64 +101,61 @@ class _mainScreenState extends State<mainScreen> {
                 padding: EdgeInsets.only(right: 5, top: 0, left: 5, bottom: 10),
                 child: Column(
                   children: [
-                    ////18.4 Export gazriin tos baiguullaga
-
-                    // LambdaChart(schemaID: '223', theme: theme, filters: filtersExportGazarWithDate),
-                    ////18.3 Export gazriin tos boomt
-                    // LambdaChartRest(title: "Газрын тос боомтоор",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportGazriinTos, chartType: "ColumnChart"),
-
-                    ////18.2 Olbrologch baiguullaga
-                    // LambdaChart(schemaID: '227', theme: theme, filters: filtersOlborloltGazrinTos, hideTitle:true),
-                    // // // 18.1 Olborlolor gazriin tos
-                    // LambdaChart(schemaID: '226', theme: theme, filters: filtersOlborloltGazrinTos),
-
-                    ////17.2 Нүүрсний экспорт боомтоор ALL
-                    // LambdaChart(schemaID: '225', theme: theme, filters: filtersBoomNuurs, hideTitle:true),
-                    ////17.1 Нүүрсний экспорт боомтоор
-                    // LambdaChartRest(title: "Нүүрсний экспорт боомтоор",  APIurl: "/api/nuursBoomt", theme: theme, filters: filters, chartType: "ColumnChart"),
-                    // // 16.1Нүүрсний олборлолт
-                    // LambdaChartRest(title: "Нүүрсний олборлолт",  APIurl: "/api/olborloltYear", theme: theme, colors: colorsExportNuurs, filters: filtersOlborloltNuurs, chartType: "ColumnChart"),
-                    // // 16.2Нүүрсний экспорт
-                    // LambdaChartRest(title: "Нүүрсний экспорт",  APIurl: "/api/exportYear", theme: theme, colors: colorsExportZes, filters: filtersExportNuurs, chartType: "ColumnChart"),
-                    // // // 15.2 Olborlolor tumur
-                    // LambdaChartRest(title: "Төмрийн хүдэр, баяжмалын олборлолт",  APIurl: "/api/olborloltYear", theme: theme, colors: colorsExportTumur, filters: filtersOlborloltTumur, chartType: "ColumnChart"),
-                    // // // 15 Olborlolor tumur
-                    // LambdaChart(schemaID: '224', theme: theme, filters: filtersOlborloltTumur),
-                    //// 14Export tumur
-                    // LambdaChart(schemaID: '223', theme: theme, filters: filtersExportTumurWithDate),
-                    // // 13 Olborlolor zes
-                    // LambdaChart(schemaID: '224', theme: theme, filters: filtersExportZesWithDate),
-                    // LambdaChartRest(title: "Зэсийн баяжмалын олборлолт",  APIurl: "/api/olborloltYear", theme: theme, colors: colorsExportZes, filters: filtersOlborlolZes, chartType: "ColumnChart"),
-                    ////12.2 Export zes
-                    // LambdaChart(schemaID: '223', theme: theme, filters: filtersExportZesWithDate),
-                    // //// 11.1 Эрдэс бүтэгдэхүүний үнэ
-                    // LambdaChart(schemaID: '222', theme: theme),
-                    // //// 11.2 Эрдэс бүтэгдэхүүний үнэ Жилээр
-                    // LambdaChartRest(title: "Эрдэс бүтэгдэхүүний үнэ Жилээр",  APIurl: "/api/mineralPrice", theme: theme, colors: colorsAltai, filters: filtersErdesUneAlt, chartType: "ColumnChart"),
-                    // //// 10 "МБ худалдан авсан үнэт метал
-                    // LambdaChartRest(title: "МБ худалдан авсан үнэт метал",  APIurl: "/api/mBankBuy", theme: theme, colors: colorsAltai, filters: filtersAlt, chartType: "ColumnChart"),
-                    // //// 9.2 Export Tumur Year
-                    // LambdaChartRest(title: "ТӨМРИЙН ХҮДЭР", colors: colorsExportTumur, APIurl: "/api/exportYear", theme: theme, filters: filtersExportTumur, chartType: "ColumnChart"),
-                    // //// 9.2 Export Zes Year
-                    // LambdaChartRest(title: "ЗЭСИЙН БАЯЖМАЛ", colors: colorsExportZes, APIurl: "/api/exportYear", theme: theme, filters: filtersExportZes, chartType: "ColumnChart"),
-                    // //// 9.1 Export Nuur YEar
-                    // LambdaChartRest(title: "НҮҮРС", colors: colorsExportNuurs, APIurl: "/api/exportYear", theme: theme, filters: filtersExportNuurs, chartType: "ColumnChart"),
-                    // //// 8 Export Tumur Boomt
-                    // LambdaChartRest(title: "ТӨМРИЙН ХҮДЭР БООМТ",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportZesTumur, chartType: "ColumnChart"),
-                    // //// 7 Export Zes Boomt
-                    // LambdaChartRest(title: "ЗЭСИЙН БАЯЖМАЛ БООМТ",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportZesBoomt, chartType: "ColumnChart"),
-                    // //// 6 Export Nuurs Boomt
-                    // LambdaChartRest(title: "НҮҮРС БООМТ",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportNuursBoomt, chartType: "ColumnChart"),
-                    //// 5 Export Tumur by Track
-                    // LambdaChart(schemaID: '220', theme: theme, filters: filters),
-                    //// 4 Export Zes by Track
-                    // LambdaChart(schemaID: '219', theme: theme, filters: filters),
-                    //// 3 Export Nuurs by Track
-                    // LambdaChart(schemaID: '218', theme: theme, filters: filters),
-                    ////2 Export BOOMT
-                    // LambdaChart(schemaID: '214', theme: theme, filters: filters),
-                    //// 1 Export Medee
-                   // LambdaChart(schemaID: '216', theme: theme, filters: filters),
+                    //18.4 Export gazriin tos baiguullaga
+                    LambdaChart(schemaID: '223', theme: theme, filters: filtersExportGazarWithDate),
+                    //18.3 Export gazriin tos boomt
+                    LambdaChartRest(title: "Газрын тос боомтоор",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportGazriinTos, chartType: "ColumnChart"),
+                    //18.2 Olbrologch baiguullaga
+                    LambdaChart(schemaID: '227', theme: theme, filters: filtersOlborloltGazrinTos, hideTitle:true),
+                    // // 18.1 Olborlolor gazriin tos
+                    LambdaChart(schemaID: '226', theme: theme, filters: filtersOlborloltGazrinTos),
+                    //17.2 Нүүрсний экспорт боомтоор ALL
+                    LambdaChart(schemaID: '225', theme: theme, filters: filtersBoomNuurs, hideTitle:true),
+                    //17.1 Нүүрсний экспорт боомтоор
+                    LambdaChartRest(title: "Нүүрсний экспорт боомтоор",  APIurl: "/api/nuursBoomt", theme: theme, filters: filters, chartType: "ColumnChart"),
+                    // 16.1Нүүрсний олборлолт
+                    LambdaChartRest(title: "Нүүрсний олборлолт",  APIurl: "/api/olborloltYear", theme: theme, colors: colorsExportNuurs, filters: filtersOlborloltNuurs, chartType: "ColumnChart"),
+                    // 16.2Нүүрсний экспорт
+                    LambdaChartRest(title: "Нүүрсний экспорт",  APIurl: "/api/exportYear", theme: theme, colors: colorsExportZes, filters: filtersExportNuurs, chartType: "ColumnChart"),
+                    // // 15.2 Olborlolor tumur
+                    LambdaChartRest(title: "Төмрийн хүдэр, баяжмалын олборлолт",  APIurl: "/api/olborloltYear", theme: theme, colors: colorsExportTumur, filters: filtersOlborloltTumur, chartType: "ColumnChart"),
+                    // // 15 Olborlolor tumur
+                    LambdaChart(schemaID: '224', theme: theme, filters: filtersOlborloltTumur),
+                    // 14Export tumur
+                    LambdaChart(schemaID: '223', theme: theme, filters: filtersExportTumurWithDate),
+                    // 13 Olborlolor zes
+                    LambdaChart(schemaID: '224', theme: theme, filters: filtersExportZesWithDate),
+                    LambdaChartRest(title: "Зэсийн баяжмалын олборлолт",  APIurl: "/api/olborloltYear", theme: theme, colors: colorsExportZes, filters: filtersOlborlolZes, chartType: "ColumnChart"),
+                    //12.2 Export zes
+                    LambdaChart(schemaID: '223', theme: theme, filters: filtersExportZesWithDate),
+                    //// 11.1 Эрдэс бүтэгдэхүүний үнэ
+                    LambdaChart(schemaID: '222', theme: theme),
+                    //// 11.2 Эрдэс бүтэгдэхүүний үнэ Жилээр
+                    LambdaChartRest(title: "Эрдэс бүтэгдэхүүний үнэ Жилээр",  APIurl: "/api/mineralPrice", theme: theme, colors: colorsAltai, filters: filtersErdesUneAlt, chartType: "ColumnChart"),
+                    //// 10 "МБ худалдан авсан үнэт метал
+                    LambdaChartRest(title: "МБ худалдан авсан үнэт метал",  APIurl: "/api/mBankBuy", theme: theme, colors: colorsAltai, filters: filtersAlt, chartType: "ColumnChart"),
+                    //// 9.2 Export Tumur Year
+                    LambdaChartRest(title: "ТӨМРИЙН ХҮДЭР", colors: colorsExportTumur, APIurl: "/api/exportYear", theme: theme, filters: filtersExportTumur, chartType: "ColumnChart"),
+                    //// 9.2 Export Zes Year
+                    LambdaChartRest(title: "ЗЭСИЙН БАЯЖМАЛ", colors: colorsExportZes, APIurl: "/api/exportYear", theme: theme, filters: filtersExportZes, chartType: "ColumnChart"),
+                    //// 9.1 Export Nuur YEar
+                    LambdaChartRest(title: "НҮҮРС", colors: colorsExportNuurs, APIurl: "/api/exportYear", theme: theme, filters: filtersExportNuurs, chartType: "ColumnChart"),
+                    //// 8 Export Tumur Boomt
+                    LambdaChartRest(title: "ТӨМРИЙН ХҮДЭР БООМТ",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportZesTumur, chartType: "ColumnChart"),
+                    //// 7 Export Zes Boomt
+                    LambdaChartRest(title: "ЗЭСИЙН БАЯЖМАЛ БООМТ",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportZesBoomt, chartType: "ColumnChart"),
+                    //// 6 Export Nuurs Boomt
+                    LambdaChartRest(title: "НҮҮРС БООМТ",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportNuursBoomt, chartType: "ColumnChart"),
+                    // 5 Export Tumur by Track
+                    LambdaChart(schemaID: '220', theme: theme, filters: filters),
+                    // 4 Export Zes by Track
+                    LambdaChart(schemaID: '219', theme: theme, filters: filters),
+                    // 3 Export Nuurs by Track
+                    LambdaChart(schemaID: '218', theme: theme, filters: filters),
+                    //2 Export BOOMT
+                    LambdaChart(schemaID: '214', theme: theme, filters: filters),
+                    // 1 Export Medee
+                    LambdaChart(schemaID: '216', theme: theme, filters: filters),
 
                     SizedBox(height: 10),
                     Padding(
