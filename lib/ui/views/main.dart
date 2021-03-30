@@ -6,6 +6,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../components/sidebar.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lambda/plugins/chart/lambda_chart.dart';
+import 'package:lambda/plugins/chart/lambda_chart_rest.dart';
+
+import 'package:lambda/plugins/chart/models/filter.dart';
 
 class statistic {
   final String title;
@@ -44,6 +47,32 @@ class _mainScreenState extends State<mainScreen> {
   ];
   String theme = "shine";
 
+  List<Filter> filters = [Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersExportNuurs = [Filter(column: "b_id", condition: "equals", value: "2")];
+  List<Filter> filtersOlborloltNuurs = [Filter(column: "olborlolt_b_id", condition: "equals", value: "2")];
+  List<Filter> filtersExportZes = [Filter(column: "b_id", condition: "equals", value: "1")];
+  List<Filter> filtersOlborlolZes = [Filter(column: "olborlolt_b_id", condition: "equals", value: "1")];
+  List<Filter> filtersExportTumur = [Filter(column: "b_id", condition: "equals", value: "3")];
+  List<Filter> filtersOlborloltTumur = [Filter(column: "olborlolt_b_id", condition: "equals", value: "3")];
+  List<Filter> filtersOlborloltGazrinTos = [Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01"), Filter(column: "olborlolt_b_id", condition: "equals", value: "4")];
+
+  List<String> colorsExportNuurs = ["#3030BE", "#6363E7", "#A8A8EA"];
+  List<String> colorsExportZes = ["#F87129", "#E59B73", "#FFD5BE"];
+  List<String> colorsExportTumur = ["#2B97D4", "#85CCF5", "#D1E6F2"];
+  List<Filter> filtersExportGazriinTos = [Filter(column: "b_id", condition: "equals", value: "4"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersExportNuursBoomt = [Filter(column: "b_id", condition: "equals", value: "2"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersExportZesBoomt = [Filter(column: "b_id", condition: "equals", value: "1"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersExportZesTumur = [Filter(column: "b_id", condition: "equals", value: "3"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersAlt = [Filter(column: "a_maltlam_id", condition: "equals", value: "11"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersErdesUneAlt = [Filter(column: "ashigt_m_id", condition: "equals", value: "11")];
+  List<String> colorsAltai = ["#F7C417", "#FF9B05", "#F5EAC3"];
+
+  List<Filter> filtersExportNuursWithDate = [Filter(column: "b_id", condition: "equals", value: "2"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersExportZesWithDate = [Filter(column: "b_id", condition: "equals", value: "1"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersExportTumurWithDate = [Filter(column: "b_id", condition: "equals", value: "3"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersExportGazarWithDate = [Filter(column: "b_id", condition: "equals", value: "4"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersBoomNuurs = [Filter(column: "boomt_short", condition: "equals", value: "ГАС"),Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +101,65 @@ class _mainScreenState extends State<mainScreen> {
                 padding: EdgeInsets.only(right: 5, top: 0, left: 5, bottom: 10),
                 child: Column(
                   children: [
-                    LambdaChart(schemaID: '210', theme: theme),
+                    ////18.4 Export gazriin tos baiguullaga
+
+                    // LambdaChart(schemaID: '223', theme: theme, filters: filtersExportGazarWithDate),
+                    ////18.3 Export gazriin tos boomt
+                    // LambdaChartRest(title: "Газрын тос боомтоор",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportGazriinTos, chartType: "ColumnChart"),
+
+                    ////18.2 Olbrologch baiguullaga
+                    // LambdaChart(schemaID: '227', theme: theme, filters: filtersOlborloltGazrinTos, hideTitle:true),
+                    // // // 18.1 Olborlolor gazriin tos
+                    // LambdaChart(schemaID: '226', theme: theme, filters: filtersOlborloltGazrinTos),
+
+                    ////17.2 Нүүрсний экспорт боомтоор ALL
+                    // LambdaChart(schemaID: '225', theme: theme, filters: filtersBoomNuurs, hideTitle:true),
+                    ////17.1 Нүүрсний экспорт боомтоор
+                    // LambdaChartRest(title: "Нүүрсний экспорт боомтоор",  APIurl: "/api/nuursBoomt", theme: theme, filters: filters, chartType: "ColumnChart"),
+                    // // 16.1Нүүрсний олборлолт
+                    // LambdaChartRest(title: "Нүүрсний олборлолт",  APIurl: "/api/olborloltYear", theme: theme, colors: colorsExportNuurs, filters: filtersOlborloltNuurs, chartType: "ColumnChart"),
+                    // // 16.2Нүүрсний экспорт
+                    // LambdaChartRest(title: "Нүүрсний экспорт",  APIurl: "/api/exportYear", theme: theme, colors: colorsExportZes, filters: filtersExportNuurs, chartType: "ColumnChart"),
+                    // // // 15.2 Olborlolor tumur
+                    // LambdaChartRest(title: "Төмрийн хүдэр, баяжмалын олборлолт",  APIurl: "/api/olborloltYear", theme: theme, colors: colorsExportTumur, filters: filtersOlborloltTumur, chartType: "ColumnChart"),
+                    // // // 15 Olborlolor tumur
+                    // LambdaChart(schemaID: '224', theme: theme, filters: filtersOlborloltTumur),
+                    //// 14Export tumur
+                    // LambdaChart(schemaID: '223', theme: theme, filters: filtersExportTumurWithDate),
+                    // // 13 Olborlolor zes
+                    // LambdaChart(schemaID: '224', theme: theme, filters: filtersExportZesWithDate),
+                    // LambdaChartRest(title: "Зэсийн баяжмалын олборлолт",  APIurl: "/api/olborloltYear", theme: theme, colors: colorsExportZes, filters: filtersOlborlolZes, chartType: "ColumnChart"),
+                    ////12.2 Export zes
+                    // LambdaChart(schemaID: '223', theme: theme, filters: filtersExportZesWithDate),
+                    // //// 11.1 Эрдэс бүтэгдэхүүний үнэ
+                    // LambdaChart(schemaID: '222', theme: theme),
+                    // //// 11.2 Эрдэс бүтэгдэхүүний үнэ Жилээр
+                    // LambdaChartRest(title: "Эрдэс бүтэгдэхүүний үнэ Жилээр",  APIurl: "/api/mineralPrice", theme: theme, colors: colorsAltai, filters: filtersErdesUneAlt, chartType: "ColumnChart"),
+                    // //// 10 "МБ худалдан авсан үнэт метал
+                    // LambdaChartRest(title: "МБ худалдан авсан үнэт метал",  APIurl: "/api/mBankBuy", theme: theme, colors: colorsAltai, filters: filtersAlt, chartType: "ColumnChart"),
+                    // //// 9.2 Export Tumur Year
+                    // LambdaChartRest(title: "ТӨМРИЙН ХҮДЭР", colors: colorsExportTumur, APIurl: "/api/exportYear", theme: theme, filters: filtersExportTumur, chartType: "ColumnChart"),
+                    // //// 9.2 Export Zes Year
+                    // LambdaChartRest(title: "ЗЭСИЙН БАЯЖМАЛ", colors: colorsExportZes, APIurl: "/api/exportYear", theme: theme, filters: filtersExportZes, chartType: "ColumnChart"),
+                    // //// 9.1 Export Nuur YEar
+                    // LambdaChartRest(title: "НҮҮРС", colors: colorsExportNuurs, APIurl: "/api/exportYear", theme: theme, filters: filtersExportNuurs, chartType: "ColumnChart"),
+                    // //// 8 Export Tumur Boomt
+                    // LambdaChartRest(title: "ТӨМРИЙН ХҮДЭР БООМТ",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportZesTumur, chartType: "ColumnChart"),
+                    // //// 7 Export Zes Boomt
+                    // LambdaChartRest(title: "ЗЭСИЙН БАЯЖМАЛ БООМТ",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportZesBoomt, chartType: "ColumnChart"),
+                    // //// 6 Export Nuurs Boomt
+                    // LambdaChartRest(title: "НҮҮРС БООМТ",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportNuursBoomt, chartType: "ColumnChart"),
+                    //// 5 Export Tumur by Track
+                    // LambdaChart(schemaID: '220', theme: theme, filters: filters),
+                    //// 4 Export Zes by Track
+                    // LambdaChart(schemaID: '219', theme: theme, filters: filters),
+                    //// 3 Export Nuurs by Track
+                    // LambdaChart(schemaID: '218', theme: theme, filters: filters),
+                    ////2 Export BOOMT
+                    // LambdaChart(schemaID: '214', theme: theme, filters: filters),
+                    //// 1 Export Medee
+                   // LambdaChart(schemaID: '216', theme: theme, filters: filters),
+
                     SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -591,7 +678,7 @@ class _mainScreenState extends State<mainScreen> {
                           ]),
                     ),
                     SizedBox(height: 10),
-                    LambdaChart(schemaID: '211', theme: theme),
+                    // LambdaChart(schemaID: '214', theme: theme),
                     // ListView.builder(
                     //   scrollDirection: Axis.horizontal,
                     //   itemCount: statistics.length,
