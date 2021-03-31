@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:lambda/plugins/chart/models/filter.dart';
 import 'package:lambda/plugins/chart/lambda_chart.dart';
 import 'package:lambda/plugins/chart/lambda_chart_rest.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:catalog/ui/styles/_colors.dart';
 class ExportNews extends StatefulWidget {
   @override
   _ExportNewsState createState() => _ExportNewsState();
@@ -66,12 +67,551 @@ class _ExportNewsState extends State<ExportNews> {
                   LambdaChart(schemaID: '216', theme: theme, filters: filters),
 
 
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+
+                          Container(
+                            padding: EdgeInsets.all(5.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6),
+                              color: Colors.grey[100],
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  'НҮҮРС',
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                      color: primaryColor,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Expanded(
+                                      flex: 2,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Expanded(
+                                              flex: 4,
+                                              child: SvgPicture.asset(
+                                                  'assets/uuhvy_img/auto_teever.svg',
+                                                  width: 28,
+                                                  fit: BoxFit.contain)),
+                                          Expanded(
+                                            flex: 4,
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(top: 6.0),
+                                              child: Text(
+                                                '300',
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: primaryColor,
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Divider(),
+                                    Expanded(
+                                      flex: 2,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Expanded(
+                                              flex: 4,
+                                              child: SvgPicture.asset(
+                                                  'assets/uuhvy_img/tumur_zam.svg',
+                                                  width: 28,
+                                                  fit: BoxFit.contain)),
+                                          Expanded(
+                                            flex: 4,
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(top: 6.0),
+                                              child: Text(
+                                                '609.6',
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: primaryColor,
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 2,
+                                      child: Center(
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text(
+                                              'Нийт',
+                                              textAlign: TextAlign.right,
+                                              style: TextStyle(
+                                                  color: textColor,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                            Text(
+                                              '909.6',
+                                              textAlign: TextAlign.right,
+                                              style: TextStyle(
+                                                  color: primaryColor,
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 4,
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(
+                                                'Өссөн дүн',
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: textColor,
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.w400),
+                                              ),
+                                              Expanded(
+                                                  child: Text(
+                                                    '24,235.1',
+                                                    textAlign: TextAlign.right,
+                                                    style: TextStyle(
+                                                        color: primaryColor,
+                                                        fontSize: 14,
+                                                        fontWeight: FontWeight.w500),
+                                                  )),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(
+                                                'Өмнөх оноос',
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: textColor,
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.w400),
+                                              ),
+                                              Expanded(
+                                                  child: Text(
+                                                    '+23.1%',
+                                                    textAlign: TextAlign.right,
+                                                    style: TextStyle(
+                                                        color: Colors.green,
+                                                        fontSize: 14,
+                                                        fontWeight: FontWeight.w500),
+                                                  )),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ]),
+                  ),
+
+
+                  SizedBox(height: 10),
                   // // 3 Export Nuurs by Track
                   LambdaChart(schemaID: '218', theme: theme, filters: filters),
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+
+                          Container(
+                            padding: EdgeInsets.all(5.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6),
+                              color: Colors.grey[100],
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  'ЗЭСИЙН БАЯЖМАЛ',
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                      color: textOrange,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Expanded(
+                                      flex: 2,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Expanded(
+                                              flex: 4,
+                                              child: SvgPicture.asset(
+                                                  'assets/uuhvy_img/auto_teever.svg',
+                                                  width: 28,
+                                                  fit: BoxFit.contain)),
+                                          Expanded(
+                                            flex: 4,
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(top: 6.0),
+                                              child: Text(
+                                                '300',
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: textOrange,
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Divider(),
+                                    Expanded(
+                                      flex: 2,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Expanded(
+                                              flex: 4,
+                                              child: SvgPicture.asset(
+                                                  'assets/uuhvy_img/tumur_zam.svg',
+                                                  width: 28,
+                                                  fit: BoxFit.contain)),
+                                          Expanded(
+                                            flex: 4,
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(top: 6.0),
+                                              child: Text(
+                                                '609.6',
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: textOrange,
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 2,
+                                      child: Center(
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text(
+                                              'Нийт',
+                                              textAlign: TextAlign.right,
+                                              style: TextStyle(
+                                                  color: textColor,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                            Text(
+                                              '909.6',
+                                              textAlign: TextAlign.right,
+                                              style: TextStyle(
+                                                  color: textOrange,
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 4,
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(
+                                                'Өссөн дүн',
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: textColor,
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.w400),
+                                              ),
+                                              Expanded(
+                                                  child: Text(
+                                                    '24,235.1',
+                                                    textAlign: TextAlign.right,
+                                                    style: TextStyle(
+                                                        color: textOrange,
+                                                        fontSize: 14,
+                                                        fontWeight: FontWeight.w500),
+                                                  )),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(
+                                                'Өмнөх оноос',
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: textColor,
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.w400),
+                                              ),
+                                              Expanded(
+                                                  child: Text(
+                                                    '+23.1%',
+                                                    textAlign: TextAlign.right,
+                                                    style: TextStyle(
+                                                        color: Colors.green,
+                                                        fontSize: 14,
+                                                        fontWeight: FontWeight.w500),
+                                                  )),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ]),
+                  ),
+
+                  SizedBox(height: 10),
 
                   // // 4 Export Zes by Track
                   LambdaChart(schemaID: '219', theme: theme, filters: filters),
 
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            padding: EdgeInsets.all(5.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6),
+                              color: Colors.grey[100],
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  'ТӨМРИЙН ХҮДЭР',
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                      color: textBlueGrey,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Expanded(
+                                      flex: 2,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Expanded(
+                                              flex: 4,
+                                              child: SvgPicture.asset(
+                                                  'assets/uuhvy_img/auto_teever.svg',
+                                                  width: 28,
+                                                  fit: BoxFit.contain)),
+                                          Expanded(
+                                            flex: 4,
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(top: 6.0),
+                                              child: Text(
+                                                '300',
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: textBlueGrey,
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Divider(),
+                                    Expanded(
+                                      flex: 2,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Expanded(
+                                              flex: 4,
+                                              child: SvgPicture.asset(
+                                                  'assets/uuhvy_img/tumur_zam.svg',
+                                                  width: 28,
+                                                  fit: BoxFit.contain)),
+                                          Expanded(
+                                            flex: 4,
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(top: 6.0),
+                                              child: Text(
+                                                '609.6',
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: textBlueGrey,
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 2,
+                                      child: Center(
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text(
+                                              'Нийт',
+                                              textAlign: TextAlign.right,
+                                              style: TextStyle(
+                                                  color: textColor,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                            Text(
+                                              '909.6',
+                                              textAlign: TextAlign.right,
+                                              style: TextStyle(
+                                                  color: textBlueGrey,
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 4,
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(
+                                                'Өссөн дүн',
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: textColor,
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.w400),
+                                              ),
+                                              Expanded(
+                                                  child: Text(
+                                                    '24,235.1',
+                                                    textAlign: TextAlign.right,
+                                                    style: TextStyle(
+                                                        color: textBlueGrey,
+                                                        fontSize: 14,
+                                                        fontWeight: FontWeight.w500),
+                                                  )),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(
+                                                'Өмнөх оноос',
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: textColor,
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.w400),
+                                              ),
+                                              Expanded(
+                                                  child: Text(
+                                                    '+23.1%',
+                                                    textAlign: TextAlign.right,
+                                                    style: TextStyle(
+                                                        color: Colors.green,
+                                                        fontSize: 14,
+                                                        fontWeight: FontWeight.w500),
+                                                  )),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+
+                        ]),
+                  ),
+
+                  SizedBox(height: 10),
                   // // 5 Export Tumur by Track
                   LambdaChart(schemaID: '220', theme: theme, filters: filters),
 
