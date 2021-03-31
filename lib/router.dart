@@ -34,6 +34,12 @@ import './ui/views/page/heregjilt/IH_togtooliin heregjilt.dart';
 import './ui/views/page/heregjilt/ajiliin_heseg.dart';
 import './ui/views/page/heregjilt/hurungu_oruulalt_t_t.dart';
 
+import './ui/views/section/news.dart';
+import './ui/views/section/boomt.dart';
+import './ui/views/section/jileer.dart';
+import './ui/views/section/mongol_bank.dart';
+import './ui/views/section/product_price.dart';
+
 
 class Router {
   Router._();
@@ -68,6 +74,13 @@ class Router {
     '/HOTH': (context) => Hurungu_oruulalt(),
     '/shuurhai': (context) => ShuurhaiAjil(),
     '/hutulbur': (context) => ZGhutulbur(),
+
+
+    '/export_news': (context) => ExportNews(),
+    '/boomt': (context) => Boomt(),
+    '/jileer': (context) => Jileer(),
+    '/bank': (context) => MongolBank(),
+    '/product': (context) => ProductPrice(),
 
 
 

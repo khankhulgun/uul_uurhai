@@ -6,9 +6,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../components/sidebar.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lambda/plugins/chart/lambda_chart.dart';
-import 'package:lambda/plugins/chart/lambda_chart_rest.dart';
 
-import 'package:lambda/plugins/chart/models/filter.dart';
+import 'section/details.dart';
+// import 'package:lambda/plugins/chart/lambda_chart_rest.dart';
+//
+// import 'package:lambda/plugins/chart/models/filter.dart';
 
 class statistic {
   final String title;
@@ -17,7 +19,16 @@ class statistic {
     this.title,
   );
 }
-
+class Item {
+  final int id;
+  final String image;
+  final String title;
+  Item(
+      this.id,
+      this.image,
+      this.title,
+      );
+}
 class mainScreen extends StatefulWidget {
   @override
   _mainScreenState createState() => _mainScreenState();
@@ -47,31 +58,38 @@ class _mainScreenState extends State<mainScreen> {
   ];
   String theme = "shine";
 
-  List<Filter> filters = [Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  List<Filter> filtersExportNuurs = [Filter(column: "b_id", condition: "equals", value: "2")];
-  List<Filter> filtersOlborloltNuurs = [Filter(column: "olborlolt_b_id", condition: "equals", value: "2")];
-  List<Filter> filtersExportZes = [Filter(column: "b_id", condition: "equals", value: "1")];
-  List<Filter> filtersOlborlolZes = [Filter(column: "olborlolt_b_id", condition: "equals", value: "1")];
-  List<Filter> filtersExportTumur = [Filter(column: "b_id", condition: "equals", value: "3")];
-  List<Filter> filtersOlborloltTumur = [Filter(column: "olborlolt_b_id", condition: "equals", value: "3")];
-  List<Filter> filtersOlborloltGazrinTos = [Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01"), Filter(column: "olborlolt_b_id", condition: "equals", value: "4")];
+  // List<Filter> filters = [Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  // List<Filter> filtersExportNuurs = [Filter(column: "b_id", condition: "equals", value: "2")];
+  // List<Filter> filtersOlborloltNuurs = [Filter(column: "olborlolt_b_id", condition: "equals", value: "2")];
+  // List<Filter> filtersExportZes = [Filter(column: "b_id", condition: "equals", value: "1")];
+  // List<Filter> filtersOlborlolZes = [Filter(column: "olborlolt_b_id", condition: "equals", value: "1")];
+  // List<Filter> filtersExportTumur = [Filter(column: "b_id", condition: "equals", value: "3")];
+  // List<Filter> filtersOlborloltTumur = [Filter(column: "olborlolt_b_id", condition: "equals", value: "3")];
+  // List<Filter> filtersOlborloltGazrinTos = [Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01"), Filter(column: "olborlolt_b_id", condition: "equals", value: "4")];
+  //
+  // List<String> colorsExportNuurs = ["#3030BE", "#6363E7", "#A8A8EA"];
+  // List<String> colorsExportZes = ["#F87129", "#E59B73", "#FFD5BE"];
+  // List<String> colorsExportTumur = ["#2B97D4", "#85CCF5", "#D1E6F2"];
+  // List<Filter> filtersExportGazriinTos = [Filter(column: "b_id", condition: "equals", value: "4"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  // List<Filter> filtersExportNuursBoomt = [Filter(column: "b_id", condition: "equals", value: "2"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  // List<Filter> filtersExportZesBoomt = [Filter(column: "b_id", condition: "equals", value: "1"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  // List<Filter> filtersExportZesTumur = [Filter(column: "b_id", condition: "equals", value: "3"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  // List<Filter> filtersAlt = [Filter(column: "a_maltlam_id", condition: "equals", value: "11"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  // List<Filter> filtersErdesUneAlt = [Filter(column: "ashigt_m_id", condition: "equals", value: "11")];
+  // List<String> colorsAltai = ["#F7C417", "#FF9B05", "#F5EAC3"];
+  //
+  // List<Filter> filtersExportNuursWithDate = [Filter(column: "b_id", condition: "equals", value: "2"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  // List<Filter> filtersExportZesWithDate = [Filter(column: "b_id", condition: "equals", value: "1"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  // List<Filter> filtersExportTumurWithDate = [Filter(column: "b_id", condition: "equals", value: "3"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  // List<Filter> filtersExportGazarWithDate = [Filter(column: "b_id", condition: "equals", value: "4"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  // List<Filter> filtersBoomNuurs = [Filter(column: "boomt_short", condition: "equals", value: "ГАС"),Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
 
-  List<String> colorsExportNuurs = ["#3030BE", "#6363E7", "#A8A8EA"];
-  List<String> colorsExportZes = ["#F87129", "#E59B73", "#FFD5BE"];
-  List<String> colorsExportTumur = ["#2B97D4", "#85CCF5", "#D1E6F2"];
-  List<Filter> filtersExportGazriinTos = [Filter(column: "b_id", condition: "equals", value: "4"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  List<Filter> filtersExportNuursBoomt = [Filter(column: "b_id", condition: "equals", value: "2"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  List<Filter> filtersExportZesBoomt = [Filter(column: "b_id", condition: "equals", value: "1"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  List<Filter> filtersExportZesTumur = [Filter(column: "b_id", condition: "equals", value: "3"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  List<Filter> filtersAlt = [Filter(column: "a_maltlam_id", condition: "equals", value: "11"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  List<Filter> filtersErdesUneAlt = [Filter(column: "ashigt_m_id", condition: "equals", value: "11")];
-  List<String> colorsAltai = ["#F7C417", "#FF9B05", "#F5EAC3"];
-
-  List<Filter> filtersExportNuursWithDate = [Filter(column: "b_id", condition: "equals", value: "2"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  List<Filter> filtersExportZesWithDate = [Filter(column: "b_id", condition: "equals", value: "1"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  List<Filter> filtersExportTumurWithDate = [Filter(column: "b_id", condition: "equals", value: "3"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  List<Filter> filtersExportGazarWithDate = [Filter(column: "b_id", condition: "equals", value: "4"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  List<Filter> filtersBoomNuurs = [Filter(column: "boomt_short", condition: "equals", value: "ГАС"),Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  final List<Item> items = [
+    Item(1, "assets/uuhvy_img/copper.png", "ЗЭС"),
+    Item(2, "assets/uuhvy_img/coal.png", "НҮҮРС"),
+    Item(3, "assets/uuhvy_img/iron.png", "ТӨМРИЙН ХҮДЭР"),
+    Item(3, "assets/uuhvy_img/petroleum.png", "ГАЗРЫН ТОС"),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +175,425 @@ class _mainScreenState extends State<mainScreen> {
                     // // 1 Export Medee
                     // LambdaChart(schemaID: '216', theme: theme, filters: filters),
 
-                    SizedBox(height: 10),
+                    // Экспорт
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      margin: EdgeInsets.symmetric(vertical: 10),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Экспорт', style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
+                          SizedBox(height: 10,),
+                          Row(
+                            children: [
+                              Expanded(
+                                flex: 4,
+                                child: Container(
+                                  height: 100,
+                                  //padding: EdgeInsets.all(20.0),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.3),
+                                        blurRadius: 5.0,
+                                        spreadRadius: .3,
+                                        offset: Offset(3.0, 3.0),// changes position of shadow
+                                      ),
+                                    ],
+                                  ),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.pushNamed(context, '/export_news');
+                                    },
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Image.asset(
+                                          "assets/uuhvy_img/medee.png",
+                                          fit: BoxFit.cover,
+                                          width: 30,
+                                        ),
+                                        SizedBox(height: 10),
+                                        Text('Мэдээ', style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w400)
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 10),
+                              Expanded(
+                                  flex: 4,
+                                  child: Container(
+                                    height: 100,
+                                    //padding: EdgeInsets.all(20.0),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.3),
+                                          blurRadius: 5.0,
+                                          spreadRadius: .3,
+                                          offset: Offset(3.0, 3.0),// changes position of shadow
+                                        ),
+                                      ],
+                                    ),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.pushNamed(context, '/boomt');
+                                      },
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            "assets/uuhvy_img/boomt.png",
+                                            fit: BoxFit.cover,
+                                            width: 30,
+                                          ),
+                                          SizedBox(height: 10),
+                                          Text('Боомтоор', style: TextStyle(fontSize: 12,  color: textColor, fontWeight: FontWeight.w400)
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                              ),
+                              SizedBox(width: 10),
+                              Expanded(
+                                  flex: 4,
+                                  child: Container(
+                                    height: 100,
+                                    //padding: EdgeInsets.all(20.0),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.3),
+                                          blurRadius: 5.0,
+                                          spreadRadius: .3,
+                                          offset: Offset(3.0, 3.0),// changes position of shadow
+                                        ),
+                                      ],
+                                    ),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.pushNamed(context, '/jileer');
+                                      },
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            "assets/uuhvy_img/jil.png",
+                                            fit: BoxFit.cover,
+                                            width: 30,
+                                          ),
+                                          SizedBox(height: 10),
+                                          Text('Жилээр', style: TextStyle(fontSize: 12,  color: textColor, fontWeight: FontWeight.w400)
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                              ),
+                            ],
+                          ),
+                        ],
+                      )
+                    ),
+                    // Эрдэс бүтээгдэхүүний төрлөөр
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text('Эрдэс бүтээгдэхүүний төрлөөр', style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
+                        ),
+                        Container(
+                          height: 100,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: items.length,
+                            padding: EdgeInsets.all(0.0),
+                            itemBuilder: (BuildContext context, int index) {
+                              return Container(
+                                height: 80,
+                                width: 120,
+                                margin: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 10),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.3),
+                                      blurRadius: 5.0,
+                                      spreadRadius: .3,
+                                      offset: Offset(3.0, 3.0),// changes position of shadow
+                                    ),
+                                  ],
+                                ),
+                                child: InkWell(
+                                  onTap: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Details(title: items[index].title,)));
+                                  },
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children:[
+                                      Image.asset(
+                                        items[index].image,
+                                        fit: BoxFit.cover,
+                                        width: 30,
+                                      ),
+                                      SizedBox(height: 5),
+                                      Text(items[index].title, style: TextStyle(fontSize: 12,  color: textColor, fontWeight: FontWeight.w400)
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                    // Монгол банкны худалдан авсан үнэт метал, үнэ
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text('Монгол банкны худалдан авсан үнэт метал, үнэ', style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 40),
+                          margin: EdgeInsets.all(10),
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            //color: Colors.white,
+                            color: Color.fromRGBO(231, 240, 254, 1),
+                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                            // boxShadow: [
+                            //   BoxShadow(
+                            //     color: Colors.grey.withOpacity(0.3),
+                            //     blurRadius: 5.0,
+                            //     spreadRadius: .3,
+                            //     offset: Offset(3.0, 3.0),// changes position of shadow
+                            //   ),
+                            // ],
+                          ),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(context, '/bank');
+                            },
+                            child: Image.asset(
+                              "assets/uuhvy_img/mongolbank.png",
+                              fit: BoxFit.cover,
+                              width: 30,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    // Эрдэс бүтээгдэхүүний үнэ ханш
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text('Эрдэс бүтээгдэхүүний үнэ, ханш', style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 40),
+                          margin: EdgeInsets.all(10),
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[200],
+                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.3),
+                                blurRadius: 5.0,
+                                spreadRadius: .3,
+                                offset: Offset(3.0, 3.0),// changes position of shadow
+                              ),
+                            ],
+                          ),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.pushNamed(context, '/product');
+                            },
+                            child: Container(
+                              height: 100,
+                            ),
+                          )
+                        ),
+                      ],
+                    ),
+
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      margin: EdgeInsets.symmetric(vertical: 10),
+                      child: Stack(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(10.0),
+                            decoration: BoxDecoration(
+                              color:  Colors.white,
+                              borderRadius: BorderRadius.all(Radius.circular(6.0)),
+                              border: Border.all(color: Color.fromRGBO(232, 232, 232, 1), width: 1),
+                            ),
+                            child:  Container(
+                              padding: EdgeInsets.only(top: 76.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    flex: 4,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text('2020.10.01 ~ 2020.11.01 ', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
+                                        SizedBox(height: 5),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.end,
+                                          children: [
+                                            Expanded(flex: 0, child: Text('1,142.9', style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w600))),
+                                            SizedBox(width: 4),
+                                            Expanded(flex: 2, child: Text('мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
+                                          ],
+                                        ),
+                                        SizedBox(height: 5),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            Expanded(flex: 0, child: Text('Өмнөх он:', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400))),
+                                            SizedBox(width: 4),
+                                            Expanded(flex: 2, child: Text('1,185.1 мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 3,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text('Өнгөрсөн оны мөн\nүеэс (мян.тн)', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
+                                        SizedBox(height: 5),
+                                        Text('+37.9', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400)),
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 3,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text('Өнгөрсөн оны мөн үеэс хувиар', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
+                                        SizedBox(height: 5),
+                                        Text('+3.3%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400)),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            child:   Container(
+                              padding: EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                color:  Color.fromRGBO(255, 227, 128, 1),
+                                borderRadius: BorderRadius.all(Radius.circular(6.0)),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    flex: 4,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text('2020.10.01 ~ 2020.11.01 ', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
+                                        SizedBox(height: 5),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.end,
+                                          children: [
+                                            Expanded(flex: 0, child: Text('1,144.7', style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w600))),
+                                            SizedBox(width: 4),
+                                            Expanded(flex: 2, child: Text('мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
+                                          ],
+                                        ),
+                                        SizedBox(height: 5),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            Expanded(flex: 0, child: Text('Өмнөх он:', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400))),
+                                            SizedBox(width: 4),
+                                            Expanded(flex: 2, child: Text('1,185.1 мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 3,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text('Өнгөрсөн оны мөн\nүеэс (мян.тн)', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
+                                        SizedBox(height: 5),
+                                        Text('-40.4', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 3,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text('Өнгөрсөн оны мөн үеэс хувиар', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
+                                        SizedBox(height: 5),
+                                        Text('-3.4%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+
+                    ),
+
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Column(
@@ -675,6 +1111,7 @@ class _mainScreenState extends State<mainScreen> {
                           ]),
                     ),
                     SizedBox(height: 10),
+
                     // LambdaChart(schemaID: '214', theme: theme),
                     // ListView.builder(
                     //   scrollDirection: Axis.horizontal,
