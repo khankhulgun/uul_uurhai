@@ -10,7 +10,7 @@ import 'package:lambda/plugins/chart/lambda_chart.dart';
 import 'section/details.dart';
 // import 'package:lambda/plugins/chart/lambda_chart_rest.dart';
 //
-// import 'package:lambda/plugins/chart/models/filter.dart';
+import 'package:lambda/plugins/chart/models/filter.dart';
 
 class statistic {
   final String title;
@@ -23,10 +23,12 @@ class Item {
   final int id;
   final String image;
   final String title;
+  final String Fulltitle;
   Item(
       this.id,
       this.image,
       this.title,
+      this.Fulltitle,
       );
 }
 class mainScreen extends StatefulWidget {
@@ -58,37 +60,37 @@ class _mainScreenState extends State<mainScreen> {
   ];
   String theme = "shine";
 
-  // List<Filter> filters = [Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  // List<Filter> filtersExportNuurs = [Filter(column: "b_id", condition: "equals", value: "2")];
-  // List<Filter> filtersOlborloltNuurs = [Filter(column: "olborlolt_b_id", condition: "equals", value: "2")];
-  // List<Filter> filtersExportZes = [Filter(column: "b_id", condition: "equals", value: "1")];
-  // List<Filter> filtersOlborlolZes = [Filter(column: "olborlolt_b_id", condition: "equals", value: "1")];
-  // List<Filter> filtersExportTumur = [Filter(column: "b_id", condition: "equals", value: "3")];
-  // List<Filter> filtersOlborloltTumur = [Filter(column: "olborlolt_b_id", condition: "equals", value: "3")];
-  // List<Filter> filtersOlborloltGazrinTos = [Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01"), Filter(column: "olborlolt_b_id", condition: "equals", value: "4")];
-  //
-  // List<String> colorsExportNuurs = ["#3030BE", "#6363E7", "#A8A8EA"];
-  // List<String> colorsExportZes = ["#F87129", "#E59B73", "#FFD5BE"];
-  // List<String> colorsExportTumur = ["#2B97D4", "#85CCF5", "#D1E6F2"];
-  // List<Filter> filtersExportGazriinTos = [Filter(column: "b_id", condition: "equals", value: "4"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  // List<Filter> filtersExportNuursBoomt = [Filter(column: "b_id", condition: "equals", value: "2"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  // List<Filter> filtersExportZesBoomt = [Filter(column: "b_id", condition: "equals", value: "1"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  // List<Filter> filtersExportZesTumur = [Filter(column: "b_id", condition: "equals", value: "3"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  // List<Filter> filtersAlt = [Filter(column: "a_maltlam_id", condition: "equals", value: "11"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  // List<Filter> filtersErdesUneAlt = [Filter(column: "ashigt_m_id", condition: "equals", value: "11")];
-  // List<String> colorsAltai = ["#F7C417", "#FF9B05", "#F5EAC3"];
-  //
-  // List<Filter> filtersExportNuursWithDate = [Filter(column: "b_id", condition: "equals", value: "2"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  // List<Filter> filtersExportZesWithDate = [Filter(column: "b_id", condition: "equals", value: "1"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  // List<Filter> filtersExportTumurWithDate = [Filter(column: "b_id", condition: "equals", value: "3"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  // List<Filter> filtersExportGazarWithDate = [Filter(column: "b_id", condition: "equals", value: "4"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
-  // List<Filter> filtersBoomNuurs = [Filter(column: "boomt_short", condition: "equals", value: "ГАС"),Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filters = [Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersExportNuurs = [Filter(column: "b_id", condition: "equals", value: "2")];
+  List<Filter> filtersOlborloltNuurs = [Filter(column: "b_id", condition: "equals", value: "2")];
+  List<Filter> filtersExportZes = [Filter(column: "b_id", condition: "equals", value: "1")];
+  List<Filter> filtersOlborlolZes = [Filter(column: "b_id", condition: "equals", value: "1")];
+  List<Filter> filtersExportTumur = [Filter(column: "b_id", condition: "equals", value: "3")];
+  List<Filter> filtersOlborloltTumur = [Filter(column: "b_id", condition: "equals", value: "3")];
+  List<Filter> filtersOlborloltGazrinTos = [Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01"), Filter(column: "b_id", condition: "equals", value: "4")];
+
+  List<String> colorsExportNuurs = ["#3030BE", "#6363E7", "#A8A8EA"];
+  List<String> colorsExportZes = ["#F87129", "#E59B73", "#FFD5BE"];
+  List<String> colorsExportTumur = ["#2B97D4", "#85CCF5", "#D1E6F2"];
+  List<Filter> filtersExportGazriinTos = [Filter(column: "b_id", condition: "equals", value: "4"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersExportNuursBoomt = [Filter(column: "b_id", condition: "equals", value: "2"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersExportZesBoomt = [Filter(column: "b_id", condition: "equals", value: "1"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersExportZesTumur = [Filter(column: "b_id", condition: "equals", value: "3"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersAlt = [Filter(column: "a_maltlam_id", condition: "equals", value: "11"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersErdesUneAlt = [Filter(column: "ashigt_m_id", condition: "equals", value: "11")];
+  List<String> colorsAltai = ["#F7C417", "#FF9B05", "#F5EAC3"];
+
+  List<Filter> filtersExportNuursWithDate = [Filter(column: "b_id", condition: "equals", value: "2"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersExportZesWithDate = [Filter(column: "b_id", condition: "equals", value: "1"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersExportTumurWithDate = [Filter(column: "b_id", condition: "equals", value: "3"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersExportGazarWithDate = [Filter(column: "b_id", condition: "equals", value: "4"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
+  List<Filter> filtersBoomNuurs = [Filter(column: "boomt_short", condition: "equals", value: "ГАС"),Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-01")];
 
   final List<Item> items = [
-    Item(1, "assets/uuhvy_img/copper.png", "ЗЭС"),
-    Item(2, "assets/uuhvy_img/coal.png", "НҮҮРС"),
-    Item(3, "assets/uuhvy_img/iron.png", "ТӨМРИЙН ХҮДЭР"),
-    Item(3, "assets/uuhvy_img/petroleum.png", "ГАЗРЫН ТОС"),
+    Item(1, "assets/uuhvy_img/copper.png", "ЗЭС", "ЗЭСИЙН БАЯЖМАЛ"),
+    Item(2, "assets/uuhvy_img/coal.png", "НҮҮРС", "НҮҮРС"),
+    Item(3, "assets/uuhvy_img/iron.png", "ТӨМРИЙН ХҮДЭР", "ТӨМРИЙН ХҮДЭР"),
+    Item(3, "assets/uuhvy_img/petroleum.png", "ГАЗРЫН ТОС", "ГАЗРЫН ТОС"),
   ];
 
   @override
@@ -342,7 +344,7 @@ class _mainScreenState extends State<mainScreen> {
                                 ),
                                 child: InkWell(
                                   onTap: () {
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Details(title: items[index].title,)));
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Details(title: items[index].Fulltitle, id: items[index].id,)));
                                   },
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,

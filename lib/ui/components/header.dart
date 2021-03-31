@@ -14,6 +14,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class Header extends StatefulWidget {
   final String title;
+  final bool showBack;
 
 
   final GlobalKey<ScaffoldState> scaffold;
@@ -21,6 +22,7 @@ class Header extends StatefulWidget {
   const Header(
       {Key key,
         this.title,
+        this.showBack = false,
         this.scaffold, bool reversed,
       })
       : super(key: key);
@@ -167,14 +169,19 @@ class _HeaderState extends State<Header> {
           height: 40,
           padding: EdgeInsets.only(left: 15, right: 10, top: 3),
           child: Icon(
-            Feather.getIconData('menu'),
+            !widget.showBack ? Feather.getIconData('menu') :  Icons.arrow_back_ios_outlined,
             color:  primaryColor,
             size: 26,
           ),
         ),
         onPressed: () {
-//          widget.scaffold.currentState.openDrawer();
-          widget.scaffold.currentState.openDrawer();
+
+          if(widget.showBack){
+            Navigator.pop(context);
+          } else {
+            widget.scaffold.currentState.openDrawer();
+          }
+
         },
       ),
       actions: <Widget>[
