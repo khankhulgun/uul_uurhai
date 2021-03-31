@@ -86,7 +86,7 @@ class _HeaderState extends State<Header> {
                 width: 3,
               ),
               Text(
-                user.firstName,
+                user != null ? user.firstName : "",
                 style: TextStyle(
                     color: primaryColor,
                     fontSize: 14,

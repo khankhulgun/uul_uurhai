@@ -45,8 +45,8 @@ class Router {
   Router._();
 
   static final routes = <String, WidgetBuilder>{
-    //'/': (context) => LoginPage(),
-    '/': (context) => mainScreen(),
+    '/': (context) => LoginPage(),
+    // '/': (context) => mainScreen(),
     '/login': (context) => LoginPage(),
     '/main': (context) => mainScreen(),
     '/news': (context) => News(),
