@@ -352,7 +352,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Expanded(flex: 2, child: Text('Нийт төсөв, сая.төг:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                      Expanded(flex: 4, child: Text('${zghutulbur[index].subHotolborUzuulelt[index].tosov}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                      Expanded(flex: 4, child: Text(zghutulbur != null ? '${zghutulbur[index].subHotolborUzuulelt[index].tosov}' : "", style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                     ],
                                   ),
                                   SizedBox(height: 5.0),

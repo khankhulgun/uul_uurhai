@@ -105,7 +105,7 @@ class _Detailstate extends State<Details> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('2020.10.01 ~ 2020.11.01 ', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
+                                      Text('2021.01.01 ~ 2021.03.31 ', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
                                       SizedBox(height: 5),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
@@ -177,7 +177,7 @@ class _Detailstate extends State<Details> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Text('2020.10.01 ~ 2020.11.01 ', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
+                                      Text('2021.03.01 ~ 2021.03.06 ', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
                                       SizedBox(height: 5),
                                       Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
