@@ -158,7 +158,7 @@ class _AjillahHvchState extends State<AjillahHvch> {
 
     return Container(
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.only(right: 10.0, left: 10.0),
+      margin: EdgeInsets.only(right: 0.0, left: 0.0),
       padding: const EdgeInsets.only(top: 15.0),
       decoration: BoxDecoration(
         border: Border(
@@ -184,10 +184,10 @@ class _AjillahHvchState extends State<AjillahHvch> {
               SizedBox(height: 5),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Expanded(flex: 3, child: Text('Үйл ажиллагааны чиглэл:', style: TextStyle(color: textColor, fontSize: 12),)),
-                  Expanded(flex: 4, child: Text('', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  Expanded(flex: 4, child: Text(aj_huch_med_i.chiglel, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
               SizedBox(height: 15.0),

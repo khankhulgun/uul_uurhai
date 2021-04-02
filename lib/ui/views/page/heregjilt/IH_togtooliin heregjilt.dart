@@ -6,6 +6,7 @@ import 'package:flutter_icons/feather.dart';
 import 'package:flutter_icons/ionicons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lambda/modules/network_util.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import '../../../components/sidebar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -149,7 +150,43 @@ class _IH_togtooliin_heregjiltState extends State<IH_togtooliin_heregjilt> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Text(data.togtool, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 14),),
+                  Row(
+                    children: [
+                      Expanded(
+                          flex: 4,
+                          child:  Text(data.togtool, style: TextStyle(color: textColor, fontSize: 13, fontWeight: FontWeight.w600,),)
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: CircularPercentIndicator(
+                          radius: 55.0,
+                          animationDuration: 1500,
+                          lineWidth: 4.0,
+                          animation: true,
+                          percent: data.gHuvi != null ? data.gHuvi / 100 : 0,
+                          center: Text(
+                            '${data.gHuvi}%',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: data.gHuvi == 100 ? Color(0xFF00E676) : Color(0xfffcb85f),
+                            ),
+                          ),
+                          footer: Text(
+                            data.gHuvi == 100 ? 'Биелсэн' : 'Хэрэгжиж байна',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 10,
+                                color: data.gHuvi == 100 ? Color(0xFF00E676) : Color(0xfffcb85f)
+                            ),
+                          ),
+                          circularStrokeCap: CircularStrokeCap.round,
+//                            progressColor: currentProgressColor(),s
+                          progressColor: data.gHuvi == 100 ? Color(0xFF00E676) : Color(0xfffcb85f),
+                        ),
+                      )
+                    ],
+                  ),
                   SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -174,32 +211,23 @@ class _IH_togtooliin_heregjiltState extends State<IH_togtooliin_heregjilt> {
                                         Expanded(flex: 4, child: Text(data.tHugatsaa, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                       ],
                                     ),
-                                    SizedBox(height: 4),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: <Widget>[
-                                        Expanded(flex: 4, child: Text('Салбар:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                        Expanded(flex: 4, child: Text(data.salbar, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                                      ],
-                                    ),
                                   ],
                                 ),
                               ),
-                              Expanded(
-                                flex: 3,
-                                child:  Center(
-                                  child: Text(
-                                    '${data.status}',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: data.status == 'Биелсэн' ? Color(0xFF00E676) : Color(0xfffcb85f),
-                                        fontSize: 14,
-                                        fontWeight:
-                                        FontWeight.w500),
-                                  ),
-                                ),
-                              ),
+                              // Expanded(
+                              //   flex: 3,
+                              //   child:  Center(
+                              //     child: Text(
+                              //       '${data.status}',
+                              //       textAlign: TextAlign.center,
+                              //       style: TextStyle(
+                              //           color: data.status == 'Биелсэн' ? Color(0xFF00E676) : Color(0xfffcb85f),
+                              //           fontSize: 14,
+                              //           fontWeight:
+                              //           FontWeight.w500),
+                              //     ),
+                              //   ),
+                              // ),
 
                             ],
                           ),
@@ -213,11 +241,12 @@ class _IH_togtooliin_heregjiltState extends State<IH_togtooliin_heregjilt> {
               Theme(
                 data: ThemeData().copyWith(dividerColor: Colors.transparent),
                 child: ExpansionTile(
-//                 backgroundColor: Colors.grey[50],
+                  tilePadding: EdgeInsets.all(0.0),
+                  childrenPadding: EdgeInsets.all(0.0),
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Text('Хэрэгжилт', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
+                      Text('Хэрэгжилт', style: TextStyle(fontSize: 12, fontFamily: "Roboto-Condensed", color: textColor, fontWeight: FontWeight.w600)),
                     ],
                   ),
                   children: <Widget>[

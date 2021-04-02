@@ -175,11 +175,10 @@ Paginatebodbarbichig$Query$Paginate$DsBodlogoBarimtBichig
     ..bOgnoo = json['b_ognoo'] == null
         ? null
         : DateTime.parse(json['b_ognoo'] as String)
+    ..gHuvi = (json['g_huvi'] as num)?.toDouble()
     ..holboos = json['holboos'] as String
     ..id = json['id'] as int
     ..ner = json['ner'] as String
-    ..salbar = json['salbar'] as String
-    ..salbarId = json['salbar_id'] as int
     ..tHugatsaa = json['t_hugatsaa'] as String
     ..tHugatsaaId = json['t_hugatsaa_id'] as int
     ..tShDugaar = json['t_sh_dugaar'] as String;
@@ -190,11 +189,10 @@ Map<String,
         Paginatebodbarbichig$Query$Paginate$DsBodlogoBarimtBichig instance) =>
     <String, dynamic>{
       'b_ognoo': instance.bOgnoo?.toIso8601String(),
+      'g_huvi': instance.gHuvi,
       'holboos': instance.holboos,
       'id': instance.id,
       'ner': instance.ner,
-      'salbar': instance.salbar,
-      'salbar_id': instance.salbarId,
       't_hugatsaa': instance.tHugatsaa,
       't_hugatsaa_id': instance.tHugatsaaId,
       't_sh_dugaar': instance.tShDugaar,

@@ -205,6 +205,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
             children: <Widget>[
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -227,7 +228,6 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                                 borderRadius: BorderRadius.circular(6.0),
                                   child: Image.asset("assets/uuhvy_img/new_zg.png",  fit: BoxFit.cover)
                               ),
-
                           )
                       ),
                       SizedBox(width: 10.0),
@@ -243,39 +243,75 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                           animationDuration: 1500,
                           lineWidth: 4.0,
                           animation: true,
-                          //percent: data.huvi != null ? int.parse(data.huvi) / 100 : 0,
-                          percent: 0.5,
+                          percent: data.gHuvi != null ? data.gHuvi / 100 : 0,
+                          //percent: 0.5,
                           center: Text(
-                            '50%',
+                            '${data.gHuvi}%',
                             style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w500,
-                                color: data.status == 'Биелсэн' ? Color(0xFF00E676) : Color(0xfffcb85f)
+                                color: data.gHuvi == 100 ? Color(0xFF00E676) : Color(0xfffcb85f),
                             ),
                           ),
                           footer: Text(
-                            data.status,
+                            data.gHuvi == 100 ? 'Биелсэн' : 'Хэрэгжиж байна',
                             style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 10,
-                                color:  data.status == 'Биелсэн' ? Color(0xFF00E676) : Color(0xfffcb85f)
+                                color:  data.gHuvi == 100 ? Color(0xFF00E676) : Color(0xfffcb85f)
                             ),
                           ),
                           circularStrokeCap: CircularStrokeCap.round,
 //                            progressColor: currentProgressColor(),
 
-                          progressColor: data.status == 'Биелсэн' ? Color(0xFF00E676) : Color(0xfffcb85f)
+                          progressColor: data.gHuvi == 100 ? Color(0xFF00E676) : Color(0xfffcb85f),
                         ),
                       ),
 
                     ],
                   ),
                   SizedBox(height: 10.0),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: RichText(
+                      //textAlign: TextAlign.justify,
+                      text: TextSpan(
+                          children: [
+                            TextSpan(text: 'Дэд зорилт: ', style: TextStyle(color: textColor, fontWeight: FontWeight.w600,  fontFamily: "Roboto-Condensed", fontSize: 12)),
+                            TextSpan(text: data.dedZorilt, style: TextStyle(color: textColor, fontWeight: FontWeight.w400,  fontFamily: "Roboto-Condensed", fontSize: 12)),
+                          ]
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: RichText(
+                      //textAlign: TextAlign.justify,
+                      text: TextSpan(
+                          children: [
+                            TextSpan(text: 'Хөтөлбөр: ', style: TextStyle(color: textColor, fontWeight: FontWeight.w600,  fontFamily: "Roboto-Condensed", fontSize: 12)),
+                            TextSpan(text: data.hotolbor, style: TextStyle(color: textColor, fontWeight: FontWeight.w400,  fontFamily: "Roboto-Condensed", fontSize: 12)),
+                          ]
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: RichText(
+                      //textAlign: TextAlign.justify,
+                      text: TextSpan(
+                          children: [
+                            TextSpan(text: 'Арга хэмжээ: ', style: TextStyle(color: textColor, fontWeight: FontWeight.w600,  fontFamily: "Roboto-Condensed", fontSize: 12)),
+                            TextSpan(text: data.argaHemjee, style: TextStyle(color: textColor, fontWeight: FontWeight.w400,  fontFamily: "Roboto-Condensed", fontSize: 12)),
+                          ]
+                      ),
+                    ),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Expanded(flex: 2, child: Text('Хэрэгжих хугацаа:', style: TextStyle(color: textColor, fontSize: 12),)),
+                      Expanded(flex: 4, child: Text('Хэрэгжих хугацаа:', style: TextStyle(color: textColor, fontSize: 12),)),
                       SizedBox(width: 4.0),
                       Expanded(flex: 4, child: Text(data.hugatsaa, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12))),
                     ],
@@ -285,7 +321,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Expanded(flex: 2, child: Text('Эх үүсвэр:', style: TextStyle(color: textColor, fontSize: 12),)),
+                      Expanded(flex: 4, child: Text('Эх үүсвэр:', style: TextStyle(color: textColor, fontSize: 12),)),
                       SizedBox(width: 4.0),
                       Expanded(flex: 4, child: Text(data.eUusver, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12))),
                     ],
@@ -295,7 +331,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Expanded(flex: 2, child: Text('Нийт төсөв, сая.төг:', style: TextStyle(color: textColor, fontSize: 12),)),
+                      Expanded(flex: 4, child: Text('Нийт төсөв, сая.төг:', style: TextStyle(color: textColor, fontSize: 12),)),
                       SizedBox(width: 4.0),
                       Expanded(flex: 4, child: Text('${data.niitTosov}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12))),
                     ],
@@ -305,7 +341,17 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Expanded(flex: 2, child: Text('Суурь түвшин:', style: TextStyle(color: textColor, fontSize: 12),)),
+                      Expanded(flex: 4, child: Text('Суурь түвшин:', style: TextStyle(color: textColor, fontSize: 12),)),
+                      SizedBox(width: 4.0),
+                      Expanded(flex: 4, child: Text(data.suuriTuvshin, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12))),
+                    ],
+                  ),
+                  SizedBox(height: 4.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Expanded(flex: 4, child: Text('Хэрэгжүүлэгч байгууллага:', style: TextStyle(color: textColor, fontSize: 12),)),
                       SizedBox(width: 4.0),
                       Expanded(flex: 4, child: Text(data.suuriTuvshin, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12))),
                     ],
@@ -316,11 +362,13 @@ class _ZGhutulburState extends State<ZGhutulbur> {
               Theme(
                 data: ThemeData().copyWith(dividerColor: Colors.transparent),
                 child: ExpansionTile(
+                  tilePadding: EdgeInsets.all(0.0),
+                  childrenPadding: EdgeInsets.all(0.0),
 //                 backgroundColor: Colors.grey[50],
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Text('Хүрэх түвшин', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
+                      Text('Хүрэх түвшин', style: TextStyle(fontSize: 12, fontFamily: "Roboto-Condensed", color: textColor, fontWeight: FontWeight.w600)),
                     ],
                   ),
                   children: <Widget>[
@@ -342,8 +390,9 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      Expanded(flex: 2, child: Text('Эх үүсвэр:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                      Expanded(flex: 4, child: Text('', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                      Expanded(flex: 3, child: Text('Он:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                      SizedBox(width: 4.0),
+                                      Expanded(flex: 4, child: Text('${zghutulbur[index].subHotolborUzuulelt[indexSub].jilId}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                     ],
                                   ),
                                   SizedBox(height: 5.0),
@@ -351,20 +400,44 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      Expanded(flex: 2, child: Text('Нийт төсөв, сая.төг:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                      Expanded(flex: 4, child: Text(zghutulbur != null ? '${zghutulbur[index].subHotolborUzuulelt[indexSub].tosov}' : "", style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                                    ],
-                                  ),
-                                  SizedBox(height: 5.0),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Expanded(flex: 2, child: Text('Суурь түвшин:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                      Expanded(flex: 3, child: Text('Үр дүнгийн үзүүлэлт:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                      SizedBox(width: 4.0),
                                       Expanded(flex: 4, child: Text(zghutulbur[index].subHotolborUzuulelt[indexSub].hTuvshin, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                     ],
                                   ),
+                                  SizedBox(height: 5.0),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Expanded(flex: 3, child: Text('Нийт төсөв, сая.төг:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                      SizedBox(width: 4.0),
+                                      Expanded(flex: 4, child: Text('${zghutulbur[index].subHotolborUzuulelt[indexSub].tosov}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                    ],
+                                  ),
+                                  SizedBox(height: 5.0),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Expanded(flex: 3, child: Text('Хэрэгжилт хувь:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                      SizedBox(width: 4.0),
+                                      Expanded(flex: 4, child: Text('${zghutulbur[index].subHotolborUzuulelt[indexSub].heregjilt}%', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                    ],
+                                  ),
                                   SizedBox(height: 10.0),
+                                  Padding(
+                                    padding: const EdgeInsets.only(bottom: 10),
+                                    child: RichText(
+                                      //textAlign: TextAlign.justify,
+                                      text: TextSpan(
+                                          children: [
+                                            TextSpan(text: 'Тайлан: ', style: TextStyle(color: textColor, fontWeight: FontWeight.w600,  fontFamily: "Roboto-Condensed", fontSize: 12)),
+                                            TextSpan(text: zghutulbur[index].subHotolborUzuulelt[indexSub].heregjiltTailan, style: TextStyle(color: textColor, fontWeight: FontWeight.w400,  fontFamily: "Roboto-Condensed", fontSize: 12)),
+                                          ]
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                               SizedBox(height: 20.0),
@@ -372,10 +445,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 15),
-                                    child: Text('Хэрэгжилт', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
-                                  ),
+                                  Text('Хүрэх түвшин', style: TextStyle(fontSize: 12, fontFamily: "Roboto-Condensed", color: textColor, fontWeight: FontWeight.w600)),
                                   SizedBox(height: 10.0),
                                   Text(zghutulbur[index].subHotolborUzuulelt[index].heregjiltTailan, style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
                                   SizedBox(height: 10.0),

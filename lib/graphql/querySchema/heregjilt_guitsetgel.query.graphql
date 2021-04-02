@@ -65,6 +65,7 @@ query uih_togtool_heregjilt($page: Int!, $size: Int!) {
                 shat
                 table_id
                 tailan
+            }
         }
     }
 }
@@ -89,7 +90,7 @@ query zg_togtool_heregjilt($page: Int!, $size: Int!) {
                 shat
                 table_id
                 tailan
-        }
+            }
         }
     }
 }
@@ -114,9 +115,10 @@ query ajil_heseg($page: Int!, $size: Int!) {
             yvts_tailan
         }
     }
+
 }
 
-query horongo_oruulalt_t_h($page!, $size!) {
+query horongo_oruulalt_t_h($page: Int!, $size: Int!) {
     paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
         total
         last_page

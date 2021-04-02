@@ -125,7 +125,7 @@ class _SidebarScreenState extends State<SidebarScreen> {
                             height: 200,
                             decoration: BoxDecoration(
                                 image: DecorationImage(
-                                  image: AssetImage('assets/uuhvy_img/uurhai.png'),
+                                  image: AssetImage('assets/uuhvy_img/menu.png'),
                                   fit: BoxFit.fitWidth,
                                 )),
 //                          child: Container(
@@ -934,7 +934,7 @@ class _SidebarScreenState extends State<SidebarScreen> {
                                                     },
                                                     child: Row(
                                                       children: <Widget>[
-                                                        Text('- Ажиллах хүчний мэдээлэл',
+                                                        Text('- Гадаадаас авах ажиллах хүч',
                                                             style: TextStyle(
                                                                 fontSize: 14,
                                                                 color: Color(0xff363636),

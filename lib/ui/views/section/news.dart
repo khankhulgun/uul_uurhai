@@ -100,7 +100,7 @@ class _ExportNewsState extends State<ExportNews> {
                                       flex: 2,
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Expanded(
                                               flex: 4,
@@ -114,7 +114,6 @@ class _ExportNewsState extends State<ExportNews> {
                                               padding: const EdgeInsets.only(top: 6.0),
                                               child: Text(
                                                 '300',
-                                                textAlign: TextAlign.right,
                                                 style: TextStyle(
                                                     color: primaryColor,
                                                     fontSize: 14,
@@ -130,7 +129,7 @@ class _ExportNewsState extends State<ExportNews> {
                                       flex: 2,
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Expanded(
                                               flex: 4,
@@ -144,7 +143,6 @@ class _ExportNewsState extends State<ExportNews> {
                                               padding: const EdgeInsets.only(top: 6.0),
                                               child: Text(
                                                 '609.6',
-                                                textAlign: TextAlign.right,
                                                 style: TextStyle(
                                                     color: primaryColor,
                                                     fontSize: 14,
@@ -283,7 +281,7 @@ class _ExportNewsState extends State<ExportNews> {
                                       flex: 2,
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Expanded(
                                               flex: 4,
@@ -297,7 +295,7 @@ class _ExportNewsState extends State<ExportNews> {
                                               padding: const EdgeInsets.only(top: 6.0),
                                               child: Text(
                                                 '300',
-                                                textAlign: TextAlign.right,
+
                                                 style: TextStyle(
                                                     color: textOrange,
                                                     fontSize: 14,
@@ -313,7 +311,7 @@ class _ExportNewsState extends State<ExportNews> {
                                       flex: 2,
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Expanded(
                                               flex: 4,
@@ -327,7 +325,6 @@ class _ExportNewsState extends State<ExportNews> {
                                               padding: const EdgeInsets.only(top: 6.0),
                                               child: Text(
                                                 '609.6',
-                                                textAlign: TextAlign.right,
                                                 style: TextStyle(
                                                     color: textOrange,
                                                     fontSize: 14,
@@ -465,7 +462,7 @@ class _ExportNewsState extends State<ExportNews> {
                                       flex: 2,
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Expanded(
                                               flex: 4,
@@ -479,7 +476,6 @@ class _ExportNewsState extends State<ExportNews> {
                                               padding: const EdgeInsets.only(top: 6.0),
                                               child: Text(
                                                 '300',
-                                                textAlign: TextAlign.right,
                                                 style: TextStyle(
                                                     color: textBlueGrey,
                                                     fontSize: 14,
@@ -495,7 +491,7 @@ class _ExportNewsState extends State<ExportNews> {
                                       flex: 2,
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Expanded(
                                               flex: 4,
@@ -509,7 +505,6 @@ class _ExportNewsState extends State<ExportNews> {
                                               padding: const EdgeInsets.only(top: 6.0),
                                               child: Text(
                                                 '609.6',
-                                                textAlign: TextAlign.right,
                                                 style: TextStyle(
                                                     color: textBlueGrey,
                                                     fontSize: 14,

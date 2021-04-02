@@ -109,6 +109,7 @@ flutter:
     - assets/uuhvy_img/uurhai.png
     - assets/uuhvy_img/ver_logo.png
     - assets/uuhvy_img/uurkhai.png
+    - assets/uuhvy_img/uurhai.png
     - assets/uuhvy_img/barilga.png
     - assets/uuhvy_img/vildver.svg
     - assets/uuhvy_img/new_zg.png
@@ -130,6 +131,10 @@ flutter:
     - assets/uuhvy_img/back.png
     - assets/uuhvy_img/new_to.png
     - assets/uuhvy_img/new_yamnii.png
+    - assets/uuhvy_img/menu.png
+    - assets/uuhvy_img/new_uildwer.png
+    - assets/uuhvy_img/mzuvlul.png
+    - assets/uuhvy_img/price.png
 
 
 

@@ -382,7 +382,7 @@ class _mainScreenState extends State<mainScreen> {
                                 Expanded(
                                   flex: 4,
                                   child: Container(
-                                    height: 80,
+                                    height: 75,
                                     padding: EdgeInsets.only(top:10, left: 5, right: 5,),
                                     decoration: BoxDecoration(
                                       color: Color.fromRGBO(71, 87, 250, 1),
@@ -404,7 +404,7 @@ class _mainScreenState extends State<mainScreen> {
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
-                                          Text('2644', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w500)),
+                                          Text('2644', style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
                                           SizedBox(height: 4),
                                           Row(
                                             mainAxisAlignment: MainAxisAlignment.center,
@@ -426,7 +426,7 @@ class _mainScreenState extends State<mainScreen> {
                                 Expanded(
                                   flex: 4,
                                   child: Container(
-                                    height: 80,
+                                    height: 75,
                                     padding: EdgeInsets.only(top:10, left: 5, right: 5,),
                                     decoration: BoxDecoration(
                                       color: Color.fromRGBO(71, 87, 250, 1),
@@ -448,9 +448,9 @@ class _mainScreenState extends State<mainScreen> {
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
-                                          Text('152', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w500)),
+                                          Text('152', style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
                                           SizedBox(height: 4),
-                                          Text('Талбайн хэмжээ га', style: TextStyle(fontSize: 8, color: Colors.white, fontWeight: FontWeight.w400)),
+                                          Text('Талбайн хэмжээ /га/', style: TextStyle(fontSize: 8, color: Colors.white, fontWeight: FontWeight.w400)),
                                           SizedBox(height: 2),
                                           Text('Сонгон шалгаруулалт', style: TextStyle(fontSize: 10, color: Colors.white, fontWeight: FontWeight.w400)),
                                         ],
@@ -462,7 +462,7 @@ class _mainScreenState extends State<mainScreen> {
                                 Expanded(
                                   flex: 4,
                                   child: Container(
-                                    height: 80,
+                                    height: 75,
                                     padding: EdgeInsets.only(top:10, left: 5, right: 5,),
                                     decoration: BoxDecoration(
                                       color: Color.fromRGBO(71, 87, 250, 1),
@@ -484,7 +484,7 @@ class _mainScreenState extends State<mainScreen> {
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
-                                          Text('6.4%', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w500)),
+                                          Text('6.4%', style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
                                           SizedBox(height: 4),
                                           Text('МУ-ын нутаг дэвсгэрт', style: TextStyle(fontSize: 8, color: Colors.white, fontWeight: FontWeight.w400)),
                                           SizedBox(height: 2),
@@ -568,9 +568,8 @@ class _mainScreenState extends State<mainScreen> {
                               Navigator.pushNamed(context, '/product');
                             },
                             child: Image.asset(
-                            "assets/uuhvy_img/erdes_une.png",
+                            "assets/uuhvy_img/price.png",
                             fit: BoxFit.cover,
-                            width: 30,
                           ),
                           )
                         ),

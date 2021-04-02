@@ -150,8 +150,9 @@ class _Ajiliin_hesegState extends State<Ajiliin_heseg> {
             children: <Widget>[
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(data.salbar, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 14),),
+                  Text(data.ajilHeseg, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 13),),
                   SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -175,7 +176,7 @@ class _Ajiliin_hesegState extends State<Ajiliin_heseg> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Expanded(flex: 3, child: Text('Ажлын хэсэг:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                        Expanded(flex: 4, child: Text(data.ajilHeseg, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                        Expanded(flex: 4, child: Text(data.ahChigId, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                       ],
                                     ),
                                     SizedBox(height: 4),
@@ -193,7 +194,7 @@ class _Ajiliin_hesegState extends State<Ajiliin_heseg> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Expanded(flex: 3, child: Text('Бодлогын газар:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                        Expanded(flex: 4, child: Text('', style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                        Expanded(flex: 4, child: Text(data.salbar, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                       ],
                                     ),
                                     SizedBox(height: 4),
@@ -252,11 +253,12 @@ class _Ajiliin_hesegState extends State<Ajiliin_heseg> {
               Theme(
                 data: ThemeData().copyWith(dividerColor: Colors.transparent),
                 child: ExpansionTile(
-//                 backgroundColor: Colors.grey[50],
+                  tilePadding: EdgeInsets.all(0.0),
+                  childrenPadding: EdgeInsets.all(0.0),
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Text('Явцын тайлан', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
+                      Text('Явцын тайлан', style: TextStyle(fontSize: 12, fontFamily: "Roboto-Condensed", color: textColor, fontWeight: FontWeight.w600)),
                     ],
                   ),
                   children: <Widget>[
@@ -264,7 +266,7 @@ class _Ajiliin_hesegState extends State<Ajiliin_heseg> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(data.yvtsTailan, style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
+                        Text(data.yvtsTailan, style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
                         SizedBox(height: 10.0),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
