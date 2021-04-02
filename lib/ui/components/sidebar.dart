@@ -1058,7 +1058,7 @@ class _SidebarScreenState extends State<SidebarScreen> {
                     Container(
                         margin: EdgeInsets.only(bottom: 25),
                         child: Text(
-                          '© 2020. УУХҮЯ',
+                          '© 2021. УУХҮЯ',
                           style: TextStyle(
                               fontSize: 11,
                               fontWeight: FontWeight.w400,

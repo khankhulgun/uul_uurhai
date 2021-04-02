@@ -431,7 +431,7 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       Text(
-                        'Уул уурхай,  хүнд үйлдвэрийн яам © 2020',
+                        'Уул уурхай,  хүнд үйлдвэрийн яам © 2021',
                         textAlign: TextAlign.end,
                         style: TextStyle(
                             fontSize: 13,
