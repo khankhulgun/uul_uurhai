@@ -130,8 +130,8 @@ class _LoginPageState extends State<LoginPage> {
               height: MediaQuery.of(context).size.height / 2.5,
               decoration: BoxDecoration(
                 image: new DecorationImage(
-                  image: new AssetImage("assets/uuhvy_img/uurhai.png"),
-                  fit: BoxFit.cover,
+                  image: new AssetImage("assets/uuhvy_img/new_login_bg.png"),
+                  fit: BoxFit.fitWidth,
                 ),
               ),
                 child: Container(
@@ -141,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
                 )
             ),
             Container(
-              height: MediaQuery.of(context).size.height / 3.6,
+              height: MediaQuery.of(context).size.height / 2.8,
               width: MediaQuery.of(context).size.width,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -167,7 +167,7 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 Container(
                   margin: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height / 3,
+                      top: MediaQuery.of(context).size.height / 2.7,
 //                      left: 25,
 //                      right: 25,
                       bottom: 20),
