@@ -225,7 +225,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                              ),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(6.0),
-                                  child: Image.asset("assets/uuhvy_img/placeholder.png",  fit: BoxFit.cover)
+                                  child: Image.asset("assets/uuhvy_img/new_zg.png",  fit: BoxFit.cover)
                               ),
 
                           )
@@ -329,7 +329,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                         physics: ScrollPhysics(),
                         itemCount: zghutulbur[index].subHotolborUzuulelt == null ? 0 : zghutulbur[index].subHotolborUzuulelt.length,
                         padding: EdgeInsets.all(0.0),
-                        itemBuilder: (BuildContext context, int index) {
+                        itemBuilder: (BuildContext context, int indexSub) {
                           return  Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -352,7 +352,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Expanded(flex: 2, child: Text('Нийт төсөв, сая.төг:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                      Expanded(flex: 4, child: Text(zghutulbur != null ? '${zghutulbur[index].subHotolborUzuulelt[index].tosov}' : "", style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                      Expanded(flex: 4, child: Text(zghutulbur != null ? '${zghutulbur[index].subHotolborUzuulelt[indexSub].tosov}' : "", style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                     ],
                                   ),
                                   SizedBox(height: 5.0),
@@ -361,7 +361,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Expanded(flex: 2, child: Text('Суурь түвшин:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                      Expanded(flex: 4, child: Text(zghutulbur[index].subHotolborUzuulelt[index].hTuvshin, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                      Expanded(flex: 4, child: Text(zghutulbur[index].subHotolborUzuulelt[indexSub].hTuvshin, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                     ],
                                   ),
                                   SizedBox(height: 10.0),
@@ -384,7 +384,7 @@ class _ZGhutulburState extends State<ZGhutulbur> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
                                       Expanded(flex: 2, child: Text('Хэрэгжилтийн хувь:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                      Expanded(flex: 4, child: Text('${zghutulbur[index].subHotolborUzuulelt[index].heregjilt}%', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                      Expanded(flex: 4, child: Text('${zghutulbur[index].subHotolborUzuulelt[indexSub].heregjilt}%', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                     ],
                                   ),
                                 ],

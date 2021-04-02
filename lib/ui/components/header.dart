@@ -168,11 +168,20 @@ class _HeaderState extends State<Header> {
         icon: Container(
           height: 40,
           padding: EdgeInsets.only(left: 15, right: 10, top: 3),
-          child: Icon(
-            !widget.showBack ? Feather.getIconData('menu') :  Icons.arrow_back_ios_outlined,
+          child: !widget.showBack ?  Icon(
+            Feather.getIconData('menu'),
             color:  primaryColor,
             size: 26,
+          ): Image.asset(
+            "assets/uuhvy_img/back.png",
+            fit: BoxFit.contain,
+            width: 15,
           ),
+          // child: Icon(
+          //   !widget.showBack ? Feather.getIconData('menu') :  Icons.arrow_back_ios_rounded,
+          //   color:  primaryColor,
+          //   size: 26,
+          // ),
         ),
         onPressed: () {
 

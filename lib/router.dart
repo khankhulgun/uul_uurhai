@@ -40,6 +40,10 @@ import './ui/views/section/jileer.dart';
 import './ui/views/section/mongol_bank.dart';
 import './ui/views/section/product_price.dart';
 
+import './ui/views/page/tusgai_zuwshuurul/tusgai_shuwdhuurul.dart';
+import './ui/views/page/tusgai_zuwshuurul/s_shalgaruulalt.dart';
+import './ui/views/page/tusgai_zuwshuurul/ss_details.dart';
+
 
 class Router {
   Router._();
@@ -83,7 +87,9 @@ class Router {
     '/bank': (context) => MongolBank(),
     '/product': (context) => ProductPrice(),
 
-
+    '/new_tusgai_shuwdhuurul': (context) => newTusgaiZuvshuurul(),
+    '/new_s_shalgaruulalt': (context) => newSShalgaruulalt(),
+    '/ss_details': (context) => SSDetails(),
 
 
 

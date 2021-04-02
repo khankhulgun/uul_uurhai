@@ -88,7 +88,7 @@ class _mainScreenState extends State<mainScreen> {
 
   final List<Item> items = [
     Item(1, "assets/uuhvy_img/copper.png", "ЗЭС", "ЗЭСИЙН БАЯЖМАЛ"),
-    Item(2, "assets/uuhvy_img/coal.png", "НҮҮРС", "НҮҮРС"),
+    Item(2, "assets/uuhvy_img/new_coal.png", "НҮҮРС", "НҮҮРС"),
     Item(3, "assets/uuhvy_img/iron.png", "ТӨМРИЙН ХҮДЭР", "ТӨМРИЙН ХҮДЭР"),
     Item(3, "assets/uuhvy_img/petroleum.png", "ГАЗРЫН ТОС", "ГАЗРЫН ТОС"),
   ];
@@ -367,6 +367,138 @@ class _mainScreenState extends State<mainScreen> {
                         ),
                       ],
                     ),
+                    // Tusgai zuwshuurul
+                    Container(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        margin: EdgeInsets.symmetric(vertical: 10),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Тусгай зөвшөөрөл, сонгон шалгаруулалт', style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
+                            SizedBox(height: 10,),
+                            Row(
+                              children: [
+                                Expanded(
+                                  flex: 4,
+                                  child: Container(
+                                    height: 80,
+                                    padding: EdgeInsets.only(top:10, left: 5, right: 5,),
+                                    decoration: BoxDecoration(
+                                      color: Color.fromRGBO(71, 87, 250, 1),
+                                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.3),
+                                          blurRadius: 5.0,
+                                          spreadRadius: .3,
+                                          offset: Offset(3.0, 3.0),// changes position of shadow
+                                        ),
+                                      ],
+                                    ),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.pushNamed(context, '/new_tusgai_shuwdhuurul');
+                                      },
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Text('2644', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w500)),
+                                          SizedBox(height: 4),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Expanded(flex: 3, child: Text('+22', textAlign: TextAlign.right, style: TextStyle(fontSize: 10, color: Colors.lightGreenAccent, fontWeight: FontWeight.w500))),
+                                              SizedBox(width: 4),
+                                              Expanded(flex: 6, child: Text('Сүүлийн сард', style: TextStyle(fontSize: 8, color: Colors.white, fontWeight: FontWeight.w400))),
+                                            ],
+                                          ),
+                                          SizedBox(height: 2),
+                                          Text('Тусгай зөвшөөрөл', style: TextStyle(fontSize: 10, color: Colors.white, fontWeight: FontWeight.w400)),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(width: 10),
+                                Expanded(
+                                  flex: 4,
+                                  child: Container(
+                                    height: 80,
+                                    padding: EdgeInsets.only(top:10, left: 5, right: 5,),
+                                    decoration: BoxDecoration(
+                                      color: Color.fromRGBO(71, 87, 250, 1),
+                                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.3),
+                                          blurRadius: 5.0,
+                                          spreadRadius: .3,
+                                          offset: Offset(3.0, 3.0),// changes position of shadow
+                                        ),
+                                      ],
+                                    ),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.pushNamed(context, '/new_s_shalgaruulalt');
+                                      },
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Text('152', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w500)),
+                                          SizedBox(height: 4),
+                                          Text('Талбайн хэмжээ га', style: TextStyle(fontSize: 8, color: Colors.white, fontWeight: FontWeight.w400)),
+                                          SizedBox(height: 2),
+                                          Text('Сонгон шалгаруулалт', style: TextStyle(fontSize: 10, color: Colors.white, fontWeight: FontWeight.w400)),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(width: 10),
+                                Expanded(
+                                  flex: 4,
+                                  child: Container(
+                                    height: 80,
+                                    padding: EdgeInsets.only(top:10, left: 5, right: 5,),
+                                    decoration: BoxDecoration(
+                                      color: Color.fromRGBO(71, 87, 250, 1),
+                                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.3),
+                                          blurRadius: 5.0,
+                                          spreadRadius: .3,
+                                          offset: Offset(3.0, 3.0),// changes position of shadow
+                                        ),
+                                      ],
+                                    ),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.pushNamed(context, '/ss_details');
+                                      },
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Text('6.4%', style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w500)),
+                                          SizedBox(height: 4),
+                                          Text('МУ-ын нутаг дэвсгэрт', style: TextStyle(fontSize: 8, color: Colors.white, fontWeight: FontWeight.w400)),
+                                          SizedBox(height: 2),
+                                          Text('СШ Дэлгэрэнгүй', style: TextStyle(fontSize: 10, color: Colors.white, fontWeight: FontWeight.w400)),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        )
+                    ),
                     // Монгол банкны худалдан авсан үнэт метал, үнэ
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -444,7 +576,6 @@ class _mainScreenState extends State<mainScreen> {
                         ),
                       ],
                     ),
-
 
 
 

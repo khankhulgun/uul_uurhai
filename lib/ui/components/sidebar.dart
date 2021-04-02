@@ -411,124 +411,124 @@ class _SidebarScreenState extends State<SidebarScreen> {
                                   ),
                                 ),
                               ),
-                              Container(
-//                            height: 44,
-                                padding: EdgeInsets.all(0.0),
-                                margin: EdgeInsets.all(0.0),
-                                child: FlatButton(
-                                  padding: EdgeInsets.all(0.0),
-                                  onPressed: () {
-                                    Navigator.pushNamed(context, '/baiguullaga');
-                                  },
-
-                                  child: ListTileTheme(
-
-                                    child: ExpansionTile(
-
-                                      title: Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        children: <Widget>[
-                                          Icon(EsriIcons.chart,
-                                              color: Color(0xff363636)),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Text('Статистик мэдээ',
-                                              style: TextStyle(
-                                                  fontSize: 14,
-                                                  color: Color(0xff363636),
-                                                  fontWeight: FontWeight.w500)),
-                                        ],
-                                      ),
-                                      children: <Widget>[
-                                        Container(
-                                            alignment: Alignment.topLeft,
-                                            padding: const EdgeInsets.only(left: 25.0),
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: <Widget>[
-                                                Container(
-                                                  height: 32,
-                                                  child: FlatButton(
-                                                    padding: EdgeInsets.all(0.0),
-                                                    onPressed: () {
-                                                      Navigator.pushNamed(context, '/export');
-                                                    },
-                                                    child: Row(
-                                                      children: <Widget>[
-                                                        Text('- Экспортын мэдээ',
-                                                            style: TextStyle(
-                                                                fontSize: 14,
-                                                                color: Color(0xff363636),
-                                                                fontWeight: FontWeight.w500))
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  height: 32,
-                                                  child: FlatButton(
-                                                    padding: EdgeInsets.all(0.0),
-                                                    onPressed: () {
-                                                      Navigator.pushNamed(context, '/olborlolt');
-                                                    },
-                                                    child: Row(
-                                                      children: <Widget>[
-                                                        Text('- Олборлолтын мэдээ',
-                                                            style: TextStyle(
-                                                                fontSize: 14,
-                                                                color: Color(0xff363636),
-                                                                fontWeight: FontWeight.w500))
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  height: 32,
-                                                  child: FlatButton(
-                                                    padding: EdgeInsets.all(0.0),
-                                                    onPressed: () {
-                                                      Navigator.pushNamed(context, '/mbank');
-                                                    },
-                                                    child: Row(
-                                                      children: <Widget>[
-                                                        Text('- Монгол банкны худалдан авалт',
-                                                            style: TextStyle(
-                                                                fontSize: 14,
-                                                                color: Color(0xff363636),
-                                                                fontWeight: FontWeight.w500))
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  height: 32,
-                                                  child: FlatButton(
-                                                    padding: EdgeInsets.all(0.0),
-                                                    onPressed: () {
-                                                      Navigator.pushNamed(context, '/taamag');
-                                                    },
-                                                    child: Row(
-                                                      children: <Widget>[
-                                                        Text('- Таамаг үнэ',
-                                                            style: TextStyle(
-                                                                fontSize: 14,
-                                                                color: Color(0xff363636),
-                                                                fontWeight: FontWeight.w500))
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                SizedBox(height: 10.0,),
-                                              ],
-                                            )
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
+//                               Container(
+// //                            height: 44,
+//                                 padding: EdgeInsets.all(0.0),
+//                                 margin: EdgeInsets.all(0.0),
+//                                 child: FlatButton(
+//                                   padding: EdgeInsets.all(0.0),
+//                                   onPressed: () {
+//                                     Navigator.pushNamed(context, '/baiguullaga');
+//                                   },
+//
+//                                   child: ListTileTheme(
+//
+//                                     child: ExpansionTile(
+//
+//                                       title: Row(
+//                                         mainAxisAlignment: MainAxisAlignment.start,
+//                                         children: <Widget>[
+//                                           Icon(EsriIcons.chart,
+//                                               color: Color(0xff363636)),
+//                                           SizedBox(
+//                                             width: 10,
+//                                           ),
+//                                           Text('Статистик мэдээ',
+//                                               style: TextStyle(
+//                                                   fontSize: 14,
+//                                                   color: Color(0xff363636),
+//                                                   fontWeight: FontWeight.w500)),
+//                                         ],
+//                                       ),
+//                                       children: <Widget>[
+//                                         Container(
+//                                             alignment: Alignment.topLeft,
+//                                             padding: const EdgeInsets.only(left: 25.0),
+//                                             child: Column(
+//                                               mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                                               mainAxisSize: MainAxisSize.min,
+//                                               children: <Widget>[
+//                                                 Container(
+//                                                   height: 32,
+//                                                   child: FlatButton(
+//                                                     padding: EdgeInsets.all(0.0),
+//                                                     onPressed: () {
+//                                                       Navigator.pushNamed(context, '/export');
+//                                                     },
+//                                                     child: Row(
+//                                                       children: <Widget>[
+//                                                         Text('- Экспортын мэдээ',
+//                                                             style: TextStyle(
+//                                                                 fontSize: 14,
+//                                                                 color: Color(0xff363636),
+//                                                                 fontWeight: FontWeight.w500))
+//                                                       ],
+//                                                     ),
+//                                                   ),
+//                                                 ),
+//                                                 Container(
+//                                                   height: 32,
+//                                                   child: FlatButton(
+//                                                     padding: EdgeInsets.all(0.0),
+//                                                     onPressed: () {
+//                                                       Navigator.pushNamed(context, '/olborlolt');
+//                                                     },
+//                                                     child: Row(
+//                                                       children: <Widget>[
+//                                                         Text('- Олборлолтын мэдээ',
+//                                                             style: TextStyle(
+//                                                                 fontSize: 14,
+//                                                                 color: Color(0xff363636),
+//                                                                 fontWeight: FontWeight.w500))
+//                                                       ],
+//                                                     ),
+//                                                   ),
+//                                                 ),
+//                                                 Container(
+//                                                   height: 32,
+//                                                   child: FlatButton(
+//                                                     padding: EdgeInsets.all(0.0),
+//                                                     onPressed: () {
+//                                                       Navigator.pushNamed(context, '/mbank');
+//                                                     },
+//                                                     child: Row(
+//                                                       children: <Widget>[
+//                                                         Text('- Монгол банкны худалдан авалт',
+//                                                             style: TextStyle(
+//                                                                 fontSize: 14,
+//                                                                 color: Color(0xff363636),
+//                                                                 fontWeight: FontWeight.w500))
+//                                                       ],
+//                                                     ),
+//                                                   ),
+//                                                 ),
+//                                                 Container(
+//                                                   height: 32,
+//                                                   child: FlatButton(
+//                                                     padding: EdgeInsets.all(0.0),
+//                                                     onPressed: () {
+//                                                       Navigator.pushNamed(context, '/taamag');
+//                                                     },
+//                                                     child: Row(
+//                                                       children: <Widget>[
+//                                                         Text('- Таамаг үнэ',
+//                                                             style: TextStyle(
+//                                                                 fontSize: 14,
+//                                                                 color: Color(0xff363636),
+//                                                                 fontWeight: FontWeight.w500))
+//                                                       ],
+//                                                     ),
+//                                                   ),
+//                                                 ),
+//                                                 SizedBox(height: 10.0,),
+//                                               ],
+//                                             )
+//                                         )
+//                                       ],
+//                                     ),
+//                                   ),
+//                                 ),
+//                               ),
                               Container(
 //                            height: 44,
                                 child: FlatButton(
@@ -871,42 +871,42 @@ class _SidebarScreenState extends State<SidebarScreen> {
                                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                                               mainAxisSize: MainAxisSize.min,
                                               children: <Widget>[
-                                                Container(
-                                                  height: 32,
-                                                  child: FlatButton(
-                                                    padding: EdgeInsets.all(0.0),
-                                                    onPressed: () {
-                                                      Navigator.pushNamed(context, '/tusgai');
-                                                    },
-                                                    child: Row(
-                                                      children: <Widget>[
-                                                        Text('- Тусгай зөвшөөрөл ',
-                                                            style: TextStyle(
-                                                                fontSize: 14,
-                                                                color: Color(0xff363636),
-                                                                fontWeight: FontWeight.w500))
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  height: 32,
-                                                  child: FlatButton(
-                                                    padding: EdgeInsets.all(0.0),
-                                                    onPressed: () {
-                                                      Navigator.pushNamed(context, '/songonShalgaruulaltgon');
-                                                    },
-                                                    child: Row(
-                                                      children: <Widget>[
-                                                        Text('- Сонгон шалгаруулалт',
-                                                            style: TextStyle(
-                                                                fontSize: 14,
-                                                                color: Color(0xff363636),
-                                                                fontWeight: FontWeight.w500))
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
+                                                // Container(
+                                                //   height: 32,
+                                                //   child: FlatButton(
+                                                //     padding: EdgeInsets.all(0.0),
+                                                //     onPressed: () {
+                                                //       Navigator.pushNamed(context, '/tusgai');
+                                                //     },
+                                                //     child: Row(
+                                                //       children: <Widget>[
+                                                //         Text('- Тусгай зөвшөөрөл ',
+                                                //             style: TextStyle(
+                                                //                 fontSize: 14,
+                                                //                 color: Color(0xff363636),
+                                                //                 fontWeight: FontWeight.w500))
+                                                //       ],
+                                                //     ),
+                                                //   ),
+                                                // ),
+                                                // Container(
+                                                //   height: 32,
+                                                //   child: FlatButton(
+                                                //     padding: EdgeInsets.all(0.0),
+                                                //     onPressed: () {
+                                                //       Navigator.pushNamed(context, '/songonShalgaruulaltgon');
+                                                //     },
+                                                //     child: Row(
+                                                //       children: <Widget>[
+                                                //         Text('- Сонгон шалгаруулалт',
+                                                //             style: TextStyle(
+                                                //                 fontSize: 14,
+                                                //                 color: Color(0xff363636),
+                                                //                 fontWeight: FontWeight.w500))
+                                                //       ],
+                                                //     ),
+                                                //   ),
+                                                // ),
                                                 Container(
                                                   height: 32,
                                                   child: FlatButton(
