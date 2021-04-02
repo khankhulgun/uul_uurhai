@@ -4,20 +4,29 @@ query export_medee($page: Int!, $size: Int!) {
         last_page
         ds_export_medee {
             a_heregsel
+            b_id
+            b_torol_id
             boomt
+            boomt_id
+            boomt_short
             buteegdehuun
-            torol
             code
+            eh_survalj_id
             exp_une_dun
-            lbaiguullaga
+            export_baiguullaga
             export_hemjee
             hemjih_negj_id
             id
+            lbaiguullaga
             negj
             ognoo
             survalj
+            t_heregsel_id
             teever_too
+            to_tonnes
+            torol
             uls
+            uls_id
         }
     }
 }
@@ -30,13 +39,16 @@ query olborlolt_medee($page: Int!, $size: Int!) {
             b_id
             b_torol_id
             buteegdehuun
+            code
             eh_survalj_id
             hemjih_negj_id
             id
+            lbaiguullaga
             negj
             ognoo
-            lbaiguullaga
+            olborlolt_b_id
             olborlolt_hemjee
+            to_tonnes
         }
     }
 }
@@ -47,8 +59,11 @@ query m_bank_hudaldan_avalt($page: Int!, $size: Int!) {
         total
         last_page
         ds_m_bank_hudaldan_avalt{
+            a_maltlam_id
             ashigt_maltmal
+            eh_survalj_id
             h_avsan_hemjee
+            hemjih_negj_id
             id
             negj
             ognoo

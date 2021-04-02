@@ -41,7 +41,6 @@ query uildver($page: Int!, $size: Int!) {
         ds_uildver{
             aimag_id
             aimagname
-            aj_ahui_id
             bag_id
             bagname
             id
@@ -62,7 +61,6 @@ query uildver($page: Int!, $size: Int!) {
                 torol
                 torol_code
                 u_ehelsen
-                uildverlel_tolov_id
                 zurag
             }
         }

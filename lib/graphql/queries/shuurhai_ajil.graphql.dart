@@ -8,6 +8,36 @@ import 'package:gql/ast.dart';
 part 'shuurhai_ajil.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
+class ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil$SubAShuurhaiHeregjilt
+    with EquatableMixin {
+  ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil$SubAShuurhaiHeregjilt();
+
+  factory ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil$SubAShuurhaiHeregjilt.fromJson(
+          Map<String, dynamic> json) =>
+      _$ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil$SubAShuurhaiHeregjiltFromJson(
+          json);
+
+  @JsonKey(name: 'h_baidal')
+  String hBaidal;
+
+  @JsonKey(name: 'h_g_huvi')
+  double hGHuvi;
+
+  int id;
+
+  String ognoo;
+
+  @JsonKey(name: 'shuurhai_id')
+  int shuurhaiId;
+
+  @override
+  List<Object> get props => [hBaidal, hGHuvi, id, ognoo, shuurhaiId];
+  Map<String, dynamic> toJson() =>
+      _$ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil$SubAShuurhaiHeregjiltToJson(
+          this);
+}
+
+@JsonSerializable(explicitToJson: true)
 class ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil with EquatableMixin {
   ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil();
 
@@ -25,6 +55,9 @@ class ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil with EquatableMixin {
   @JsonKey(name: 'b_g_id')
   int bGId;
 
+  @JsonKey(name: 'guitsetgel_huvi')
+  double guitsetgelHuvi;
+
   int id;
 
   DateTime ognoo;
@@ -39,8 +72,14 @@ class ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil with EquatableMixin {
 
   String status;
 
+  String tailan;
+
   @JsonKey(name: 'tolov_id')
   int tolovId;
+
+  @JsonKey(name: 'sub_a_shuurhai_heregjilt')
+  List<ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil$SubAShuurhaiHeregjilt>
+      subAShuurhaiHeregjilt;
 
   @override
   List<Object> get props => [
@@ -48,13 +87,16 @@ class ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjil with EquatableMixin {
         albanTushaal,
         angilal,
         bGId,
+        guitsetgelHuvi,
         id,
         ognoo,
         salbar,
         shiidverlehHugatsaa,
         shuurhaiCatId,
         status,
-        tolovId
+        tailan,
+        tolovId,
+        subAShuurhaiHeregjilt
       ];
   Map<String, dynamic> toJson() =>
       _$ShuurkhaiAjil$Query$Paginate$DsShuurkhaiAjilToJson(this);
@@ -206,6 +248,12 @@ class ShuurkhaiAjilQuery
                           directives: [],
                           selectionSet: null),
                       FieldNode(
+                          name: NameNode(value: 'guitsetgel_huvi'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
                           name: NameNode(value: 'id'),
                           alias: null,
                           arguments: [],
@@ -242,11 +290,54 @@ class ShuurkhaiAjilQuery
                           directives: [],
                           selectionSet: null),
                       FieldNode(
+                          name: NameNode(value: 'tailan'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
                           name: NameNode(value: 'tolov_id'),
                           alias: null,
                           arguments: [],
                           directives: [],
-                          selectionSet: null)
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'sub_a_shuurhai_heregjilt'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: SelectionSetNode(selections: [
+                            FieldNode(
+                                name: NameNode(value: 'h_baidal'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
+                                name: NameNode(value: 'h_g_huvi'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
+                                name: NameNode(value: 'id'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
+                                name: NameNode(value: 'ognoo'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
+                                name: NameNode(value: 'shuurhai_id'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null)
+                          ]))
                     ]))
               ]))
         ]))

@@ -11,11 +11,9 @@ type AaEBMergejilZovlol {
 }
 
 type AaMuHuuliHegejilt {
-  b_salbar_id: Int
+  g_huvi: Float
   id: ID!
-  m_huuli_id: Int
   t_hugatsaa_id: String
-  tolov_id: Int
   ds_sub_heregjilt: [DsSubHeregjilt!]
 }
 
@@ -106,10 +104,10 @@ type deleted {
 type DsAjilahHuchMedeelel {
   aj_ahui_ner_id: String
   b_torol: String
+  chiglel: String
   huch_too: Int
   id: Int!
   medeelel: String
-  ua_chiglel_id: Int
   uls: String
   uls_id: Int
 }
@@ -133,11 +131,10 @@ type DsAjilHeseg {
 
 type DsBodlogoBarimtBichig {
   b_ognoo: Time
+  g_huvi: Float
   holboos: String
   id: Int!
   ner: String
-  salbar: String
-  salbar_id: Int
   t_hugatsaa: String
   t_hugatsaa_id: Int
   t_sh_dugaar: String
@@ -145,13 +142,11 @@ type DsBodlogoBarimtBichig {
 
 type DsBodlogoBb {
   b_gazar_id: Int
+  g_huvi: Float
   id: Int!
-  ner_barimt: String
-  salbar: String
-  salbar_id: Int
+  ner: String
   t_hugatsaa: String
   t_hugatsaa_id: Int
-  tolov_id: Int
   ds_sub_heregjilt_bodlog_barimt_bichig: [DsSubHeregjiltBodlogBarimtBichig!]
 }
 
@@ -171,6 +166,7 @@ type DsExportMedee {
   b_torol_id: Int
   boomt: String
   boomt_id: Int
+  boomt_short: String
   buteegdehuun: String
   code: String
   eh_survalj_id: Int
@@ -185,6 +181,7 @@ type DsExportMedee {
   survalj: String
   t_heregsel_id: Int
   teever_too: Int
+  to_tonnes: Float
   torol: String
   uls: String
   uls_id: Int
@@ -241,15 +238,10 @@ type DsMedee {
 }
 
 type DsMongolUlsHuuliHer {
-  b_salbar_id: Int
-  huuli: String
+  g_huvi: Float
   id: Int!
-  m_huuli_id: Int
-  salbar: String
-  status: String
   t_hugatsaa: String
   t_hugatsaa_id: String
-  tolov_id: Int
   ds_sub_heregjilt: [DsSubHeregjilt!]
 }
 
@@ -266,6 +258,7 @@ type DsOlborloltMedee {
   ognoo: Time
   olborlolt_b_id: Int
   olborlolt_hemjee: Float
+  to_tonnes: Float
 }
 
 type DsOlborloltUurkhai {
@@ -287,12 +280,14 @@ type DsShuurkhaiAjil {
   alban_tushaal: String
   angilal: String
   b_g_id: Int
+  guitsetgel_huvi: Float
   id: Int!
   ognoo: Time
   salbar: String
   shiidverleh_hugatsaa: Time
   shuurhai_cat_id: Int
   status: String
+  tailan: String
   tolov_id: Int
   sub_a_shuurhai_heregjilt: [SubAShuurhaiHeregjilt!]
 }
@@ -427,7 +422,6 @@ type DsSubUildverlel {
   torol: String
   torol_code: String
   u_ehelsen: String
-  uildverlel_tolov_id: Int
   zurag: String
 }
 
@@ -458,6 +452,7 @@ type DsTosovZarlaga {
   t_tosov: Float
   torol: String
   zardal_torol_id: Int
+  zoruu: Float
 }
 
 type DsTosviinOrlogo {
@@ -474,22 +469,18 @@ type DsTosviinOrlogo {
 }
 
 type DsUihTogtoolHeregjilt {
-  b_gazar_id: Int
+  g_huvi: Float
   id: Int!
-  salbar: String
-  status: String
   t_hugatsaa: String
   t_hugatsaa_id: Int
   togtool: String
   togtool_id: Int
-  tolov_id: Int
   ds_sub_heregjilt_uls_ih_hural: [DsSubHeregjiltUlsIhHural!]
 }
 
 type DsUildver {
   aimag_id: Int
   aimagname: String
-  aj_ahui_id: Int
   bag_id: Int
   bagname: String
   id: Int!
@@ -503,6 +494,7 @@ type DsZgHotolbor {
   arga_hemjee: String
   ded_zorilt: String
   e_uusver: String
+  g_huvi: Float
   h_baiguullaga_id: Int
   hotolbor: String
   hugatsaa: String
@@ -517,14 +509,11 @@ type DsZgHotolbor {
 }
 
 type DsZgTogtoolHeregjilt {
-  b_gazar_id: Int
+  g_huvi: Float
   id: Int!
-  salbar: String
-  status: String
   t_hugatsaa: String
   t_hugatsaa_id: Int
   togtool: String
-  tolov_id: Int
   zg_togtool_id: Int
   ds_sub_heregjilt_zg_togtool: [DsSubHeregjiltZgTogtool!]
 }

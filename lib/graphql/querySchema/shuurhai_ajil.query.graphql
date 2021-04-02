@@ -7,13 +7,22 @@ query shuurkhai_ajil($page:Int!, $size:Int!) {
             alban_tushaal
             angilal
             b_g_id
+            guitsetgel_huvi
             id
             ognoo
             salbar
             shiidverleh_hugatsaa
             shuurhai_cat_id
             status
+            tailan
             tolov_id
+            sub_a_shuurhai_heregjilt{
+                h_baidal
+                h_g_huvi
+                id
+                ognoo
+                shuurhai_id
+            }
         }
     }
 }
