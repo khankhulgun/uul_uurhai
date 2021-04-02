@@ -188,16 +188,14 @@ class Paginatebodbarbichig$Query$Paginate$DsBodlogoBarimtBichig
   @JsonKey(name: 'b_ognoo')
   DateTime bOgnoo;
 
+  @JsonKey(name: 'g_huvi')
+  double gHuvi;
+
   String holboos;
 
   int id;
 
   String ner;
-
-  String salbar;
-
-  @JsonKey(name: 'salbar_id')
-  int salbarId;
 
   @JsonKey(name: 't_hugatsaa')
   String tHugatsaa;
@@ -209,17 +207,8 @@ class Paginatebodbarbichig$Query$Paginate$DsBodlogoBarimtBichig
   String tShDugaar;
 
   @override
-  List<Object> get props => [
-        bOgnoo,
-        holboos,
-        id,
-        ner,
-        salbar,
-        salbarId,
-        tHugatsaa,
-        tHugatsaaId,
-        tShDugaar
-      ];
+  List<Object> get props =>
+      [bOgnoo, gHuvi, holboos, id, ner, tHugatsaa, tHugatsaaId, tShDugaar];
   Map<String, dynamic> toJson() =>
       _$Paginatebodbarbichig$Query$Paginate$DsBodlogoBarimtBichigToJson(this);
 }
@@ -811,6 +800,12 @@ class PaginatebodbarbichigQuery extends GraphQLQuery<Paginatebodbarbichig$Query,
                           directives: [],
                           selectionSet: null),
                       FieldNode(
+                          name: NameNode(value: 'g_huvi'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
                           name: NameNode(value: 'holboos'),
                           alias: null,
                           arguments: [],
@@ -824,18 +819,6 @@ class PaginatebodbarbichigQuery extends GraphQLQuery<Paginatebodbarbichig$Query,
                           selectionSet: null),
                       FieldNode(
                           name: NameNode(value: 'ner'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'salbar'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'salbar_id'),
                           alias: null,
                           arguments: [],
                           directives: [],

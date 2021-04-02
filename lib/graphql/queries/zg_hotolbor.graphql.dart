@@ -59,13 +59,19 @@ class ZgHotolbor$Query$Paginate$DsZgHotolbor with EquatableMixin {
   @JsonKey(name: 'e_uusver')
   String eUusver;
 
-  String lbaiguullaga;
+  @JsonKey(name: 'g_huvi')
+  double gHuvi;
+
+  @JsonKey(name: 'h_baiguullaga_id')
+  int hBaiguullagaId;
 
   String hotolbor;
 
   String hugatsaa;
 
   int id;
+
+  String lbaiguullaga;
 
   @JsonKey(name: 'niit_tosov')
   double niitTosov;
@@ -89,10 +95,12 @@ class ZgHotolbor$Query$Paginate$DsZgHotolbor with EquatableMixin {
         argaHemjee,
         dedZorilt,
         eUusver,
-        lbaiguullaga,
+        gHuvi,
+        hBaiguullagaId,
         hotolbor,
         hugatsaa,
         id,
+        lbaiguullaga,
         niitTosov,
         status,
         suuriTuvshin,
@@ -244,7 +252,13 @@ class ZgHotolborQuery
                           directives: [],
                           selectionSet: null),
                       FieldNode(
-                          name: NameNode(value: 'lbaiguullaga'),
+                          name: NameNode(value: 'g_huvi'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'h_baiguullaga_id'),
                           alias: null,
                           arguments: [],
                           directives: [],
@@ -263,6 +277,12 @@ class ZgHotolborQuery
                           selectionSet: null),
                       FieldNode(
                           name: NameNode(value: 'id'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'lbaiguullaga'),
                           alias: null,
                           arguments: [],
                           directives: [],
