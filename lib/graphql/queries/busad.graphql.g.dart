@@ -194,7 +194,10 @@ EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubBu
     ..asuudalD = json['asuudal_d'] as int
     ..bTorol = json['b_torol'] as String
     ..id = json['id'] as int
-    ..tolov = json['tolov'] as String;
+    ..tableId = json['table_id'] as int
+    ..tolov = json['tolov'] as String
+    ..tolovId = json['tolov_id'] as int
+    ..torolId = json['torol_id'] as int;
 }
 
 Map<String,
@@ -205,7 +208,10 @@ Map<String,
       'asuudal_d': instance.asuudalD,
       'b_torol': instance.bTorol,
       'id': instance.id,
+      'table_id': instance.tableId,
       'tolov': instance.tolov,
+      'tolov_id': instance.tolovId,
+      'torol_id': instance.torolId,
     };
 
 EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubGt
@@ -216,7 +222,10 @@ EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubGt
     ..asuudal = json['asuudal'] as String
     ..gtTorol = json['gt_torol'] as String
     ..id = json['id'] as int
-    ..tolov = json['tolov'] as String;
+    ..tableId = json['table_id'] as int
+    ..tolov = json['tolov'] as String
+    ..tolovId = json['tolov_id'] as int
+    ..torolId = json['torol_id'] as int;
 }
 
 Map<String,
@@ -227,7 +236,10 @@ Map<String,
       'asuudal': instance.asuudal,
       'gt_torol': instance.gtTorol,
       'id': instance.id,
+      'table_id': instance.tableId,
       'tolov': instance.tolov,
+      'tolov_id': instance.tolovId,
+      'torol_id': instance.torolId,
     };
 
 EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubNoots
@@ -238,7 +250,10 @@ EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubNoots
     ..asuudal = json['asuudal'] as String
     ..buteegdehuun = json['buteegdehuun'] as String
     ..id = json['id'] as int
-    ..tolov = json['tolov'] as String;
+    ..tableId = json['table_id'] as int
+    ..tolov = json['tolov'] as String
+    ..tolovId = json['tolov_id'] as int
+    ..torolId = json['torol_id'] as int;
 }
 
 Map<String, dynamic>
@@ -250,7 +265,10 @@ Map<String, dynamic>
           'asuudal': instance.asuudal,
           'buteegdehuun': instance.buteegdehuun,
           'id': instance.id,
+          'table_id': instance.tableId,
           'tolov': instance.tolov,
+          'tolov_id': instance.tolovId,
+          'torol_id': instance.torolId,
         };
 
 EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubTezu
@@ -262,7 +280,9 @@ EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubTezu
     ..buteegdehuun = json['buteegdehuun'] as String
     ..id = json['id'] as int
     ..subBTorolId = json['sub_b_torol_id'] as int
-    ..tolov = json['tolov'] as String;
+    ..tableId = json['table_id'] as int
+    ..tolov = json['tolov'] as String
+    ..tolovId = json['tolov_id'] as int;
 }
 
 Map<String, dynamic>
@@ -275,7 +295,9 @@ Map<String, dynamic>
           'buteegdehuun': instance.buteegdehuun,
           'id': instance.id,
           'sub_b_torol_id': instance.subBTorolId,
+          'table_id': instance.tableId,
           'tolov': instance.tolov,
+          'tolov_id': instance.tolovId,
         };
 
 EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubUhggsa
@@ -285,7 +307,10 @@ EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubUhggsa
     ..aDugaar = json['a_dugaar'] as int
     ..asuudal = json['asuudal'] as String
     ..id = json['id'] as int
+    ..tableId = json['table_id'] as int
+    ..tolovId = json['tolov_id'] as int
     ..torol = json['torol'] as String
+    ..torolId = json['torol_id'] as int
     ..uhggsaTolov = json['uhggsa_tolov'] as String;
 }
 
@@ -297,7 +322,10 @@ Map<String, dynamic>
           'a_dugaar': instance.aDugaar,
           'asuudal': instance.asuudal,
           'id': instance.id,
+          'table_id': instance.tableId,
+          'tolov_id': instance.tolovId,
           'torol': instance.torol,
+          'torol_id': instance.torolId,
           'uhggsa_tolov': instance.uhggsaTolov,
         };
 
@@ -392,10 +420,10 @@ AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel
   return AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel()
     ..ajAhuiNerId = json['aj_ahui_ner_id'] as String
     ..bTorol = json['b_torol'] as String
+    ..chiglel = json['chiglel'] as String
     ..huchToo = json['huch_too'] as int
     ..id = json['id'] as int
     ..medeelel = json['medeelel'] as String
-    ..uaChiglelId = json['ua_chiglel_id'] as int
     ..uls = json['uls'] as String
     ..ulsId = json['uls_id'] as int;
 }
@@ -406,10 +434,10 @@ Map<String, dynamic>
         <String, dynamic>{
           'aj_ahui_ner_id': instance.ajAhuiNerId,
           'b_torol': instance.bTorol,
+          'chiglel': instance.chiglel,
           'huch_too': instance.huchToo,
           'id': instance.id,
           'medeelel': instance.medeelel,
-          'ua_chiglel_id': instance.uaChiglelId,
           'uls': instance.uls,
           'uls_id': instance.ulsId,
         };

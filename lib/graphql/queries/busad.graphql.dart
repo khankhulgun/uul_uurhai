@@ -266,10 +266,20 @@ class EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubBu
 
   int id;
 
+  @JsonKey(name: 'table_id')
+  int tableId;
+
   String tolov;
 
+  @JsonKey(name: 'tolov_id')
+  int tolovId;
+
+  @JsonKey(name: 'torol_id')
+  int torolId;
+
   @override
-  List<Object> get props => [asuudal, asuudalD, bTorol, id, tolov];
+  List<Object> get props =>
+      [asuudal, asuudalD, bTorol, id, tableId, tolov, tolovId, torolId];
   Map<String, dynamic> toJson() =>
       _$EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubBuToJson(this);
 }
@@ -294,10 +304,20 @@ class EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubGt
 
   int id;
 
+  @JsonKey(name: 'table_id')
+  int tableId;
+
   String tolov;
 
+  @JsonKey(name: 'tolov_id')
+  int tolovId;
+
+  @JsonKey(name: 'torol_id')
+  int torolId;
+
   @override
-  List<Object> get props => [aDugaar, asuudal, gtTorol, id, tolov];
+  List<Object> get props =>
+      [aDugaar, asuudal, gtTorol, id, tableId, tolov, tolovId, torolId];
   Map<String, dynamic> toJson() =>
       _$EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubGtToJson(this);
 }
@@ -321,10 +341,20 @@ class EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubNoots
 
   int id;
 
+  @JsonKey(name: 'table_id')
+  int tableId;
+
   String tolov;
 
+  @JsonKey(name: 'tolov_id')
+  int tolovId;
+
+  @JsonKey(name: 'torol_id')
+  int torolId;
+
   @override
-  List<Object> get props => [aDugaar, asuudal, buteegdehuun, id, tolov];
+  List<Object> get props =>
+      [aDugaar, asuudal, buteegdehuun, id, tableId, tolov, tolovId, torolId];
   Map<String, dynamic> toJson() =>
       _$EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubNootsToJson(
           this);
@@ -352,11 +382,25 @@ class EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubTezu
   @JsonKey(name: 'sub_b_torol_id')
   int subBTorolId;
 
+  @JsonKey(name: 'table_id')
+  int tableId;
+
   String tolov;
 
+  @JsonKey(name: 'tolov_id')
+  int tolovId;
+
   @override
-  List<Object> get props =>
-      [aDugaar, asuudal, buteegdehuun, id, subBTorolId, tolov];
+  List<Object> get props => [
+        aDugaar,
+        asuudal,
+        buteegdehuun,
+        id,
+        subBTorolId,
+        tableId,
+        tolov,
+        tolovId
+      ];
   Map<String, dynamic> toJson() =>
       _$EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubTezuToJson(
           this);
@@ -379,13 +423,23 @@ class EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubUhggsa
 
   int id;
 
+  @JsonKey(name: 'table_id')
+  int tableId;
+
+  @JsonKey(name: 'tolov_id')
+  int tolovId;
+
   String torol;
+
+  @JsonKey(name: 'torol_id')
+  int torolId;
 
   @JsonKey(name: 'uhggsa_tolov')
   String uhggsaTolov;
 
   @override
-  List<Object> get props => [aDugaar, asuudal, id, torol, uhggsaTolov];
+  List<Object> get props =>
+      [aDugaar, asuudal, id, tableId, tolovId, torol, torolId, uhggsaTolov];
   Map<String, dynamic> toJson() =>
       _$EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol$DsSubUhggsaToJson(
           this);
@@ -493,15 +547,14 @@ class AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel
   @JsonKey(name: 'b_torol')
   String bTorol;
 
+  String chiglel;
+
   @JsonKey(name: 'huch_too')
   int huchToo;
 
   int id;
 
   String medeelel;
-
-  @JsonKey(name: 'ua_chiglel_id')
-  int uaChiglelId;
 
   String uls;
 
@@ -510,7 +563,7 @@ class AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel
 
   @override
   List<Object> get props =>
-      [ajAhuiNerId, bTorol, huchToo, id, medeelel, uaChiglelId, uls, ulsId];
+      [ajAhuiNerId, bTorol, chiglel, huchToo, id, medeelel, uls, ulsId];
   Map<String, dynamic> toJson() =>
       _$AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelelToJson(this);
 }
@@ -1092,7 +1145,25 @@ class EBMergejilZovlolQuery
                                 directives: [],
                                 selectionSet: null),
                             FieldNode(
+                                name: NameNode(value: 'table_id'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
                                 name: NameNode(value: 'tolov'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
+                                name: NameNode(value: 'tolov_id'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
+                                name: NameNode(value: 'torol_id'),
                                 alias: null,
                                 arguments: [],
                                 directives: [],
@@ -1129,7 +1200,25 @@ class EBMergejilZovlolQuery
                                 directives: [],
                                 selectionSet: null),
                             FieldNode(
+                                name: NameNode(value: 'table_id'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
                                 name: NameNode(value: 'tolov'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
+                                name: NameNode(value: 'tolov_id'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
+                                name: NameNode(value: 'torol_id'),
                                 alias: null,
                                 arguments: [],
                                 directives: [],
@@ -1166,7 +1255,25 @@ class EBMergejilZovlolQuery
                                 directives: [],
                                 selectionSet: null),
                             FieldNode(
+                                name: NameNode(value: 'table_id'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
                                 name: NameNode(value: 'tolov'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
+                                name: NameNode(value: 'tolov_id'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
+                                name: NameNode(value: 'torol_id'),
                                 alias: null,
                                 arguments: [],
                                 directives: [],
@@ -1209,7 +1316,19 @@ class EBMergejilZovlolQuery
                                 directives: [],
                                 selectionSet: null),
                             FieldNode(
+                                name: NameNode(value: 'table_id'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
                                 name: NameNode(value: 'tolov'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
+                                name: NameNode(value: 'tolov_id'),
                                 alias: null,
                                 arguments: [],
                                 directives: [],
@@ -1240,7 +1359,25 @@ class EBMergejilZovlolQuery
                                 directives: [],
                                 selectionSet: null),
                             FieldNode(
+                                name: NameNode(value: 'table_id'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
+                                name: NameNode(value: 'tolov_id'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
                                 name: NameNode(value: 'torol'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null),
+                            FieldNode(
+                                name: NameNode(value: 'torol_id'),
                                 alias: null,
                                 arguments: [],
                                 directives: [],
@@ -1370,6 +1507,12 @@ class AjilahHuchMedeelelQuery extends GraphQLQuery<AjilahHuchMedeelel$Query,
                           directives: [],
                           selectionSet: null),
                       FieldNode(
+                          name: NameNode(value: 'chiglel'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
                           name: NameNode(value: 'huch_too'),
                           alias: null,
                           arguments: [],
@@ -1383,12 +1526,6 @@ class AjilahHuchMedeelelQuery extends GraphQLQuery<AjilahHuchMedeelel$Query,
                           selectionSet: null),
                       FieldNode(
                           name: NameNode(value: 'medeelel'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'ua_chiglel_id'),
                           alias: null,
                           arguments: [],
                           directives: [],

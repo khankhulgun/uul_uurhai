@@ -14,18 +14,21 @@ class Medee$Query$Paginate$DsMedee with EquatableMixin {
   factory Medee$Query$Paginate$DsMedee.fromJson(Map<String, dynamic> json) =>
       _$Medee$Query$Paginate$DsMedeeFromJson(json);
 
+  String angilal;
+
   int id;
 
   String medee;
 
-  String angilal;
+  @JsonKey(name: 'medee_cat_id')
+  int medeeCatId;
 
   DateTime ognoo;
 
   String tailbar;
 
   @override
-  List<Object> get props => [id, medee, angilal, ognoo, tailbar];
+  List<Object> get props => [angilal, id, medee, medeeCatId, ognoo, tailbar];
   Map<String, dynamic> toJson() => _$Medee$Query$Paginate$DsMedeeToJson(this);
 }
 
@@ -150,6 +153,12 @@ class MedeeQuery extends GraphQLQuery<Medee$Query, MedeeArguments> {
                     directives: [],
                     selectionSet: SelectionSetNode(selections: [
                       FieldNode(
+                          name: NameNode(value: 'angilal'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
                           name: NameNode(value: 'id'),
                           alias: null,
                           arguments: [],
@@ -162,7 +171,7 @@ class MedeeQuery extends GraphQLQuery<Medee$Query, MedeeArguments> {
                           directives: [],
                           selectionSet: null),
                       FieldNode(
-                          name: NameNode(value: 'angilal'),
+                          name: NameNode(value: 'medee_cat_id'),
                           alias: null,
                           arguments: [],
                           directives: [],

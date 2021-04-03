@@ -103,14 +103,14 @@ class _zasgiin_gazriin_togtoolState extends State<bodlogiin_b_b> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               SizedBox(height: 10.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(flex: 2, child: Text('Салбар:',  style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w400))),
-                  Expanded(flex: 3, child: Text(law.salbar,  style: TextStyle(fontSize: 12, color: mainColor, fontWeight: FontWeight.w600)))
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.start,
+              //   crossAxisAlignment: CrossAxisAlignment.center,
+              //   children: <Widget>[
+              //     Expanded(flex: 2, child: Text('Салбар:',  style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w400))),
+              //     Expanded(flex: 3, child: Text(law.salbar,  style: TextStyle(fontSize: 12, color: mainColor, fontWeight: FontWeight.w600)))
+              //   ],
+              // ),
               SizedBox(height: 5.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,

@@ -162,7 +162,7 @@ class _Hurungu_oruulaltState extends State<Hurungu_oruulalt> {
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
-                                        Expanded(flex: 2, child: Text('Хугацаа:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                        Expanded(flex: 4, child: Text('Хугацаа:', style: TextStyle(color: textColor, fontSize: 12),)),
                                         Expanded(flex: 4, child: Text(data.hugatsaa, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                       ],
                                     ),
@@ -171,8 +171,8 @@ class _Hurungu_oruulaltState extends State<Hurungu_oruulalt> {
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
-                                        Expanded(flex: 2, child: Text('Хөрөнгийн эх үүсвэр:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                        Expanded(flex: 4, child: Text(data.horongooruulalt, style: TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 12),)),
+                                        Expanded(flex: 4, child: Text('Хөрөнгийн эх үүсвэр:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                        Expanded(flex: 4, child: Text(data.horongooruulalt, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                       ],
                                     ),
                                     SizedBox(height: 4),
@@ -180,7 +180,7 @@ class _Hurungu_oruulaltState extends State<Hurungu_oruulalt> {
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
-                                        Expanded(flex: 2, child: Text('Төсөвт өртөг:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                        Expanded(flex: 4, child: Text('Төсөвт өртөг:', style: TextStyle(color: textColor, fontSize: 12),)),
                                         Expanded(flex: 4, child: Text(number(data.tosovtOrtog), style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                       ],
                                     ),
@@ -189,7 +189,7 @@ class _Hurungu_oruulaltState extends State<Hurungu_oruulalt> {
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
-                                        Expanded(flex: 2, child: Text('Хэрэгжүүлэгч:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                        Expanded(flex: 4, child: Text('Хэрэгжүүлэгч:', style: TextStyle(color: textColor, fontSize: 12),)),
                                         Expanded(flex: 4, child: Text(data.heregjuulegch, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                       ],
                                     ),
@@ -198,7 +198,7 @@ class _Hurungu_oruulaltState extends State<Hurungu_oruulalt> {
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
-                                        Expanded(flex: 2, child: Text('Төслийн зардал:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                        Expanded(flex: 4, child: Text('Төслийн зардал:', style: TextStyle(color: textColor, fontSize: 12),)),
                                         Expanded(flex: 4, child: Text(number(data.tosliinZardal), style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                       ],
                                     ),
@@ -207,22 +207,34 @@ class _Hurungu_oruulaltState extends State<Hurungu_oruulalt> {
                               ),
                               Expanded(
                                   flex: 2,
-                               child:  CircularPercentIndicator(
+                                child: CircularPercentIndicator(
                                   radius: 55.0,
                                   animationDuration: 1500,
                                   lineWidth: 4.0,
                                   animation: true,
-                                  percent: data.heregjiltHuvi != null ? int.parse(data.heregjiltHuvi) / 100 : 0,
+                                  percent: data.heregjiltHuvi != null ? int.parse(data.heregjiltHuvi)  / 100 : 0,
                                   center: Text(
                                     '${data.heregjiltHuvi}%',
                                     style: TextStyle(
-                                        fontSize: 16,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                      color: data.heregjiltHuvi == 100 ? Color(0xFF00E676) : Color(0xfffcb85f),
+                                    ),
+                                  ),
+                                  footer: Text(
+                                    data.heregjiltHuvi == 100 ? 'Биелсэн' : 'Хэрэгжиж байна',
+                                    style: TextStyle(
                                         fontWeight: FontWeight.w500,
-                                        color: Color(0xfffcb85f)),
+                                        fontSize: 10,
+                                        color: data.heregjiltHuvi == 100 ? Color(0xFF00E676) : Color(0xfffcb85f)
+                                    ),
                                   ),
                                   circularStrokeCap: CircularStrokeCap.round,
-                                  progressColor: Color(0xfffcb85f),
+//                            progressColor: currentProgressColor(),
+
+                                  progressColor: data.heregjiltHuvi == 100 ? Color(0xFF00E676) : Color(0xfffcb85f),
                                 ),
+
                               ),
 
                             ],
@@ -239,11 +251,12 @@ class _Hurungu_oruulaltState extends State<Hurungu_oruulalt> {
               Theme(
                 data: ThemeData().copyWith(dividerColor: Colors.transparent),
                 child: ExpansionTile(
-//                 backgroundColor: Colors.grey[50],
+                  tilePadding: EdgeInsets.all(0.0),
+                  childrenPadding: EdgeInsets.all(0.0),
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Text('Хэрэгжилт', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
+                      Text('Хэрэгжилт', style: TextStyle(fontSize: 12, fontFamily: "Roboto-Condensed", color: textColor, fontWeight: FontWeight.w600)),
                     ],
                   ),
                   children: <Widget>[
@@ -251,7 +264,7 @@ class _Hurungu_oruulaltState extends State<Hurungu_oruulalt> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(data.hBaidal, style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
+                        Text(data.hBaidal, style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
                         SizedBox(height: 10.0),
                       ],
                     ),

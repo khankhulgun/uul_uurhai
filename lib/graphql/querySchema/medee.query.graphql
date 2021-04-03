@@ -3,9 +3,10 @@ query medee($page:Int!, $size:Int!) {
     total,
     last_page,
     ds_medee {
+      angilal
       id
       medee
-      angilal
+      medee_cat_id
       ognoo
       tailbar
     }

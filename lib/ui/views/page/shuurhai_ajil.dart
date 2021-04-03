@@ -93,12 +93,11 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-
                       Expanded(
                           flex: 2,
                           child: Container(
-                              child: Image.asset('assets/uuhvy_img/placeholder.png',  fit: BoxFit.cover),
-                              //child: Image.asset('assets/uuhvy_img/yamnii.png', height: 90,  fit: BoxFit.cover),
+                              child: shuurhai.angilal != 'Яамны' ? Image.asset('assets/uuhvy_img/new_to.png',  fit: BoxFit.cover) :
+                              Image.asset('assets/uuhvy_img/new_yamnii.png',  fit: BoxFit.cover),
                           )
                       ),
                       SizedBox(width: 10.0),
@@ -109,8 +108,7 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text('${date(shuurhai.ognoo)}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),),
-                            Container(child: Text(shuurhai.ajil,  maxLines: 4,
-                              overflow: TextOverflow.ellipsis, style: TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 12),)),
+                            Container(child: Text(shuurhai.ajil,  maxLines: 4, overflow: TextOverflow.ellipsis, style: TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 12),)),
                           ],
                         ),
                       ),
@@ -122,28 +120,27 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
                           animationDuration: 1500,
                           lineWidth: 4.0,
                           animation: true,
-                          //percent: data.heregjiltiinHuvi != null ? int.parse(data.heregjiltiinHuvi) / 100 : 0,
-                          percent: 0.5,
+                          percent: shuurhai.guitsetgelHuvi != null ? shuurhai.guitsetgelHuvi / 100 : 0,
                           center: Text(
-                            '50%',
+                            '${shuurhai.guitsetgelHuvi}%',
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.w500,
-                                color: shuurhai.status == 'Биелсэн' ? Color(0xFF00E676) : Color(0xfffcb85f)
+                                color: shuurhai.guitsetgelHuvi == 100 ? Color(0xFF00E676) : Color(0xfffcb85f),
                             ),
                           ),
                           footer: Text(
-                            shuurhai.status,
+                            shuurhai.guitsetgelHuvi == 100 ? 'Биелсэн' : 'Хэрэгжиж байна',
                             style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 10,
-                                color: shuurhai.status == 'Биелсэн' ? Color(0xFF00E676) : Color(0xfffcb85f)
+                                color: shuurhai.guitsetgelHuvi == 100 ? Color(0xFF00E676) : Color(0xfffcb85f)
                             ),
                           ),
                           circularStrokeCap: CircularStrokeCap.round,
 //                            progressColor: currentProgressColor(),
 
-                          progressColor: shuurhai.status == 'Биелсэн' ? Color(0xFF00E676) : Color(0xfffcb85f),
+                          progressColor: shuurhai.guitsetgelHuvi == 100 ? Color(0xFF00E676) : Color(0xfffcb85f),
                         ),
                       ),
 
@@ -162,7 +159,7 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
                             children: <Widget>[
                               Text('Хэрэгжүүлэгч:', style: TextStyle(color: textColor, fontSize: 12),),
                               SizedBox(width: 4.0),
-                              Text(shuurhai.salbar, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12)),
+                              Text(shuurhai.salbar, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12))
                             ],
                           )
                       ),
@@ -175,7 +172,7 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
                             children: <Widget>[
                               Expanded(flex: 0, child: Text('Хугацаа:', style: TextStyle(color: textColor, fontSize: 12),)),
                               SizedBox(width: 4.0),
-                              Expanded(flex: 4, child: Text('${date(shuurhai.ognoo)}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12))),
+                              Expanded(flex: 4, child: Text('${date(shuurhai.shiidverlehHugatsaa)}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12))),
                             ],
                           )
                       ),
@@ -187,11 +184,12 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
               Theme(
                 data: ThemeData().copyWith(dividerColor: Colors.transparent),
                 child: ExpansionTile(
-//                 backgroundColor: Colors.grey[50],
+                   tilePadding: EdgeInsets.all(0.0),
+                   childrenPadding: EdgeInsets.all(0.0),
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Text('Хэрэгжилт', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
+                      Text('Дэлгэрэнгүй ...', style: TextStyle(fontSize: 12, fontFamily: "Roboto-Condensed", color: textColor, fontWeight: FontWeight.w500)),
                     ],
                   ),
                   children: <Widget>[
@@ -199,26 +197,15 @@ class _ShuurhaiAjilState extends State<ShuurhaiAjil> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(shuurhai.ajil, style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
+                        Text('Үүрэг даалгавар:', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12)),
+                        SizedBox(height: 4.0),
+                        Text(shuurhai.ajil, style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
+                        SizedBox(height: 10.0),SizedBox(height: 10.0),
+                        Text('Хэрэгжилтийн тайлан:', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12)),
+                        SizedBox(height: 4.0),
+                        Text(shuurhai.tailan, style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
                         SizedBox(height: 10.0),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Expanded(flex: 2, child: Text('Хэрэгжүүлсэн огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
-                            Expanded(flex: 4, child: Text('${shuurhai.ognoo}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                          ],
-                        ),
-                        SizedBox(height: 5.0),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Expanded(flex: 2, child: Text('Хэрэгжилтийн хувь:', style: TextStyle(color: textColor, fontSize: 12),)),
-                            Expanded(flex: 4, child: Text('', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                          ],
-                        ),
-                        SizedBox(height: 10.0),
+
                       ],
                     ),
 

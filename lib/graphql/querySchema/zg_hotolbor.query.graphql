@@ -7,10 +7,12 @@ query zg_hotolbor($page:Int!, $size:Int!) {
             arga_hemjee
             ded_zorilt
             e_uusver
-            lbaiguullaga
+            g_huvi
+            h_baiguullaga_id
             hotolbor
             hugatsaa
             id
+            lbaiguullaga
             niit_tosov
             status
             suuri_tuvshin

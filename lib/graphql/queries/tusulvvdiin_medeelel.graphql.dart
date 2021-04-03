@@ -209,9 +209,6 @@ class Uildver$Query$Paginate$DsUildver$DsSubUildverlel with EquatableMixin {
   @JsonKey(name: 'u_ehelsen')
   String uEhelsen;
 
-  @JsonKey(name: 'uildverlel_tolov_id')
-  int uildverlelTolovId;
-
   String zurag;
 
   @override
@@ -229,7 +226,6 @@ class Uildver$Query$Paginate$DsUildver$DsSubUildverlel with EquatableMixin {
         torol,
         torolCode,
         uEhelsen,
-        uildverlelTolovId,
         zurag
       ];
   Map<String, dynamic> toJson() =>
@@ -248,9 +244,6 @@ class Uildver$Query$Paginate$DsUildver with EquatableMixin {
   int aimagId;
 
   String aimagname;
-
-  @JsonKey(name: 'aj_ahui_id')
-  int ajAhuiId;
 
   @JsonKey(name: 'bag_id')
   int bagId;
@@ -274,7 +267,6 @@ class Uildver$Query$Paginate$DsUildver with EquatableMixin {
   List<Object> get props => [
         aimagId,
         aimagname,
-        ajAhuiId,
         bagId,
         bagname,
         id,
@@ -676,12 +668,6 @@ class UildverQuery extends GraphQLQuery<Uildver$Query, UildverArguments> {
                           directives: [],
                           selectionSet: null),
                       FieldNode(
-                          name: NameNode(value: 'aj_ahui_id'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
                           name: NameNode(value: 'bag_id'),
                           alias: null,
                           arguments: [],
@@ -797,12 +783,6 @@ class UildverQuery extends GraphQLQuery<Uildver$Query, UildverArguments> {
                                 selectionSet: null),
                             FieldNode(
                                 name: NameNode(value: 'u_ehelsen'),
-                                alias: null,
-                                arguments: [],
-                                directives: [],
-                                selectionSet: null),
-                            FieldNode(
-                                name: NameNode(value: 'uildverlel_tolov_id'),
                                 alias: null,
                                 arguments: [],
                                 directives: [],
