@@ -162,7 +162,8 @@ PaginatetosovZarlaga$Query$Paginate$DsTosovZarlaga
         json['ognoo'] == null ? null : DateTime.parse(json['ognoo'] as String)
     ..tTosov = (json['t_tosov'] as num)?.toDouble()
     ..torol = json['torol'] as String
-    ..zardalTorolId = json['zardal_torol_id'] as int;
+    ..zardalTorolId = json['zardal_torol_id'] as int
+    ..zoruu = (json['zoruu'] as num)?.toDouble();
 }
 
 Map<String, dynamic> _$PaginatetosovZarlaga$Query$Paginate$DsTosovZarlagaToJson(
@@ -176,6 +177,7 @@ Map<String, dynamic> _$PaginatetosovZarlaga$Query$Paginate$DsTosovZarlagaToJson(
       't_tosov': instance.tTosov,
       'torol': instance.torol,
       'zardal_torol_id': instance.zardalTorolId,
+      'zoruu': instance.zoruu,
     };
 
 PaginatetosovZarlaga$Query$Paginate

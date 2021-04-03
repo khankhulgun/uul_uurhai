@@ -39,13 +39,11 @@ BodlogoBb$Query$Paginate$DsBodlogoBb
     _$BodlogoBb$Query$Paginate$DsBodlogoBbFromJson(Map<String, dynamic> json) {
   return BodlogoBb$Query$Paginate$DsBodlogoBb()
     ..bGazarId = json['b_gazar_id'] as int
+    ..gHuvi = (json['g_huvi'] as num)?.toDouble()
     ..id = json['id'] as int
-    ..nerBarimt = json['ner_barimt'] as String
-    ..salbar = json['salbar'] as String
-    ..salbarId = json['salbar_id'] as int
+    ..ner = json['ner'] as String
     ..tHugatsaa = json['t_hugatsaa'] as String
     ..tHugatsaaId = json['t_hugatsaa_id'] as int
-    ..tolovId = json['tolov_id'] as int
     ..dsSubHeregjiltBodlogBarimtBichig = (json[
             'ds_sub_heregjilt_bodlog_barimt_bichig'] as List)
         ?.map((e) => e == null
@@ -59,13 +57,11 @@ Map<String, dynamic> _$BodlogoBb$Query$Paginate$DsBodlogoBbToJson(
         BodlogoBb$Query$Paginate$DsBodlogoBb instance) =>
     <String, dynamic>{
       'b_gazar_id': instance.bGazarId,
+      'g_huvi': instance.gHuvi,
       'id': instance.id,
-      'ner_barimt': instance.nerBarimt,
-      'salbar': instance.salbar,
-      'salbar_id': instance.salbarId,
+      'ner': instance.ner,
       't_hugatsaa': instance.tHugatsaa,
       't_hugatsaa_id': instance.tHugatsaaId,
-      'tolov_id': instance.tolovId,
       'ds_sub_heregjilt_bodlog_barimt_bichig': instance
           .dsSubHeregjiltBodlogBarimtBichig
           ?.map((e) => e?.toJson())
@@ -139,11 +135,9 @@ MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt
     _$MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejiltFromJson(
         Map<String, dynamic> json) {
   return MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt()
-    ..bSalbarId = json['b_salbar_id'] as int
+    ..gHuvi = (json['g_huvi'] as num)?.toDouble()
     ..id = json['id'] as int
-    ..mHuuliId = json['m_huuli_id'] as int
     ..tHugatsaaId = json['t_hugatsaa_id'] as String
-    ..tolovId = json['tolov_id'] as int
     ..dsSubHeregjilt = (json['ds_sub_heregjilt'] as List)
         ?.map((e) => e == null
             ? null
@@ -155,11 +149,9 @@ MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt
 Map<String, dynamic> _$MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejiltToJson(
         MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt instance) =>
     <String, dynamic>{
-      'b_salbar_id': instance.bSalbarId,
+      'g_huvi': instance.gHuvi,
       'id': instance.id,
-      'm_huuli_id': instance.mHuuliId,
       't_hugatsaa_id': instance.tHugatsaaId,
-      'tolov_id': instance.tolovId,
       'ds_sub_heregjilt':
           instance.dsSubHeregjilt?.map((e) => e?.toJson())?.toList(),
     };
@@ -234,15 +226,12 @@ UihTogtoolHeregjilt$Query$Paginate$DsUihTogtoolHeregjilt
     _$UihTogtoolHeregjilt$Query$Paginate$DsUihTogtoolHeregjiltFromJson(
         Map<String, dynamic> json) {
   return UihTogtoolHeregjilt$Query$Paginate$DsUihTogtoolHeregjilt()
-    ..bGazarId = json['b_gazar_id'] as int
+    ..gHuvi = (json['g_huvi'] as num)?.toDouble()
     ..id = json['id'] as int
-    ..salbar = json['salbar'] as String
-    ..status = json['status'] as String
     ..tHugatsaa = json['t_hugatsaa'] as String
     ..tHugatsaaId = json['t_hugatsaa_id'] as int
     ..togtool = json['togtool'] as String
     ..togtoolId = json['togtool_id'] as int
-    ..tolovId = json['tolov_id'] as int
     ..dsSubHeregjiltUlsIhHural = (json['ds_sub_heregjilt_uls_ih_hural'] as List)
         ?.map((e) => e == null
             ? null
@@ -255,15 +244,12 @@ Map<String,
     dynamic> _$UihTogtoolHeregjilt$Query$Paginate$DsUihTogtoolHeregjiltToJson(
         UihTogtoolHeregjilt$Query$Paginate$DsUihTogtoolHeregjilt instance) =>
     <String, dynamic>{
-      'b_gazar_id': instance.bGazarId,
+      'g_huvi': instance.gHuvi,
       'id': instance.id,
-      'salbar': instance.salbar,
-      'status': instance.status,
       't_hugatsaa': instance.tHugatsaa,
       't_hugatsaa_id': instance.tHugatsaaId,
       'togtool': instance.togtool,
       'togtool_id': instance.togtoolId,
-      'tolov_id': instance.tolovId,
       'ds_sub_heregjilt_uls_ih_hural':
           instance.dsSubHeregjiltUlsIhHural?.map((e) => e?.toJson())?.toList(),
     };
@@ -338,14 +324,11 @@ ZgTogtoolHeregjilt$Query$Paginate$DsZgTogtoolHeregjilt
     _$ZgTogtoolHeregjilt$Query$Paginate$DsZgTogtoolHeregjiltFromJson(
         Map<String, dynamic> json) {
   return ZgTogtoolHeregjilt$Query$Paginate$DsZgTogtoolHeregjilt()
-    ..bGazarId = json['b_gazar_id'] as int
+    ..gHuvi = (json['g_huvi'] as num)?.toDouble()
     ..id = json['id'] as int
-    ..salbar = json['salbar'] as String
-    ..status = json['status'] as String
     ..tHugatsaa = json['t_hugatsaa'] as String
     ..tHugatsaaId = json['t_hugatsaa_id'] as int
     ..togtool = json['togtool'] as String
-    ..tolovId = json['tolov_id'] as int
     ..zgTogtoolId = json['zg_togtool_id'] as int
     ..dsSubHeregjiltZgTogtool = (json['ds_sub_heregjilt_zg_togtool'] as List)
         ?.map((e) => e == null
@@ -359,14 +342,11 @@ Map<String, dynamic>
     _$ZgTogtoolHeregjilt$Query$Paginate$DsZgTogtoolHeregjiltToJson(
             ZgTogtoolHeregjilt$Query$Paginate$DsZgTogtoolHeregjilt instance) =>
         <String, dynamic>{
-          'b_gazar_id': instance.bGazarId,
+          'g_huvi': instance.gHuvi,
           'id': instance.id,
-          'salbar': instance.salbar,
-          'status': instance.status,
           't_hugatsaa': instance.tHugatsaa,
           't_hugatsaa_id': instance.tHugatsaaId,
           'togtool': instance.togtool,
-          'tolov_id': instance.tolovId,
           'zg_togtool_id': instance.zgTogtoolId,
           'ds_sub_heregjilt_zg_togtool': instance.dsSubHeregjiltZgTogtool
               ?.map((e) => e?.toJson())

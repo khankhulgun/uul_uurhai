@@ -109,11 +109,10 @@ flutter:
     - assets/uuhvy_img/uurhai.png
     - assets/uuhvy_img/ver_logo.png
     - assets/uuhvy_img/uurkhai.png
+    - assets/uuhvy_img/uurhai.png
     - assets/uuhvy_img/barilga.png
-    - assets/uuhvy_img/yamnii.png
     - assets/uuhvy_img/vildver.svg
-    - assets/uuhvy_img/to.png
-    - assets/uuhvy_img/zg.png
+    - assets/uuhvy_img/new_zg.png
     - assets/uuhvy_img/chart.png
     - assets/uuhvy_img/chart1.svg
     - assets/uuhvy_img/auto_teever.svg
@@ -124,11 +123,19 @@ flutter:
     - assets/uuhvy_img/medee.png
     - assets/uuhvy_img/location.png
     - assets/uuhvy_img/mongolbank.png
-    - assets/uuhvy_img/coal.png
+    - assets/uuhvy_img/new_coal.png
     - assets/uuhvy_img/copper.png
     - assets/uuhvy_img/iron.png
     - assets/uuhvy_img/petroleum.png
     - assets/uuhvy_img/erdes_une.png
+    - assets/uuhvy_img/back.png
+    - assets/uuhvy_img/new_to.png
+    - assets/uuhvy_img/new_yamnii.png
+    - assets/uuhvy_img/menu.png
+    - assets/uuhvy_img/new_uildwer.png
+    - assets/uuhvy_img/mzuvlul.png
+    - assets/uuhvy_img/price.png
+    - assets/uuhvy_img/new_login_bg.png
 
 
 

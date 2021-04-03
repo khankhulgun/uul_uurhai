@@ -55,24 +55,18 @@ class BodlogoBb$Query$Paginate$DsBodlogoBb with EquatableMixin {
   @JsonKey(name: 'b_gazar_id')
   int bGazarId;
 
+  @JsonKey(name: 'g_huvi')
+  double gHuvi;
+
   int id;
 
-  @JsonKey(name: 'ner_barimt')
-  String nerBarimt;
-
-  String salbar;
-
-  @JsonKey(name: 'salbar_id')
-  int salbarId;
+  String ner;
 
   @JsonKey(name: 't_hugatsaa')
   String tHugatsaa;
 
   @JsonKey(name: 't_hugatsaa_id')
   int tHugatsaaId;
-
-  @JsonKey(name: 'tolov_id')
-  int tolovId;
 
   @JsonKey(name: 'ds_sub_heregjilt_bodlog_barimt_bichig')
   List<BodlogoBb$Query$Paginate$DsBodlogoBb$DsSubHeregjiltBodlogBarimtBichig>
@@ -81,13 +75,11 @@ class BodlogoBb$Query$Paginate$DsBodlogoBb with EquatableMixin {
   @override
   List<Object> get props => [
         bGazarId,
+        gHuvi,
         id,
-        nerBarimt,
-        salbar,
-        salbarId,
+        ner,
         tHugatsaa,
         tHugatsaaId,
-        tolovId,
         dsSubHeregjiltBodlogBarimtBichig
       ];
   Map<String, dynamic> toJson() =>
@@ -173,27 +165,20 @@ class MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt with EquatableMixin {
           Map<String, dynamic> json) =>
       _$MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejiltFromJson(json);
 
-  @JsonKey(name: 'b_salbar_id')
-  int bSalbarId;
+  @JsonKey(name: 'g_huvi')
+  double gHuvi;
 
   int id;
 
-  @JsonKey(name: 'm_huuli_id')
-  int mHuuliId;
-
   @JsonKey(name: 't_hugatsaa_id')
   String tHugatsaaId;
-
-  @JsonKey(name: 'tolov_id')
-  int tolovId;
 
   @JsonKey(name: 'ds_sub_heregjilt')
   List<MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt$DsSubHeregjilt>
       dsSubHeregjilt;
 
   @override
-  List<Object> get props =>
-      [bSalbarId, id, mHuuliId, tHugatsaaId, tolovId, dsSubHeregjilt];
+  List<Object> get props => [gHuvi, id, tHugatsaaId, dsSubHeregjilt];
   Map<String, dynamic> toJson() =>
       _$MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejiltToJson(this);
 }
@@ -278,14 +263,10 @@ class UihTogtoolHeregjilt$Query$Paginate$DsUihTogtoolHeregjilt
           Map<String, dynamic> json) =>
       _$UihTogtoolHeregjilt$Query$Paginate$DsUihTogtoolHeregjiltFromJson(json);
 
-  @JsonKey(name: 'b_gazar_id')
-  int bGazarId;
+  @JsonKey(name: 'g_huvi')
+  double gHuvi;
 
   int id;
-
-  String salbar;
-
-  String status;
 
   @JsonKey(name: 't_hugatsaa')
   String tHugatsaa;
@@ -298,24 +279,18 @@ class UihTogtoolHeregjilt$Query$Paginate$DsUihTogtoolHeregjilt
   @JsonKey(name: 'togtool_id')
   int togtoolId;
 
-  @JsonKey(name: 'tolov_id')
-  int tolovId;
-
   @JsonKey(name: 'ds_sub_heregjilt_uls_ih_hural')
   List<UihTogtoolHeregjilt$Query$Paginate$DsUihTogtoolHeregjilt$DsSubHeregjiltUlsIhHural>
       dsSubHeregjiltUlsIhHural;
 
   @override
   List<Object> get props => [
-        bGazarId,
+        gHuvi,
         id,
-        salbar,
-        status,
         tHugatsaa,
         tHugatsaaId,
         togtool,
         togtoolId,
-        tolovId,
         dsSubHeregjiltUlsIhHural
       ];
   Map<String, dynamic> toJson() =>
@@ -405,14 +380,10 @@ class ZgTogtoolHeregjilt$Query$Paginate$DsZgTogtoolHeregjilt
           Map<String, dynamic> json) =>
       _$ZgTogtoolHeregjilt$Query$Paginate$DsZgTogtoolHeregjiltFromJson(json);
 
-  @JsonKey(name: 'b_gazar_id')
-  int bGazarId;
+  @JsonKey(name: 'g_huvi')
+  double gHuvi;
 
   int id;
-
-  String salbar;
-
-  String status;
 
   @JsonKey(name: 't_hugatsaa')
   String tHugatsaa;
@@ -421,9 +392,6 @@ class ZgTogtoolHeregjilt$Query$Paginate$DsZgTogtoolHeregjilt
   int tHugatsaaId;
 
   String togtool;
-
-  @JsonKey(name: 'tolov_id')
-  int tolovId;
 
   @JsonKey(name: 'zg_togtool_id')
   int zgTogtoolId;
@@ -434,14 +402,11 @@ class ZgTogtoolHeregjilt$Query$Paginate$DsZgTogtoolHeregjilt
 
   @override
   List<Object> get props => [
-        bGazarId,
+        gHuvi,
         id,
-        salbar,
-        status,
         tHugatsaa,
         tHugatsaaId,
         togtool,
-        tolovId,
         zgTogtoolId,
         dsSubHeregjiltZgTogtool
       ];
@@ -768,25 +733,19 @@ class BodlogoBbQuery extends GraphQLQuery<BodlogoBb$Query, BodlogoBbArguments> {
                           directives: [],
                           selectionSet: null),
                       FieldNode(
+                          name: NameNode(value: 'g_huvi'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
                           name: NameNode(value: 'id'),
                           alias: null,
                           arguments: [],
                           directives: [],
                           selectionSet: null),
                       FieldNode(
-                          name: NameNode(value: 'ner_barimt'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'salbar'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'salbar_id'),
+                          name: NameNode(value: 'ner'),
                           alias: null,
                           arguments: [],
                           directives: [],
@@ -799,12 +758,6 @@ class BodlogoBbQuery extends GraphQLQuery<BodlogoBb$Query, BodlogoBbArguments> {
                           selectionSet: null),
                       FieldNode(
                           name: NameNode(value: 't_hugatsaa_id'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'tolov_id'),
                           alias: null,
                           arguments: [],
                           directives: [],
@@ -971,7 +924,7 @@ class MuHuuliHegejiltQuery
                     directives: [],
                     selectionSet: SelectionSetNode(selections: [
                       FieldNode(
-                          name: NameNode(value: 'b_salbar_id'),
+                          name: NameNode(value: 'g_huvi'),
                           alias: null,
                           arguments: [],
                           directives: [],
@@ -983,19 +936,7 @@ class MuHuuliHegejiltQuery
                           directives: [],
                           selectionSet: null),
                       FieldNode(
-                          name: NameNode(value: 'm_huuli_id'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
                           name: NameNode(value: 't_hugatsaa_id'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'tolov_id'),
                           alias: null,
                           arguments: [],
                           directives: [],
@@ -1162,25 +1103,13 @@ class UihTogtoolHeregjiltQuery extends GraphQLQuery<UihTogtoolHeregjilt$Query,
                     directives: [],
                     selectionSet: SelectionSetNode(selections: [
                       FieldNode(
-                          name: NameNode(value: 'b_gazar_id'),
+                          name: NameNode(value: 'g_huvi'),
                           alias: null,
                           arguments: [],
                           directives: [],
                           selectionSet: null),
                       FieldNode(
                           name: NameNode(value: 'id'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'salbar'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'status'),
                           alias: null,
                           arguments: [],
                           directives: [],
@@ -1205,12 +1134,6 @@ class UihTogtoolHeregjiltQuery extends GraphQLQuery<UihTogtoolHeregjilt$Query,
                           selectionSet: null),
                       FieldNode(
                           name: NameNode(value: 'togtool_id'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'tolov_id'),
                           alias: null,
                           arguments: [],
                           directives: [],
@@ -1377,25 +1300,13 @@ class ZgTogtoolHeregjiltQuery extends GraphQLQuery<ZgTogtoolHeregjilt$Query,
                     directives: [],
                     selectionSet: SelectionSetNode(selections: [
                       FieldNode(
-                          name: NameNode(value: 'b_gazar_id'),
+                          name: NameNode(value: 'g_huvi'),
                           alias: null,
                           arguments: [],
                           directives: [],
                           selectionSet: null),
                       FieldNode(
                           name: NameNode(value: 'id'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'salbar'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'status'),
                           alias: null,
                           arguments: [],
                           directives: [],
@@ -1414,12 +1325,6 @@ class ZgTogtoolHeregjiltQuery extends GraphQLQuery<ZgTogtoolHeregjilt$Query,
                           selectionSet: null),
                       FieldNode(
                           name: NameNode(value: 'togtool'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
-                          name: NameNode(value: 'tolov_id'),
                           alias: null,
                           arguments: [],
                           directives: [],

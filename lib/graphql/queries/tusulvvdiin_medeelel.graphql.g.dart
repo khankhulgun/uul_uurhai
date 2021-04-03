@@ -140,7 +140,6 @@ Uildver$Query$Paginate$DsUildver$DsSubUildverlel
     ..torol = json['torol'] as String
     ..torolCode = json['torol_code'] as String
     ..uEhelsen = json['u_ehelsen'] as String
-    ..uildverlelTolovId = json['uildverlel_tolov_id'] as int
     ..zurag = json['zurag'] as String;
 }
 
@@ -160,7 +159,6 @@ Map<String, dynamic> _$Uildver$Query$Paginate$DsUildver$DsSubUildverlelToJson(
       'torol': instance.torol,
       'torol_code': instance.torolCode,
       'u_ehelsen': instance.uEhelsen,
-      'uildverlel_tolov_id': instance.uildverlelTolovId,
       'zurag': instance.zurag,
     };
 
@@ -169,7 +167,6 @@ Uildver$Query$Paginate$DsUildver _$Uildver$Query$Paginate$DsUildverFromJson(
   return Uildver$Query$Paginate$DsUildver()
     ..aimagId = json['aimag_id'] as int
     ..aimagname = json['aimagname'] as String
-    ..ajAhuiId = json['aj_ahui_id'] as int
     ..bagId = json['bag_id'] as int
     ..bagname = json['bagname'] as String
     ..id = json['id'] as int
@@ -189,7 +186,6 @@ Map<String, dynamic> _$Uildver$Query$Paginate$DsUildverToJson(
     <String, dynamic>{
       'aimag_id': instance.aimagId,
       'aimagname': instance.aimagname,
-      'aj_ahui_id': instance.ajAhuiId,
       'bag_id': instance.bagId,
       'bagname': instance.bagname,
       'id': instance.id,

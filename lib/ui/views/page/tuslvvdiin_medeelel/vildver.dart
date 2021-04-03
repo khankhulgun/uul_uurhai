@@ -160,10 +160,9 @@ class _VildverState extends State<Vildver> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Expanded(flex: 2, child: Container(
-                          padding: EdgeInsets.all(10.0),
-                          child: SvgPicture.asset('assets/uuhvy_img/vildver.svg', height: 90,  fit: BoxFit.cover)
-                      )),
+                      Expanded(flex: 2,
+                          child: Image.asset('assets/uuhvy_img/new_uildwer.png', height: 90,  fit: BoxFit.cover)
+                      ),
                       Expanded(flex: 4,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 8.0),
@@ -171,26 +170,8 @@ class _VildverState extends State<Vildver> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text(uurhai.uildverNer.toLowerCase(), style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 14),),
-                              SizedBox(height: 4),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Expanded(flex: 4, child: Text('Аж ахуй нэгж:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 4, child: Text('', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                                ],
-                              ),
-                              SizedBox(height: 4),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Expanded(flex: 4, child: Text('Тусгай зөвшөөрөл:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 4, child: Text('', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                                ],
-                              ),
-                              SizedBox(height: 4),
+                              Text(uurhai.uildverNer, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 14),),
+                              SizedBox(height: 10),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -204,8 +185,17 @@ class _VildverState extends State<Vildver> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Expanded(flex: 4, child: Text('Үйлдвэрлэлийн чиглэл:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 4, child: Text('', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text('Сум / Дүүрэг:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(uurhai.sumname, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 4, child: Text('Баг / Хороо:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(uurhai.bagname, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 4),
@@ -216,43 +206,17 @@ class _VildverState extends State<Vildver> {
                       ),
                     ],
                   ),
-//
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Expanded(flex: 4,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Expanded(flex: 4, child: Text('Сум / Дүүрэг:', style: TextStyle(color: textColor, fontSize: 12),)),
-                            Expanded(flex: 4, child: Text(uurhai.sumname, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                          ],
-                        ),
-                      ),
-                      Expanded(flex: 4,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Expanded(flex: 4, child: Text('Баг / Хороо:', style: TextStyle(color: textColor, fontSize: 12),)),
-                            Expanded(flex: 4, child: Text(uurhai.bagname, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
                 ],
               ),
               Theme(
                 data: ThemeData().copyWith(dividerColor: Colors.transparent),
                 child: ExpansionTile(
-//                 backgroundColor: Colors.grey[50],
+                  tilePadding: EdgeInsets.all(0.0),
+                  childrenPadding: EdgeInsets.all(0.0),
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Text('Үйлдвэрлэл', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
+                      Text('Үйлдвэрлэл', style: TextStyle(fontSize: 12, fontFamily: "Roboto-Condensed", color: textColor, fontWeight: FontWeight.w600)),
                     ],
                   ),
                   children: <Widget>[
@@ -270,7 +234,8 @@ class _VildverState extends State<Vildver> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Expanded(flex: 2, child: Text(vildvers[index].dsSubUildverlel[index].torol, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 1, child: Text(vildvers[index].dsSubUildverlel[index].torol, textAlign: TextAlign.center, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  SizedBox(width: 10),
                                   Expanded(flex: 5,
                                     child: Column(
                                       children: [

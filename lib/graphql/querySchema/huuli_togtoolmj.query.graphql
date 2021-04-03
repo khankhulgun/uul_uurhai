@@ -29,7 +29,7 @@ query uls_ih_hural_togtool($page: Int!, $size: Int!) {
             id
             togtool
             zaalt
-            sub_uih_zaalt {
+            sub_uih_zaalt{
                 id
                 table_id
                 zaalt
@@ -46,11 +46,10 @@ query paginatebodbarbichig($page: Int!, $size: Int!) {
         last_page
         ds_bodlogo_barimt_bichig {
             b_ognoo
+            g_huvi
             holboos
             id
             ner
-            salbar
-            salbar_id
             t_hugatsaa
             t_hugatsaa_id
             t_sh_dugaar

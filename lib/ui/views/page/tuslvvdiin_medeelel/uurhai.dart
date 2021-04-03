@@ -22,8 +22,6 @@ import 'package:catalog/graphql/queries/tusulvvdiin_medeelel.dart';
 import 'search_t_m.dart';
 
 
-
-
 class Uurhai extends StatefulWidget {
   @override
   _UurhaiState createState() => _UurhaiState();
@@ -151,7 +149,7 @@ class _UurhaiState extends State<Uurhai> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Expanded(flex: 2, child: Container(width: 80.0, child: Image.asset('assets/uuhvy_img/uurkhai.png', height: 100,  fit: BoxFit.cover))),
+                      Expanded(flex: 2, child: Container(width: 80.0, child: Image.asset('assets/uuhvy_img/uurhai.png', height: 100,  fit: BoxFit.cover))),
                       Expanded(flex: 4,
                           child: Padding(
                             padding: const EdgeInsets.only(left: 8.0),
@@ -165,26 +163,26 @@ class _UurhaiState extends State<Uurhai> {
                                    mainAxisAlignment: MainAxisAlignment.start,
                                    crossAxisAlignment: CrossAxisAlignment.start,
                                    children: <Widget>[
-                                     Expanded(flex: 4, child: Text('Аж ахуй нэгж:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                     Expanded(flex: 4, child: Text('', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                                   ],
-                                 ),
-                                 SizedBox(height: 4),
-                                 Row(
-                                   mainAxisAlignment: MainAxisAlignment.start,
-                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                   children: <Widget>[
-                                     Expanded(flex: 4, child: Text('Тусгай зөвшөөрөл:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                     Expanded(flex: 4, child: Text(uurhai.tzDugaar, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                                   ],
-                                 ),
-                                 SizedBox(height: 4),
-                                 Row(
-                                   mainAxisAlignment: MainAxisAlignment.start,
-                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                   children: <Widget>[
                                      Expanded(flex: 4, child: Text('Аймаг / Нийслэл:', style: TextStyle(color: textColor, fontSize: 12),)),
                                      Expanded(flex: 4, child: Text(uurhai.aimagname, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                   ],
+                                 ),
+                                 SizedBox(height: 4),
+                                 Row(
+                                   mainAxisAlignment: MainAxisAlignment.start,
+                                   crossAxisAlignment: CrossAxisAlignment.start,
+                                   children: <Widget>[
+                                     Expanded(flex: 4, child: Text('Сум / Дүүрэг:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                     Expanded(flex: 4, child: Text(uurhai.sumname, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                   ],
+                                 ),
+                                 SizedBox(height: 4),
+                                 Row(
+                                   mainAxisAlignment: MainAxisAlignment.start,
+                                   crossAxisAlignment: CrossAxisAlignment.start,
+                                   children: <Widget>[
+                                     Expanded(flex: 4, child: Text('Баг / Хороо:', style: TextStyle(color: textColor, fontSize: 12),)),
+                                     Expanded(flex: 4, child: Text(uurhai.bagname, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                    ],
                                  ),
                                  SizedBox(height: 4),
@@ -196,42 +194,17 @@ class _UurhaiState extends State<Uurhai> {
                     ],
                   ),
 //
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Expanded(flex: 4,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Expanded(flex: 4, child: Text('Сум / Дүүрэг:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                Expanded(flex: 4, child: Text(uurhai.sumname, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                              ],
-                            ),
-                      ),
-                      Expanded(flex: 4,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Expanded(flex: 4, child: Text('Баг / Хороо:', style: TextStyle(color: textColor, fontSize: 12),)),
-                            Expanded(flex: 4, child: Text(uurhai.bagname, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
                 ],
               ),
               Theme(
                 data: ThemeData().copyWith(dividerColor: Colors.transparent),
                 child: ExpansionTile(
-//                 backgroundColor: Colors.grey[50],
+                  tilePadding: EdgeInsets.all(0.0),
+                  childrenPadding: EdgeInsets.all(0.0),
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Text('Олборлолт', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
+                      Text('Олборлолт', style: TextStyle(fontSize: 12, fontFamily: "Roboto-Condensed", color: textColor, fontWeight: FontWeight.w600)),
                     ],
                   ),
                   children: <Widget>[
@@ -249,7 +222,8 @@ class _UurhaiState extends State<Uurhai> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Expanded(flex: 2, child: Text(olborlolt[index].dsSubOlborlolt[index].torol, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 1, child: Text(olborlolt[index].dsSubOlborlolt[index].torol, textAlign: TextAlign.center, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  SizedBox(width: 10),
                                   Expanded(flex: 5,
                                     child: Column(
                                       children: [

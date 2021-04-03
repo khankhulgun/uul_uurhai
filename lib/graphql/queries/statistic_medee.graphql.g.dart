@@ -11,41 +11,59 @@ ExportMedee$Query$Paginate$DsExportMedee
         Map<String, dynamic> json) {
   return ExportMedee$Query$Paginate$DsExportMedee()
     ..aHeregsel = json['a_heregsel'] as String
+    ..bId = json['b_id'] as int
+    ..bTorolId = json['b_torol_id'] as int
     ..boomt = json['boomt'] as String
+    ..boomtId = json['boomt_id'] as int
+    ..boomtShort = json['boomt_short'] as String
     ..buteegdehuun = json['buteegdehuun'] as String
-    ..torol = json['torol'] as String
     ..code = json['code'] as String
+    ..ehSurvaljId = json['eh_survalj_id'] as int
     ..expUneDun = (json['exp_une_dun'] as num)?.toDouble()
-    ..lbaiguullaga = json['lbaiguullaga'] as String
+    ..exportBaiguullaga = json['export_baiguullaga'] as int
     ..exportHemjee = (json['export_hemjee'] as num)?.toDouble()
     ..hemjihNegjId = json['hemjih_negj_id'] as int
     ..id = json['id'] as int
+    ..lbaiguullaga = json['lbaiguullaga'] as String
     ..negj = json['negj'] as String
     ..ognoo =
         json['ognoo'] == null ? null : DateTime.parse(json['ognoo'] as String)
     ..survalj = json['survalj'] as String
+    ..tHeregselId = json['t_heregsel_id'] as int
     ..teeverToo = json['teever_too'] as int
-    ..uls = json['uls'] as String;
+    ..toTonnes = (json['to_tonnes'] as num)?.toDouble()
+    ..torol = json['torol'] as String
+    ..uls = json['uls'] as String
+    ..ulsId = json['uls_id'] as int;
 }
 
 Map<String, dynamic> _$ExportMedee$Query$Paginate$DsExportMedeeToJson(
         ExportMedee$Query$Paginate$DsExportMedee instance) =>
     <String, dynamic>{
       'a_heregsel': instance.aHeregsel,
+      'b_id': instance.bId,
+      'b_torol_id': instance.bTorolId,
       'boomt': instance.boomt,
+      'boomt_id': instance.boomtId,
+      'boomt_short': instance.boomtShort,
       'buteegdehuun': instance.buteegdehuun,
-      'torol': instance.torol,
       'code': instance.code,
+      'eh_survalj_id': instance.ehSurvaljId,
       'exp_une_dun': instance.expUneDun,
-      'lbaiguullaga': instance.lbaiguullaga,
+      'export_baiguullaga': instance.exportBaiguullaga,
       'export_hemjee': instance.exportHemjee,
       'hemjih_negj_id': instance.hemjihNegjId,
       'id': instance.id,
+      'lbaiguullaga': instance.lbaiguullaga,
       'negj': instance.negj,
       'ognoo': instance.ognoo?.toIso8601String(),
       'survalj': instance.survalj,
+      't_heregsel_id': instance.tHeregselId,
       'teever_too': instance.teeverToo,
+      'to_tonnes': instance.toTonnes,
+      'torol': instance.torol,
       'uls': instance.uls,
+      'uls_id': instance.ulsId,
     };
 
 ExportMedee$Query$Paginate _$ExportMedee$Query$PaginateFromJson(
@@ -90,14 +108,17 @@ OlborloltMedee$Query$Paginate$DsOlborloltMedee
     ..bId = json['b_id'] as int
     ..bTorolId = json['b_torol_id'] as int
     ..buteegdehuun = json['buteegdehuun'] as String
+    ..code = json['code'] as String
     ..ehSurvaljId = json['eh_survalj_id'] as int
     ..hemjihNegjId = json['hemjih_negj_id'] as int
     ..id = json['id'] as int
+    ..lbaiguullaga = json['lbaiguullaga'] as String
     ..negj = json['negj'] as String
     ..ognoo =
         json['ognoo'] == null ? null : DateTime.parse(json['ognoo'] as String)
-    ..lbaiguullaga = json['lbaiguullaga'] as String
-    ..olborloltHemjee = (json['olborlolt_hemjee'] as num)?.toDouble();
+    ..olborloltBId = json['olborlolt_b_id'] as int
+    ..olborloltHemjee = (json['olborlolt_hemjee'] as num)?.toDouble()
+    ..toTonnes = (json['to_tonnes'] as num)?.toDouble();
 }
 
 Map<String, dynamic> _$OlborloltMedee$Query$Paginate$DsOlborloltMedeeToJson(
@@ -106,13 +127,16 @@ Map<String, dynamic> _$OlborloltMedee$Query$Paginate$DsOlborloltMedeeToJson(
       'b_id': instance.bId,
       'b_torol_id': instance.bTorolId,
       'buteegdehuun': instance.buteegdehuun,
+      'code': instance.code,
       'eh_survalj_id': instance.ehSurvaljId,
       'hemjih_negj_id': instance.hemjihNegjId,
       'id': instance.id,
+      'lbaiguullaga': instance.lbaiguullaga,
       'negj': instance.negj,
       'ognoo': instance.ognoo?.toIso8601String(),
-      'lbaiguullaga': instance.lbaiguullaga,
+      'olborlolt_b_id': instance.olborloltBId,
       'olborlolt_hemjee': instance.olborloltHemjee,
+      'to_tonnes': instance.toTonnes,
     };
 
 OlborloltMedee$Query$Paginate _$OlborloltMedee$Query$PaginateFromJson(
@@ -155,8 +179,11 @@ MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvalt
     _$MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvaltFromJson(
         Map<String, dynamic> json) {
   return MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvalt()
+    ..aMaltlamId = json['a_maltlam_id'] as int
     ..ashigtMaltmal = json['ashigt_maltmal'] as String
+    ..ehSurvaljId = json['eh_survalj_id'] as int
     ..hAvsanHemjee = (json['h_avsan_hemjee'] as num)?.toDouble()
+    ..hemjihNegjId = json['hemjih_negj_id'] as int
     ..id = json['id'] as int
     ..negj = json['negj'] as String
     ..ognoo =
@@ -169,8 +196,11 @@ Map<String, dynamic>
     _$MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvaltToJson(
             MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvalt instance) =>
         <String, dynamic>{
+          'a_maltlam_id': instance.aMaltlamId,
           'ashigt_maltmal': instance.ashigtMaltmal,
+          'eh_survalj_id': instance.ehSurvaljId,
           'h_avsan_hemjee': instance.hAvsanHemjee,
+          'hemjih_negj_id': instance.hemjihNegjId,
           'id': instance.id,
           'negj': instance.negj,
           'ognoo': instance.ognoo?.toIso8601String(),

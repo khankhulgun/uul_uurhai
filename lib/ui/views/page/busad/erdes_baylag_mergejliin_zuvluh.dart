@@ -153,7 +153,9 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Expanded(flex: 2, child: Container(width: 80.0, child: Image.asset('assets/uuhvy_img/uurkhai.png', height: 100,  fit: BoxFit.cover))),
+                      Expanded(flex: 2,
+                          child: Image.asset('assets/uuhvy_img/mzuvlul.png', height: 100,  fit: BoxFit.cover)
+                      ),
                       Expanded(flex: 4,
                         child: Padding(
                           padding: const EdgeInsets.only(left: 8.0),
@@ -167,7 +169,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
                                   Expanded(flex: 4, child: Text('ЭБМЗ-ын салбар:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 4, child: Text('', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text('${tusgai.ebmzSalbarId}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 4),
@@ -176,7 +178,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
                                   Expanded(flex: 4, child: Text('Он:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 4, child: Text('', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text('${tusgai.jilId}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 4),
@@ -202,11 +204,12 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
               Theme(
                 data: ThemeData().copyWith(dividerColor: Colors.transparent),
                 child: ExpansionTile(
-//                 backgroundColor: Colors.grey[50],
+                  tilePadding: EdgeInsets.all(0.0),
+                  childrenPadding: EdgeInsets.all(0.0),
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Text('Хэлэлцсэн асуудлууд', style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w600)),
+                      Text('Хэлэлцсэн асуудлууд', style: TextStyle(fontSize: 12, fontFamily: "Roboto-Condensed", color: textColor, fontWeight: FontWeight.w600)),
                     ],
                   ),
                   children: <Widget>[
@@ -215,7 +218,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                         physics: ScrollPhysics(),
                         itemCount: erdes_baylag_mer_zuv[index].dsSubTezu == null ? 0 : erdes_baylag_mer_zuv[index].dsSubTezu.length,
                         padding: EdgeInsets.all(0.0),
-                        itemBuilder: (BuildContext context, int index) {
+                        itemBuilder: (BuildContext context, int indexSub) {
                           return                     Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -225,7 +228,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Expanded(flex: 2, child: Text('Асуудлын дугаар:', style: TextStyle(color: textColor, fontSize: 12))),
-                                  Expanded(flex: 4, child: Text("${erdes_baylag_mer_zuv[index].dsSubTezu[index].aDugaar}", style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text("${erdes_baylag_mer_zuv[index].dsSubTezu[indexSub].aDugaar}", style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 4),
@@ -234,11 +237,11 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Expanded(flex: 2, child: Text('Төрөл:', style: TextStyle(color: textColor, fontSize: 12),),),
-                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubTezu[index].buteegdehuun, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubTezu[indexSub].buteegdehuun, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 10),
-                              Text(erdes_baylag_mer_zuv[index].dsSubTezu[index].asuudal, style: TextStyle(color: textColor, fontSize: 12),),
+                              Text(erdes_baylag_mer_zuv[index].dsSubTezu[indexSub].asuudal, style: TextStyle(color: textColor, fontSize: 12),),
                               SizedBox(height: 10),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -248,7 +251,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                                     padding: const EdgeInsets.only(right: 10.0),
                                     child: Text('Төлөв:', style: TextStyle(color: textColor, fontSize: 12),),
                                   ),),
-                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubTezu[index].tolov, style: TextStyle(color: Colors.green, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubTezu[indexSub].tolov, style: TextStyle(color: Colors.green, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 20.0),
@@ -262,7 +265,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                         physics: ScrollPhysics(),
                         itemCount: erdes_baylag_mer_zuv[index].dsSubBu == null ? 0 : erdes_baylag_mer_zuv[index].dsSubBu.length,
                         padding: EdgeInsets.all(0.0),
-                        itemBuilder: (BuildContext context, int index) {
+                        itemBuilder: (BuildContext context, int indexSu) {
                           return                     Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -272,7 +275,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Expanded(flex: 2, child: Text('Асуудлын дугаар:', style: TextStyle(color: textColor, fontSize: 12))),
-                                  Expanded(flex: 4, child: Text("${erdes_baylag_mer_zuv[index].dsSubBu[index].asuudalD}", style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text("${erdes_baylag_mer_zuv[index].dsSubBu[indexSu].asuudalD}", style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 4),
@@ -281,11 +284,11 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Expanded(flex: 2, child: Text('Төрөл:', style: TextStyle(color: textColor, fontSize: 12),),),
-                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubBu[index].bTorol, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubBu[indexSu].bTorol, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 10),
-                              Text(erdes_baylag_mer_zuv[index].dsSubBu[index].asuudal, style: TextStyle(color: textColor, fontSize: 12),),
+                              Text(erdes_baylag_mer_zuv[index].dsSubBu[indexSu].asuudal, style: TextStyle(color: textColor, fontSize: 12),),
                               SizedBox(height: 10),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -295,7 +298,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                                     padding: const EdgeInsets.only(right: 10.0),
                                     child: Text('Төлөв:', style: TextStyle(color: textColor, fontSize: 12),),
                                   ),),
-                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubBu[index].tolov, style: TextStyle(color: Colors.green, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubBu[indexSu].tolov, style: TextStyle(color: Colors.green, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 20.0),
@@ -309,7 +312,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                         physics: ScrollPhysics(),
                         itemCount: erdes_baylag_mer_zuv[index].dsSubGt == null ? 0 : erdes_baylag_mer_zuv[index].dsSubGt.length,
                         padding: EdgeInsets.all(0.0),
-                        itemBuilder: (BuildContext context, int index) {
+                        itemBuilder: (BuildContext context, int index1su) {
                           return                     Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -319,7 +322,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Expanded(flex: 2, child: Text('Асуудлын дугаар:', style: TextStyle(color: textColor, fontSize: 12))),
-                                  Expanded(flex: 4, child: Text("${erdes_baylag_mer_zuv[index].dsSubGt[index].aDugaar}", style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text("${erdes_baylag_mer_zuv[index].dsSubGt[index1su].aDugaar}", style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 4),
@@ -328,11 +331,11 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Expanded(flex: 2, child: Text('Төрөл:', style: TextStyle(color: textColor, fontSize: 12),),),
-                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubGt[index].gtTorol, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubGt[index1su].gtTorol, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 10),
-                              Text(erdes_baylag_mer_zuv[index].dsSubGt[index].asuudal, style: TextStyle(color: textColor, fontSize: 12),),
+                              Text(erdes_baylag_mer_zuv[index].dsSubGt[index1su].asuudal, style: TextStyle(color: textColor, fontSize: 12),),
                               SizedBox(height: 10),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -342,7 +345,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                                     padding: const EdgeInsets.only(right: 10.0),
                                     child: Text('Төлөв:', style: TextStyle(color: textColor, fontSize: 12),),
                                   ),),
-                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubGt[index].tolov, style: TextStyle(color: Colors.green, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubGt[index1su].tolov, style: TextStyle(color: Colors.green, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 20.0),
@@ -403,7 +406,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                         physics: ScrollPhysics(),
                         itemCount: erdes_baylag_mer_zuv[index].dsSubUhggsa == null ? 0 : erdes_baylag_mer_zuv[index].dsSubUhggsa.length,
                         padding: EdgeInsets.all(0.0),
-                        itemBuilder: (BuildContext context, int index) {
+                        itemBuilder: (BuildContext context, int indexSub) {
                           return                     Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -413,7 +416,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Expanded(flex: 2, child: Text('Асуудлын дугаар:', style: TextStyle(color: textColor, fontSize: 12))),
-                                  Expanded(flex: 4, child: Text("${erdes_baylag_mer_zuv[index].dsSubUhggsa[index].aDugaar}", style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text("${erdes_baylag_mer_zuv[index].dsSubUhggsa[indexSub].aDugaar}", style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 4),
@@ -422,11 +425,11 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Expanded(flex: 2, child: Text('Төрөл:', style: TextStyle(color: textColor, fontSize: 12),),),
-                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubUhggsa[index].torol, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubUhggsa[indexSub].torol, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 10),
-                              Text(erdes_baylag_mer_zuv[index].dsSubUhggsa[index].asuudal, style: TextStyle(color: textColor, fontSize: 12),),
+                              Text(erdes_baylag_mer_zuv[index].dsSubUhggsa[indexSub].asuudal, style: TextStyle(color: textColor, fontSize: 12),),
                               SizedBox(height: 10),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -436,7 +439,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                                     padding: const EdgeInsets.only(right: 10.0),
                                     child: Text('Төлөв:', style: TextStyle(color: textColor, fontSize: 12),),
                                   ),),
-                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubUhggsa[index].uhggsaTolov, style: TextStyle(color: Colors.green, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubUhggsa[indexSub].uhggsaTolov, style: TextStyle(color: Colors.green, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 20.0),

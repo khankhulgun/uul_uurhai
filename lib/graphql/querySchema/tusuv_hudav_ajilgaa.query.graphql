@@ -53,6 +53,7 @@ query paginatetosov_zarlaga($page: Int!, $size: Int!) {
             t_tosov
             torol
             zardal_torol_id
+            zoruu
         }
     }
 }

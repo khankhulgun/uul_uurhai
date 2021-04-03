@@ -9,9 +9,10 @@ part of 'medee.graphql.dart';
 Medee$Query$Paginate$DsMedee _$Medee$Query$Paginate$DsMedeeFromJson(
     Map<String, dynamic> json) {
   return Medee$Query$Paginate$DsMedee()
+    ..angilal = json['angilal'] as String
     ..id = json['id'] as int
     ..medee = json['medee'] as String
-    ..angilal = json['angilal'] as String
+    ..medeeCatId = json['medee_cat_id'] as int
     ..ognoo =
         json['ognoo'] == null ? null : DateTime.parse(json['ognoo'] as String)
     ..tailbar = json['tailbar'] as String;
@@ -20,9 +21,10 @@ Medee$Query$Paginate$DsMedee _$Medee$Query$Paginate$DsMedeeFromJson(
 Map<String, dynamic> _$Medee$Query$Paginate$DsMedeeToJson(
         Medee$Query$Paginate$DsMedee instance) =>
     <String, dynamic>{
+      'angilal': instance.angilal,
       'id': instance.id,
       'medee': instance.medee,
-      'angilal': instance.angilal,
+      'medee_cat_id': instance.medeeCatId,
       'ognoo': instance.ognoo?.toIso8601String(),
       'tailbar': instance.tailbar,
     };

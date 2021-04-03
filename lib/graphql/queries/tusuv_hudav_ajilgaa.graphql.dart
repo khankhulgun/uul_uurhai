@@ -217,9 +217,20 @@ class PaginatetosovZarlaga$Query$Paginate$DsTosovZarlaga with EquatableMixin {
   @JsonKey(name: 'zardal_torol_id')
   int zardalTorolId;
 
+  double zoruu;
+
   @override
-  List<Object> get props =>
-      [bTosov, guitsetgel, guitstgel, id, ognoo, tTosov, torol, zardalTorolId];
+  List<Object> get props => [
+        bTosov,
+        guitsetgel,
+        guitstgel,
+        id,
+        ognoo,
+        tTosov,
+        torol,
+        zardalTorolId,
+        zoruu
+      ];
   Map<String, dynamic> toJson() =>
       _$PaginatetosovZarlaga$Query$Paginate$DsTosovZarlagaToJson(this);
 }
@@ -735,6 +746,12 @@ class PaginatetosovZarlagaQuery extends GraphQLQuery<PaginatetosovZarlaga$Query,
                           selectionSet: null),
                       FieldNode(
                           name: NameNode(value: 'zardal_torol_id'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'zoruu'),
                           alias: null,
                           arguments: [],
                           directives: [],

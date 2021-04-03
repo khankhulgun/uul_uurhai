@@ -4,13 +4,11 @@ query bodlogo_bb($page: Int!, $size: Int!) {
         last_page
         ds_bodlogo_bb{
             b_gazar_id
+            g_huvi
             id
-            ner_barimt
-            salbar
-            salbar_id
+            ner
             t_hugatsaa
             t_hugatsaa_id
-            tolov_id
             ds_sub_heregjilt_bodlog_barimt_bichig{
                 heregjilt_id
                 id
@@ -30,11 +28,9 @@ query mu_huuli_hegejilt($page: Int!, $size: Int!) {
         total
         last_page
         aa_mu_huuli_hegejilt{
-            b_salbar_id
+            g_huvi
             id
-            m_huuli_id
             t_hugatsaa_id
-            tolov_id
             ds_sub_heregjilt{
                 heregjilt_id
                 id
@@ -54,16 +50,13 @@ query uih_togtool_heregjilt($page: Int!, $size: Int!) {
         total
         last_page
         ds_uih_togtool_heregjilt{
-            b_gazar_id
+            g_huvi
             id
-            salbar
-            status
             t_hugatsaa
             t_hugatsaa_id
             togtool
             togtool_id
-            tolov_id
-            ds_sub_heregjilt_uls_ih_hural{
+            ds_sub_heregjilt_uls_ih_hural {
                 heregjilt_id
                 id
                 ognoo
@@ -82,14 +75,11 @@ query zg_togtool_heregjilt($page: Int!, $size: Int!) {
         total
         last_page
         ds_zg_togtool_heregjilt{
-            b_gazar_id
+            g_huvi
             id
-            salbar
-            status
             t_hugatsaa
             t_hugatsaa_id
             togtool
-            tolov_id
             zg_togtool_id
             ds_sub_heregjilt_zg_togtool{
                 heregjilt_id
@@ -125,6 +115,7 @@ query ajil_heseg($page: Int!, $size: Int!) {
             yvts_tailan
         }
     }
+
 }
 
 query horongo_oruulalt_t_h($page: Int!, $size: Int!) {

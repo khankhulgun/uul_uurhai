@@ -39,10 +39,12 @@ ZgHotolbor$Query$Paginate$DsZgHotolbor
     ..argaHemjee = json['arga_hemjee'] as String
     ..dedZorilt = json['ded_zorilt'] as String
     ..eUusver = json['e_uusver'] as String
-    ..lbaiguullaga = json['lbaiguullaga'] as String
+    ..gHuvi = (json['g_huvi'] as num)?.toDouble()
+    ..hBaiguullagaId = json['h_baiguullaga_id'] as int
     ..hotolbor = json['hotolbor'] as String
     ..hugatsaa = json['hugatsaa'] as String
     ..id = json['id'] as int
+    ..lbaiguullaga = json['lbaiguullaga'] as String
     ..niitTosov = (json['niit_tosov'] as num)?.toDouble()
     ..status = json['status'] as String
     ..suuriTuvshin = json['suuri_tuvshin'] as String
@@ -62,10 +64,12 @@ Map<String, dynamic> _$ZgHotolbor$Query$Paginate$DsZgHotolborToJson(
       'arga_hemjee': instance.argaHemjee,
       'ded_zorilt': instance.dedZorilt,
       'e_uusver': instance.eUusver,
-      'lbaiguullaga': instance.lbaiguullaga,
+      'g_huvi': instance.gHuvi,
+      'h_baiguullaga_id': instance.hBaiguullagaId,
       'hotolbor': instance.hotolbor,
       'hugatsaa': instance.hugatsaa,
       'id': instance.id,
+      'lbaiguullaga': instance.lbaiguullaga,
       'niit_tosov': instance.niitTosov,
       'status': instance.status,
       'suuri_tuvshin': instance.suuriTuvshin,
