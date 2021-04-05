@@ -8,16 +8,11 @@ import 'package:lambda/modules/network_util.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../components/sidebar.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:lambda/plugins/data_form/loader.dart';
-import 'dart:async';
-import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:vector_math/vector_math_64.dart' as math;
-
-import '../../main.dart';
 
 //PAGINATION
 import 'package:catalog/utils/date.dart';
