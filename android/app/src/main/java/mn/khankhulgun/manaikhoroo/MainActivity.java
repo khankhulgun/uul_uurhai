@@ -1,4 +1,4 @@
-package mn.khankhulgun.manaikhoroo;
+package mn.khankhulgun.mmhi;
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterFragmentActivity;

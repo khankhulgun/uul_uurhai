@@ -167,7 +167,7 @@ class _InitScreenState extends State<InitScreen> {
               onPressed: () {
                 if (Platform.isAndroid) {
                   this._launchWeb(
-                      "https://play.google.com/store/apps/details?id=mn.khankhulgun.manaikhoroo");
+                      "https://play.google.com/store/apps/details?id=mn.khankhulgun.mmhi");
                 } else {
                   this._launchWeb(
                       "https://apps.apple.com/us/app/manaikhoroo/id1510196889?ls=1");

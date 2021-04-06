@@ -610,6 +610,19 @@ class _ExportNewsState extends State<ExportNews> {
                   // // 5 Export Tumur by Track
                   LambdaChart(schemaID: '220', theme: theme, filters: filters),
 
+                  SizedBox(height: 10),
+                  // // 5 Export Tumur by Track
+                  LambdaChart(schemaID: '238', theme: theme),
+
+
+                  SizedBox(height: 10),
+                  // // 5 Export Tumur by Track
+                  LambdaChart(schemaID: '240', theme: theme),
+
+                  SizedBox(height: 10),
+                  // // 5 Export Tumur by Track
+                  LambdaChart(schemaID: '241', theme: theme),
+
 
 
 
