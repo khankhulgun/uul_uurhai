@@ -6,11 +6,7 @@ import '../../locator.dart';
 
 class Api {
   NetworkUtil _http = locator<NetworkUtil>();
-
-
   Future<void> updateUser(User user, dynamic avatar) async {
-
-
     FormData formData = FormData.fromMap({
       "avatar": avatar.toString(),
       "first_name": user.firstName,
@@ -20,8 +16,6 @@ class Api {
       "file": await MultipartFile.fromFile(avatar.toString(),filename: "avart.png"),
     });
     await Dio().post('/loyalty/update/profile/${user.id}', data: formData);
-
-
   }
 
   Future<MapData> getMapData() async {
@@ -29,8 +23,4 @@ class Api {
     return new MapData.fromJson(response.data);
 
   }
-
-
-
-
 }

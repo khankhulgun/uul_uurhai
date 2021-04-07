@@ -90,7 +90,7 @@ class _mainScreenState extends State<mainScreen> {
     Item(1, "assets/uuhvy_img/copper.png", "ЗЭС", "ЗЭСИЙН БАЯЖМАЛ"),
     Item(2, "assets/uuhvy_img/new_coal.png", "НҮҮРС", "НҮҮРС"),
     Item(3, "assets/uuhvy_img/iron.png", "ТӨМРИЙН ХҮДЭР", "ТӨМРИЙН ХҮДЭР"),
-    Item(3, "assets/uuhvy_img/petroleum.png", "ГАЗРЫН ТОС", "ГАЗРЫН ТОС"),
+    Item(4, "assets/uuhvy_img/petroleum.png", "ГАЗРЫН ТОС", "ГАЗРЫН ТОС"),
   ];
 
   @override
