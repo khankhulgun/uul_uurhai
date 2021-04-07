@@ -544,9 +544,6 @@ class AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel
   @JsonKey(name: 'aj_ahui_ner_id')
   String ajAhuiNerId;
 
-  @JsonKey(name: 'b_torol')
-  String bTorol;
-
   String chiglel;
 
   @JsonKey(name: 'huch_too')
@@ -563,7 +560,7 @@ class AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel
 
   @override
   List<Object> get props =>
-      [ajAhuiNerId, bTorol, chiglel, huchToo, id, medeelel, uls, ulsId];
+      [ajAhuiNerId, chiglel, huchToo, id, medeelel, uls, ulsId];
   Map<String, dynamic> toJson() =>
       _$AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelelToJson(this);
 }
@@ -603,6 +600,97 @@ class AjilahHuchMedeelel$Query with EquatableMixin {
   @override
   List<Object> get props => [paginate];
   Map<String, dynamic> toJson() => _$AjilahHuchMedeelel$QueryToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class SongonShalagruulaltDelegrengui$Query$Paginate$AaSongonShalagruulaltDelegrengui
+    with EquatableMixin {
+  SongonShalagruulaltDelegrengui$Query$Paginate$AaSongonShalagruulaltDelegrengui();
+
+  factory SongonShalagruulaltDelegrengui$Query$Paginate$AaSongonShalagruulaltDelegrengui.fromJson(
+          Map<String, dynamic> json) =>
+      _$SongonShalagruulaltDelegrengui$Query$Paginate$AaSongonShalagruulaltDelegrenguiFromJson(
+          json);
+
+  @JsonKey(name: 'a_niislel')
+  double aNiislel;
+
+  @JsonKey(name: 'bosgo_une')
+  double bosgoUne;
+
+  int id;
+
+  @JsonKey(name: 'object_id')
+  int objectId;
+
+  DateTime ognoo;
+
+  @JsonKey(name: 's_sh_code')
+  double sShCode;
+
+  @JsonKey(name: 'sum_duureg')
+  double sumDuureg;
+
+  @JsonKey(name: 'talbain_dugaar')
+  double talbainDugaar;
+
+  @JsonKey(name: 'talbain_hemjee')
+  double talbainHemjee;
+
+  @override
+  List<Object> get props => [
+        aNiislel,
+        bosgoUne,
+        id,
+        objectId,
+        ognoo,
+        sShCode,
+        sumDuureg,
+        talbainDugaar,
+        talbainHemjee
+      ];
+  Map<String, dynamic> toJson() =>
+      _$SongonShalagruulaltDelegrengui$Query$Paginate$AaSongonShalagruulaltDelegrenguiToJson(
+          this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class SongonShalagruulaltDelegrengui$Query$Paginate with EquatableMixin {
+  SongonShalagruulaltDelegrengui$Query$Paginate();
+
+  factory SongonShalagruulaltDelegrengui$Query$Paginate.fromJson(
+          Map<String, dynamic> json) =>
+      _$SongonShalagruulaltDelegrengui$Query$PaginateFromJson(json);
+
+  int total;
+
+  @JsonKey(name: 'last_page')
+  int lastPage;
+
+  @JsonKey(name: 'aa_songon_shalagruulalt_delegrengui')
+  List<SongonShalagruulaltDelegrengui$Query$Paginate$AaSongonShalagruulaltDelegrengui>
+      aaSongonShalagruulaltDelegrengui;
+
+  @override
+  List<Object> get props => [total, lastPage, aaSongonShalagruulaltDelegrengui];
+  Map<String, dynamic> toJson() =>
+      _$SongonShalagruulaltDelegrengui$Query$PaginateToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class SongonShalagruulaltDelegrengui$Query with EquatableMixin {
+  SongonShalagruulaltDelegrengui$Query();
+
+  factory SongonShalagruulaltDelegrengui$Query.fromJson(
+          Map<String, dynamic> json) =>
+      _$SongonShalagruulaltDelegrengui$QueryFromJson(json);
+
+  SongonShalagruulaltDelegrengui$Query$Paginate paginate;
+
+  @override
+  List<Object> get props => [paginate];
+  Map<String, dynamic> toJson() =>
+      _$SongonShalagruulaltDelegrengui$QueryToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -1501,12 +1589,6 @@ class AjilahHuchMedeelelQuery extends GraphQLQuery<AjilahHuchMedeelel$Query,
                           directives: [],
                           selectionSet: null),
                       FieldNode(
-                          name: NameNode(value: 'b_torol'),
-                          alias: null,
-                          arguments: [],
-                          directives: [],
-                          selectionSet: null),
-                      FieldNode(
                           name: NameNode(value: 'chiglel'),
                           alias: null,
                           arguments: [],
@@ -1558,4 +1640,169 @@ class AjilahHuchMedeelelQuery extends GraphQLQuery<AjilahHuchMedeelel$Query,
   @override
   AjilahHuchMedeelel$Query parse(Map<String, dynamic> json) =>
       AjilahHuchMedeelel$Query.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
+class SongonShalagruulaltDelegrenguiArguments extends JsonSerializable
+    with EquatableMixin {
+  SongonShalagruulaltDelegrenguiArguments(
+      {@required this.page, @required this.size});
+
+  @override
+  factory SongonShalagruulaltDelegrenguiArguments.fromJson(
+          Map<String, dynamic> json) =>
+      _$SongonShalagruulaltDelegrenguiArgumentsFromJson(json);
+
+  final int page;
+
+  final int size;
+
+  @override
+  List<Object> get props => [page, size];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$SongonShalagruulaltDelegrenguiArgumentsToJson(this);
+}
+
+class SongonShalagruulaltDelegrenguiQuery extends GraphQLQuery<
+    SongonShalagruulaltDelegrengui$Query,
+    SongonShalagruulaltDelegrenguiArguments> {
+  SongonShalagruulaltDelegrenguiQuery({this.variables});
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.query,
+        name: NameNode(value: 'songon_shalagruulalt_delegrengui'),
+        variableDefinitions: [
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'page')),
+              type:
+                  NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
+              directives: []),
+          VariableDefinitionNode(
+              variable: VariableNode(name: NameNode(value: 'size')),
+              type:
+                  NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: true),
+              defaultValue: DefaultValueNode(value: null),
+              directives: [])
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'paginate'),
+              alias: null,
+              arguments: [
+                ArgumentNode(
+                    name: NameNode(value: 'sorts'),
+                    value: ListValueNode(values: [
+                      ObjectValueNode(fields: [
+                        ObjectFieldNode(
+                            name: NameNode(value: 'column'),
+                            value:
+                                StringValueNode(value: 'id', isBlock: false)),
+                        ObjectFieldNode(
+                            name: NameNode(value: 'order'),
+                            value: EnumValueNode(name: NameNode(value: 'desc')))
+                      ])
+                    ])),
+                ArgumentNode(
+                    name: NameNode(value: 'page'),
+                    value: VariableNode(name: NameNode(value: 'page'))),
+                ArgumentNode(
+                    name: NameNode(value: 'size'),
+                    value: VariableNode(name: NameNode(value: 'size')))
+              ],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FieldNode(
+                    name: NameNode(value: 'total'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'last_page'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name:
+                        NameNode(value: 'aa_songon_shalagruulalt_delegrengui'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FieldNode(
+                          name: NameNode(value: 'a_niislel'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'bosgo_une'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'id'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'object_id'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'ognoo'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 's_sh_code'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'sum_duureg'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'talbain_dugaar'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'talbain_hemjee'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null)
+                    ]))
+              ]))
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'songon_shalagruulalt_delegrengui';
+
+  @override
+  final SongonShalagruulaltDelegrenguiArguments variables;
+
+  @override
+  List<Object> get props => [document, operationName, variables];
+  @override
+  SongonShalagruulaltDelegrengui$Query parse(Map<String, dynamic> json) =>
+      SongonShalagruulaltDelegrengui$Query.fromJson(json);
 }

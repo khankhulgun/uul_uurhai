@@ -112,6 +112,9 @@ class TosviinOrlogo$Query$Paginate$DsTosviinOrlogo with EquatableMixin {
           Map<String, dynamic> json) =>
       _$TosviinOrlogo$Query$Paginate$DsTosviinOrlogoFromJson(json);
 
+  @JsonKey(name: 'b_t_tosov_zoruu')
+  double bTTosovZoruu;
+
   @JsonKey(name: 'b_tosov')
   double bTosov;
 
@@ -139,8 +142,11 @@ class TosviinOrlogo$Query$Paginate$DsTosviinOrlogo with EquatableMixin {
   @JsonKey(name: 'tailant_uy')
   double tailantUy;
 
+  double zoruu;
+
   @override
   List<Object> get props => [
+        bTTosovZoruu,
         bTosov,
         id,
         jileer,
@@ -150,7 +156,8 @@ class TosviinOrlogo$Query$Paginate$DsTosviinOrlogo with EquatableMixin {
         tTosov,
         tUyTolovlogoo,
         tailanUyGuitsetgel,
-        tailantUy
+        tailantUy,
+        zoruu
       ];
   Map<String, dynamic> toJson() =>
       _$TosviinOrlogo$Query$Paginate$DsTosviinOrlogoToJson(this);
@@ -537,6 +544,12 @@ class TosviinOrlogoQuery
                     directives: [],
                     selectionSet: SelectionSetNode(selections: [
                       FieldNode(
+                          name: NameNode(value: 'b_t_tosov_zoruu'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
                           name: NameNode(value: 'b_tosov'),
                           alias: null,
                           arguments: [],
@@ -592,6 +605,12 @@ class TosviinOrlogoQuery
                           selectionSet: null),
                       FieldNode(
                           name: NameNode(value: 'tailant_uy'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'zoruu'),
                           alias: null,
                           arguments: [],
                           directives: [],

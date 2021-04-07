@@ -419,7 +419,6 @@ AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel
         Map<String, dynamic> json) {
   return AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel()
     ..ajAhuiNerId = json['aj_ahui_ner_id'] as String
-    ..bTorol = json['b_torol'] as String
     ..chiglel = json['chiglel'] as String
     ..huchToo = json['huch_too'] as int
     ..id = json['id'] as int
@@ -433,7 +432,6 @@ Map<String, dynamic>
             AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel instance) =>
         <String, dynamic>{
           'aj_ahui_ner_id': instance.ajAhuiNerId,
-          'b_torol': instance.bTorol,
           'chiglel': instance.chiglel,
           'huch_too': instance.huchToo,
           'id': instance.id,
@@ -475,6 +473,79 @@ AjilahHuchMedeelel$Query _$AjilahHuchMedeelel$QueryFromJson(
 
 Map<String, dynamic> _$AjilahHuchMedeelel$QueryToJson(
         AjilahHuchMedeelel$Query instance) =>
+    <String, dynamic>{
+      'paginate': instance.paginate?.toJson(),
+    };
+
+SongonShalagruulaltDelegrengui$Query$Paginate$AaSongonShalagruulaltDelegrengui
+    _$SongonShalagruulaltDelegrengui$Query$Paginate$AaSongonShalagruulaltDelegrenguiFromJson(
+        Map<String, dynamic> json) {
+  return SongonShalagruulaltDelegrengui$Query$Paginate$AaSongonShalagruulaltDelegrengui()
+    ..aNiislel = (json['a_niislel'] as num)?.toDouble()
+    ..bosgoUne = (json['bosgo_une'] as num)?.toDouble()
+    ..id = json['id'] as int
+    ..objectId = json['object_id'] as int
+    ..ognoo =
+        json['ognoo'] == null ? null : DateTime.parse(json['ognoo'] as String)
+    ..sShCode = (json['s_sh_code'] as num)?.toDouble()
+    ..sumDuureg = (json['sum_duureg'] as num)?.toDouble()
+    ..talbainDugaar = (json['talbain_dugaar'] as num)?.toDouble()
+    ..talbainHemjee = (json['talbain_hemjee'] as num)?.toDouble();
+}
+
+Map<String, dynamic>
+    _$SongonShalagruulaltDelegrengui$Query$Paginate$AaSongonShalagruulaltDelegrenguiToJson(
+            SongonShalagruulaltDelegrengui$Query$Paginate$AaSongonShalagruulaltDelegrengui
+                instance) =>
+        <String, dynamic>{
+          'a_niislel': instance.aNiislel,
+          'bosgo_une': instance.bosgoUne,
+          'id': instance.id,
+          'object_id': instance.objectId,
+          'ognoo': instance.ognoo?.toIso8601String(),
+          's_sh_code': instance.sShCode,
+          'sum_duureg': instance.sumDuureg,
+          'talbain_dugaar': instance.talbainDugaar,
+          'talbain_hemjee': instance.talbainHemjee,
+        };
+
+SongonShalagruulaltDelegrengui$Query$Paginate
+    _$SongonShalagruulaltDelegrengui$Query$PaginateFromJson(
+        Map<String, dynamic> json) {
+  return SongonShalagruulaltDelegrengui$Query$Paginate()
+    ..total = json['total'] as int
+    ..lastPage = json['last_page'] as int
+    ..aaSongonShalagruulaltDelegrengui = (json[
+            'aa_songon_shalagruulalt_delegrengui'] as List)
+        ?.map((e) => e == null
+            ? null
+            : SongonShalagruulaltDelegrengui$Query$Paginate$AaSongonShalagruulaltDelegrengui
+                .fromJson(e as Map<String, dynamic>))
+        ?.toList();
+}
+
+Map<String, dynamic> _$SongonShalagruulaltDelegrengui$Query$PaginateToJson(
+        SongonShalagruulaltDelegrengui$Query$Paginate instance) =>
+    <String, dynamic>{
+      'total': instance.total,
+      'last_page': instance.lastPage,
+      'aa_songon_shalagruulalt_delegrengui': instance
+          .aaSongonShalagruulaltDelegrengui
+          ?.map((e) => e?.toJson())
+          ?.toList(),
+    };
+
+SongonShalagruulaltDelegrengui$Query
+    _$SongonShalagruulaltDelegrengui$QueryFromJson(Map<String, dynamic> json) {
+  return SongonShalagruulaltDelegrengui$Query()
+    ..paginate = json['paginate'] == null
+        ? null
+        : SongonShalagruulaltDelegrengui$Query$Paginate.fromJson(
+            json['paginate'] as Map<String, dynamic>);
+}
+
+Map<String, dynamic> _$SongonShalagruulaltDelegrengui$QueryToJson(
+        SongonShalagruulaltDelegrengui$Query instance) =>
     <String, dynamic>{
       'paginate': instance.paginate?.toJson(),
     };
@@ -534,6 +605,22 @@ AjilahHuchMedeelelArguments _$AjilahHuchMedeelelArgumentsFromJson(
 
 Map<String, dynamic> _$AjilahHuchMedeelelArgumentsToJson(
         AjilahHuchMedeelelArguments instance) =>
+    <String, dynamic>{
+      'page': instance.page,
+      'size': instance.size,
+    };
+
+SongonShalagruulaltDelegrenguiArguments
+    _$SongonShalagruulaltDelegrenguiArgumentsFromJson(
+        Map<String, dynamic> json) {
+  return SongonShalagruulaltDelegrenguiArguments(
+    page: json['page'] as int,
+    size: json['size'] as int,
+  );
+}
+
+Map<String, dynamic> _$SongonShalagruulaltDelegrenguiArgumentsToJson(
+        SongonShalagruulaltDelegrenguiArguments instance) =>
     <String, dynamic>{
       'page': instance.page,
       'size': instance.size,
