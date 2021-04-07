@@ -141,6 +141,7 @@ class _ExportNewsState extends State<ExportNews> {
   void initState() {
     super.initState();
     this.getZes();
+    this.getNvvrs();
   }
 
   double autoZam;
@@ -148,8 +149,25 @@ class _ExportNewsState extends State<ExportNews> {
   double tumurZam;
   double umnuhOniiHaritsuulaltHuwi;
   double ussunDun;
+
   void getZes() {
     _http.post_("https://app.mmhi.gov.mn/api/exportTeeverDun/1}", {"filters": filters}).then((response) {
+      setState(() {
+        autoZam = getDouble(response.data["autoZam"]);
+        dun = getDouble(response.data["dun"]);
+        tumurZam = getDouble(response.data["tumurZam"]);
+        umnuhOniiHaritsuulaltHuwi = getDouble(response.data["umnuhOniiHaritsuulaltHuwi"]);
+        ussunDun = getDouble(response.data["ussunDun"]);
+      });
+      print('-----------');
+      print(response.data);
+    }).catchError((e) {
+      print(e);
+    });
+  }
+
+  void getNvvrs() {
+    _http.post_("https://app.mmhi.gov.mn/api/exportTeeverDun/2}", {"filters": filters}).then((response) {
       setState(() {
         autoZam = getDouble(response.data["autoZam"]);
         dun = getDouble(response.data["dun"]);
