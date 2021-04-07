@@ -40,6 +40,9 @@ class _MongolBankState extends State<MongolBank> {
   List<Filter> filtersBoomNuurs = [Filter(column: "boomt_short", condition: "equals", value: "ГАС"),Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")];
 
 
+  final List<String> _dropdownValues = ["ALT","NVVRS"];
+  String dropdownValue = 'ALT';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,8 +63,38 @@ class _MongolBankState extends State<MongolBank> {
         body: SingleChildScrollView(
             child: Container(
                 padding: EdgeInsets.only(right: 5, top: 0, left: 5, bottom: 10),
-                child: Column(children: [
-
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      DropdownButtonHideUnderline(
+                    child: Container(
+                      height: 30,
+                      //width: MediaQuery.of(context).size.width,
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      margin: EdgeInsets.only(bottom: 10, left: 5, right: 5),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Color.fromRGBO(223, 223, 223, 1), width: 1),
+                        borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                        color: Colors.grey[200],
+                      ),
+                      child: DropdownButton(
+                        items: _dropdownValues
+                            .map((value) => DropdownMenuItem(
+                          child: Text(value, style: TextStyle(color: Color.fromRGBO(68, 68, 68, 1), fontSize: 12, fontWeight: FontWeight.w500)),
+                          value: value,
+                        ))
+                            .toList(),
+                        isExpanded: false,
+                        value: dropdownValue,
+                        onChanged: (String newValue) {
+                          setState(() {
+                            dropdownValue = newValue;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
                     LambdaChartRest(title: "МБ худалдан авсан үнэт метал",  APIurl: "/api/mBankBuy", theme: theme, colors: colorsAltai, filters: filtersAlt, chartType: "ColumnChart"),
                 ]))));
   }

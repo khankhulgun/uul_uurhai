@@ -213,22 +213,42 @@ class _ExportNewsState extends State<ExportNews> {
                   GestureDetector(
                     onTap: () { _datePicker(context); },
                     child:Container(
-                      margin: EdgeInsets.only(left:20, bottom: 10),
-                      child: Row(
-                        children: [
-                          Container(
-                            child: Text(filters[0].value, style: TextStyle(fontSize: 18),),
-                          ),
-                          Container(
-                            child: Text(" - "),
-                          ),
-                          Container(
-                            child: Text(filters[1].value, style: TextStyle(fontSize: 18),),
-                          )
-                        ],
+                      //margin: EdgeInsets.only(left:20, bottom: 0),
+                      padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 10),
+                      margin: EdgeInsets.symmetric(horizontal: 6.0),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: BorderRadius.all(Radius.circular(5.0)),
                       ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                           Expanded(
+                             flex: 4,
+                             child: Row(
+                               children: [
+                                 Container(
+                                   child: Text(filters[0].value, style: TextStyle(fontSize: 14),),
+                                 ),
+                                 Container(
+                                   child: Text(" - "),
+                                 ),
+                                 Container(
+                                   child: Text(filters[1].value, style: TextStyle(fontSize: 14),),
+                                 )
+                               ],
+                             ),
+                           ),
+                          Expanded(
+                            flex: 0,
+                            child: Icon(Icons.arrow_drop_down_outlined)
+                          ),
+                        ],
+                      )
                     ),
                   ),
+                  SizedBox(height: 10),
                   // // 1 Export Medee
                   LambdaChart(schemaID: '216', theme: theme, key: Chart1, filters: filters),
 
