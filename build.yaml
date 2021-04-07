@@ -45,6 +45,9 @@ targets:
             - output: lib/graphql/queries/busad.dart
               schema: lib/graphql/schema.graphql
               queries_glob: lib/graphql/querySchema/busad.query.graphql
+            - output: lib/graphql/queries/common.dart
+              schema: lib/graphql/schema.graphql
+              queries_glob: lib/graphql/querySchema/common.query.graphql
 
 
 

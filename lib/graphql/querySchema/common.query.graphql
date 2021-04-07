@@ -1,0 +1,6 @@
+query common{
+    lut_ashigt_maltmal{
+        id
+        ashigt_maltmal
+    }
+}
