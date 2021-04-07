@@ -6,11 +6,28 @@ String getDate(String date){
     return "";
   }
   DateFormat dateFormat = DateFormat("yyyy-MM-dd HH:mm:ss");
-  var formatter = new DateFormat('yy.MM.dd');
+  var formatter = new DateFormat('yyyy-MM-dd');
 
   DateTime dateTime  = dateFormat.parse(date);
 
   return formatter.format(dateTime);
+}
+String getDateString(DateTime dateTime){
+
+  var formatter = new DateFormat('yyyy-MM-dd');
+
+
+
+  return formatter.format(dateTime);
+}
+DateTime gDate(String date){
+
+  DateFormat dateFormat = DateFormat("yyyy-MM-dd");
+ // var formatter = new DateFormat('yy.MM.dd');
+
+  DateTime dateTime  = dateFormat.parse(date);
+
+  return dateTime;
 }
 String getTime(String date){
   if(date == null && date == ""){
