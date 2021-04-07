@@ -142,6 +142,7 @@ class _ExportNewsState extends State<ExportNews> {
     super.initState();
     this.getZes();
     this.getNvvrs();
+    this.getTumriinHvder();
   }
 
   double autoZam;
@@ -149,6 +150,18 @@ class _ExportNewsState extends State<ExportNews> {
   double tumurZam;
   double umnuhOniiHaritsuulaltHuwi;
   double ussunDun;
+
+  double n_autoZam;
+  double n_dun;
+  double n_tumurZam;
+  double n_umnuhOniiHaritsuulaltHuwi;
+  double n_ussunDun;
+
+  double tumur_autoZam;
+  double tumur_dun;
+  double tumur_tumurZam;
+  double tumur_umnuhOniiHaritsuulaltHuwi;
+  double tumur_ussunDun;
 
   void getZes() {
     _http.post_("https://app.mmhi.gov.mn/api/exportTeeverDun/1}", {"filters": filters}).then((response) {
@@ -169,11 +182,27 @@ class _ExportNewsState extends State<ExportNews> {
   void getNvvrs() {
     _http.post_("https://app.mmhi.gov.mn/api/exportTeeverDun/2}", {"filters": filters}).then((response) {
       setState(() {
-        autoZam = getDouble(response.data["autoZam"]);
-        dun = getDouble(response.data["dun"]);
-        tumurZam = getDouble(response.data["tumurZam"]);
-        umnuhOniiHaritsuulaltHuwi = getDouble(response.data["umnuhOniiHaritsuulaltHuwi"]);
-        ussunDun = getDouble(response.data["ussunDun"]);
+        n_autoZam = getDouble(response.data["autoZam"]);
+        n_dun = getDouble(response.data["dun"]);
+        n_tumurZam = getDouble(response.data["tumurZam"]);
+        n_umnuhOniiHaritsuulaltHuwi = getDouble(response.data["umnuhOniiHaritsuulaltHuwi"]);
+        n_ussunDun = getDouble(response.data["ussunDun"]);
+      });
+      print('-----------');
+      print(response.data);
+    }).catchError((e) {
+      print(e);
+    });
+  }
+
+  void getTumriinHvder() {
+    _http.post_("https://app.mmhi.gov.mn/api/exportTeeverDun/2}", {"filters": filters}).then((response) {
+      setState(() {
+        tumur_autoZam = getDouble(response.data["autoZam"]);
+        tumur_dun = getDouble(response.data["dun"]);
+        tumur_tumurZam = getDouble(response.data["tumurZam"]);
+        tumur_umnuhOniiHaritsuulaltHuwi = getDouble(response.data["umnuhOniiHaritsuulaltHuwi"]);
+        tumur_ussunDun = getDouble(response.data["ussunDun"]);
       });
       print('-----------');
       print(response.data);
@@ -343,9 +372,9 @@ class _ExportNewsState extends State<ExportNews> {
                                             flex: 4,
                                             child: Padding(
                                               padding: const EdgeInsets.only(
-                                                  top: 6.0),
+                                                  left: 4.0),
                                               child: Text(
-                                                '300',
+                                                number(n_autoZam),
                                                 style: TextStyle(
                                                     color: primaryColor,
                                                     fontSize: 14,
@@ -376,9 +405,9 @@ class _ExportNewsState extends State<ExportNews> {
                                             flex: 4,
                                             child: Padding(
                                               padding: const EdgeInsets.only(
-                                                  top: 6.0),
+                                                  left: 4.0),
                                               child: Text(
-                                                '609.6',
+                                                number(n_tumurZam),
                                                 style: TextStyle(
                                                     color: primaryColor,
                                                     fontSize: 14,
@@ -408,7 +437,7 @@ class _ExportNewsState extends State<ExportNews> {
                                                   fontWeight: FontWeight.w400),
                                             ),
                                             Text(
-                                              '909.6',
+                                              number(n_dun),
                                               textAlign: TextAlign.right,
                                               style: TextStyle(
                                                   color: primaryColor,
@@ -444,7 +473,7 @@ class _ExportNewsState extends State<ExportNews> {
                                               ),
                                               Expanded(
                                                   child: Text(
-                                                '24,235.1',
+                                                    number(n_ussunDun),
                                                 textAlign: TextAlign.right,
                                                 style: TextStyle(
                                                     color: primaryColor,
@@ -470,15 +499,9 @@ class _ExportNewsState extends State<ExportNews> {
                                                         FontWeight.w400),
                                               ),
                                               Expanded(
-                                                  child: Text(
-                                                '+23.1%',
-                                                textAlign: TextAlign.right,
-                                                style: TextStyle(
-                                                    color: Colors.green,
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              )),
+                                                child: n_umnuhOniiHaritsuulaltHuwi >= 0 ? Text(number(n_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500)) :
+                                                Text(number(n_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w500)),
+                                              ),
                                             ],
                                           ),
                                         ],
@@ -574,7 +597,7 @@ class _ExportNewsState extends State<ExportNews> {
                                           Expanded(
                                             flex: 4,
                                             child: Padding(
-                                              padding: const EdgeInsets.only(left: 0.0),
+                                              padding: const EdgeInsets.only(left: 4.0),
                                               child: Text(
                                                 number(tumurZam),
                                                 style: TextStyle(
@@ -735,9 +758,9 @@ class _ExportNewsState extends State<ExportNews> {
                                             flex: 4,
                                             child: Padding(
                                               padding: const EdgeInsets.only(
-                                                  top: 6.0),
+                                                  left: 4.0),
                                               child: Text(
-                                                '300',
+                                                number(tumur_autoZam),
                                                 style: TextStyle(
                                                     color: textBlueGrey,
                                                     fontSize: 14,
@@ -768,9 +791,9 @@ class _ExportNewsState extends State<ExportNews> {
                                             flex: 4,
                                             child: Padding(
                                               padding: const EdgeInsets.only(
-                                                  top: 6.0),
+                                                  left: 4.0),
                                               child: Text(
-                                                '609.6',
+                                                number(tumur_tumurZam),
                                                 style: TextStyle(
                                                     color: textBlueGrey,
                                                     fontSize: 14,
@@ -800,7 +823,7 @@ class _ExportNewsState extends State<ExportNews> {
                                                   fontWeight: FontWeight.w400),
                                             ),
                                             Text(
-                                              '909.6',
+                                              number(tumur_dun),
                                               textAlign: TextAlign.right,
                                               style: TextStyle(
                                                   color: textBlueGrey,
@@ -836,7 +859,7 @@ class _ExportNewsState extends State<ExportNews> {
                                               ),
                                               Expanded(
                                                   child: Text(
-                                                '24,235.1',
+                                                    number(tumur_ussunDun),
                                                 textAlign: TextAlign.right,
                                                 style: TextStyle(
                                                     color: textBlueGrey,
@@ -862,15 +885,9 @@ class _ExportNewsState extends State<ExportNews> {
                                                         FontWeight.w400),
                                               ),
                                               Expanded(
-                                                  child: Text(
-                                                '+23.1%',
-                                                textAlign: TextAlign.right,
-                                                style: TextStyle(
-                                                    color: Colors.green,
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              )),
+                                                child: tumur_umnuhOniiHaritsuulaltHuwi >= 0 ? Text(number(tumur_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500)) :
+                                                Text(number(tumur_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w500)),
+                                              ),
                                             ],
                                           ),
                                         ],

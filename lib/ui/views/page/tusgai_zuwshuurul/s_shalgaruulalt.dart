@@ -1,7 +1,11 @@
 import 'package:catalog/ui/styles/_colors.dart';
+import 'package:catalog/utils/number.dart';
 import 'package:flutter/material.dart';
 import 'package:catalog/ui/components/sidebar.dart';
 import 'package:catalog/ui/components/header.dart';
+import 'package:catalog/graphql/config.dart';
+
+import 'package:catalog/graphql/queries/tzAndSongon.dart';
 
 class newSShalgaruulalt extends StatefulWidget {
   @override
@@ -10,6 +14,27 @@ class newSShalgaruulalt extends StatefulWidget {
 
 class _newSShalgaruulaltState extends State<newSShalgaruulalt> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  List<TzAndSongon$Query$AaSongonShalgaruulalt> datas = [];
+  bool loading = true;
+
+  void initState() {
+    super.initState();
+    this.getData();
+  }
+
+  void getData() async {
+    setState(() {
+      loading = true;
+    });
+    final response = await client.execute(TzAndSongonQuery());
+    setState(() {
+      datas = response.data.aaSongonShalgaruulalt;
+      loading = false;
+      print('------');
+      print(datas);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,13 +83,13 @@ class _newSShalgaruulaltState extends State<newSShalgaruulalt> {
                             children: [
                               Row(
                                 children: [
-                                  Text('БАГЦЫН ТОО:', style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.bold)),
+                                  Text('Дугаар:', style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.bold)),
                                   SizedBox(width: 4,),
                                   Text('', style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500))
                                 ],
                               ),
                               SizedBox(height: 18,),
-                              Center(child: Text('7', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(53, 53, 137, 1), fontWeight: FontWeight.w600)))
+                              Center(child: Text(number(datas[0].sShBagts), textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Color.fromRGBO(53, 53, 137, 1), fontWeight: FontWeight.w600)))
                             ],
                           ),
                         )
@@ -79,7 +104,7 @@ class _newSShalgaruulaltState extends State<newSShalgaruulalt> {
 
                               Text('Талбайн тоо', textAlign: TextAlign.center, style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500)),
                               SizedBox(height: 18,),
-                              Text('6,25', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(53, 53, 137, 1), fontWeight: FontWeight.w600))
+                              Text(number(datas[0].sShTalbai), textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Color.fromRGBO(53, 53, 137, 1), fontWeight: FontWeight.w600))
                             ],
                           ),
                         )
@@ -98,7 +123,7 @@ class _newSShalgaruulaltState extends State<newSShalgaruulalt> {
 
                               Text('Зарласан талбайн хэмжээ /га/', textAlign: TextAlign.center, style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500)),
                               SizedBox(height: 5,),
-                              Text('45', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(53, 53, 137, 1), fontWeight: FontWeight.w600))
+                              Text(number(datas[0].sShHemjeeGa), textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Color.fromRGBO(53, 53, 137, 1), fontWeight: FontWeight.w600))
                             ],
                           ),
                         )
@@ -126,7 +151,7 @@ class _newSShalgaruulaltState extends State<newSShalgaruulalt> {
                             Text('ОЛГОСОН:', style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.bold)),
                             Text('Тусгай зөвшөөрөл', style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500)),
                             SizedBox(height: 15,),
-                            Center(child: Text('2,644', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500)))
+                            Center(child: Text(number(datas[0].ologsonZToo), textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500)))
                           ],
                         )
                     ),
@@ -145,7 +170,7 @@ class _newSShalgaruulaltState extends State<newSShalgaruulalt> {
                             children: [
                               Text('Төсөвт төвлөрүүлсэн\nорлого тэрбум/төг', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black54, fontWeight: FontWeight.w500)),
                               SizedBox(height: 18,),
-                              Text('6,25', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500))
+                              Text(number(datas[0].ulsTosovTerbum), textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500))
                             ],
                           ),
                         )
@@ -157,7 +182,7 @@ class _newSShalgaruulaltState extends State<newSShalgaruulalt> {
 
                             Text('Олгосон талбайн\nхэмжээ /га/', textAlign: TextAlign.center, style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500)),
                             SizedBox(height: 16,),
-                            Text('4%', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500))
+                            Text(number(datas[0].ologsonHegmjeeGa)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500))
                           ],
                         )
                     ),
