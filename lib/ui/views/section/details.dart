@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:lambda/plugins/chart/models/filter.dart';
 import 'package:lambda/plugins/chart/lambda_chart.dart';
 import 'package:lambda/plugins/chart/lambda_chart_rest.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+
 class Details extends StatefulWidget {
   final String title;
   final int id;
@@ -43,6 +45,57 @@ class _Detailstate extends State<Details> {
   List<Filter> filtersExportGazarWithDate = [Filter(column: "b_id", condition: "equals", value: "4"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")];
   List<Filter> filtersBoomNuurs = [Filter(column: "boomt_short", condition: "equals", value: "ГАС"),Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")];
 
+  // void setFilter(){
+  //   setState(() {
+  //     filters[0].value =getDateString(preStart);
+  //     filters[1].value = getDateString(preEnd);
+  //     Chart1.currentState.initChart();
+  //     Chart2.currentState.initChart();
+  //     Chart3.currentState.initChart();
+  //     Chart4.currentState.initChart();
+  //   });
+  // }
+  void _datePicker(context) {
+    showModalBottomSheet(
+        context: context,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10),
+            topRight: Radius.circular(10),
+          ),
+        ),
+        builder: (context) {
+          //PickerDateRange values = new PickerDateRange(gDate(filters[0].value), gDate(filters[1].value));
+          return StatefulBuilder(builder: (BuildContext context, StateSetter setStateOfBottomSheet) {
+            return  Container(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: SfDateRangePicker(
+                      //initialSelectedRange: values,
+                      //onSelectionChanged: _onSelectionChanged,
+                      selectionMode: DateRangePickerSelectionMode.range,
+                    ),
+                  ),
+                  FlatButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      setStateOfBottomSheet((){
+                        //setFilter();
+                      });
+                    },
+                    color: Colors.blueAccent,
+                    child: Text("Сонгох", style: TextStyle(color: Colors.white),),
+                    padding: EdgeInsets.all(16),
+                    // shape: CircleBorder(),
+                  ),
+                  SizedBox(height: 20),
+                ],
+              ),
+            );
+          });
+        });
+  }
   @override
   Widget build(BuildContext context) {
     List<Filter> filtersExportData = [Filter(column: "b_id", condition: "equals", value: "${widget.id}")];
@@ -80,9 +133,47 @@ class _Detailstate extends State<Details> {
             child: Container(
                 padding: EdgeInsets.only(right: 5, top: 0, left: 5, bottom: 10),
                 child: Column(children: [
+                  GestureDetector(
+                    onTap: () { _datePicker(context); },
+                    child:Container(
+                      //margin: EdgeInsets.only(left:20, bottom: 0),
+                        padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 10),
+                        margin: EdgeInsets.symmetric(horizontal: 6.0),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              flex: 4,
+                              child: Row(
+                                children: [
+                                  Container(
+                                    child: Text(filters[0].value, style: TextStyle(fontSize: 14),),
+                                  ),
+                                  Container(
+                                    child: Text(" - "),
+                                  ),
+                                  Container(
+                                    child: Text(filters[1].value, style: TextStyle(fontSize: 14),),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                                flex: 0,
+                                child: Icon(Icons.arrow_drop_down_outlined)
+                            ),
+                          ],
+                        )
+                    ),
+                  ),
 
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    padding: EdgeInsets.symmetric(horizontal: 6),
                     margin: EdgeInsets.symmetric(vertical: 10),
                     child: Stack(
                       children: [
