@@ -125,18 +125,15 @@ class _ExportNewsState extends State<ExportNews> {
     if (args.value is PickerDateRange) {
       final DateTime rangeStartDate = args.value.startDate;
       final DateTime rangeEndDate = args.value.endDate;
-
       if(rangeStartDate != null && rangeEndDate != null){
-
         setState(() {
           preStart = rangeStartDate;
           preEnd = rangeEndDate;
         });
-
       }
-
     }
   }
+
   void setFilter(){
     setState(() {
       filters[0].value =getDateString(preStart);
@@ -861,6 +858,7 @@ class _ExportNewsState extends State<ExportNews> {
                   SizedBox(height: 10),
                   // // 5 Export Tumur by Track
                   LambdaChart(schemaID: '241', theme: theme),
+
                 ]))));
   }
 }
