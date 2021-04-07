@@ -170,6 +170,9 @@ class MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt with EquatableMixin {
 
   int id;
 
+  @JsonKey(name: 'm_huuli_id')
+  int mHuuliId;
+
   @JsonKey(name: 't_hugatsaa_id')
   String tHugatsaaId;
 
@@ -178,7 +181,7 @@ class MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt with EquatableMixin {
       dsSubHeregjilt;
 
   @override
-  List<Object> get props => [gHuvi, id, tHugatsaaId, dsSubHeregjilt];
+  List<Object> get props => [gHuvi, id, mHuuliId, tHugatsaaId, dsSubHeregjilt];
   Map<String, dynamic> toJson() =>
       _$MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejiltToJson(this);
 }
@@ -931,6 +934,12 @@ class MuHuuliHegejiltQuery
                           selectionSet: null),
                       FieldNode(
                           name: NameNode(value: 'id'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'm_huuli_id'),
                           alias: null,
                           arguments: [],
                           directives: [],

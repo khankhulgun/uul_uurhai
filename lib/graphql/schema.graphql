@@ -104,7 +104,6 @@ type deleted {
 
 type DsAjilahHuchMedeelel {
   aj_ahui_ner_id: String
-  b_torol: String
   chiglel: String
   huch_too: Int
   id: Int!
@@ -459,6 +458,7 @@ type DsTosovZarlaga {
 }
 
 type DsTosviinOrlogo {
+  b_t_tosov_zoruu: Float
   b_tosov: Float
   id: Int!
   jileer: Float
@@ -469,6 +469,7 @@ type DsTosviinOrlogo {
   t_uy_tolovlogoo: Float
   tailan_uy_guitsetgel: Float
   tailant_uy: Float
+  zoruu: Float
 }
 
 type DsUihTogtoolHeregjilt {

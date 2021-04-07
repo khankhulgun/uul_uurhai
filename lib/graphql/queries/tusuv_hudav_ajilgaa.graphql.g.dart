@@ -86,6 +86,7 @@ TosviinOrlogo$Query$Paginate$DsTosviinOrlogo
     _$TosviinOrlogo$Query$Paginate$DsTosviinOrlogoFromJson(
         Map<String, dynamic> json) {
   return TosviinOrlogo$Query$Paginate$DsTosviinOrlogo()
+    ..bTTosovZoruu = (json['b_t_tosov_zoruu'] as num)?.toDouble()
     ..bTosov = (json['b_tosov'] as num)?.toDouble()
     ..id = json['id'] as int
     ..jileer = (json['jileer'] as num)?.toDouble()
@@ -96,12 +97,14 @@ TosviinOrlogo$Query$Paginate$DsTosviinOrlogo
     ..tTosov = (json['t_tosov'] as num)?.toDouble()
     ..tUyTolovlogoo = (json['t_uy_tolovlogoo'] as num)?.toDouble()
     ..tailanUyGuitsetgel = (json['tailan_uy_guitsetgel'] as num)?.toDouble()
-    ..tailantUy = (json['tailant_uy'] as num)?.toDouble();
+    ..tailantUy = (json['tailant_uy'] as num)?.toDouble()
+    ..zoruu = (json['zoruu'] as num)?.toDouble();
 }
 
 Map<String, dynamic> _$TosviinOrlogo$Query$Paginate$DsTosviinOrlogoToJson(
         TosviinOrlogo$Query$Paginate$DsTosviinOrlogo instance) =>
     <String, dynamic>{
+      'b_t_tosov_zoruu': instance.bTTosovZoruu,
       'b_tosov': instance.bTosov,
       'id': instance.id,
       'jileer': instance.jileer,
@@ -112,6 +115,7 @@ Map<String, dynamic> _$TosviinOrlogo$Query$Paginate$DsTosviinOrlogoToJson(
       't_uy_tolovlogoo': instance.tUyTolovlogoo,
       'tailan_uy_guitsetgel': instance.tailanUyGuitsetgel,
       'tailant_uy': instance.tailantUy,
+      'zoruu': instance.zoruu,
     };
 
 TosviinOrlogo$Query$Paginate _$TosviinOrlogo$Query$PaginateFromJson(

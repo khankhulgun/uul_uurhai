@@ -137,6 +137,7 @@ MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt
   return MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt()
     ..gHuvi = (json['g_huvi'] as num)?.toDouble()
     ..id = json['id'] as int
+    ..mHuuliId = json['m_huuli_id'] as int
     ..tHugatsaaId = json['t_hugatsaa_id'] as String
     ..dsSubHeregjilt = (json['ds_sub_heregjilt'] as List)
         ?.map((e) => e == null
@@ -151,6 +152,7 @@ Map<String, dynamic> _$MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejiltToJson(
     <String, dynamic>{
       'g_huvi': instance.gHuvi,
       'id': instance.id,
+      'm_huuli_id': instance.mHuuliId,
       't_hugatsaa_id': instance.tHugatsaaId,
       'ds_sub_heregjilt':
           instance.dsSubHeregjilt?.map((e) => e?.toJson())?.toList(),
