@@ -13,6 +13,7 @@ type AaEBMergejilZovlol {
 type AaMuHuuliHegejilt {
   g_huvi: Float
   id: ID!
+  m_huuli_id: Int
   t_hugatsaa_id: String
   ds_sub_heregjilt: [DsSubHeregjilt!]
 }
@@ -239,7 +240,9 @@ type DsMedee {
 
 type DsMongolUlsHuuliHer {
   g_huvi: Float
+  huuli: String
   id: Int!
+  m_huuli_id: Int
   t_hugatsaa: String
   t_hugatsaa_id: String
   ds_sub_heregjilt: [DsSubHeregjilt!]
@@ -524,6 +527,11 @@ input filter {
   value: String!
 }
 
+type LutAshigtMaltmal {
+  ashigt_maltmal: String
+  id: ID!
+}
+
 enum order {
   asc
   desc
@@ -579,6 +587,7 @@ type paginate {
   ds_uih_togtool_heregjilt: [DsUihTogtoolHeregjilt!]
   ds_bodlogo_bb: [DsBodlogoBb!]
   ds_zg_togtool_heregjilt: [DsZgTogtoolHeregjilt!]
+  lut_ashigt_maltmal: [LutAshigtMaltmal!]
 }
 
 type Query {
@@ -886,6 +895,12 @@ type Query {
     limit: Int
     offset: Int
   ): [DsZgTogtoolHeregjilt!]
+  lut_ashigt_maltmal(
+    sorts: [sort]
+    filters: [filter]
+    limit: Int
+    offset: Int
+  ): [LutAshigtMaltmal!]
   paginate(
     sorts: [sort]
     filters: [filter]
