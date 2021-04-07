@@ -1,5 +1,6 @@
 import 'package:catalog/ui/components/header.dart';
 import 'package:catalog/ui/components/sidebar.dart';
+import 'package:catalog/utils/number.dart';
 import 'package:flutter/material.dart';
 import 'package:lambda/plugins/chart/models/filter.dart';
 import 'package:lambda/plugins/chart/lambda_chart.dart';
@@ -7,6 +8,8 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:catalog/ui/styles/_colors.dart';
 import 'package:catalog/utils/date.dart';
+import 'package:lambda/modules/network_util.dart';
+
 
 class ExportNews extends StatefulWidget {
   @override
@@ -15,10 +18,11 @@ class ExportNews extends StatefulWidget {
 
 class _ExportNewsState extends State<ExportNews> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  NetworkUtil _http = new NetworkUtil();
+
   String theme = "shine";
   List<Filter> filters = [
-    Filter(
-        column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
+    Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
     Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")
   ];
   List<Filter> filtersExportNuurs = [
@@ -40,8 +44,7 @@ class _ExportNewsState extends State<ExportNews> {
     Filter(column: "b_id", condition: "equals", value: "3")
   ];
   List<Filter> filtersOlborloltGazrinTos = [
-    Filter(
-        column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
+    Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
     Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06"),
     Filter(column: "b_id", condition: "equals", value: "4")
   ];
@@ -132,6 +135,51 @@ class _ExportNewsState extends State<ExportNews> {
         });
       }
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    this.getZes();
+    this.getNvvrs();
+  }
+
+  double autoZam;
+  double dun;
+  double tumurZam;
+  double umnuhOniiHaritsuulaltHuwi;
+  double ussunDun;
+
+  void getZes() {
+    _http.post_("https://app.mmhi.gov.mn/api/exportTeeverDun/1}", {"filters": filters}).then((response) {
+      setState(() {
+        autoZam = getDouble(response.data["autoZam"]);
+        dun = getDouble(response.data["dun"]);
+        tumurZam = getDouble(response.data["tumurZam"]);
+        umnuhOniiHaritsuulaltHuwi = getDouble(response.data["umnuhOniiHaritsuulaltHuwi"]);
+        ussunDun = getDouble(response.data["ussunDun"]);
+      });
+      print('-----------');
+      print(response.data);
+    }).catchError((e) {
+      print(e);
+    });
+  }
+
+  void getNvvrs() {
+    _http.post_("https://app.mmhi.gov.mn/api/exportTeeverDun/2}", {"filters": filters}).then((response) {
+      setState(() {
+        autoZam = getDouble(response.data["autoZam"]);
+        dun = getDouble(response.data["dun"]);
+        tumurZam = getDouble(response.data["tumurZam"]);
+        umnuhOniiHaritsuulaltHuwi = getDouble(response.data["umnuhOniiHaritsuulaltHuwi"]);
+        ussunDun = getDouble(response.data["ussunDun"]);
+      });
+      print('-----------');
+      print(response.data);
+    }).catchError((e) {
+      print(e);
+    });
   }
 
   void setFilter(){
@@ -494,9 +542,9 @@ class _ExportNewsState extends State<ExportNews> {
                                             flex: 4,
                                             child: Padding(
                                               padding: const EdgeInsets.only(
-                                                  top: 6.0),
+                                                  left: 4.0),
                                               child: Text(
-                                                '300',
+                                                number(autoZam),
                                                 style: TextStyle(
                                                     color: textOrange,
                                                     fontSize: 14,
@@ -526,10 +574,9 @@ class _ExportNewsState extends State<ExportNews> {
                                           Expanded(
                                             flex: 4,
                                             child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 6.0),
+                                              padding: const EdgeInsets.only(left: 0.0),
                                               child: Text(
-                                                '609.6',
+                                                number(tumurZam),
                                                 style: TextStyle(
                                                     color: textOrange,
                                                     fontSize: 14,
@@ -559,7 +606,7 @@ class _ExportNewsState extends State<ExportNews> {
                                                   fontWeight: FontWeight.w400),
                                             ),
                                             Text(
-                                              '909.6',
+                                              number(dun),
                                               textAlign: TextAlign.right,
                                               style: TextStyle(
                                                   color: textOrange,
@@ -595,7 +642,7 @@ class _ExportNewsState extends State<ExportNews> {
                                               ),
                                               Expanded(
                                                   child: Text(
-                                                '24,235.1',
+                                                    number(ussunDun),
                                                 textAlign: TextAlign.right,
                                                 style: TextStyle(
                                                     color: textOrange,
@@ -621,15 +668,9 @@ class _ExportNewsState extends State<ExportNews> {
                                                         FontWeight.w400),
                                               ),
                                               Expanded(
-                                                  child: Text(
-                                                '+23.1%',
-                                                textAlign: TextAlign.right,
-                                                style: TextStyle(
-                                                    color: Colors.green,
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              )),
+                                                  child: umnuhOniiHaritsuulaltHuwi >= 0 ? Text(number(umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500)) :
+                                                      Text(number(umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w500)),
+                                              ),
                                             ],
                                           ),
                                         ],

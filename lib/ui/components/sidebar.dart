@@ -1056,7 +1056,7 @@ class _SidebarScreenState extends State<SidebarScreen> {
                               color: borderColor),
                         )),
                     Container(
-                        margin: EdgeInsets.only(bottom: 25),
+                        margin: EdgeInsets.only(bottom: 10),
                         child: Text(
                           '© 2021. УУХҮЯ',
                           style: TextStyle(

@@ -1,0 +1,24 @@
+query tzAndSongon{
+    aa_tusgai_zovshoorol(limit:1, sorts:[{column:"id", order:desc}]){
+        id
+        tz_too
+        a_t_too
+        ht_zovshoorol
+        t_hemjee_say
+        haiguul_t_z
+        a_t_zovshoorol
+        niit_gazar_huvi
+        haiguul_huvi
+        ashiglat_tz_huvi
+    }
+    aa_songon_shalgaruulalt(limit:1, sorts:[{column:"id", order:desc}]){
+        id
+        s_sh_bagts
+        s_sh_talbai
+        s_sh_hemjee_ga
+        ologson_z_too
+        ologson_hegmjee_ga
+        uls_tosov_terbum
+    }
+
+}
