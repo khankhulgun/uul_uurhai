@@ -25,6 +25,7 @@ query tosviin_orlogo($page: Int!, $size: Int!) {
         total
         last_page
         ds_tosviin_orlogo{
+            b_t_tosov_zoruu
             b_tosov
             id
             jileer
@@ -35,6 +36,7 @@ query tosviin_orlogo($page: Int!, $size: Int!) {
             t_uy_tolovlogoo
             tailan_uy_guitsetgel
             tailant_uy
+            zoruu
         }
     }
 }

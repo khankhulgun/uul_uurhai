@@ -5,6 +5,7 @@ import 'package:lambda/plugins/chart/models/filter.dart';
 import 'package:lambda/plugins/chart/lambda_chart.dart';
 import 'package:lambda/plugins/chart/lambda_chart_rest.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:catalog/utils/date.dart';
 
 class Boomt extends StatefulWidget {
   @override
@@ -14,13 +15,17 @@ class Boomt extends StatefulWidget {
 class _BoomtState extends State<Boomt> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   String theme = "shine";
-  List<Filter> filters = [Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")];
+  List<Filter> filters = [
+    Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
+    Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")
+  ];
   List<Filter> filtersExportNuurs = [Filter(column: "b_id", condition: "equals", value: "2")];
   List<Filter> filtersOlborloltNuurs = [Filter(column: "b_id", condition: "equals", value: "2")];
   List<Filter> filtersExportZes = [Filter(column: "b_id", condition: "equals", value: "1")];
   List<Filter> filtersOlborlolZes = [Filter(column: "b_id", condition: "equals", value: "1")];
   List<Filter> filtersExportTumur = [Filter(column: "b_id", condition: "equals", value: "3")];
   List<Filter> filtersOlborloltTumur = [Filter(column: "b_id", condition: "equals", value: "3")];
+
   List<Filter> filtersOlborloltGazrinTos = [Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06"), Filter(column: "b_id", condition: "equals", value: "4")];
 
   List<String> colorsExportNuurs = ["#3030BE", "#6363E7", "#A8A8EA"];
@@ -40,16 +45,35 @@ class _BoomtState extends State<Boomt> {
   List<Filter> filtersExportGazarWithDate = [Filter(column: "b_id", condition: "equals", value: "4"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")];
   List<Filter> filtersBoomNuurs = [Filter(column: "boomt_short", condition: "equals", value: "ГАС"),Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")];
 
-  // void setFilter(){
-  //   setState(() {
-  //     filters[0].value =getDateString(preStart);
-  //     filters[1].value = getDateString(preEnd);
-  //     Chart1.currentState.initChart();
-  //     Chart2.currentState.initChart();
-  //     Chart3.currentState.initChart();
-  //     Chart4.currentState.initChart();
-  //   });
-  // }
+  DateTime preStart;
+  DateTime preEnd;
+
+  void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
+    if (args.value is PickerDateRange) {
+      final DateTime rangeStartDate = args.value.startDate;
+      final DateTime rangeEndDate = args.value.endDate;
+      if(rangeStartDate != null && rangeEndDate != null){
+        setState(() {
+          preStart = rangeStartDate;
+          preEnd = rangeEndDate;
+        });
+      }
+    }
+  }
+  final GlobalKey<LambdaChartState> Chart1 = new GlobalKey<LambdaChartState>();
+  final GlobalKey<LambdaChartState> Chart2 = new GlobalKey<LambdaChartState>();
+  final GlobalKey<LambdaChartState> Chart3 = new GlobalKey<LambdaChartState>();
+  final GlobalKey<LambdaChartState> Chart4 = new GlobalKey<LambdaChartState>();
+  void setFilter(){
+    setState(() {
+      filters[0].value = getDateString(preStart);
+      filters[1].value = getDateString(preEnd);
+      Chart1.currentState.initChart();
+      Chart2.currentState.initChart();
+      Chart3.currentState.initChart();
+      Chart4.currentState.initChart();
+    });
+  }
   void _datePicker(context) {
     showModalBottomSheet(
         context: context,
@@ -60,15 +84,15 @@ class _BoomtState extends State<Boomt> {
           ),
         ),
         builder: (context) {
-          //PickerDateRange values = new PickerDateRange(gDate(filters[0].value), gDate(filters[1].value));
+          PickerDateRange values = new PickerDateRange(gDate(filters[0].value), gDate(filters[1].value));
           return StatefulBuilder(builder: (BuildContext context, StateSetter setStateOfBottomSheet) {
             return  Container(
               child: Column(
                 children: [
                   Expanded(
                     child: SfDateRangePicker(
-                      //initialSelectedRange: values,
-                      //onSelectionChanged: _onSelectionChanged,
+                      initialSelectedRange: values,
+                      onSelectionChanged: _onSelectionChanged,
                       selectionMode: DateRangePickerSelectionMode.range,
                     ),
                   ),
@@ -76,7 +100,7 @@ class _BoomtState extends State<Boomt> {
                     onPressed: () {
                       Navigator.pop(context);
                       setStateOfBottomSheet((){
-                        //setFilter();
+                        setFilter();
                       });
                     },
                     color: Colors.blueAccent,
@@ -154,16 +178,16 @@ class _BoomtState extends State<Boomt> {
                   SizedBox(height: 10),
 
                   // //2 Export BOOMT
-                  LambdaChart(schemaID: '214', theme: theme, filters: filters),
+                  LambdaChart(schemaID: '214', key: Chart1, theme: theme, filters: filters),
 
                   // //// 6 Export Nuurs Boomt
-                  LambdaChartRest(title: "НҮҮРС",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportNuursBoomt, chartType: "ColumnChart"),
+                  LambdaChartRest(title: "НҮҮРС", key: Chart2, APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportNuursBoomt, chartType: "ColumnChart"),
 
                   // //// 7 Export Zes Boomt
-                  LambdaChartRest(title: "ЗЭСИЙН БАЯЖМАЛ",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportZesBoomt, chartType: "ColumnChart"),
+                  LambdaChartRest(title: "ЗЭСИЙН БАЯЖМАЛ", key: Chart3, APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportZesBoomt, chartType: "ColumnChart"),
 
                   // //// 8 Export Tumur Boomt
-                  LambdaChartRest(title: "ТӨМРИЙН ХҮДЭР",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportZesTumur, chartType: "ColumnChart"),
+                  LambdaChartRest(title: "ТӨМРИЙН ХҮДЭР", key: Chart4, APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportZesTumur, chartType: "ColumnChart"),
 
 
 

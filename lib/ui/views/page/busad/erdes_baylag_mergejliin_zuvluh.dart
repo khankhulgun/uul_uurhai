@@ -4,6 +4,7 @@ import 'package:catalog/ui/components/map_widgets/esri_icons_icons.dart';
 import 'package:catalog/ui/styles/_colors.dart';
 import 'package:flutter_icons/feather.dart';
 import 'package:flutter_icons/ionicons.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lambda/modules/network_util.dart';
 import '../../../components/sidebar.dart';
@@ -154,7 +155,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Expanded(flex: 2,
-                          child: Image.asset('assets/uuhvy_img/mzuvlul.png', height: 100,  fit: BoxFit.cover)
+                          child: SvgPicture.asset('assets/uuhvy_img/new_mzuvlul.svg', height: 100,  fit: BoxFit.cover)
                       ),
                       Expanded(flex: 4,
                         child: Padding(
@@ -251,7 +252,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                                     padding: const EdgeInsets.only(right: 10.0),
                                     child: Text('Төлөв:', style: TextStyle(color: textColor, fontSize: 12),),
                                   ),),
-                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubTezu[indexSub].tolov, style: TextStyle(color: Colors.green, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubTezu[indexSub].tolov, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 20.0),
@@ -298,7 +299,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                                     padding: const EdgeInsets.only(right: 10.0),
                                     child: Text('Төлөв:', style: TextStyle(color: textColor, fontSize: 12),),
                                   ),),
-                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubBu[indexSu].tolov, style: TextStyle(color: Colors.green, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubBu[indexSu].tolov, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 20.0),
@@ -345,7 +346,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                                     padding: const EdgeInsets.only(right: 10.0),
                                     child: Text('Төлөв:', style: TextStyle(color: textColor, fontSize: 12),),
                                   ),),
-                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubGt[index1su].tolov, style: TextStyle(color: Colors.green, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubGt[index1su].tolov, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 20.0),
@@ -353,53 +354,53 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                           );
                         }
                     ),
-                    // SizedBox(height: 10),
-                    // erdes_baylag_mer_zuv.length <= 0 ? Container() : ListView.builder(
-                    //     shrinkWrap: true,
-                    //     physics: ScrollPhysics(),
-                    //     itemCount: erdes_baylag_mer_zuv[index].dsSubNoots == null ? 0 : erdes_baylag_mer_zuv[index].dsSubNoots.length,
-                    //     padding: EdgeInsets.all(0.0),
-                    //     itemBuilder: (BuildContext context, int index) {
-                    //       return                     Column(
-                    //         mainAxisAlignment: MainAxisAlignment.start,
-                    //         crossAxisAlignment: CrossAxisAlignment.start,
-                    //         children: <Widget>[
-                    //           Row(
-                    //             mainAxisAlignment: MainAxisAlignment.start,
-                    //             crossAxisAlignment: CrossAxisAlignment.start,
-                    //             children: <Widget>[
-                    //               Expanded(flex: 2, child: Text('Асуудлын дугаар:', style: TextStyle(color: textColor, fontSize: 12))),
-                    //               Expanded(flex: 4, child: Text("${erdes_baylag_mer_zuv[index].dsSubNoots[index].aDugaar}", style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                    //             ],
-                    //           ),
-                    //           SizedBox(height: 4),
-                    //           Row(
-                    //             mainAxisAlignment: MainAxisAlignment.start,
-                    //             crossAxisAlignment: CrossAxisAlignment.start,
-                    //             children: <Widget>[
-                    //               Expanded(flex: 2, child: Text('Төрөл:', style: TextStyle(color: textColor, fontSize: 12),),),
-                    //               Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubNoots[index].buteegdehuun, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                    //             ],
-                    //           ),
-                    //           SizedBox(height: 10),
-                    //           Text(erdes_baylag_mer_zuv[index].dsSubNoots[index].asuudal, style: TextStyle(color: textColor, fontSize: 12),),
-                    //           SizedBox(height: 10),
-                    //           Row(
-                    //             mainAxisAlignment: MainAxisAlignment.start,
-                    //             crossAxisAlignment: CrossAxisAlignment.start,
-                    //             children: <Widget>[
-                    //               Expanded(flex: 0, child: Padding(
-                    //                 padding: const EdgeInsets.only(right: 10.0),
-                    //                 child: Text('Төлөв:', style: TextStyle(color: textColor, fontSize: 12),),
-                    //               ),),
-                    //               Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubNoots[index].tolov, style: TextStyle(color: Colors.green, fontWeight: FontWeight.w600, fontSize: 12),)),
-                    //             ],
-                    //           ),
-                    //           SizedBox(height: 20.0),
-                    //         ],
-                    //       );
-                    //     }
-                    // ),
+                    SizedBox(height: 10),
+                    erdes_baylag_mer_zuv.length <= 0 ? Container() : ListView.builder(
+                        shrinkWrap: true,
+                        physics: ScrollPhysics(),
+                        itemCount: erdes_baylag_mer_zuv[index].dsSubNoots == null ? 0 : erdes_baylag_mer_zuv[index].dsSubNoots.length,
+                        padding: EdgeInsets.all(0.0),
+                        itemBuilder: (BuildContext context, int indexSub) {
+                          return                     Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 2, child: Text('Асуудлын дугаар:', style: TextStyle(color: textColor, fontSize: 12))),
+                                  Expanded(flex: 4, child: Text("${erdes_baylag_mer_zuv[index].dsSubNoots[indexSub].aDugaar}", style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 2, child: Text('Төрөл:', style: TextStyle(color: textColor, fontSize: 12),),),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubNoots[indexSub].buteegdehuun, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 10),
+                              Text(erdes_baylag_mer_zuv[index].dsSubNoots[indexSub].asuudal, style: TextStyle(color: textColor, fontSize: 12),),
+                              SizedBox(height: 10),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 0, child: Padding(
+                                    padding: const EdgeInsets.only(right: 10.0),
+                                    child: Text('Төлөв:', style: TextStyle(color: textColor, fontSize: 12),),
+                                  ),),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubNoots[indexSub].tolov, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 20.0),
+                            ],
+                          );
+                        }
+                    ),
                     SizedBox(height: 10),
                     erdes_baylag_mer_zuv.length <= 0 ? Container() : ListView.builder(
                         shrinkWrap: true,
@@ -439,7 +440,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                                     padding: const EdgeInsets.only(right: 10.0),
                                     child: Text('Төлөв:', style: TextStyle(color: textColor, fontSize: 12),),
                                   ),),
-                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubUhggsa[indexSub].uhggsaTolov, style: TextStyle(color: Colors.green, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(erdes_baylag_mer_zuv[index].dsSubUhggsa[indexSub].uhggsaTolov, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 20.0),

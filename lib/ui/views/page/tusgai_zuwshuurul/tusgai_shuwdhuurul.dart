@@ -1,7 +1,13 @@
+import 'package:catalog/graphql/config.dart';
 import 'package:catalog/ui/styles/_colors.dart';
+import 'package:catalog/utils/number.dart';
 import 'package:flutter/material.dart';
 import 'package:catalog/ui/components/sidebar.dart';
 import 'package:catalog/ui/components/header.dart';
+
+import 'package:catalog/graphql/queries/tzAndSongon.dart';
+import 'package:lambda/plugins/chart/lambda_chart.dart';
+
 
 class newTusgaiZuvshuurul extends StatefulWidget {
   @override
@@ -10,6 +16,26 @@ class newTusgaiZuvshuurul extends StatefulWidget {
 
 class _newTusgaiZuvshuurulState extends State<newTusgaiZuvshuurul> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
+  List<TzAndSongon$Query$AaTusgaiZovshoorol> datas = [];
+  bool loading = true;
+  @override
+  void initState() {
+    super.initState();
+    this.getData();
+  }
+
+  void getData() async {
+    setState(() {
+      loading = true;
+    });
+    final response = await client.execute(TzAndSongonQuery());
+    setState(() {
+      datas = response.data.aaTusgaiZovshoorol;
+      loading = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,11 +79,11 @@ class _newTusgaiZuvshuurulState extends State<newTusgaiZuvshuurul> {
                                children: [
                                  Text('НИЙТ:', style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.bold)),
                                  SizedBox(width: 4,),
-                                 Text('2020.03.06', style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500))
+                                 Text('', style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500))
                                ],
                              ),
                              SizedBox(height: 20,),
-                             Center(child: Text('2,644', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(53, 53, 137, 1), fontWeight: FontWeight.w600)))
+                             Center(child: Text(number(datas[0].tzToo), textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(53, 53, 137, 1), fontWeight: FontWeight.w600)))
                            ],
                          )
                        ),
@@ -77,7 +103,7 @@ class _newTusgaiZuvshuurulState extends State<newTusgaiZuvshuurul> {
 
                                  Text('Талбайн хэмжээ\n/мян.га/', textAlign: TextAlign.center, style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500)),
                                  SizedBox(height: 5,),
-                                 Text('6,25', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(53, 53, 137, 1), fontWeight: FontWeight.w600))
+                                 Text(number(datas[0].tHemjeeSay), textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(53, 53, 137, 1), fontWeight: FontWeight.w600))
                                ],
                              ),
                            )
@@ -89,7 +115,7 @@ class _newTusgaiZuvshuurulState extends State<newTusgaiZuvshuurul> {
 
                                Text('Нутаг дэвсгэрт\nэзлэх хувь', textAlign: TextAlign.center, style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500)),
                                SizedBox(height: 5,),
-                               Text('4%', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(53, 53, 137, 1), fontWeight: FontWeight.w600))
+                               Text('${datas[0].niitGazarHuvi}'+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(53, 53, 137, 1), fontWeight: FontWeight.w600))
                              ],
                            )
                        ),
@@ -115,13 +141,13 @@ class _newTusgaiZuvshuurulState extends State<newTusgaiZuvshuurul> {
                            children: [
                              Row(
                                children: [
-                                 Text('НИЙТ:', style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.bold)),
+                                 Text('Ашиглалт:'.toUpperCase(), style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.bold)),
                                  SizedBox(width: 4,),
-                                 Text('2020.03.06', style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500))
+                                 Text('', style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500))
                                ],
                              ),
                              SizedBox(height: 20,),
-                             Center(child: Text('2,644', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500)))
+                             Center(child: Text(number(datas[0].aTToo), textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500)))
                            ],
                          )
                      ),
@@ -141,7 +167,7 @@ class _newTusgaiZuvshuurulState extends State<newTusgaiZuvshuurul> {
 
                                Text('Талбайн хэмжээ\n/мян.га/', textAlign: TextAlign.center, style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500)),
                                SizedBox(height: 5,),
-                               Text('6,25', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500))
+                               Text(number(datas[0].aTZovshoorol), textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500))
                              ],
                            ),
                          )
@@ -153,7 +179,7 @@ class _newTusgaiZuvshuurulState extends State<newTusgaiZuvshuurul> {
 
                              Text('Нутаг дэвсгэрт\nэзлэх хувь', textAlign: TextAlign.center, style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500)),
                              SizedBox(height: 5,),
-                             Text('4%', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500))
+                             Text('${datas[0].ashiglatTzHuvi}'+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500))
                            ],
                          )
                      ),
@@ -179,13 +205,13 @@ class _newTusgaiZuvshuurulState extends State<newTusgaiZuvshuurul> {
                            children: [
                              Row(
                                children: [
-                                 Text('НИЙТ:', style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.bold)),
+                                 Text('Хайгуул:'.toUpperCase(), style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.bold)),
                                  SizedBox(width: 4,),
-                                 Text('2020.03.06', style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500))
+                                 Text('', style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500))
                                ],
                              ),
                              SizedBox(height: 20,),
-                             Center(child: Text('2,644', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500)))
+                             Center(child: Text(number(datas[0].htZovshoorol), textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500)))
                            ],
                          )
                      ),
@@ -205,7 +231,7 @@ class _newTusgaiZuvshuurulState extends State<newTusgaiZuvshuurul> {
 
                                Text('Талбайн хэмжээ\n/мян.га/', textAlign: TextAlign.center, style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500)),
                                SizedBox(height: 5,),
-                               Text('6,25', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500))
+                               Text(number(datas[0].haiguulTZ), textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500))
                              ],
                            ),
                          )
@@ -217,7 +243,7 @@ class _newTusgaiZuvshuurulState extends State<newTusgaiZuvshuurul> {
 
                              Text('Нутаг дэвсгэрт\nэзлэх хувь', textAlign: TextAlign.center, style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500)),
                              SizedBox(height: 5,),
-                             Text('4%', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500))
+                             Text('${datas[0].haiguulHuvi}'+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500))
                            ],
                          )
                      ),
@@ -231,11 +257,7 @@ class _newTusgaiZuvshuurulState extends State<newTusgaiZuvshuurul> {
                      crossAxisAlignment: CrossAxisAlignment.start,
                      children: [
                        Text('Тусгай зөвшөөрөл ', style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
-                       Container(
-                         margin: EdgeInsets.only(top: 10),
-                         color: Colors.grey[400],
-                         height: 300,
-                       )
+                       
                      ],
                    )
                ),

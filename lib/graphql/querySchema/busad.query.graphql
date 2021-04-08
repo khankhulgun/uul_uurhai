@@ -60,6 +60,7 @@ query e_b_mergejil_zovlol($page: Int!, $size: Int!) {
             jil_id
             zovlol
             ds_sub_bu {
+
                 asuudal
                 asuudal_d
                 b_torol
@@ -69,7 +70,7 @@ query e_b_mergejil_zovlol($page: Int!, $size: Int!) {
                 tolov_id
                 torol_id
             }
-            ds_sub_gt {
+            ds_sub_gt{
                 a_dugaar
                 asuudal
                 gt_torol
@@ -78,7 +79,7 @@ query e_b_mergejil_zovlol($page: Int!, $size: Int!) {
                 tolov
                 tolov_id
                 torol_id
-                }
+            }
             ds_sub_noots {
                 a_dugaar
                 asuudal
@@ -88,7 +89,7 @@ query e_b_mergejil_zovlol($page: Int!, $size: Int!) {
                 tolov
                 tolov_id
                 torol_id
-                }
+            }
             ds_sub_tezu {
                 a_dugaar
                 asuudal
@@ -98,7 +99,7 @@ query e_b_mergejil_zovlol($page: Int!, $size: Int!) {
                 table_id
                 tolov
                 tolov_id
-                }
+            }
             ds_sub_uhggsa {
                 a_dugaar
                 asuudal
@@ -108,7 +109,7 @@ query e_b_mergejil_zovlol($page: Int!, $size: Int!) {
                 torol
                 torol_id
                 uhggsa_tolov
-                }
+            }
         }
     }
 }
@@ -119,13 +120,31 @@ query ajilah_huch_medeelel($page: Int!, $size: Int!) {
         last_page
         ds_ajilah_huch_medeelel{
             aj_ahui_ner_id
-            b_torol
             chiglel
             huch_too
             id
             medeelel
             uls
             uls_id
+        }
+    }
+}
+
+
+query songon_shalagruulalt_delegrengui($page: Int!, $size: Int!) {
+    paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
+        total
+        last_page
+        aa_songon_shalagruulalt_delegrengui{
+            a_niislel
+            bosgo_une
+            id
+            object_id
+            ognoo
+            s_sh_code
+            sum_duureg
+            talbain_dugaar
+            talbain_hemjee
         }
     }
 }

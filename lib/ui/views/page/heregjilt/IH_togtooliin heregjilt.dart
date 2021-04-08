@@ -276,7 +276,7 @@ class _IH_togtooliin_heregjiltState extends State<IH_togtooliin_heregjilt> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Expanded(flex: 3, child: Text('Хэрэгжилтийн шат:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 4, child: Text(datas[index].dsSubHeregjiltUlsIhHural[index].shat, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(datas[index].dsSubHeregjiltUlsIhHural[index].shat, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 10.0),

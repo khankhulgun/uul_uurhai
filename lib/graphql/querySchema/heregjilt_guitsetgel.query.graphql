@@ -30,6 +30,7 @@ query mu_huuli_hegejilt($page: Int!, $size: Int!) {
         ds_mongol_uls_huuli_her{
             g_huvi
             id
+            m_huuli_id
             t_hugatsaa_id
             huuli
             t_hugatsaa

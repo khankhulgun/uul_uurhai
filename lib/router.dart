@@ -29,6 +29,7 @@ import './ui/views/page/busad/songon_shalgaruulalt.dart';
 import './ui/views/page/busad/erdes_baylag_mergejliin_zuvluh.dart';
 import './ui/views/page/busad/ajilah_hvchnii_medeelel.dart';
 import './ui/views/page/heregjilt/bodlogiin_bichig_barimt.dart';
+import './ui/views/page/heregjilt/MGL_huuli_heregjilt.dart';
 import './ui/views/page/heregjilt/ZG_togtoolii_heregjilt.dart';
 import './ui/views/page/heregjilt/IH_togtooliin heregjilt.dart';
 import './ui/views/page/heregjilt/ajiliin_heseg.dart';
@@ -73,6 +74,7 @@ class Router {
     '/ebmz': (context) => ErdesBaylagMergejliinZuvlul(),
     '/ajillahHvch': (context) => AjillahHvch(),
     '/bodlogo': (context) => BodlogiinBichigBarimt(),
+    '/mgl_huuli': (context) => mglHuuliHeregjilt(),
     '/zg': (context) => ZG_togtooliin_heregjilt(),
     '/ih': (context) => IH_togtooliin_heregjilt(),
     '/ajiliinHeseg': (context) => Ajiliin_heseg(),

@@ -1,3 +1,5 @@
+import 'package:catalog/graphql/config.dart';
+import 'package:catalog/utils/number.dart';
 import 'package:flutter/material.dart';
 import 'package:catalog/ui/components/header.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,6 +10,8 @@ import 'package:flutter/rendering.dart';
 import 'package:lambda/plugins/chart/lambda_chart.dart';
 
 import 'section/details.dart';
+import 'package:catalog/graphql/queries/tzAndSongon.dart';
+
 // import 'package:lambda/plugins/chart/lambda_chart_rest.dart';
 //
 import 'package:lambda/plugins/chart/models/filter.dart';
@@ -45,6 +49,18 @@ class _mainScreenState extends State<mainScreen> {
   @override
   void initState() {
     super.initState();
+    this.getData();
+  }
+  List<TzAndSongon$Query$AaTusgaiZovshoorol> datas = [];
+  void getData() async {
+    setState(() {
+      loading = true;
+    });
+    final response = await client.execute(TzAndSongonQuery());
+    setState(() {
+      datas = response.data.aaTusgaiZovshoorol;
+      loading = false;
+    });
   }
 
   final List<statistic> statistics = [
@@ -90,7 +106,7 @@ class _mainScreenState extends State<mainScreen> {
     Item(1, "assets/uuhvy_img/copper.png", "ЗЭС", "ЗЭСИЙН БАЯЖМАЛ"),
     Item(2, "assets/uuhvy_img/new_coal.png", "НҮҮРС", "НҮҮРС"),
     Item(3, "assets/uuhvy_img/iron.png", "ТӨМРИЙН ХҮДЭР", "ТӨМРИЙН ХҮДЭР"),
-    Item(3, "assets/uuhvy_img/petroleum.png", "ГАЗРЫН ТОС", "ГАЗРЫН ТОС"),
+    Item(4, "assets/uuhvy_img/petroleum.png", "ГАЗРЫН ТОС", "ГАЗРЫН ТОС"),
   ];
 
   @override
@@ -404,17 +420,17 @@ class _mainScreenState extends State<mainScreen> {
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
-                                          Text('2644', style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
-                                          SizedBox(height: 4),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            crossAxisAlignment: CrossAxisAlignment.center,
-                                            children: [
-                                              Expanded(flex: 3, child: Text('+22', textAlign: TextAlign.right, style: TextStyle(fontSize: 10, color: Colors.lightGreenAccent, fontWeight: FontWeight.w500))),
-                                              SizedBox(width: 4),
-                                              Expanded(flex: 6, child: Text('Сүүлийн сард', style: TextStyle(fontSize: 8, color: Colors.white, fontWeight: FontWeight.w400))),
-                                            ],
-                                          ),
+                                          Text(number(datas[0].tzToo), style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
+                                          SizedBox(height: 12),
+                                          // Row(
+                                          //   mainAxisAlignment: MainAxisAlignment.center,
+                                          //   crossAxisAlignment: CrossAxisAlignment.center,
+                                          //   children: [
+                                          //     Expanded(flex: 3, child: Text('+22', textAlign: TextAlign.right, style: TextStyle(fontSize: 10, color: Colors.lightGreenAccent, fontWeight: FontWeight.w500))),
+                                          //     SizedBox(width: 4),
+                                          //     Expanded(flex: 6, child: Text('Сүүлийн сард', style: TextStyle(fontSize: 8, color: Colors.white, fontWeight: FontWeight.w400))),
+                                          //   ],
+                                          // ),
                                           SizedBox(height: 2),
                                           Text('Тусгай зөвшөөрөл', style: TextStyle(fontSize: 10, color: Colors.white, fontWeight: FontWeight.w400)),
                                         ],
@@ -448,7 +464,7 @@ class _mainScreenState extends State<mainScreen> {
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
-                                          Text('152', style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
+                                          Text('${datas[0].tHemjeeSay}', style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
                                           SizedBox(height: 4),
                                           Text('Талбайн хэмжээ /га/', style: TextStyle(fontSize: 8, color: Colors.white, fontWeight: FontWeight.w400)),
                                           SizedBox(height: 2),
@@ -484,7 +500,7 @@ class _mainScreenState extends State<mainScreen> {
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
-                                          Text('6.4%', style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
+                                          Text('${datas[0].niitGazarHuvi}%', style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
                                           SizedBox(height: 4),
                                           Text('МУ-ын нутаг дэвсгэрт', style: TextStyle(fontSize: 8, color: Colors.white, fontWeight: FontWeight.w400)),
                                           SizedBox(height: 2),

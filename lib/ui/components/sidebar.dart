@@ -570,11 +570,11 @@ class _SidebarScreenState extends State<SidebarScreen> {
                                                   child: FlatButton(
                                                     padding: EdgeInsets.all(0.0),
                                                     onPressed: () {
-                                                      Navigator.pushNamed(context, '/bodlogo');
+                                                      Navigator.pushNamed(context, '/mgl_huuli');
                                                     },
                                                     child: Row(
                                                       children: <Widget>[
-                                                        Text('- Бодлогын баримт бичиг',
+                                                        Text('- Монгол улсын хууль хэрэгжилт',
                                                             style: TextStyle(
                                                                 fontSize: 14,
                                                                 color: Color(0xff363636),
@@ -611,6 +611,24 @@ class _SidebarScreenState extends State<SidebarScreen> {
                                                     child: Row(
                                                       children: <Widget>[
                                                         Text('- Засгийн газрын тогтоолын хэрэгжилт',
+                                                            style: TextStyle(
+                                                                fontSize: 14,
+                                                                color: Color(0xff363636),
+                                                                fontWeight: FontWeight.w500))
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  height: 32,
+                                                  child: FlatButton(
+                                                    padding: EdgeInsets.all(0.0),
+                                                    onPressed: () {
+                                                      Navigator.pushNamed(context, '/bodlogo');
+                                                    },
+                                                    child: Row(
+                                                      children: <Widget>[
+                                                        Text('- Бодлогын баримт бичиг',
                                                             style: TextStyle(
                                                                 fontSize: 14,
                                                                 color: Color(0xff363636),
@@ -1056,7 +1074,7 @@ class _SidebarScreenState extends State<SidebarScreen> {
                               color: borderColor),
                         )),
                     Container(
-                        margin: EdgeInsets.only(bottom: 25),
+                        margin: EdgeInsets.only(bottom: 10),
                         child: Text(
                           '© 2021. УУХҮЯ',
                           style: TextStyle(

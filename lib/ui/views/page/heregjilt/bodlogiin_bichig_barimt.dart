@@ -308,7 +308,7 @@ class _BodlogiinBichigBarimtState extends State<BodlogiinBichigBarimt> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     Expanded(flex: 3, child: Text('Хэрэгжилтийн шат:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                    Expanded(flex: 4, child: Text(b_datas[index].dsSubHeregjiltBodlogBarimtBichig[indexSub].shat, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                    Expanded(flex: 4, child: Text(b_datas[index].dsSubHeregjiltBodlogBarimtBichig[indexSub].shat, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                   ],
                                 ),
                                 SizedBox(height: 10.0),
