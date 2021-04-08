@@ -53,11 +53,12 @@ query e_b_mergejil_zovlol($page: Int!, $size: Int!) {
     paginate(sorts: [{ column: "id", order: desc }], page: $page, size: $size) {
         total
         last_page
-        aa_e_b_mergejil_zovlol{
+        ds_e_b_mergejil_zovlol{
             ebmz_salbar_id
             hh_asuudal_too
             id
             jil_id
+            zovlol
             ds_sub_bu {
                 asuudal
                 asuudal_d

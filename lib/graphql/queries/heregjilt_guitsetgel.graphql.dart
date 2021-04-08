@@ -121,13 +121,13 @@ class BodlogoBb$Query with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
-class MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt$DsSubHeregjilt
+class MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer$DsSubHeregjilt
     with EquatableMixin {
-  MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt$DsSubHeregjilt();
+  MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer$DsSubHeregjilt();
 
-  factory MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt$DsSubHeregjilt.fromJson(
+  factory MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer$DsSubHeregjilt.fromJson(
           Map<String, dynamic> json) =>
-      _$MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt$DsSubHeregjiltFromJson(
+      _$MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer$DsSubHeregjiltFromJson(
           json);
 
   @JsonKey(name: 'heregjilt_id')
@@ -153,17 +153,17 @@ class MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt$DsSubHeregjilt
   List<Object> get props =>
       [heregjiltId, id, ognoo, salbar, salbarId, shat, tableId, tailan];
   Map<String, dynamic> toJson() =>
-      _$MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt$DsSubHeregjiltToJson(
+      _$MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer$DsSubHeregjiltToJson(
           this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt with EquatableMixin {
-  MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt();
+class MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer with EquatableMixin {
+  MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer();
 
-  factory MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt.fromJson(
+  factory MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer.fromJson(
           Map<String, dynamic> json) =>
-      _$MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejiltFromJson(json);
+      _$MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHerFromJson(json);
 
   @JsonKey(name: 'g_huvi')
   double gHuvi;
@@ -171,16 +171,22 @@ class MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt with EquatableMixin {
   int id;
 
   @JsonKey(name: 't_hugatsaa_id')
-  String tHugatsaaId;
+  int tHugatsaaId;
+
+  String huuli;
+
+  @JsonKey(name: 't_hugatsaa')
+  String tHugatsaa;
 
   @JsonKey(name: 'ds_sub_heregjilt')
-  List<MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt$DsSubHeregjilt>
+  List<MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer$DsSubHeregjilt>
       dsSubHeregjilt;
 
   @override
-  List<Object> get props => [gHuvi, id, tHugatsaaId, dsSubHeregjilt];
+  List<Object> get props =>
+      [gHuvi, id, tHugatsaaId, huuli, tHugatsaa, dsSubHeregjilt];
   Map<String, dynamic> toJson() =>
-      _$MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejiltToJson(this);
+      _$MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHerToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -195,11 +201,11 @@ class MuHuuliHegejilt$Query$Paginate with EquatableMixin {
   @JsonKey(name: 'last_page')
   int lastPage;
 
-  @JsonKey(name: 'aa_mu_huuli_hegejilt')
-  List<MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt> aaMuHuuliHegejilt;
+  @JsonKey(name: 'ds_mongol_uls_huuli_her')
+  List<MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer> dsMongolUlsHuuliHer;
 
   @override
-  List<Object> get props => [total, lastPage, aaMuHuuliHegejilt];
+  List<Object> get props => [total, lastPage, dsMongolUlsHuuliHer];
   Map<String, dynamic> toJson() => _$MuHuuliHegejilt$Query$PaginateToJson(this);
 }
 
@@ -918,7 +924,7 @@ class MuHuuliHegejiltQuery
                     directives: [],
                     selectionSet: null),
                 FieldNode(
-                    name: NameNode(value: 'aa_mu_huuli_hegejilt'),
+                    name: NameNode(value: 'ds_mongol_uls_huuli_her'),
                     alias: null,
                     arguments: [],
                     directives: [],
@@ -937,6 +943,18 @@ class MuHuuliHegejiltQuery
                           selectionSet: null),
                       FieldNode(
                           name: NameNode(value: 't_hugatsaa_id'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 'huuli'),
+                          alias: null,
+                          arguments: [],
+                          directives: [],
+                          selectionSet: null),
+                      FieldNode(
+                          name: NameNode(value: 't_hugatsaa'),
                           alias: null,
                           arguments: [],
                           directives: [],

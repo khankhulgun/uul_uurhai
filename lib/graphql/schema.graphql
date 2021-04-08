@@ -1,20 +1,8 @@
-type AaEBMergejilZovlol {
-  ebmz_salbar_id: Int
-  hh_asuudal_too: Int
-  id: ID!
-  jil_id: Int
-  ds_sub_bu: [DsSubBu!]
-  ds_sub_gt: [DsSubGt!]
-  ds_sub_noots: [DsSubNoots!]
-  ds_sub_tezu: [DsSubTezu!]
-  ds_sub_uhggsa: [DsSubUhggsa!]
-}
-
 type AaMuHuuliHegejilt {
   g_huvi: Float
   id: ID!
   m_huuli_id: Int
-  t_hugatsaa_id: String
+  t_hugatsaa_id: Int
   ds_sub_heregjilt: [DsSubHeregjilt!]
 }
 
@@ -104,7 +92,6 @@ type deleted {
 
 type DsAjilahHuchMedeelel {
   aj_ahui_ner_id: String
-  b_torol: String
   chiglel: String
   huch_too: Int
   id: Int!
@@ -159,6 +146,19 @@ type DsDuremJuram {
   id: Int!
   ognoo: Time
   tuhai: String
+}
+
+type DsEBMergejilZovlol {
+  ebmz_salbar_id: Int
+  hh_asuudal_too: Int
+  id: Int!
+  jil_id: Int
+  zovlol: String
+  ds_sub_bu: [DsSubBu!]
+  ds_sub_gt: [DsSubGt!]
+  ds_sub_noots: [DsSubNoots!]
+  ds_sub_tezu: [DsSubTezu!]
+  ds_sub_uhggsa: [DsSubUhggsa!]
 }
 
 type DsExportMedee {
@@ -244,7 +244,7 @@ type DsMongolUlsHuuliHer {
   id: Int!
   m_huuli_id: Int
   t_hugatsaa: String
-  t_hugatsaa_id: String
+  t_hugatsaa_id: Int
   ds_sub_heregjilt: [DsSubHeregjilt!]
 }
 
@@ -459,6 +459,7 @@ type DsTosovZarlaga {
 }
 
 type DsTosviinOrlogo {
+  b_t_tosov_zoruu: Float
   b_tosov: Float
   id: Int!
   jileer: Float
@@ -469,6 +470,7 @@ type DsTosviinOrlogo {
   t_uy_tolovlogoo: Float
   tailan_uy_guitsetgel: Float
   tailant_uy: Float
+  zoruu: Float
 }
 
 type DsUihTogtoolHeregjilt {
@@ -571,7 +573,7 @@ type paginate {
   sub_songon_shalgaruulalt: [SubSongonShalgaruulalt!]
   aa_songon_shalgaruulalt: [AaSongonShalgaruulalt!]
   aa_songon_shalagruulalt_delegrengui: [AaSongonShalagruulaltDelegrengui!]
-  aa_e_b_mergejil_zovlol: [AaEBMergejilZovlol!]
+  ds_e_b_mergejil_zovlol: [DsEBMergejilZovlol!]
   ds_sub_uhggsa: [DsSubUhggsa!]
   ds_sub_tezu: [DsSubTezu!]
   ds_sub_noots: [DsSubNoots!]
@@ -789,14 +791,14 @@ type Query {
     limit: Int
     offset: Int
   ): [AaSongonShalagruulaltDelegrengui!]
-  aa_e_b_mergejil_zovlol(
+  ds_e_b_mergejil_zovlol(
     sorts: [sort]
     filters: [filter]
     subSorts: [subSort]
     subFilters: [subFilter]
     limit: Int
     offset: Int
-  ): [AaEBMergejilZovlol!]
+  ): [DsEBMergejilZovlol!]
   ds_sub_uhggsa(
     sorts: [sort]
     filters: [filter]
