@@ -1,20 +1,8 @@
-type AaEBMergejilZovlol {
-  ebmz_salbar_id: Int
-  hh_asuudal_too: Int
-  id: ID!
-  jil_id: Int
-  ds_sub_bu: [DsSubBu!]
-  ds_sub_gt: [DsSubGt!]
-  ds_sub_noots: [DsSubNoots!]
-  ds_sub_tezu: [DsSubTezu!]
-  ds_sub_uhggsa: [DsSubUhggsa!]
-}
-
 type AaMuHuuliHegejilt {
   g_huvi: Float
   id: ID!
   m_huuli_id: Int
-  t_hugatsaa_id: String
+  t_hugatsaa_id: Int
   ds_sub_heregjilt: [DsSubHeregjilt!]
 }
 
@@ -160,6 +148,19 @@ type DsDuremJuram {
   tuhai: String
 }
 
+type DsEBMergejilZovlol {
+  ebmz_salbar_id: Int
+  hh_asuudal_too: Int
+  id: Int!
+  jil_id: Int
+  zovlol: String
+  ds_sub_bu: [DsSubBu!]
+  ds_sub_gt: [DsSubGt!]
+  ds_sub_noots: [DsSubNoots!]
+  ds_sub_tezu: [DsSubTezu!]
+  ds_sub_uhggsa: [DsSubUhggsa!]
+}
+
 type DsExportMedee {
   a_heregsel: String
   b_id: Int
@@ -243,7 +244,7 @@ type DsMongolUlsHuuliHer {
   id: Int!
   m_huuli_id: Int
   t_hugatsaa: String
-  t_hugatsaa_id: String
+  t_hugatsaa_id: Int
   ds_sub_heregjilt: [DsSubHeregjilt!]
 }
 
@@ -572,7 +573,7 @@ type paginate {
   sub_songon_shalgaruulalt: [SubSongonShalgaruulalt!]
   aa_songon_shalgaruulalt: [AaSongonShalgaruulalt!]
   aa_songon_shalagruulalt_delegrengui: [AaSongonShalagruulaltDelegrengui!]
-  aa_e_b_mergejil_zovlol: [AaEBMergejilZovlol!]
+  ds_e_b_mergejil_zovlol: [DsEBMergejilZovlol!]
   ds_sub_uhggsa: [DsSubUhggsa!]
   ds_sub_tezu: [DsSubTezu!]
   ds_sub_noots: [DsSubNoots!]
@@ -790,14 +791,14 @@ type Query {
     limit: Int
     offset: Int
   ): [AaSongonShalagruulaltDelegrengui!]
-  aa_e_b_mergejil_zovlol(
+  ds_e_b_mergejil_zovlol(
     sorts: [sort]
     filters: [filter]
     subSorts: [subSort]
     subFilters: [subFilter]
     limit: Int
     offset: Int
-  ): [AaEBMergejilZovlol!]
+  ): [DsEBMergejilZovlol!]
   ds_sub_uhggsa(
     sorts: [sort]
     filters: [filter]

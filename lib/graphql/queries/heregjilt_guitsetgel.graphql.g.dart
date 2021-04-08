@@ -102,10 +102,10 @@ Map<String, dynamic> _$BodlogoBb$QueryToJson(BodlogoBb$Query instance) =>
       'paginate': instance.paginate?.toJson(),
     };
 
-MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt$DsSubHeregjilt
-    _$MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt$DsSubHeregjiltFromJson(
+MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer$DsSubHeregjilt
+    _$MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer$DsSubHeregjiltFromJson(
         Map<String, dynamic> json) {
-  return MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt$DsSubHeregjilt()
+  return MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer$DsSubHeregjilt()
     ..heregjiltId = json['heregjilt_id'] as int
     ..id = json['id'] as int
     ..ognoo = json['ognoo'] as String
@@ -117,8 +117,8 @@ MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt$DsSubHeregjilt
 }
 
 Map<String, dynamic>
-    _$MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt$DsSubHeregjiltToJson(
-            MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt$DsSubHeregjilt
+    _$MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer$DsSubHeregjiltToJson(
+            MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer$DsSubHeregjilt
                 instance) =>
         <String, dynamic>{
           'heregjilt_id': instance.heregjiltId,
@@ -131,29 +131,33 @@ Map<String, dynamic>
           'tailan': instance.tailan,
         };
 
-MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt
-    _$MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejiltFromJson(
+MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer
+    _$MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHerFromJson(
         Map<String, dynamic> json) {
-  return MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt()
+  return MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer()
     ..gHuvi = (json['g_huvi'] as num)?.toDouble()
     ..id = json['id'] as int
     ..mHuuliId = json['m_huuli_id'] as int
-    ..tHugatsaaId = json['t_hugatsaa_id'] as String
+    ..tHugatsaaId = json['t_hugatsaa_id'] as int
+    ..huuli = json['huuli'] as String
+    ..tHugatsaa = json['t_hugatsaa'] as String
     ..dsSubHeregjilt = (json['ds_sub_heregjilt'] as List)
         ?.map((e) => e == null
             ? null
-            : MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt$DsSubHeregjilt
+            : MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer$DsSubHeregjilt
                 .fromJson(e as Map<String, dynamic>))
         ?.toList();
 }
 
-Map<String, dynamic> _$MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejiltToJson(
-        MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt instance) =>
+Map<String, dynamic> _$MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHerToJson(
+        MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer instance) =>
     <String, dynamic>{
       'g_huvi': instance.gHuvi,
       'id': instance.id,
       'm_huuli_id': instance.mHuuliId,
       't_hugatsaa_id': instance.tHugatsaaId,
+      'huuli': instance.huuli,
+      't_hugatsaa': instance.tHugatsaa,
       'ds_sub_heregjilt':
           instance.dsSubHeregjilt?.map((e) => e?.toJson())?.toList(),
     };
@@ -163,10 +167,10 @@ MuHuuliHegejilt$Query$Paginate _$MuHuuliHegejilt$Query$PaginateFromJson(
   return MuHuuliHegejilt$Query$Paginate()
     ..total = json['total'] as int
     ..lastPage = json['last_page'] as int
-    ..aaMuHuuliHegejilt = (json['aa_mu_huuli_hegejilt'] as List)
+    ..dsMongolUlsHuuliHer = (json['ds_mongol_uls_huuli_her'] as List)
         ?.map((e) => e == null
             ? null
-            : MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt.fromJson(
+            : MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer.fromJson(
                 e as Map<String, dynamic>))
         ?.toList();
 }
@@ -176,8 +180,8 @@ Map<String, dynamic> _$MuHuuliHegejilt$Query$PaginateToJson(
     <String, dynamic>{
       'total': instance.total,
       'last_page': instance.lastPage,
-      'aa_mu_huuli_hegejilt':
-          instance.aaMuHuuliHegejilt?.map((e) => e?.toJson())?.toList(),
+      'ds_mongol_uls_huuli_her':
+          instance.dsMongolUlsHuuliHer?.map((e) => e?.toJson())?.toList(),
     };
 
 MuHuuliHegejilt$Query _$MuHuuliHegejilt$QueryFromJson(
