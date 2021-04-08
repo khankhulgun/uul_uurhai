@@ -8,7 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../components/sidebar.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lambda/plugins/chart/lambda_chart.dart';
-
+import 'package:lambda/plugins/data_form/loader.dart';
 import 'section/details.dart';
 import 'package:catalog/graphql/queries/tzAndSongon.dart';
 
@@ -131,85 +131,222 @@ class _mainScreenState extends State<mainScreen> {
 //        backgroundColor: mainColor,
 //      ),
 
-        body: SingleChildScrollView(
+        body: Container(
+          height: double.infinity,
+          child:  loading ? Loader() : SingleChildScrollView(
+              child: Container(
+                  padding: EdgeInsets.only(right: 5, top: 0, left: 5, bottom: 10),
+                  child: Column(
+                    children: [
+                      // //18.4 Export gazriin tos baiguullaga
+                      // LambdaChart(schemaID: '223', theme: theme, filters: filtersExportGazarWithDate),
+                      // //18.3 Export gazriin tos boomt
+                      // LambdaChartRest(title: "Газрын тос боомтоор",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportGazriinTos, chartType: "ColumnChart"),
+                      // //18.2 Olbrologch baiguullaga
+                      // LambdaChart(schemaID: '227', theme: theme, filters: filtersOlborloltGazrinTos, hideTitle:true),
+                      // // // 18.1 Olborlolor gazriin tos
+                      // LambdaChart(schemaID: '226', theme: theme, filters: filtersOlborloltGazrinTos),
+                      // //17.2 Нүүрсний экспорт боомтоор ALL
+                      // LambdaChart(schemaID: '225', theme: theme, filters: filtersBoomNuurs, hideTitle:true),
+                      // //17.1 Нүүрсний экспорт боомтоор
+                      // LambdaChartRest(title: "Нүүрсний экспорт боомтоор",  APIurl: "/api/nuursBoomt", theme: theme, filters: filters, chartType: "ColumnChart"),
+                      // // 16.1Нүүрсний олборлолт
+                      // LambdaChartRest(title: "Нүүрсний олборлолт",  APIurl: "/api/olborloltYear", theme: theme, colors: colorsExportNuurs, filters: filtersOlborloltNuurs, chartType: "ColumnChart"),
+                      // // 16.2Нүүрсний экспорт
+                      // LambdaChartRest(title: "Нүүрсний экспорт",  APIurl: "/api/exportYear", theme: theme, colors: colorsExportZes, filters: filtersExportNuurs, chartType: "ColumnChart"),
+                      // // // 15.2 Olborlolor tumur
+                      // LambdaChartRest(title: "Төмрийн хүдэр, баяжмалын олборлолт",  APIurl: "/api/olborloltYear", theme: theme, colors: colorsExportTumur, filters: filtersOlborloltTumur, chartType: "ColumnChart"),
+                      // // // 15 Olborlolor tumur
+                      // LambdaChart(schemaID: '224', theme: theme, filters: filtersOlborloltTumur),
+                      // // 14Export tumur
+                      // LambdaChart(schemaID: '223', theme: theme, filters: filtersExportTumurWithDate),
+                      // // 13 Olborlolor zes
+                      // LambdaChart(schemaID: '224', theme: theme, filters: filtersExportZesWithDate),
+                      // LambdaChartRest(title: "Зэсийн баяжмалын олборлолт",  APIurl: "/api/olborloltYear", theme: theme, colors: colorsExportZes, filters: filtersOlborlolZes, chartType: "ColumnChart"),
+                      // //12.2 Export zes
+                      // LambdaChart(schemaID: '223', theme: theme, filters: filtersExportZesWithDate),
+                      // //// 11.1 Эрдэс бүтэгдэхүүний үнэ
+                      // LambdaChart(schemaID: '222', theme: theme),
+                      // //// 11.2 Эрдэс бүтэгдэхүүний үнэ Жилээр
+                      // LambdaChartRest(title: "Эрдэс бүтэгдэхүүний үнэ Жилээр",  APIurl: "/api/mineralPrice", theme: theme, colors: colorsAltai, filters: filtersErdesUneAlt, chartType: "ColumnChart"),
+                      // //// 10 "МБ худалдан авсан үнэт метал
+                      // LambdaChartRest(title: "МБ худалдан авсан үнэт метал",  APIurl: "/api/mBankBuy", theme: theme, colors: colorsAltai, filters: filtersAlt, chartType: "ColumnChart"),
+                      // //// 9.2 Export Tumur Year
+                      // LambdaChartRest(title: "ТӨМРИЙН ХҮДЭР", colors: colorsExportTumur, APIurl: "/api/exportYear", theme: theme, filters: filtersExportTumur, chartType: "ColumnChart"),
+                      // //// 9.2 Export Zes Year
+                      // LambdaChartRest(title: "ЗЭСИЙН БАЯЖМАЛ", colors: colorsExportZes, APIurl: "/api/exportYear", theme: theme, filters: filtersExportZes, chartType: "ColumnChart"),
+                      // //// 9.1 Export Nuur YEar
+                      // LambdaChartRest(title: "НҮҮРС", colors: colorsExportNuurs, APIurl: "/api/exportYear", theme: theme, filters: filtersExportNuurs, chartType: "ColumnChart"),
+                      // //// 8 Export Tumur Boomt
+                      // LambdaChartRest(title: "ТӨМРИЙН ХҮДЭР БООМТ",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportZesTumur, chartType: "ColumnChart"),
+                      // //// 7 Export Zes Boomt
+                      // LambdaChartRest(title: "ЗЭСИЙН БАЯЖМАЛ БООМТ",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportZesBoomt, chartType: "ColumnChart"),
+                      // //// 6 Export Nuurs Boomt
+                      // LambdaChartRest(title: "НҮҮРС БООМТ",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportNuursBoomt, chartType: "ColumnChart"),
+                      // // 5 Export Tumur by Track
+                      // LambdaChart(schemaID: '220', theme: theme, filters: filters),
+                      // // 4 Export Zes by Track
+                      // LambdaChart(schemaID: '219', theme: theme, filters: filters),
+                      // // 3 Export Nuurs by Track
+                      // LambdaChart(schemaID: '218', theme: theme, filters: filters),
+                      // //2 Export BOOMT
+                      // LambdaChart(schemaID: '214', theme: theme, filters: filters),
+                      // // 1 Export Medee
+                      // LambdaChart(schemaID: '216', theme: theme, filters: filters),
 
-            child: Container(
-                padding: EdgeInsets.only(right: 5, top: 0, left: 5, bottom: 10),
-                child: Column(
-                  children: [
-                    // //18.4 Export gazriin tos baiguullaga
-                    // LambdaChart(schemaID: '223', theme: theme, filters: filtersExportGazarWithDate),
-                    // //18.3 Export gazriin tos boomt
-                    // LambdaChartRest(title: "Газрын тос боомтоор",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportGazriinTos, chartType: "ColumnChart"),
-                    // //18.2 Olbrologch baiguullaga
-                    // LambdaChart(schemaID: '227', theme: theme, filters: filtersOlborloltGazrinTos, hideTitle:true),
-                    // // // 18.1 Olborlolor gazriin tos
-                    // LambdaChart(schemaID: '226', theme: theme, filters: filtersOlborloltGazrinTos),
-                    // //17.2 Нүүрсний экспорт боомтоор ALL
-                    // LambdaChart(schemaID: '225', theme: theme, filters: filtersBoomNuurs, hideTitle:true),
-                    // //17.1 Нүүрсний экспорт боомтоор
-                    // LambdaChartRest(title: "Нүүрсний экспорт боомтоор",  APIurl: "/api/nuursBoomt", theme: theme, filters: filters, chartType: "ColumnChart"),
-                    // // 16.1Нүүрсний олборлолт
-                    // LambdaChartRest(title: "Нүүрсний олборлолт",  APIurl: "/api/olborloltYear", theme: theme, colors: colorsExportNuurs, filters: filtersOlborloltNuurs, chartType: "ColumnChart"),
-                    // // 16.2Нүүрсний экспорт
-                    // LambdaChartRest(title: "Нүүрсний экспорт",  APIurl: "/api/exportYear", theme: theme, colors: colorsExportZes, filters: filtersExportNuurs, chartType: "ColumnChart"),
-                    // // // 15.2 Olborlolor tumur
-                    // LambdaChartRest(title: "Төмрийн хүдэр, баяжмалын олборлолт",  APIurl: "/api/olborloltYear", theme: theme, colors: colorsExportTumur, filters: filtersOlborloltTumur, chartType: "ColumnChart"),
-                    // // // 15 Olborlolor tumur
-                    // LambdaChart(schemaID: '224', theme: theme, filters: filtersOlborloltTumur),
-                    // // 14Export tumur
-                    // LambdaChart(schemaID: '223', theme: theme, filters: filtersExportTumurWithDate),
-                    // // 13 Olborlolor zes
-                    // LambdaChart(schemaID: '224', theme: theme, filters: filtersExportZesWithDate),
-                    // LambdaChartRest(title: "Зэсийн баяжмалын олборлолт",  APIurl: "/api/olborloltYear", theme: theme, colors: colorsExportZes, filters: filtersOlborlolZes, chartType: "ColumnChart"),
-                    // //12.2 Export zes
-                    // LambdaChart(schemaID: '223', theme: theme, filters: filtersExportZesWithDate),
-                    // //// 11.1 Эрдэс бүтэгдэхүүний үнэ
-                    // LambdaChart(schemaID: '222', theme: theme),
-                    // //// 11.2 Эрдэс бүтэгдэхүүний үнэ Жилээр
-                    // LambdaChartRest(title: "Эрдэс бүтэгдэхүүний үнэ Жилээр",  APIurl: "/api/mineralPrice", theme: theme, colors: colorsAltai, filters: filtersErdesUneAlt, chartType: "ColumnChart"),
-                    // //// 10 "МБ худалдан авсан үнэт метал
-                    // LambdaChartRest(title: "МБ худалдан авсан үнэт метал",  APIurl: "/api/mBankBuy", theme: theme, colors: colorsAltai, filters: filtersAlt, chartType: "ColumnChart"),
-                    // //// 9.2 Export Tumur Year
-                    // LambdaChartRest(title: "ТӨМРИЙН ХҮДЭР", colors: colorsExportTumur, APIurl: "/api/exportYear", theme: theme, filters: filtersExportTumur, chartType: "ColumnChart"),
-                    // //// 9.2 Export Zes Year
-                    // LambdaChartRest(title: "ЗЭСИЙН БАЯЖМАЛ", colors: colorsExportZes, APIurl: "/api/exportYear", theme: theme, filters: filtersExportZes, chartType: "ColumnChart"),
-                    // //// 9.1 Export Nuur YEar
-                    // LambdaChartRest(title: "НҮҮРС", colors: colorsExportNuurs, APIurl: "/api/exportYear", theme: theme, filters: filtersExportNuurs, chartType: "ColumnChart"),
-                    // //// 8 Export Tumur Boomt
-                    // LambdaChartRest(title: "ТӨМРИЙН ХҮДЭР БООМТ",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportZesTumur, chartType: "ColumnChart"),
-                    // //// 7 Export Zes Boomt
-                    // LambdaChartRest(title: "ЗЭСИЙН БАЯЖМАЛ БООМТ",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportZesBoomt, chartType: "ColumnChart"),
-                    // //// 6 Export Nuurs Boomt
-                    // LambdaChartRest(title: "НҮҮРС БООМТ",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportNuursBoomt, chartType: "ColumnChart"),
-                    // // 5 Export Tumur by Track
-                    // LambdaChart(schemaID: '220', theme: theme, filters: filters),
-                    // // 4 Export Zes by Track
-                    // LambdaChart(schemaID: '219', theme: theme, filters: filters),
-                    // // 3 Export Nuurs by Track
-                    // LambdaChart(schemaID: '218', theme: theme, filters: filters),
-                    // //2 Export BOOMT
-                    // LambdaChart(schemaID: '214', theme: theme, filters: filters),
-                    // // 1 Export Medee
-                    // LambdaChart(schemaID: '216', theme: theme, filters: filters),
-
-                    // Экспорт
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      margin: EdgeInsets.symmetric(vertical: 10),
-                      child: Column(
+                      // Экспорт
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        margin: EdgeInsets.symmetric(vertical: 10),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Экспорт', style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
+                            SizedBox(height: 10,),
+                            Row(
+                              children: [
+                                Expanded(
+                                  flex: 4,
+                                  child: Container(
+                                    height: 100,
+                                    //padding: EdgeInsets.all(20.0),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.3),
+                                          blurRadius: 5.0,
+                                          spreadRadius: .3,
+                                          offset: Offset(3.0, 3.0),// changes position of shadow
+                                        ),
+                                      ],
+                                    ),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Navigator.pushNamed(context, '/export_news');
+                                      },
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            "assets/uuhvy_img/medee.png",
+                                            fit: BoxFit.cover,
+                                            width: 30,
+                                          ),
+                                          SizedBox(height: 10),
+                                          Text('Мэдээ', style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w400)
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(width: 10),
+                                Expanded(
+                                    flex: 4,
+                                    child: Container(
+                                      height: 100,
+                                      //padding: EdgeInsets.all(20.0),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.3),
+                                            blurRadius: 5.0,
+                                            spreadRadius: .3,
+                                            offset: Offset(3.0, 3.0),// changes position of shadow
+                                          ),
+                                        ],
+                                      ),
+                                      child: InkWell(
+                                        onTap: () {
+                                          Navigator.pushNamed(context, '/boomt');
+                                        },
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            Image.asset(
+                                              "assets/uuhvy_img/boomt.png",
+                                              fit: BoxFit.cover,
+                                              width: 30,
+                                            ),
+                                            SizedBox(height: 10),
+                                            Text('Боомтоор', style: TextStyle(fontSize: 12,  color: textColor, fontWeight: FontWeight.w400)
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    )
+                                ),
+                                SizedBox(width: 10),
+                                Expanded(
+                                    flex: 4,
+                                    child: Container(
+                                      height: 100,
+                                      //padding: EdgeInsets.all(20.0),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.3),
+                                            blurRadius: 5.0,
+                                            spreadRadius: .3,
+                                            offset: Offset(3.0, 3.0),// changes position of shadow
+                                          ),
+                                        ],
+                                      ),
+                                      child: InkWell(
+                                        onTap: () {
+                                          Navigator.pushNamed(context, '/jileer');
+                                        },
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            Image.asset(
+                                              "assets/uuhvy_img/jil.png",
+                                              fit: BoxFit.cover,
+                                              width: 30,
+                                            ),
+                                            SizedBox(height: 10),
+                                            Text('Жилээр', style: TextStyle(fontSize: 12,  color: textColor, fontWeight: FontWeight.w400)
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    )
+                                ),
+                              ],
+                            ),
+                          ],
+                        )
+                      ),
+                      // Эрдэс бүтээгдэхүүний төрлөөр
+                      Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Экспорт', style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
-                          SizedBox(height: 10,),
-                          Row(
-                            children: [
-                              Expanded(
-                                flex: 4,
-                                child: Container(
-                                  height: 100,
-                                  //padding: EdgeInsets.all(20.0),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 10),
+                            child: Text('Эрдэс бүтээгдэхүүний төрлөөр', style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
+                          ),
+                          Container(
+                            height: 100,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: items.length,
+                              padding: EdgeInsets.all(0.0),
+                              itemBuilder: (BuildContext context, int index) {
+                                return Container(
+                                  height: 80,
+                                  width: 120,
+                                  margin: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 10),
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -224,385 +361,249 @@ class _mainScreenState extends State<mainScreen> {
                                   ),
                                   child: InkWell(
                                     onTap: () {
-                                      Navigator.pushNamed(context, '/export_news');
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) => Details(title: items[index].Fulltitle, id: items[index].id,)));
                                     },
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
+                                      children:[
                                         Image.asset(
-                                          "assets/uuhvy_img/medee.png",
+                                          items[index].image,
                                           fit: BoxFit.cover,
                                           width: 30,
                                         ),
-                                        SizedBox(height: 10),
-                                        Text('Мэдээ', style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w400)
+                                        SizedBox(height: 5),
+                                        Text(items[index].title, style: TextStyle(fontSize: 12,  color: textColor, fontWeight: FontWeight.w400)
                                         ),
                                       ],
                                     ),
                                   ),
-                                ),
-                              ),
-                              SizedBox(width: 10),
-                              Expanded(
-                                  flex: 4,
-                                  child: Container(
-                                    height: 100,
-                                    //padding: EdgeInsets.all(20.0),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.3),
-                                          blurRadius: 5.0,
-                                          spreadRadius: .3,
-                                          offset: Offset(3.0, 3.0),// changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.pushNamed(context, '/boomt');
-                                      },
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          Image.asset(
-                                            "assets/uuhvy_img/boomt.png",
-                                            fit: BoxFit.cover,
-                                            width: 30,
-                                          ),
-                                          SizedBox(height: 10),
-                                          Text('Боомтоор', style: TextStyle(fontSize: 12,  color: textColor, fontWeight: FontWeight.w400)
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  )
-                              ),
-                              SizedBox(width: 10),
-                              Expanded(
-                                  flex: 4,
-                                  child: Container(
-                                    height: 100,
-                                    //padding: EdgeInsets.all(20.0),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.3),
-                                          blurRadius: 5.0,
-                                          spreadRadius: .3,
-                                          offset: Offset(3.0, 3.0),// changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.pushNamed(context, '/jileer');
-                                      },
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          Image.asset(
-                                            "assets/uuhvy_img/jil.png",
-                                            fit: BoxFit.cover,
-                                            width: 30,
-                                          ),
-                                          SizedBox(height: 10),
-                                          Text('Жилээр', style: TextStyle(fontSize: 12,  color: textColor, fontWeight: FontWeight.w400)
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  )
-                              ),
-                            ],
+                                );
+                              },
+                            ),
                           ),
                         ],
-                      )
-                    ),
-                    // Эрдэс бүтээгдэхүүний төрлөөр
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
+                      ),
+                      // Tusgai zuwshuurul
+                      Container(
                           padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Text('Эрдэс бүтээгдэхүүний төрлөөр', style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
-                        ),
-                        Container(
-                          height: 100,
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: items.length,
-                            padding: EdgeInsets.all(0.0),
-                            itemBuilder: (BuildContext context, int index) {
-                              return Container(
-                                height: 80,
-                                width: 120,
-                                margin: EdgeInsets.only(top: 10, left: 5, right: 5, bottom: 10),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.3),
-                                      blurRadius: 5.0,
-                                      spreadRadius: .3,
-                                      offset: Offset(3.0, 3.0),// changes position of shadow
+                          margin: EdgeInsets.symmetric(vertical: 10),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Тусгай зөвшөөрөл, сонгон шалгаруулалт', style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
+                              SizedBox(height: 10,),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    flex: 4,
+                                    child: Container(
+                                      height: 75,
+                                      padding: EdgeInsets.only(top:10, left: 5, right: 5,),
+                                      decoration: BoxDecoration(
+                                        color: Color.fromRGBO(71, 87, 250, 1),
+                                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.3),
+                                            blurRadius: 5.0,
+                                            spreadRadius: .3,
+                                            offset: Offset(3.0, 3.0),// changes position of shadow
+                                          ),
+                                        ],
+                                      ),
+                                      child: InkWell(
+                                        onTap: () {
+                                          Navigator.pushNamed(context, '/new_tusgai_shuwdhuurul');
+                                        },
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            datas.length == 0 ? Container(): Text(number(datas[0].tzToo), style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
+                                            SizedBox(height: 12),
+                                            // Row(
+                                            //   mainAxisAlignment: MainAxisAlignment.center,
+                                            //   crossAxisAlignment: CrossAxisAlignment.center,
+                                            //   children: [
+                                            //     Expanded(flex: 3, child: Text('+22', textAlign: TextAlign.right, style: TextStyle(fontSize: 10, color: Colors.lightGreenAccent, fontWeight: FontWeight.w500))),
+                                            //     SizedBox(width: 4),
+                                            //     Expanded(flex: 6, child: Text('Сүүлийн сард', style: TextStyle(fontSize: 8, color: Colors.white, fontWeight: FontWeight.w400))),
+                                            //   ],
+                                            // ),
+                                            SizedBox(height: 2),
+                                            Text('Тусгай зөвшөөрөл', style: TextStyle(fontSize: 10, color: Colors.white, fontWeight: FontWeight.w400)),
+                                          ],
+                                        ),
+                                      ),
                                     ),
-                                  ],
-                                ),
-                                child: InkWell(
-                                  onTap: () {
-                                      Navigator.push(context, MaterialPageRoute(builder: (context) => Details(title: items[index].Fulltitle, id: items[index].id,)));
-                                  },
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children:[
-                                      Image.asset(
-                                        items[index].image,
-                                        fit: BoxFit.cover,
-                                        width: 30,
-                                      ),
-                                      SizedBox(height: 5),
-                                      Text(items[index].title, style: TextStyle(fontSize: 12,  color: textColor, fontWeight: FontWeight.w400)
-                                      ),
-                                    ],
                                   ),
-                                ),
-                              );
-                            },
+                                  SizedBox(width: 10),
+                                  Expanded(
+                                    flex: 4,
+                                    child: Container(
+                                      height: 75,
+                                      padding: EdgeInsets.only(top:10, left: 5, right: 5,),
+                                      decoration: BoxDecoration(
+                                        color: Color.fromRGBO(71, 87, 250, 1),
+                                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.3),
+                                            blurRadius: 5.0,
+                                            spreadRadius: .3,
+                                            offset: Offset(3.0, 3.0),// changes position of shadow
+                                          ),
+                                        ],
+                                      ),
+                                      child: InkWell(
+                                        onTap: () {
+                                          Navigator.pushNamed(context, '/new_s_shalgaruulalt');
+                                        },
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            datas.length == 0 ? Container(): Text('${datas[0].tHemjeeSay}', style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
+                                            SizedBox(height: 4),
+                                            Text('Талбайн хэмжээ /га/', style: TextStyle(fontSize: 8, color: Colors.white, fontWeight: FontWeight.w400)),
+                                            SizedBox(height: 2),
+                                            Text('Сонгон шалгаруулалт', style: TextStyle(fontSize: 10, color: Colors.white, fontWeight: FontWeight.w400)),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(width: 10),
+                                  Expanded(
+                                    flex: 4,
+                                    child: Container(
+                                      height: 75,
+                                      padding: EdgeInsets.only(top:10, left: 5, right: 5,),
+                                      decoration: BoxDecoration(
+                                        color: Color.fromRGBO(71, 87, 250, 1),
+                                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.3),
+                                            blurRadius: 5.0,
+                                            spreadRadius: .3,
+                                            offset: Offset(3.0, 3.0),// changes position of shadow
+                                          ),
+                                        ],
+                                      ),
+                                      child: InkWell(
+                                        onTap: () {
+                                          Navigator.pushNamed(context, '/ss_details');
+                                        },
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            datas.length == 0 ? Container():  Text('${datas[0].niitGazarHuvi}%', style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
+                                            SizedBox(height: 4),
+                                            Text('МУ-ын нутаг дэвсгэрт', style: TextStyle(fontSize: 8, color: Colors.white, fontWeight: FontWeight.w400)),
+                                            SizedBox(height: 2),
+                                            Text('СШ Дэлгэрэнгүй', style: TextStyle(fontSize: 10, color: Colors.white, fontWeight: FontWeight.w400)),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          )
+                      ),
+                      // Монгол банкны худалдан авсан үнэт метал, үнэ
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 10),
+                            child: Text('Монгол банкны худалдан авсан үнэт метал, үнэ', style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
                           ),
-                        ),
-                      ],
-                    ),
-                    // Tusgai zuwshuurul
-                    Container(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        margin: EdgeInsets.symmetric(vertical: 10),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Тусгай зөвшөөрөл, сонгон шалгаруулалт', style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
-                            SizedBox(height: 10,),
-                            Row(
-                              children: [
-                                Expanded(
-                                  flex: 4,
-                                  child: Container(
-                                    height: 75,
-                                    padding: EdgeInsets.only(top:10, left: 5, right: 5,),
-                                    decoration: BoxDecoration(
-                                      color: Color.fromRGBO(71, 87, 250, 1),
-                                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.3),
-                                          blurRadius: 5.0,
-                                          spreadRadius: .3,
-                                          offset: Offset(3.0, 3.0),// changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.pushNamed(context, '/new_tusgai_shuwdhuurul');
-                                      },
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          datas.length == 0 ? Text('', style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)):
-                                          Text(number(datas[0].tzToo), style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
-                                          SizedBox(height: 12),
-                                          // Row(
-                                          //   mainAxisAlignment: MainAxisAlignment.center,
-                                          //   crossAxisAlignment: CrossAxisAlignment.center,
-                                          //   children: [
-                                          //     Expanded(flex: 3, child: Text('+22', textAlign: TextAlign.right, style: TextStyle(fontSize: 10, color: Colors.lightGreenAccent, fontWeight: FontWeight.w500))),
-                                          //     SizedBox(width: 4),
-                                          //     Expanded(flex: 6, child: Text('Сүүлийн сард', style: TextStyle(fontSize: 8, color: Colors.white, fontWeight: FontWeight.w400))),
-                                          //   ],
-                                          // ),
-                                          SizedBox(height: 2),
-                                          Text('Тусгай зөвшөөрөл', style: TextStyle(fontSize: 10, color: Colors.white, fontWeight: FontWeight.w400)),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(width: 10),
-                                Expanded(
-                                  flex: 4,
-                                  child: Container(
-                                    height: 75,
-                                    padding: EdgeInsets.only(top:10, left: 5, right: 5,),
-                                    decoration: BoxDecoration(
-                                      color: Color.fromRGBO(71, 87, 250, 1),
-                                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.3),
-                                          blurRadius: 5.0,
-                                          spreadRadius: .3,
-                                          offset: Offset(3.0, 3.0),// changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.pushNamed(context, '/new_s_shalgaruulalt');
-                                      },
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          Text('${datas[0].tHemjeeSay}', style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
-                                          SizedBox(height: 4),
-                                          Text('Талбайн хэмжээ /га/', style: TextStyle(fontSize: 8, color: Colors.white, fontWeight: FontWeight.w400)),
-                                          SizedBox(height: 2),
-                                          Text('Сонгон шалгаруулалт', style: TextStyle(fontSize: 10, color: Colors.white, fontWeight: FontWeight.w400)),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(width: 10),
-                                Expanded(
-                                  flex: 4,
-                                  child: Container(
-                                    height: 75,
-                                    padding: EdgeInsets.only(top:10, left: 5, right: 5,),
-                                    decoration: BoxDecoration(
-                                      color: Color.fromRGBO(71, 87, 250, 1),
-                                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.3),
-                                          blurRadius: 5.0,
-                                          spreadRadius: .3,
-                                          offset: Offset(3.0, 3.0),// changes position of shadow
-                                        ),
-                                      ],
-                                    ),
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.pushNamed(context, '/ss_details');
-                                      },
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          Text('${datas[0].niitGazarHuvi}%', style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
-                                          SizedBox(height: 4),
-                                          Text('МУ-ын нутаг дэвсгэрт', style: TextStyle(fontSize: 8, color: Colors.white, fontWeight: FontWeight.w400)),
-                                          SizedBox(height: 2),
-                                          Text('СШ Дэлгэрэнгүй', style: TextStyle(fontSize: 10, color: Colors.white, fontWeight: FontWeight.w400)),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
+                          Container(
+                            padding: EdgeInsets.symmetric(vertical: 30, horizontal: 40),
+                            margin: EdgeInsets.all(10),
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                              //color: Colors.white,
+                              color: Color.fromRGBO(231, 240, 254, 1),
+                              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                              // boxShadow: [
+                              //   BoxShadow(
+                              //     color: Colors.grey.withOpacity(0.3),
+                              //     blurRadius: 5.0,
+                              //     spreadRadius: .3,
+                              //     offset: Offset(3.0, 3.0),// changes position of shadow
+                              //   ),
+                              // ],
+                            ),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/bank');
+                              },
+                              child: Image.asset(
+                                "assets/uuhvy_img/mongolbank.png",
+                                fit: BoxFit.cover,
+                                width: 30,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      // Эрдэс бүтээгдэхүүний үнэ ханш
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 10),
+                            child: Text('Эрдэс бүтээгдэхүүний үнэ, ханш', style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
+                          ),
+                          Container(
+                            padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+                            margin: EdgeInsets.all(10),
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                              borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.3),
+                                  blurRadius: 5.0,
+                                  spreadRadius: .3,
+                                  offset: Offset(3.0, 3.0),// changes position of shadow
                                 ),
                               ],
                             ),
-                          ],
-                        )
-                    ),
-                    // Монгол банкны худалдан авсан үнэт метал, үнэ
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Text('Монгол банкны худалдан авсан үнэт метал, үнэ', style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
-                        ),
-                        Container(
-                          padding: EdgeInsets.symmetric(vertical: 30, horizontal: 40),
-                          margin: EdgeInsets.all(10),
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                            //color: Colors.white,
-                            color: Color.fromRGBO(231, 240, 254, 1),
-                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                            // boxShadow: [
-                            //   BoxShadow(
-                            //     color: Colors.grey.withOpacity(0.3),
-                            //     blurRadius: 5.0,
-                            //     spreadRadius: .3,
-                            //     offset: Offset(3.0, 3.0),// changes position of shadow
-                            //   ),
-                            // ],
-                          ),
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.pushNamed(context, '/bank');
-                            },
-                            child: Image.asset(
-                              "assets/uuhvy_img/mongolbank.png",
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/product');
+                              },
+                              child: Image.asset(
+                              "assets/uuhvy_img/price.png",
                               fit: BoxFit.cover,
-                              width: 30,
                             ),
+                            )
                           ),
-                        ),
-                      ],
-                    ),
-                    // Эрдэс бүтээгдэхүүний үнэ ханш
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Text('Эрдэс бүтээгдэхүүний үнэ, ханш', style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w500)),
-                        ),
-                        Container(
-                          padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-                          margin: EdgeInsets.all(10),
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[200],
-                            borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.3),
-                                blurRadius: 5.0,
-                                spreadRadius: .3,
-                                offset: Offset(3.0, 3.0),// changes position of shadow
-                              ),
-                            ],
-                          ),
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.pushNamed(context, '/product');
-                            },
-                            child: Image.asset(
-                            "assets/uuhvy_img/price.png",
-                            fit: BoxFit.cover,
-                          ),
-                          )
-                        ),
-                      ],
-                    ),
+                        ],
+                      ),
 
 
 
-                    SizedBox(height: 10),
+                      SizedBox(height: 10),
 
 
-                  ],
-                ))
+                    ],
+                  ))
 
 
-            ));
+              ),
+        ));
   }
 
   void _onButtonPressed() {

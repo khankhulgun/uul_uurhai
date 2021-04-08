@@ -154,7 +154,7 @@ class _ExportNewsState extends State<ExportNews> {
   double n_autoZam;
   double n_dun;
   double n_tumurZam;
-  double n_umnuhOniiHaritsuulaltHuwi;
+  double n_umnuhOniiHaritsuulaltHuwi = 0;
   double n_ussunDun;
 
   double tumur_autoZam;
@@ -493,7 +493,7 @@ class _ExportNewsState extends State<ExportNews> {
                                                         FontWeight.w400),
                                               ),
                                               Expanded(
-                                                child: n_umnuhOniiHaritsuulaltHuwi.toDouble() > 0 ? Text(huvi(n_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500)) :
+                                                child: n_umnuhOniiHaritsuulaltHuwi > 0 ? Text(huvi(n_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500)) :
                                                 Text(huvi(n_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w500)),
                                               ),
                                               // Expanded(

@@ -42,7 +42,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
   int total = 0;
 
   bool _isVisible = false;
-  List<EBMergejilZovlol$Query$Paginate$AaEBMergejilZovlol> erdes_baylag_mer_zuv = [];
+  List<EBMergejilZovlol$Query$Paginate$DsEBMergejilZovlol> erdes_baylag_mer_zuv = [];
 
   @override
   void initState() {
@@ -55,7 +55,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
     });
     final response = await client.execute(EBMergejilZovlolQuery(variables: EBMergejilZovlolArguments(page: page, size: 10)));
     setState(() {
-      erdes_baylag_mer_zuv = response.data.paginate.aaEBMergejilZovlol;
+      erdes_baylag_mer_zuv = response.data.paginate.dsEBMergejilZovlol;
       currentPage = page;
       lastPage = response.data.paginate.lastPage;
       total = response.data.paginate.total;
@@ -170,7 +170,7 @@ class _ErdesBaylagMergejliinZuvlulState extends State<ErdesBaylagMergejliinZuvlu
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
                                   Expanded(flex: 4, child: Text('ЭБМЗ-ын салбар:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 4, child: Text('${tusgai.ebmzSalbarId}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(tusgai.zovlol, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 4),

@@ -37,7 +37,7 @@ class mglHuuliHeregjilt extends StatefulWidget {
 class _mglHuuliHeregjiltState extends State<mglHuuliHeregjilt> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   NetworkUtil _http = new NetworkUtil();
-  List<MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt> b_datas = [];
+  List<MuHuuliHegejilt$Query$Paginate$DsMongolUlsHuuliHer> b_datas = [];
 
 
   bool loading = true;
@@ -56,10 +56,9 @@ class _mglHuuliHeregjiltState extends State<mglHuuliHeregjilt> {
     setState(() {
       loading = true;
     });
-    //final response = await client.execute(MuHuuliHegejiltQuery(variables: BodlogoBbArguments(page: page, size: 10)));
     final response = await client.execute(MuHuuliHegejiltQuery(variables: MuHuuliHegejiltArguments(page: page, size: 10)));
     setState(() {
-      b_datas = response.data.paginate.aaMuHuuliHegejilt;
+      b_datas = response.data.paginate.dsMongolUlsHuuliHer;
       currentPage = page;
       lastPage = response.data.paginate.lastPage;
       total = response.data.paginate.total;
@@ -160,7 +159,7 @@ class _mglHuuliHeregjiltState extends State<mglHuuliHeregjilt> {
                     children: [
                       Expanded(
                           flex: 4,
-                          child:  Text(number(data.mHuuliId), style: TextStyle(color: textColor, fontSize: 13, fontWeight: FontWeight.w600,),)
+                          child:  Text(data.huuli, style: TextStyle(color: textColor, fontSize: 13, fontWeight: FontWeight.w600,),)
                       ),
                       Expanded(
                         flex: 2,
