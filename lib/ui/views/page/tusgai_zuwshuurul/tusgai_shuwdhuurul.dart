@@ -115,7 +115,7 @@ class _newTusgaiZuvshuurulState extends State<newTusgaiZuvshuurul> {
 
                                Text('Нутаг дэвсгэрт\nэзлэх хувь', textAlign: TextAlign.center, style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500)),
                                SizedBox(height: 5,),
-                               Text(number(datas[0].niitGazarHuvi)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(53, 53, 137, 1), fontWeight: FontWeight.w600))
+                               Text('${datas[0].niitGazarHuvi}'+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(53, 53, 137, 1), fontWeight: FontWeight.w600))
                              ],
                            )
                        ),
@@ -179,7 +179,7 @@ class _newTusgaiZuvshuurulState extends State<newTusgaiZuvshuurul> {
 
                              Text('Нутаг дэвсгэрт\nэзлэх хувь', textAlign: TextAlign.center, style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500)),
                              SizedBox(height: 5,),
-                             Text(number(datas[0].ashiglatTzHuvi)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500))
+                             Text('${datas[0].ashiglatTzHuvi}'+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500))
                            ],
                          )
                      ),
@@ -243,7 +243,7 @@ class _newTusgaiZuvshuurulState extends State<newTusgaiZuvshuurul> {
 
                              Text('Нутаг дэвсгэрт\nэзлэх хувь', textAlign: TextAlign.center, style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500)),
                              SizedBox(height: 5,),
-                             Text(number(datas[0].haiguulHuvi)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500))
+                             Text('${datas[0].haiguulHuvi}'+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500))
                            ],
                          )
                      ),

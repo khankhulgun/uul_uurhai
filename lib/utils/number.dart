@@ -1,15 +1,27 @@
 import 'package:intl/intl.dart';
 
 final formatter = new NumberFormat("#,###");
+final Formatter = new NumberFormat("#.#");
 final formatterFloat = new NumberFormat("#,###.#");
 
 String number(dynamic value){
   if(value != null){
     if(value.runtimeType == String){
-
       return formatter.format(int.parse(value));
     }
     return formatter.format(value);
+  } else {
+    return "0";
+  }
+
+}
+String huvi(dynamic value){
+  if(value != null){
+    if(value.runtimeType == String){
+
+      return Formatter.format(int.parse(value));
+    }
+    return Formatter.format(value);
   } else {
     return "0";
   }

@@ -40,8 +40,8 @@ class _MongolBankState extends State<MongolBank> {
   List<Filter> filtersBoomNuurs = [Filter(column: "boomt_short", condition: "equals", value: "ГАС"),Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")];
 
 
-  final List<String> _dropdownValues = ["ALT","NVVRS"];
-  String dropdownValue = 'ALT';
+  final List<String> _dropdownValues = ["АЛТ","НҮҮРС"];
+  String dropdownValue = 'АЛТ';
 
   @override
   Widget build(BuildContext context) {

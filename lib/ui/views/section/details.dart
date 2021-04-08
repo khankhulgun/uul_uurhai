@@ -1,5 +1,6 @@
 import 'package:catalog/ui/components/header.dart';
 import 'package:catalog/ui/components/sidebar.dart';
+import 'package:catalog/ui/styles/_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:lambda/plugins/chart/models/filter.dart';
 import 'package:lambda/plugins/chart/lambda_chart.dart';
@@ -7,6 +8,7 @@ import 'package:lambda/plugins/chart/lambda_chart_rest.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:lambda/modules/network_util.dart';
 import 'package:catalog/utils/number.dart';
+import 'package:catalog/utils/date.dart';
 
 class Details extends StatefulWidget {
   final String title;
@@ -24,7 +26,10 @@ class _Detailstate extends State<Details> {
   bool loading = true;
 
   String theme = "shine";
-  List<Filter> filters = [Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")];
+  List<Filter> filters = [
+    Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
+    Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")
+  ];
   List<Filter> filtersExportNuurs = [Filter(column: "b_id", condition: "equals", value: "2")];
   List<Filter> filtersOlborloltNuurs = [Filter(column: "b_id", condition: "equals", value: "2")];
 
@@ -74,7 +79,7 @@ class _Detailstate extends State<Details> {
   double O_range_ungursun_onii_zuruu_huviar;
 
   void getExportDun() {
-    _http.post_("https://app.mmhi.gov.mn/api/exportDun/${widget.id}", {"filters": filters}).then((response) {
+    _http.post_("/api/exportDun/${widget.id}", {"filters": filters}).then((response) {
       print(widget.id);
       setState(() {
         on_dun = getDouble(response.data["on_dun"]);
@@ -97,7 +102,7 @@ class _Detailstate extends State<Details> {
   }
 
   void getOlborlolt() {
-    _http.post_("https://app.mmhi.gov.mn/api/olborloltDun/${widget.id}", {"filters": filters}).then((response) {
+    _http.post_("/api/olborloltDun/${widget.id}", {"filters": filters}).then((response) {
       print(widget.id);
       setState(() {
         O_on_dun = getDouble(response.data["on_dun"]);
@@ -115,16 +120,43 @@ class _Detailstate extends State<Details> {
     });
   }
 
-  // void setFilter(){
-  //   setState(() {
-  //     filters[0].value =getDateString(preStart);
-  //     filters[1].value = getDateString(preEnd);
-  //     Chart1.currentState.initChart();
-  //     Chart2.currentState.initChart();
-  //     Chart3.currentState.initChart();
-  //     Chart4.currentState.initChart();
-  //   });
-  // }
+  DateTime preStart;
+  DateTime preEnd;
+
+  void setFilter(){
+    setState(() {
+      filters[0].value = getDateString(preStart);
+      filters[1].value = getDateString(preEnd);
+      Chart1.currentState.initChart();
+      Chart2.currentState.initChart();
+    });
+  }
+  void setFilterOlborlolt(){
+    setState(() {
+      filters[0].value = getDateString(preStart);
+      filters[1].value = getDateString(preEnd);
+      Chart3.currentState.initChart();
+      Chart4.currentState.initChart();
+    });
+  }
+  void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
+    if (args.value is PickerDateRange) {
+      final DateTime rangeStartDate = args.value.startDate;
+      final DateTime rangeEndDate = args.value.endDate;
+      if(rangeStartDate != null && rangeEndDate != null){
+        setState(() {
+          preStart = rangeStartDate;
+          preEnd = rangeEndDate;
+        });
+      }
+    }
+  }
+  final GlobalKey<LambdaChartState> Chart1 = new GlobalKey<LambdaChartState>();
+  final GlobalKey<LambdaChartState> Chart2 = new GlobalKey<LambdaChartState>();
+
+  final GlobalKey<LambdaChartState> Chart3 = new GlobalKey<LambdaChartState>();
+  final GlobalKey<LambdaChartState> Chart4 = new GlobalKey<LambdaChartState>();
+
   void _datePicker(context) {
     showModalBottomSheet(
         context: context,
@@ -135,15 +167,15 @@ class _Detailstate extends State<Details> {
           ),
         ),
         builder: (context) {
-          //PickerDateRange values = new PickerDateRange(gDate(filters[0].value), gDate(filters[1].value));
+          PickerDateRange values = new PickerDateRange(gDate(filters[0].value), gDate(filters[1].value));
           return StatefulBuilder(builder: (BuildContext context, StateSetter setStateOfBottomSheet) {
             return  Container(
               child: Column(
                 children: [
                   Expanded(
                     child: SfDateRangePicker(
-                      //initialSelectedRange: values,
-                      //onSelectionChanged: _onSelectionChanged,
+                      initialSelectedRange: values,
+                      onSelectionChanged: _onSelectionChanged,
                       selectionMode: DateRangePickerSelectionMode.range,
                     ),
                   ),
@@ -151,7 +183,7 @@ class _Detailstate extends State<Details> {
                     onPressed: () {
                       Navigator.pop(context);
                       setStateOfBottomSheet((){
-                        //setFilter();
+                        setFilter();
                       });
                     },
                     color: Colors.blueAccent,
@@ -166,6 +198,48 @@ class _Detailstate extends State<Details> {
           });
         });
   }
+  void _datePickerOLborlolt(context) {
+    showModalBottomSheet(
+        context: context,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10),
+            topRight: Radius.circular(10),
+          ),
+        ),
+        builder: (context) {
+          PickerDateRange values = new PickerDateRange(gDate(filters[0].value), gDate(filters[1].value));
+          return StatefulBuilder(builder: (BuildContext context, StateSetter setStateOfBottomSheet) {
+            return  Container(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: SfDateRangePicker(
+                      initialSelectedRange: values,
+                      onSelectionChanged: _onSelectionChanged,
+                      selectionMode: DateRangePickerSelectionMode.range,
+                    ),
+                  ),
+                  FlatButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      setStateOfBottomSheet((){
+                        setFilterOlborlolt();
+                      });
+                    },
+                    color: Colors.blueAccent,
+                    child: Text("Сонгох", style: TextStyle(color: Colors.white),),
+                    padding: EdgeInsets.all(16),
+                    // shape: CircleBorder(),
+                  ),
+                  SizedBox(height: 20),
+                ],
+              ),
+            );
+          });
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     List<Filter> filtersExportData = [Filter(column: "b_id", condition: "equals", value: "${widget.id}")];
@@ -203,45 +277,29 @@ class _Detailstate extends State<Details> {
             child: Container(
                 padding: EdgeInsets.only(right: 5, top: 0, left: 5, bottom: 10),
                 child: Column(children: [
-                  GestureDetector(
-                    onTap: () { _datePicker(context); },
-                    child:Container(
-                      //margin: EdgeInsets.only(left:20, bottom: 0),
-                        padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 10),
-                        margin: EdgeInsets.symmetric(horizontal: 6.0),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              flex: 4,
-                              child: Row(
-                                children: [
-                                  Container(
-                                    child: Text(filters[0].value, style: TextStyle(fontSize: 14),),
-                                  ),
-                                  Container(
-                                    child: Text(" - "),
-                                  ),
-                                  Container(
-                                    child: Text(filters[1].value, style: TextStyle(fontSize: 14),),
-                                  )
-                                ],
-                              ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            flex: 0,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 0),
+                              child: Text("Экпорт".toUpperCase(), style: TextStyle(color: mainColor, fontSize: 12, fontWeight: FontWeight.w600)),
                             ),
-                            Expanded(
-                                flex: 0,
-                                child: Icon(Icons.arrow_drop_down_outlined)
+                          ),
+                          SizedBox(width: 4,),
+                          Expanded(
+                            flex: 4,
+                            child: Container(
+                              height: 1,
+                              width: MediaQuery.of(context).size.width,
+                              color: mainColor,
                             ),
-                          ],
-                        )
+                          ),
+                        ]
                     ),
                   ),
-
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 6),
                     margin: EdgeInsets.symmetric(vertical: 10),
@@ -311,8 +369,8 @@ class _Detailstate extends State<Details> {
                                     children: [
                                       Text('Өнгөрсөн оны мөн үеэс хувиар', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
                                       SizedBox(height: 5),
-                                      range_ungursun_onii_zuruu_huviar >= 0 ? Text(number(range_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
-                                          : Text(number(range_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
+                                      range_ungursun_onii_zuruu_huviar >= 0 ? Text(huvi(range_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
+                                          : Text(huvi(range_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
                                     ],
                                   ),
                                 ),
@@ -385,8 +443,8 @@ class _Detailstate extends State<Details> {
                                     children: [
                                       Text('Өнгөрсөн оны мөн үеэс хувиар', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
                                       SizedBox(height: 5),
-                                      on_ungursun_onii_zuruu_huviar >= 0 ? Text(number(on_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
-                                          : Text(number(on_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
+                                      on_ungursun_onii_zuruu_huviar >= 0 ? Text(huvi(on_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
+                                          : Text(huvi(on_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
                                     ],
                                   ),
                                 ),
@@ -400,12 +458,74 @@ class _Detailstate extends State<Details> {
                   ),
 
                   LambdaChartRest(title: "Экпорт", colors: colors, APIurl: "/api/exportYear", theme: theme, filters: filtersExportData, chartType: "ColumnChart"),
+
+                  SizedBox(height: 10),
+                  GestureDetector(
+                    onTap: () { _datePicker(context); },
+                    child:Container(
+                      //margin: EdgeInsets.only(left:20, bottom: 0),
+                        padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 10),
+                        margin: EdgeInsets.symmetric(horizontal: 6.0),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              flex: 4,
+                              child: Row(
+                                children: [
+                                  Container(
+                                    child: Text(filters[0].value, style: TextStyle(fontSize: 14),),
+                                  ),
+                                  Container(
+                                    child: Text(" - "),
+                                  ),
+                                  Container(
+                                    child: Text(filters[1].value, style: TextStyle(fontSize: 14),),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                                flex: 0,
+                                child: Icon(Icons.arrow_drop_down_outlined)
+                            ),
+                          ],
+                        )
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  LambdaChartRest(title: "Экпорт боомтоор", key: Chart1, APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportWithDate, chartType: "ColumnChart"),
                   // //12.2 Export zes
-                  LambdaChart(schemaID: '223', theme: theme, filters: filtersExportWithDate),
-
-                  LambdaChartRest(title: "Экпорт боомтоор",  APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportWithDate, chartType: "ColumnChart"),
-
-                  // // 13 Olborlolor zes
+                  LambdaChart(schemaID: '223', key: Chart2, theme: theme, filters: filtersExportWithDate),
+                  SizedBox(height: 30),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Row(
+                        children: <Widget>[
+                          Expanded(
+                            flex: 0,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 0),
+                                child: Text("Олборлолт".toUpperCase(), style: TextStyle(color: mainColor, fontSize: 12, fontWeight: FontWeight.w600)),
+                              ),
+                          ),
+                          SizedBox(width: 4,),
+                          Expanded(
+                              flex: 4,
+                              child: Container(
+                                height: 1,
+                                width: MediaQuery.of(context).size.width,
+                                color: mainColor,
+                              ),
+                          ),
+                        ]
+                    ),
+                  ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 6),
                     margin: EdgeInsets.symmetric(vertical: 10),
@@ -475,8 +595,8 @@ class _Detailstate extends State<Details> {
                                     children: [
                                       Text('Өнгөрсөн оны мөн үеэс хувиар', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
                                       SizedBox(height: 5),
-                                      O_range_ungursun_onii_zuruu_huviar >= 0 ? Text(number(O_range_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
-                                          : Text(number(O_range_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
+                                      O_range_ungursun_onii_zuruu_huviar >= 0 ? Text(huvi(O_range_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
+                                          : Text(huvi(O_range_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
                                     ],
                                   ),
                                 ),
@@ -550,8 +670,8 @@ class _Detailstate extends State<Details> {
                                     children: [
                                       Text('Өнгөрсөн оны мөн үеэс хувиар', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
                                       SizedBox(height: 5),
-                                      O_on_ungursun_onii_zuruu_huviar >= 0 ? Text(number(O_on_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
-                                          : Text(number(O_on_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
+                                      O_on_ungursun_onii_zuruu_huviar >= 0 ? Text(huvi(O_on_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
+                                          : Text(huvi(O_on_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
                                     ],
                                   ),
                                 ),
@@ -564,10 +684,53 @@ class _Detailstate extends State<Details> {
 
                   ),
 
-                  LambdaChart(schemaID: '226', theme: theme, filters: filtersOlborloltWithData),
-                  LambdaChartRest(title: "Олборлолт жилээр",  APIurl: "/api/olborloltYear", theme: theme, colors: colors, filters: filtersOlborlolData, chartType: "ColumnChart"),
+                  // // 13 Olborlolor zes
 
-                  LambdaChart(schemaID: '224', theme: theme, filters: filtersExportWithDate),
+
+                  LambdaChartRest(title: "Олборлолт жилээр",  APIurl: "/api/olborloltYear", theme: theme, colors: colors, filters: filtersOlborlolData, chartType: "ColumnChart"),
+                  SizedBox(height: 10),
+                  GestureDetector(
+                    onTap: () { _datePickerOLborlolt(context); },
+                    child:Container(
+                      //margin: EdgeInsets.only(left:20, bottom: 0),
+                        padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 10),
+                        margin: EdgeInsets.symmetric(horizontal: 6.0),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              flex: 4,
+                              child: Row(
+                                children: [
+                                  Container(
+                                    child: Text(filters[0].value, style: TextStyle(fontSize: 14),),
+                                  ),
+                                  Container(
+                                    child: Text(" - "),
+                                  ),
+                                  Container(
+                                    child: Text(filters[1].value, style: TextStyle(fontSize: 14),),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Expanded(
+                                flex: 0,
+                                child: Icon(Icons.arrow_drop_down_outlined)
+                            ),
+                          ],
+                        )
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  LambdaChart(schemaID: '226', key: Chart3, theme: theme, filters: filtersOlborloltWithData),
+                  SizedBox(height: 10),
+                  LambdaChart(schemaID: '224',  key: Chart4, theme: theme, filters: filtersExportWithDate),
 
                   widget.id == 2 ? LambdaChartRest(title: "Нүүрсний экспорт боомтоор",  APIurl: "/api/nuursBoomt", theme: theme, filters: filters, chartType: "ColumnChart") : Container(),
                   // //17.2 Нүүрсний экспорт боомтоор ALL

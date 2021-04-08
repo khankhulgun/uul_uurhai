@@ -203,10 +203,26 @@ class _BuyState extends State<Buy> {
                   SizedBox(height: 2),
                 ],
               ),
-              Html(
-                data: ex_port.tailbar,
-                defaultTextStyle: TextStyle(fontSize: 12,),
-              ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                   Expanded(
+                     flex: 0,
+                     child: Text('Тайлбар:', style: TextStyle(color: textColor, fontSize: 12),),
+                   ),
+                  SizedBox(width: 4),
+                  Expanded(
+                    flex: 4,
+                    child:  Html(
+                      data: ex_port.tailbar,
+                      defaultTextStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, ),
+                    ),
+                  ),
+                ],
+              )
+
             ],
           ),
         ),

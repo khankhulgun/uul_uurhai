@@ -1,4 +1,5 @@
 import 'package:catalog/ui/components/header.dart';
+import 'package:catalog/utils/number.dart';
 import 'package:flutter/material.dart';
 import 'package:catalog/ui/components/map_widgets/esri_icons_icons.dart';
 import 'package:catalog/ui/styles/_colors.dart';
@@ -18,6 +19,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 
+//PAGINATION
 import 'package:catalog/utils/date.dart';
 import 'package:catalog/ui/common/paginate.dart';
 
@@ -27,16 +29,16 @@ import 'package:catalog/graphql/queries/heregjilt_guitsetgel.dart';
 
 import 'search_heregjilt.dart';
 
-
-
-class IH_togtooliin_heregjilt extends StatefulWidget {
+class mglHuuliHeregjilt extends StatefulWidget {
   @override
-  _IH_togtooliin_heregjiltState createState() => _IH_togtooliin_heregjiltState();
+  _mglHuuliHeregjiltState createState() => _mglHuuliHeregjiltState();
+
 }
-class _IH_togtooliin_heregjiltState extends State<IH_togtooliin_heregjilt> {
+class _mglHuuliHeregjiltState extends State<mglHuuliHeregjilt> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   NetworkUtil _http = new NetworkUtil();
-  List<UihTogtoolHeregjilt$Query$Paginate$DsUihTogtoolHeregjilt> datas = [];
+  List<MuHuuliHegejilt$Query$Paginate$AaMuHuuliHegejilt> b_datas = [];
+
 
   bool loading = true;
   int currentPage = 1;
@@ -47,22 +49,24 @@ class _IH_togtooliin_heregjiltState extends State<IH_togtooliin_heregjilt> {
   void initState() {
     super.initState();
     getData(1);
+
   }
 
   void getData(int page) async {
     setState(() {
       loading = true;
     });
-    final response = await client.execute(UihTogtoolHeregjiltQuery(variables: UihTogtoolHeregjiltArguments(page: page, size: 10)));
+    //final response = await client.execute(MuHuuliHegejiltQuery(variables: BodlogoBbArguments(page: page, size: 10)));
+    final response = await client.execute(MuHuuliHegejiltQuery(variables: MuHuuliHegejiltArguments(page: page, size: 10)));
     setState(() {
-      datas = response.data.paginate.dsUihTogtoolHeregjilt;
-
+      b_datas = response.data.paginate.aaMuHuuliHegejilt;
       currentPage = page;
       lastPage = response.data.paginate.lastPage;
       total = response.data.paginate.total;
       loading = false;
     });
   }
+
   bool _isVisible = false;
 
   void showToast() {
@@ -70,6 +74,7 @@ class _IH_togtooliin_heregjiltState extends State<IH_togtooliin_heregjilt> {
       _isVisible = !_isVisible;
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +88,7 @@ class _IH_togtooliin_heregjiltState extends State<IH_togtooliin_heregjilt> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50.0),
           child: Header(
-            title: "УИХ-н тогтоолын хэрэгжилт",
+            title: "Монгол улсын хууль хэрэгжилт",
             scaffold: _scaffoldKey,
           ),
         ),
@@ -95,9 +100,9 @@ class _IH_togtooliin_heregjiltState extends State<IH_togtooliin_heregjilt> {
         body: Container(
           width: MediaQuery.of(context).size.width,
           padding: EdgeInsets.all(0.0),
+          margin: EdgeInsets.only(bottom: 50),
           //padding: EdgeInsets.only(left: 10.0, right: 10.0),
           height: double.infinity,
-          margin: EdgeInsets.all(0.0),
           child: loading ? Loader() : Pagination(
             lastPage: lastPage,
             currentPage: currentPage,
@@ -105,7 +110,7 @@ class _IH_togtooliin_heregjiltState extends State<IH_togtooliin_heregjilt> {
             loading: loading,
             getData: getData,
             itemBuilder: ListView.builder(
-              itemCount: datas == null ? 0 : datas.length,
+              itemCount: b_datas == null ? 0 : b_datas.length,
               itemBuilder: (BuildContext context, int index) =>
                   buildTripCard(context, index),
             ),
@@ -128,7 +133,7 @@ class _IH_togtooliin_heregjiltState extends State<IH_togtooliin_heregjilt> {
   }
 
   Widget buildTripCard(BuildContext context, int index) {
-    final data = datas[index];
+    final data = b_datas[index];
 
     return Container(
       width: MediaQuery.of(context).size.width,
@@ -150,11 +155,12 @@ class _IH_togtooliin_heregjiltState extends State<IH_togtooliin_heregjilt> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
+                  //Text(data.ner, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 14),),
                   Row(
                     children: [
                       Expanded(
                           flex: 4,
-                          child:  Text(data.togtool, style: TextStyle(color: textColor, fontSize: 13, fontWeight: FontWeight.w600,),)
+                          child:  Text(number(data.mHuuliId), style: TextStyle(color: textColor, fontSize: 13, fontWeight: FontWeight.w600,),)
                       ),
                       Expanded(
                         flex: 2,
@@ -188,53 +194,34 @@ class _IH_togtooliin_heregjiltState extends State<IH_togtooliin_heregjilt> {
                     ],
                   ),
                   SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Expanded(flex: 4,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 0),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                flex: 6,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: <Widget>[
-                                        Expanded(flex: 4, child: Text('Төлөвлөгөөт хугацаа:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                        Expanded(flex: 4, child: Text(data.tHugatsaa, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              // Expanded(
-                              //   flex: 3,
-                              //   child:  Center(
-                              //     child: Text(
-                              //       '${data.status}',
-                              //       textAlign: TextAlign.center,
-                              //       style: TextStyle(
-                              //           color: data.status == 'Биелсэн' ? Color(0xFF00E676) : Color(0xfffcb85f),
-                              //           fontSize: 14,
-                              //           fontWeight:
-                              //           FontWeight.w500),
-                              //     ),
-                              //   ),
-                              // ),
-
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.start,
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: <Widget>[
+                  //     Expanded(flex: 4,
+                  //       child: Padding(
+                  //         padding: const EdgeInsets.only(left: 5.0),
+                  //         child: Column(
+                  //           mainAxisAlignment: MainAxisAlignment.start,
+                  //           crossAxisAlignment: CrossAxisAlignment.start,
+                  //           children: <Widget>[
+                  //             SizedBox(height: 10),
+                  //             Row(
+                  //               mainAxisAlignment: MainAxisAlignment.start,
+                  //               crossAxisAlignment: CrossAxisAlignment.start,
+                  //               children: <Widget>[
+                  //                 Expanded(flex: 3, child: Text('Төлөвлөгөөт хугацаа:', style: TextStyle(color: textColor, fontSize: 12),)),
+                  //                 Expanded(flex: 4, child: Text('${data.tHugatsaaId}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                  //               ],
+                  //             ),
+                  //             SizedBox(height: 4),
+                  //           ],
+                  //         ),
+                  //
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                 ],
               ),
 
@@ -250,24 +237,43 @@ class _IH_togtooliin_heregjiltState extends State<IH_togtooliin_heregjilt> {
                     ],
                   ),
                   children: <Widget>[
-                    datas.length <= 0 ? Container() : ListView.builder(
+                    b_datas.length <= 0 ? Container() : ListView.builder(
                         shrinkWrap: true,
                         physics: ScrollPhysics(),
-                        itemCount: datas[index].dsSubHeregjiltUlsIhHural == null ? 0 : datas[index].dsSubHeregjiltUlsIhHural.length,
+                        itemCount: b_datas[index].dsSubHeregjilt == null ? 0 : b_datas[index].dsSubHeregjilt.length,
                         padding: EdgeInsets.all(0.0),
-                        itemBuilder: (BuildContext context, int index) {
+                        itemBuilder: (BuildContext context, int indexSub) {
                           return Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text(datas[index].dsSubHeregjiltUlsIhHural[index].tailan, style: TextStyle(fontSize: 14, color: textColor, fontWeight: FontWeight.w500)),
-                              SizedBox(height: 10.0),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 10),
+                                child: RichText(
+                                  //textAlign: TextAlign.justify,
+                                  text: TextSpan(
+                                      children: [
+                                        TextSpan(text: 'Тайлан: ', style: TextStyle(color: textColor, fontWeight: FontWeight.w600,  fontFamily: "Roboto-Condensed", fontSize: 12)),
+                                        TextSpan(text: b_datas[index].dsSubHeregjilt[indexSub].tailan, style: TextStyle(color: textColor, fontWeight: FontWeight.w400,  fontFamily: "Roboto-Condensed", fontSize: 12)),
+                                      ]
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Expanded(flex: 3, child: Text('Бодлогын газар::', style: TextStyle(color: textColor, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(b_datas[index].dsSubHeregjilt[indexSub].salbar, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                ],
+                              ),
+                              SizedBox(height: 4.0),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Expanded(flex: 3, child: Text('Хэрэгжүүлсэн огноо:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 4, child: Text(datas[index].dsSubHeregjiltUlsIhHural[index].ognoo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(b_datas[index].dsSubHeregjilt[indexSub].ognoo, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 4),
@@ -276,7 +282,7 @@ class _IH_togtooliin_heregjiltState extends State<IH_togtooliin_heregjilt> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Expanded(flex: 3, child: Text('Хэрэгжилтийн шат:', style: TextStyle(color: textColor, fontSize: 12),)),
-                                  Expanded(flex: 4, child: Text(datas[index].dsSubHeregjiltUlsIhHural[index].shat, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                                  Expanded(flex: 4, child: Text(b_datas[index].dsSubHeregjilt[indexSub].shat, style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),
                               SizedBox(height: 10.0),
@@ -284,8 +290,7 @@ class _IH_togtooliin_heregjiltState extends State<IH_togtooliin_heregjilt> {
                           );
                         }
                     ),
-
-
+                    Divider(),
                   ],
 
                 ),
@@ -298,6 +303,8 @@ class _IH_togtooliin_heregjiltState extends State<IH_togtooliin_heregjilt> {
     );
   }
 }
+
+
 
 
 

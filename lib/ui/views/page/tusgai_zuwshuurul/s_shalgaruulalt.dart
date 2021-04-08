@@ -182,7 +182,7 @@ class _newSShalgaruulaltState extends State<newSShalgaruulalt> {
 
                             Text('Олгосон талбайн\nхэмжээ /га/', textAlign: TextAlign.center, style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500)),
                             SizedBox(height: 16,),
-                            Text(number(datas[0].ologsonHegmjeeGa)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500))
+                            Text(number(datas[0].ologsonHegmjeeGa), textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500))
                           ],
                         )
                     ),

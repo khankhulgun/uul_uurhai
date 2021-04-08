@@ -183,6 +183,15 @@ class _OrlogoState extends State<Orlogo> {
                       Expanded(flex: 4, child: Text(number(orlogo.tTosov), style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                     ],
                   ),
+                  SizedBox(height: 5),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Expanded(flex: 4, child: Text('Зөрүү:', style: TextStyle(color: textColor, fontSize: 12),)),
+                      Expanded(flex: 4, child: Text(number(orlogo.bTTosovZoruu), style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                    ],
+                  ),
                   SizedBox(height: 15.0),
                   Container(
                       margin: new EdgeInsets.only(left: 10.0, right: 10.0,),
@@ -209,6 +218,15 @@ class _OrlogoState extends State<Orlogo> {
                             children: <Widget>[
                               Expanded(flex: 5, child: Text('Тайлант үеийн гүйцэтгэл:', style: TextStyle(color: textColor, fontSize: 12),)),
                               Expanded(flex: 4, child: Text(number(orlogo.tailanUyGuitsetgel), style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                            ],
+                          ),
+                          SizedBox(height: 4),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Expanded(flex: 5, child: Text('Зөрүү:', style: TextStyle(color: textColor, fontSize: 12),)),
+                              Expanded(flex: 4, child: Text(number(orlogo.zoruu), style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                             ],
                           ),
                           SizedBox(height: 8),

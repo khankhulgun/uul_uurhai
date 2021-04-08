@@ -180,6 +180,15 @@ class _ZarlagaState extends State<Zarlaga> {
                       Expanded(flex: 4, child: Text(number(zarlaga.tTosov), style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                     ],
                   ),
+                  SizedBox(height: 5),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Expanded(flex: 3, child: Text('Зөрүү:', style: TextStyle(color: textColor, fontSize: 12),)),
+                      Expanded(flex: 4, child: Text(number(zarlaga.zoruu), style: TextStyle(color: mainColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+                    ],
+                  ),
                   SizedBox(height: 15),
                   Container(
                       margin: new EdgeInsets.only(left: 10.0,right: 10.0,),

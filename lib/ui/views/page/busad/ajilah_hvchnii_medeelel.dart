@@ -175,7 +175,7 @@ class _AjillahHvchState extends State<AjillahHvch> {
             children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Expanded(flex: 3, child: Text('Аж ахуй нэгж:', style: TextStyle(color: textColor, fontSize: 12),)),
                   Expanded(flex: 4, child: Text(aj_huch_med_i.ajAhuiNerId, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
@@ -190,12 +190,19 @@ class _AjillahHvchState extends State<AjillahHvch> {
                   Expanded(flex: 4, child: Text(aj_huch_med_i.chiglel, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                 ],
               ),
-              SizedBox(height: 15.0),
-              Text(aj_huch_med_i.medeelel, style: TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 12),),
-              SizedBox(height: 15),
+              SizedBox(height: 5.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(flex: 3, child: Text('Мэдээлэл:', style: TextStyle(color: textColor, fontSize: 12),)),
+                  Expanded(flex: 4, child: Text(aj_huch_med_i.medeelel, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),),),
+                ],
+              ),
+              SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Expanded(flex: 3, child: Text('Ажиллах хүч авах улс:', style: TextStyle(color: textColor, fontSize: 12),)),
                   Expanded(flex: 4, child: Text(aj_huch_med_i.uls, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
@@ -204,7 +211,7 @@ class _AjillahHvchState extends State<AjillahHvch> {
               SizedBox(height: 5),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Expanded(flex: 3, child: Text('Ажиллах хүчний тоо:', style: TextStyle(color: textColor, fontSize: 12),)),
                   Expanded(flex: 4, child: Text(number(aj_huch_med_i.huchToo), style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
