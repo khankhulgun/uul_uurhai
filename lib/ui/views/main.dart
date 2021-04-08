@@ -420,6 +420,7 @@ class _mainScreenState extends State<mainScreen> {
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
+                                          datas.length == 0 ? Text('', style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)):
                                           Text(number(datas[0].tzToo), style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
                                           SizedBox(height: 12),
                                           // Row(
