@@ -5,6 +5,9 @@ import 'package:lambda/plugins/chart/models/filter.dart';
 import 'package:lambda/plugins/chart/lambda_chart.dart';
 import 'package:lambda/plugins/chart/lambda_chart_rest.dart';
 
+import 'package:catalog/graphql/config.dart';
+import 'package:catalog/graphql/queries/common.dart';
+
 class ProductPrice extends StatefulWidget {
   @override
   _ProductPriceState createState() => _ProductPriceState();
@@ -12,6 +15,8 @@ class ProductPrice extends StatefulWidget {
 
 class _ProductPriceState extends State<ProductPrice> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  bool loading = true;
+
   String theme = "shine";
   List<Filter> filters = [Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")];
   List<Filter> filtersExportNuurs = [Filter(column: "b_id", condition: "equals", value: "2")];
@@ -41,6 +46,34 @@ class _ProductPriceState extends State<ProductPrice> {
 
   final List<String> _dropdownValues = ["АЛТ","НҮҮРС"];
   String dropdownValue = 'АЛТ';
+
+  List<Common$Query$LutAshigtMaltmal> datas = [];
+  int selectedId = null;
+
+  @override
+  void initState() {
+    super.initState();
+    this.getData();
+  }
+  void getData() async {
+    setState(() {
+      loading = true;
+    });
+    final response = await client.execute(CommonQuery());
+    setState(() {
+      datas = response.data.lutAshigtMaltmal;
+      loading = false;
+    });
+  }
+  List<Common$Query$LutAshigtMaltmal> getTuruls(){
+    List<Common$Query$LutAshigtMaltmal> filtredTurul = [];
+    datas.forEach((v) {
+      if(v.ashigtMaltmal != null){
+        filtredTurul.add(v);
+      }
+    });
+    return filtredTurul;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,20 +112,38 @@ class _ProductPriceState extends State<ProductPrice> {
 
                       ),
                       child: DropdownButton(
-                        items: _dropdownValues
-                            .map((value) => DropdownMenuItem(
-                          child: Text(value, style: TextStyle(color: Color.fromRGBO(68, 68, 68, 1), fontSize: 12, fontWeight: FontWeight.w500)),
-                          value: value,
-                        ))
-                            .toList(),
-                        isExpanded: false,
-                        value: dropdownValue,
-                        onChanged: (String newValue) {
-                          setState(() {
-                            dropdownValue = newValue;
-                          });
-                        },
+                          items: getTuruls().map((row) => DropdownMenuItem(
+                            child: Text(row.ashigtMaltmal),
+                            value: row.id,
+                          )).toList(),
+                          onChanged: (newVal) {
+                            setState(() {
+                              selectedId = newVal;
+                              print(selectedId);
+                            });
+                          },
+                          value: selectedId,
+                          isExpanded: false,
+                          style: TextStyle(fontSize: 12, color: Colors.black),
+                          hint: Text(
+                            'сонгох',
+                          )
                       ),
+                      // child: DropdownButton(
+                      //   items: _dropdownValues
+                      //       .map((value) => DropdownMenuItem(
+                      //     child: Text(value, style: TextStyle(color: Color.fromRGBO(68, 68, 68, 1), fontSize: 12, fontWeight: FontWeight.w500)),
+                      //     value: value,
+                      //   ))
+                      //       .toList(),
+                      //   isExpanded: false,
+                      //   value: dropdownValue,
+                      //   onChanged: (String newValue) {
+                      //     setState(() {
+                      //       dropdownValue = newValue;
+                      //     });
+                      //   },
+                      // ),
                     ),
                   ),
                   // //// 11.1 Эрдэс бүтэгдэхүүний үнэ

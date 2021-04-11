@@ -89,8 +89,7 @@ class _ExportNewsState extends State<ExportNews> {
 
   List<Filter> filtersExportNuursWithDate = [
     Filter(column: "b_id", condition: "equals", value: "2"),
-    Filter(
-        column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
+    Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
     Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")
   ];
   List<Filter> filtersExportZesWithDate = [
@@ -148,7 +147,7 @@ class _ExportNewsState extends State<ExportNews> {
   double autoZam;
   double dun;
   double tumurZam;
-  double umnuhOniiHaritsuulaltHuwi;
+  double umnuhOniiHaritsuulaltHuwi = 0;
   double ussunDun;
 
   double n_autoZam;
@@ -160,7 +159,7 @@ class _ExportNewsState extends State<ExportNews> {
   double tumur_autoZam;
   double tumur_dun;
   double tumur_tumurZam;
-  double tumur_umnuhOniiHaritsuulaltHuwi;
+  double tumur_umnuhOniiHaritsuulaltHuwi = 0;
   double tumur_ussunDun;
 
   void getZes() {
@@ -321,7 +320,7 @@ class _ExportNewsState extends State<ExportNews> {
                   LambdaChart(schemaID: '216', theme: theme, key: Chart1, filters: filters),
 
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -366,7 +365,7 @@ class _ExportNewsState extends State<ExportNews> {
                                             flex: 4,
                                             child: Padding(
                                               padding: const EdgeInsets.only(
-                                                  left: 4.0),
+                                                  left: 0.0),
                                               child: Text(
                                                 number(n_autoZam),
                                                 style: TextStyle(
@@ -399,7 +398,7 @@ class _ExportNewsState extends State<ExportNews> {
                                             flex: 4,
                                             child: Padding(
                                               padding: const EdgeInsets.only(
-                                                  left: 4.0),
+                                                  left: 0.0),
                                               child: Text(
                                                 number(n_tumurZam),
                                                 style: TextStyle(
@@ -517,403 +516,391 @@ class _ExportNewsState extends State<ExportNews> {
                   // // 3 Export Nuurs by Track
                   LambdaChart(schemaID: '218', theme: theme, key: Chart2, filters: filters),
 
-                  // Padding(
-                  //   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  //   child: Column(
-                  //       mainAxisAlignment: MainAxisAlignment.start,
-                  //       crossAxisAlignment: CrossAxisAlignment.start,
-                  //       children: <Widget>[
-                  //         Container(
-                  //           padding: EdgeInsets.all(5.0),
-                  //           decoration: BoxDecoration(
-                  //             borderRadius: BorderRadius.circular(6),
-                  //             color: Colors.grey[100],
-                  //           ),
-                  //           child: Column(
-                  //             mainAxisAlignment: MainAxisAlignment.start,
-                  //             crossAxisAlignment: CrossAxisAlignment.start,
-                  //             children: <Widget>[
-                  //               Text(
-                  //                 'ЗЭСИЙН БАЯЖМАЛ',
-                  //                 textAlign: TextAlign.right,
-                  //                 style: TextStyle(
-                  //                     color: textOrange,
-                  //                     fontSize: 12,
-                  //                     fontWeight: FontWeight.w600),
-                  //               ),
-                  //               Row(
-                  //                 mainAxisAlignment: MainAxisAlignment.start,
-                  //                 crossAxisAlignment: CrossAxisAlignment.start,
-                  //                 children: <Widget>[
-                  //                   Expanded(
-                  //                     flex: 2,
-                  //                     child: Row(
-                  //                       mainAxisAlignment:
-                  //                           MainAxisAlignment.start,
-                  //                       crossAxisAlignment:
-                  //                           CrossAxisAlignment.center,
-                  //                       children: <Widget>[
-                  //                         Expanded(
-                  //                             flex: 4,
-                  //                             child: SvgPicture.asset(
-                  //                                 'assets/uuhvy_img/auto_teever.svg',
-                  //                                 width: 28,
-                  //                                 fit: BoxFit.contain)),
-                  //                         Expanded(
-                  //                           flex: 4,
-                  //                           child: Padding(
-                  //                             padding: const EdgeInsets.only(
-                  //                                 left: 4.0),
-                  //                             child: Text(
-                  //                               number(autoZam),
-                  //                               style: TextStyle(
-                  //                                   color: textOrange,
-                  //                                   fontSize: 14,
-                  //                                   fontWeight:
-                  //                                       FontWeight.w500),
-                  //                             ),
-                  //                           ),
-                  //                         ),
-                  //                       ],
-                  //                     ),
-                  //                   ),
-                  //                   Divider(),
-                  //                   Expanded(
-                  //                     flex: 2,
-                  //                     child: Row(
-                  //                       mainAxisAlignment:
-                  //                           MainAxisAlignment.start,
-                  //                       crossAxisAlignment:
-                  //                           CrossAxisAlignment.center,
-                  //                       children: <Widget>[
-                  //                         Expanded(
-                  //                             flex: 4,
-                  //                             child: SvgPicture.asset(
-                  //                                 'assets/uuhvy_img/tumur_zam.svg',
-                  //                                 width: 28,
-                  //                                 fit: BoxFit.contain)),
-                  //                         Expanded(
-                  //                           flex: 4,
-                  //                           child: Padding(
-                  //                             padding: const EdgeInsets.only(left: 4.0),
-                  //                             child: Text(
-                  //                               number(tumurZam),
-                  //                               style: TextStyle(
-                  //                                   color: textOrange,
-                  //                                   fontSize: 14,
-                  //                                   fontWeight:
-                  //                                       FontWeight.w500),
-                  //                             ),
-                  //                           ),
-                  //                         ),
-                  //                       ],
-                  //                     ),
-                  //                   ),
-                  //                   Expanded(
-                  //                     flex: 2,
-                  //                     child: Center(
-                  //                       child: Column(
-                  //                         mainAxisAlignment:
-                  //                             MainAxisAlignment.start,
-                  //                         crossAxisAlignment:
-                  //                             CrossAxisAlignment.start,
-                  //                         children: <Widget>[
-                  //                           Text(
-                  //                             'Нийт',
-                  //                             textAlign: TextAlign.right,
-                  //                             style: TextStyle(
-                  //                                 color: textColor,
-                  //                                 fontSize: 12,
-                  //                                 fontWeight: FontWeight.w400),
-                  //                           ),
-                  //                           Text(
-                  //                             number(dun),
-                  //                             textAlign: TextAlign.right,
-                  //                             style: TextStyle(
-                  //                                 color: textOrange,
-                  //                                 fontSize: 14,
-                  //                                 fontWeight: FontWeight.w500),
-                  //                           ),
-                  //                         ],
-                  //                       ),
-                  //                     ),
-                  //                   ),
-                  //                   Expanded(
-                  //                     flex: 4,
-                  //                     child: Column(
-                  //                       mainAxisAlignment:
-                  //                           MainAxisAlignment.start,
-                  //                       crossAxisAlignment:
-                  //                           CrossAxisAlignment.start,
-                  //                       children: <Widget>[
-                  //                         Row(
-                  //                           mainAxisAlignment:
-                  //                               MainAxisAlignment.start,
-                  //                           crossAxisAlignment:
-                  //                               CrossAxisAlignment.start,
-                  //                           children: <Widget>[
-                  //                             Text(
-                  //                               'Өссөн дүн',
-                  //                               textAlign: TextAlign.right,
-                  //                               style: TextStyle(
-                  //                                   color: textColor,
-                  //                                   fontSize: 12,
-                  //                                   fontWeight:
-                  //                                       FontWeight.w400),
-                  //                             ),
-                  //                             Expanded(
-                  //                                 child: Text(
-                  //                                   number(ussunDun),
-                  //                               textAlign: TextAlign.right,
-                  //                               style: TextStyle(
-                  //                                   color: textOrange,
-                  //                                   fontSize: 14,
-                  //                                   fontWeight:
-                  //                                       FontWeight.w500),
-                  //                             )),
-                  //                           ],
-                  //                         ),
-                  //                         Row(
-                  //                           mainAxisAlignment:
-                  //                               MainAxisAlignment.start,
-                  //                           crossAxisAlignment:
-                  //                               CrossAxisAlignment.start,
-                  //                           children: <Widget>[
-                  //                             Text(
-                  //                               'Өмнөх оноос',
-                  //                               textAlign: TextAlign.right,
-                  //                               style: TextStyle(
-                  //                                   color: textColor,
-                  //                                   fontSize: 12,
-                  //                                   fontWeight:
-                  //                                       FontWeight.w400),
-                  //                             ),
-                  //                             Expanded(
-                  //                                 child: umnuhOniiHaritsuulaltHuwi >= 0 ? Text(huvi(umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500)) :
-                  //                                     Text(huvi(umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w500)),
-                  //                             ),
-                  //                           ],
-                  //                         ),
-                  //                       ],
-                  //                     ),
-                  //                   ),
-                  //                 ],
-                  //               ),
-                  //             ],
-                  //           ),
-                  //         ),
-                  //       ]),
-                  // ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            padding: EdgeInsets.all(5.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6),
+                              color: Colors.grey[100],
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  'ЗЭСИЙН БАЯЖМАЛ',
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                      color: textOrange,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Expanded(
+                                      flex: 2,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: <Widget>[
+                                          Expanded(
+                                              flex: 4,
+                                              child: SvgPicture.asset(
+                                                  'assets/uuhvy_img/auto_teever.svg',
+                                                  width: 28,
+                                                  fit: BoxFit.contain)),
+                                          Expanded(
+                                            flex: 4,
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 0.0),
+                                              child: Text(
+                                                number(autoZam),
+                                                style: TextStyle(
+                                                    color: textOrange,
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Divider(),
+                                    Expanded(
+                                      flex: 2,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: <Widget>[
+                                          Expanded(
+                                              flex: 4,
+                                              child: SvgPicture.asset(
+                                                  'assets/uuhvy_img/tumur_zam.svg',
+                                                  width: 28,
+                                                  fit: BoxFit.contain)),
+                                          Expanded(
+                                            flex: 4,
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(left: 0.0),
+                                              child: Text(
+                                                number(tumurZam),
+                                                style: TextStyle(
+                                                    color: textOrange,
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 2,
+                                      child: Center(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text(
+                                              'Нийт',
+                                              textAlign: TextAlign.right,
+                                              style: TextStyle(
+                                                  color: textColor,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                            Text(
+                                              number(dun),
+                                              textAlign: TextAlign.right,
+                                              style: TextStyle(
+                                                  color: textOrange,
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 4,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(
+                                                'Өссөн дүн',
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: textColor,
+                                                    fontSize: 12,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                              Expanded(
+                                                  child: Text(
+                                                    number(ussunDun),
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: textOrange,
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              )),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(
+                                                'Өмнөх оноос',
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: textColor,
+                                                    fontSize: 12,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                              Expanded(
+                                                  child: umnuhOniiHaritsuulaltHuwi > 0 ? Text(huvi(umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500)) :
+                                                      Text(huvi(umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w500)),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ]),
+                  ),
 
                   SizedBox(height: 10),
 
                   // // 4 Export Zes by Track
                   LambdaChart(schemaID: '219', key:Chart3, theme: theme, filters: filters),
 
-                  // Padding(
-                  //   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  //   child: Column(
-                  //       mainAxisAlignment: MainAxisAlignment.start,
-                  //       crossAxisAlignment: CrossAxisAlignment.start,
-                  //       children: <Widget>[
-                  //         Container(
-                  //           padding: EdgeInsets.all(5.0),
-                  //           decoration: BoxDecoration(
-                  //             borderRadius: BorderRadius.circular(6),
-                  //             color: Colors.grey[100],
-                  //           ),
-                  //           child: Column(
-                  //             mainAxisAlignment: MainAxisAlignment.start,
-                  //             crossAxisAlignment: CrossAxisAlignment.start,
-                  //             children: <Widget>[
-                  //               Text(
-                  //                 'ТӨМРИЙН ХҮДЭР',
-                  //                 textAlign: TextAlign.right,
-                  //                 style: TextStyle(
-                  //                     color: textBlueGrey,
-                  //                     fontSize: 12,
-                  //                     fontWeight: FontWeight.w600),
-                  //               ),
-                  //               Row(
-                  //                 mainAxisAlignment: MainAxisAlignment.start,
-                  //                 crossAxisAlignment: CrossAxisAlignment.start,
-                  //                 children: <Widget>[
-                  //                   Expanded(
-                  //                     flex: 2,
-                  //                     child: Row(
-                  //                       mainAxisAlignment:
-                  //                           MainAxisAlignment.start,
-                  //                       crossAxisAlignment:
-                  //                           CrossAxisAlignment.center,
-                  //                       children: <Widget>[
-                  //                         Expanded(
-                  //                             flex: 4,
-                  //                             child: SvgPicture.asset(
-                  //                                 'assets/uuhvy_img/auto_teever.svg',
-                  //                                 width: 28,
-                  //                                 fit: BoxFit.contain)),
-                  //                         Expanded(
-                  //                           flex: 4,
-                  //                           child: Padding(
-                  //                             padding: const EdgeInsets.only(
-                  //                                 left: 4.0),
-                  //                             child: Text(
-                  //                               number(tumur_autoZam),
-                  //                               style: TextStyle(
-                  //                                   color: textBlueGrey,
-                  //                                   fontSize: 14,
-                  //                                   fontWeight:
-                  //                                       FontWeight.w500),
-                  //                             ),
-                  //                           ),
-                  //                         ),
-                  //                       ],
-                  //                     ),
-                  //                   ),
-                  //                   Divider(),
-                  //                   Expanded(
-                  //                     flex: 2,
-                  //                     child: Row(
-                  //                       mainAxisAlignment:
-                  //                           MainAxisAlignment.start,
-                  //                       crossAxisAlignment:
-                  //                           CrossAxisAlignment.center,
-                  //                       children: <Widget>[
-                  //                         Expanded(
-                  //                             flex: 4,
-                  //                             child: SvgPicture.asset(
-                  //                                 'assets/uuhvy_img/tumur_zam.svg',
-                  //                                 width: 28,
-                  //                                 fit: BoxFit.contain)),
-                  //                         Expanded(
-                  //                           flex: 4,
-                  //                           child: Padding(
-                  //                             padding: const EdgeInsets.only(
-                  //                                 left: 4.0),
-                  //                             child: Text(
-                  //                               number(tumur_tumurZam),
-                  //                               style: TextStyle(
-                  //                                   color: textBlueGrey,
-                  //                                   fontSize: 14,
-                  //                                   fontWeight:
-                  //                                       FontWeight.w500),
-                  //                             ),
-                  //                           ),
-                  //                         ),
-                  //                       ],
-                  //                     ),
-                  //                   ),
-                  //                   Expanded(
-                  //                     flex: 2,
-                  //                     child: Center(
-                  //                       child: Column(
-                  //                         mainAxisAlignment:
-                  //                             MainAxisAlignment.start,
-                  //                         crossAxisAlignment:
-                  //                             CrossAxisAlignment.start,
-                  //                         children: <Widget>[
-                  //                           Text(
-                  //                             'Нийт',
-                  //                             textAlign: TextAlign.right,
-                  //                             style: TextStyle(
-                  //                                 color: textColor,
-                  //                                 fontSize: 12,
-                  //                                 fontWeight: FontWeight.w400),
-                  //                           ),
-                  //                           Text(
-                  //                             number(tumur_dun),
-                  //                             textAlign: TextAlign.right,
-                  //                             style: TextStyle(
-                  //                                 color: textBlueGrey,
-                  //                                 fontSize: 14,
-                  //                                 fontWeight: FontWeight.w500),
-                  //                           ),
-                  //                         ],
-                  //                       ),
-                  //                     ),
-                  //                   ),
-                  //                   Expanded(
-                  //                     flex: 4,
-                  //                     child: Column(
-                  //                       mainAxisAlignment:
-                  //                           MainAxisAlignment.start,
-                  //                       crossAxisAlignment:
-                  //                           CrossAxisAlignment.start,
-                  //                       children: <Widget>[
-                  //                         Row(
-                  //                           mainAxisAlignment:
-                  //                               MainAxisAlignment.start,
-                  //                           crossAxisAlignment:
-                  //                               CrossAxisAlignment.start,
-                  //                           children: <Widget>[
-                  //                             Text(
-                  //                               'Өссөн дүн',
-                  //                               textAlign: TextAlign.right,
-                  //                               style: TextStyle(
-                  //                                   color: textColor,
-                  //                                   fontSize: 12,
-                  //                                   fontWeight:
-                  //                                       FontWeight.w400),
-                  //                             ),
-                  //                             Expanded(
-                  //                                 child: Text(
-                  //                                   number(tumur_ussunDun),
-                  //                               textAlign: TextAlign.right,
-                  //                               style: TextStyle(
-                  //                                   color: textBlueGrey,
-                  //                                   fontSize: 14,
-                  //                                   fontWeight:
-                  //                                       FontWeight.w500),
-                  //                             )),
-                  //                           ],
-                  //                         ),
-                  //                         Row(
-                  //                           mainAxisAlignment:
-                  //                               MainAxisAlignment.start,
-                  //                           crossAxisAlignment:
-                  //                               CrossAxisAlignment.start,
-                  //                           children: <Widget>[
-                  //                             Text(
-                  //                               'Өмнөх оноос',
-                  //                               textAlign: TextAlign.right,
-                  //                               style: TextStyle(
-                  //                                   color: textColor,
-                  //                                   fontSize: 12,
-                  //                                   fontWeight:
-                  //                                       FontWeight.w400),
-                  //                             ),
-                  //                             Expanded(
-                  //                               child: tumur_umnuhOniiHaritsuulaltHuwi >= 0 ? Text(huvi(tumur_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500)) :
-                  //                               Text(huvi(tumur_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w500)),
-                  //                             ),
-                  //                           ],
-                  //                         ),
-                  //                       ],
-                  //                     ),
-                  //                   ),
-                  //                 ],
-                  //               ),
-                  //             ],
-                  //           ),
-                  //         ),
-                  //       ]),
-                  // ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            padding: EdgeInsets.all(5.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6),
+                              color: Colors.grey[100],
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  'ТӨМРИЙН ХҮДЭР',
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                      color: textBlueGrey,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Expanded(
+                                      flex: 2,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: <Widget>[
+                                          Expanded(
+                                              flex: 4,
+                                              child: SvgPicture.asset(
+                                                  'assets/uuhvy_img/auto_teever.svg',
+                                                  width: 28,
+                                                  fit: BoxFit.contain)),
+                                          Expanded(
+                                            flex: 4,
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 0.0),
+                                              child: Text(
+                                                number(tumur_autoZam),
+                                                style: TextStyle(
+                                                    color: textBlueGrey,
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Divider(),
+                                    Expanded(
+                                      flex: 2,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: <Widget>[
+                                          Expanded(
+                                              flex: 4,
+                                              child: SvgPicture.asset(
+                                                  'assets/uuhvy_img/tumur_zam.svg',
+                                                  width: 28,
+                                                  fit: BoxFit.contain)),
+                                          Expanded(
+                                            flex: 4,
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 0.0),
+                                              child: Text(
+                                                number(tumur_tumurZam),
+                                                style: TextStyle(
+                                                    color: textBlueGrey,
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 2,
+                                      child: Center(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text(
+                                              'Нийт',
+                                              textAlign: TextAlign.right,
+                                              style: TextStyle(
+                                                  color: textColor,
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                            Text(
+                                              number(tumur_dun),
+                                              textAlign: TextAlign.right,
+                                              style: TextStyle(
+                                                  color: textBlueGrey,
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 4,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(
+                                                'Өссөн дүн',
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: textColor,
+                                                    fontSize: 12,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                              Expanded(
+                                                  child: Text(
+                                                    number(tumur_ussunDun),
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: textBlueGrey,
+                                                    fontSize: 14,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              )),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(
+                                                'Өмнөх оноос',
+                                                textAlign: TextAlign.right,
+                                                style: TextStyle(
+                                                    color: textColor,
+                                                    fontSize: 12,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                              Expanded(
+                                                child: tumur_umnuhOniiHaritsuulaltHuwi > 0 ? Text(huvi(tumur_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500)) :
+                                                Text(huvi(tumur_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w500)),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ]),
+                  ),
 
                   SizedBox(height: 10),
                   // // 5 Export Tumur by Track
                   LambdaChart(schemaID: '220', key:Chart4, theme: theme, filters: filters),
-
-                  SizedBox(height: 10),
-                  // // 5 Export Tumur by Track
-                  LambdaChart(schemaID: '238', theme: theme),
-
-                  SizedBox(height: 10),
-                  // // 5 Export Tumur by Track
-                  LambdaChart(schemaID: '240', theme: theme),
-
-                  SizedBox(height: 10),
-                  // // 5 Export Tumur by Track
-                  LambdaChart(schemaID: '241', theme: theme),
 
                 ]))));
   }
