@@ -98,14 +98,15 @@ String time(DateTime date){
 String today(){
 
   var date = new DateTime.now();
-  var formatter = new DateFormat('yyyy-MM-dd HH:mm:ss');
+  var formatter = new DateFormat('yyyy-MM-dd');
   return formatter.format(date);
 }
 
-String prevMonthDate(int month){
+String prevMonthDate(){
   var date = new DateTime.now();
-  var prevMonth = Jiffy(date)..subtract(months: month);
-  return prevMonth.format('yyyy-MM-dd HH:mm:ss');
+  var prevMonth = Jiffy(date)..subtract(months: 3);
+
+  return prevMonth.format('yyyy-MM-dd');
 }
 
 String prevDayDate(int day){
