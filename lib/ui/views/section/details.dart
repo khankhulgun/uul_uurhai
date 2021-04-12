@@ -505,6 +505,9 @@ class _Detailstate extends State<Details> {
                     LambdaChart(schemaID: '223', key: Chart2, theme: theme, filters: filtersExportWithDate),
                     SizedBox(height: 30),
                     LambdaChartRest(title: "Экпорт жилээр",  colors: colors, APIurl: "/api/exportYear", theme: theme, filters: filtersExportData, chartType: "ColumnChart"),
+                    widget.id == 2 ? LambdaChartRest(title: "Экспорт боомт болон төрлөөр",  key: Chart5,  APIurl: "/api/nuursBoomt", theme: theme, filters: exportFilters, chartType: "ColumnChart") : Container(),
+                    // // //17.2 Нүүрсний экспорт боомтоор ALL
+                    widget.id == 2 ? LambdaChart(schemaID: '225', theme: theme,  key: Chart6, filters: exportFilters, hideTitle:false): Container(),
 
                     GestureDetector(
                       onTap: () { _datePickerOLborlolt(context); },
@@ -730,9 +733,7 @@ class _Detailstate extends State<Details> {
                     SizedBox(height: 10),
                     LambdaChart(schemaID: '224',  key: Chart4, theme: theme, filters: filtersOlborloltWithDate),
 
-                    widget.id == 2 ? LambdaChartRest(title: "Нүүрсний экспорт боомтоор",  key: Chart5,  APIurl: "/api/nuursBoomt", theme: theme, filters: olborloltFilters, chartType: "ColumnChart") : Container(),
-                    // //17.2 Нүүрсний экспорт боомтоор ALL
-                    widget.id == 2 ? LambdaChart(schemaID: '225', theme: theme,  key: Chart6, filters: olborloltFilters, hideTitle:true): Container(),
+
                     LambdaChartRest(title: "Олборлолт жилээр",  APIurl: "/api/olborloltYear", theme: theme, colors: colors, filters: filtersOlborlolData, chartType: "ColumnChart"),
 
                   ]))),
