@@ -175,7 +175,6 @@ class _ExportNewsState extends State<ExportNews> {
       print(e);
     });
   }
-
   void getNvvrs() {
     _http.post_("/api/exportTeeverDun/2}", {"filters": filters}).then((response) {
       setState(() {
@@ -189,7 +188,6 @@ class _ExportNewsState extends State<ExportNews> {
       print(e);
     });
   }
-
   void getTumriinHvder() {
     _http.post_("/api/exportTeeverDun/2}", {"filters": filters}).then((response) {
       setState(() {
