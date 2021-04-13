@@ -79,4 +79,4 @@ dependencies {
     annotationProcessor 'androidx.annotation:annotation:1.1.0'
 }
 //uncomment when use google service with (google-services.json).
-apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.google-services'
