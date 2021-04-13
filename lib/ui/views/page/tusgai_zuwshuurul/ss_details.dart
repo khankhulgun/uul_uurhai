@@ -8,6 +8,7 @@ import 'package:lambda/plugins/chart/lambda_chart.dart';
 
 //PAGINATION
 import 'package:catalog/utils/date.dart';
+import 'package:catalog/utils/number.dart';
 import 'package:catalog/ui/common/paginate.dart';
 
 //GRAPHQL
@@ -185,7 +186,7 @@ class _SSDetailsState extends State<SSDetails> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Expanded(flex: 4, child: Text('С.Ш код:', style: TextStyle(color: textColor, fontSize: 12),)),
-              Expanded(flex: 4, child: Text('${tusgai.sShCode}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+              Expanded(flex: 4, child: Text('${numberInt(tusgai.sShCode)}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
             ],
           ),
           Row(
@@ -193,7 +194,7 @@ class _SSDetailsState extends State<SSDetails> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Expanded(flex: 4, child: Text('Талбайн дугаар:', style: TextStyle(color: textColor, fontSize: 12),)),
-              Expanded(flex: 4, child: Text('${tusgai.talbainDugaar}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
+              Expanded(flex: 4, child: Text('${numberInt(tusgai.talbainDugaar)}', style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
             ],
           ),
           Row(

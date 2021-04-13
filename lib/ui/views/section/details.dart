@@ -443,7 +443,7 @@ class _Detailstate extends State<Details> {
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Text('${exportFilters[0].value} ~ ${exportFilters[1].value}', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
+                                        Text('${yearFirst(exportFilters[0].value)} ~ ${exportFilters[1].value}', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
                                         SizedBox(height: 5),
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.start,

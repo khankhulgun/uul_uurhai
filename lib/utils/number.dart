@@ -2,6 +2,7 @@ import 'package:intl/intl.dart';
 
 final formatter = new NumberFormat("#,###");
 final Formatter = new NumberFormat("#.#");
+final FormatterInt = new NumberFormat("#.#");
 final formatterFloat = new NumberFormat("#,###.#");
 
 String number(dynamic value){
@@ -10,6 +11,17 @@ String number(dynamic value){
       return formatter.format(int.parse(value));
     }
     return formatter.format(value);
+  } else {
+    return "0";
+  }
+
+}
+String numberInt(dynamic value){
+  if(value != null){
+    if(value.runtimeType == String){
+      return FormatterInt.format(int.parse(value));
+    }
+    return FormatterInt.format(value);
   } else {
     return "0";
   }

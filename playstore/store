@@ -1,4 +1,4 @@
-keytool -genkey -v -keystore key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key
+keytool -genkey -v -keystore mmhi.jks -keyalg RSA -keysize 2048 -validity 10000 -alias mmhi
 102140
 
 
