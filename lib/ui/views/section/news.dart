@@ -22,100 +22,10 @@ class _ExportNewsState extends State<ExportNews> {
 
   String theme = "shine";
   List<Filter> filters = [
-    Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
-    Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")
-  ];
-  List<Filter> filtersExportNuurs = [
-    Filter(column: "b_id", condition: "equals", value: "2")
-  ];
-  List<Filter> filtersOlborloltNuurs = [
-    Filter(column: "b_id", condition: "equals", value: "2")
-  ];
-  List<Filter> filtersExportZes = [
-    Filter(column: "b_id", condition: "equals", value: "1")
-  ];
-  List<Filter> filtersOlborlolZes = [
-    Filter(column: "b_id", condition: "equals", value: "1")
-  ];
-  List<Filter> filtersExportTumur = [
-    Filter(column: "b_id", condition: "equals", value: "3")
-  ];
-  List<Filter> filtersOlborloltTumur = [
-    Filter(column: "b_id", condition: "equals", value: "3")
-  ];
-  List<Filter> filtersOlborloltGazrinTos = [
-    Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
-    Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06"),
-    Filter(column: "b_id", condition: "equals", value: "4")
+    Filter(column: "ognoo", condition: "greaterThanOrEqual", value: prevMonthDate()),
+    Filter(column: "ognoo", condition: "lessThanOrEqual", value: today())
   ];
 
-  List<String> colorsExportNuurs = ["#3030BE", "#6363E7", "#A8A8EA"];
-  List<String> colorsExportZes = ["#F87129", "#E59B73", "#FFD5BE"];
-  List<String> colorsExportTumur = ["#2B97D4", "#85CCF5", "#D1E6F2"];
-  List<Filter> filtersExportGazriinTos = [
-    Filter(column: "b_id", condition: "equals", value: "4"),
-    Filter(
-        column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
-    Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")
-  ];
-  List<Filter> filtersExportNuursBoomt = [
-    Filter(column: "b_id", condition: "equals", value: "2"),
-    Filter(
-        column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
-    Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")
-  ];
-  List<Filter> filtersExportZesBoomt = [
-    Filter(column: "b_id", condition: "equals", value: "1"),
-    Filter(
-        column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
-    Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")
-  ];
-  List<Filter> filtersExportZesTumur = [
-    Filter(column: "b_id", condition: "equals", value: "3"),
-    Filter(
-        column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
-    Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")
-  ];
-  List<Filter> filtersAlt = [
-    Filter(column: "a_maltlam_id", condition: "equals", value: "11"),
-    Filter(
-        column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
-    Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")
-  ];
-  List<Filter> filtersErdesUneAlt = [
-    Filter(column: "ashigt_m_id", condition: "equals", value: "11")
-  ];
-  List<String> colorsAltai = ["#F7C417", "#FF9B05", "#F5EAC3"];
-
-  List<Filter> filtersExportNuursWithDate = [
-    Filter(column: "b_id", condition: "equals", value: "2"),
-    Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
-    Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")
-  ];
-  List<Filter> filtersExportZesWithDate = [
-    Filter(column: "b_id", condition: "equals", value: "1"),
-    Filter(
-        column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
-    Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")
-  ];
-  List<Filter> filtersExportTumurWithDate = [
-    Filter(column: "b_id", condition: "equals", value: "3"),
-    Filter(
-        column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
-    Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")
-  ];
-  List<Filter> filtersExportGazarWithDate = [
-    Filter(column: "b_id", condition: "equals", value: "4"),
-    Filter(
-        column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
-    Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")
-  ];
-  List<Filter> filtersBoomNuurs = [
-    Filter(column: "boomt_short", condition: "equals", value: "ГАС"),
-    Filter(
-        column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
-    Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")
-  ];
   DateTime preStart;
   DateTime preEnd;
   final GlobalKey<LambdaChartState> Chart1 = new GlobalKey<LambdaChartState>();
@@ -189,7 +99,7 @@ class _ExportNewsState extends State<ExportNews> {
     });
   }
   void getTumriinHvder() {
-    _http.post_("/api/exportTeeverDun/2}", {"filters": filters}).then((response) {
+    _http.post_("/api/exportTeeverDun/3}", {"filters": filters}).then((response) {
       setState(() {
         tumur_autoZam = getDouble(response.data["autoZam"]);
         tumur_dun = getDouble(response.data["dun"]);
@@ -206,6 +116,9 @@ class _ExportNewsState extends State<ExportNews> {
     setState(() {
       filters[0].value =getDateString(preStart);
       filters[1].value = getDateString(preEnd);
+      this.getZes();
+      this.getNvvrs();
+      this.getTumriinHvder();
       Chart1.currentState.initChart();
       Chart2.currentState.initChart();
       Chart3.currentState.initChart();

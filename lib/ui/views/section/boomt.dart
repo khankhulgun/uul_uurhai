@@ -16,34 +16,9 @@ class _BoomtState extends State<Boomt> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   String theme = "shine";
   List<Filter> filters = [
-    Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"),
-    Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")
+    Filter(column: "ognoo", condition: "greaterThanOrEqual", value: prevMonthDate()),
+    Filter(column: "ognoo", condition: "lessThanOrEqual", value: today())
   ];
-  List<Filter> filtersExportNuurs = [Filter(column: "b_id", condition: "equals", value: "2")];
-  List<Filter> filtersOlborloltNuurs = [Filter(column: "b_id", condition: "equals", value: "2")];
-  List<Filter> filtersExportZes = [Filter(column: "b_id", condition: "equals", value: "1")];
-  List<Filter> filtersOlborlolZes = [Filter(column: "b_id", condition: "equals", value: "1")];
-  List<Filter> filtersExportTumur = [Filter(column: "b_id", condition: "equals", value: "3")];
-  List<Filter> filtersOlborloltTumur = [Filter(column: "b_id", condition: "equals", value: "3")];
-
-  List<Filter> filtersOlborloltGazrinTos = [Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06"), Filter(column: "b_id", condition: "equals", value: "4")];
-
-  List<String> colorsExportNuurs = ["#3030BE", "#6363E7", "#A8A8EA"];
-  List<String> colorsExportZes = ["#F87129", "#E59B73", "#FFD5BE"];
-  List<String> colorsExportTumur = ["#2B97D4", "#85CCF5", "#D1E6F2"];
-  List<Filter> filtersExportGazriinTos = [Filter(column: "b_id", condition: "equals", value: "4"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")];
-  List<Filter> filtersExportNuursBoomt = [Filter(column: "b_id", condition: "equals", value: "2"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")];
-  List<Filter> filtersExportZesBoomt = [Filter(column: "b_id", condition: "equals", value: "1"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")];
-  List<Filter> filtersExportZesTumur = [Filter(column: "b_id", condition: "equals", value: "3"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")];
-  List<Filter> filtersAlt = [Filter(column: "a_maltlam_id", condition: "equals", value: "11"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")];
-  List<Filter> filtersErdesUneAlt = [Filter(column: "ashigt_m_id", condition: "equals", value: "11")];
-  List<String> colorsAltai = ["#F7C417", "#FF9B05", "#F5EAC3"];
-
-  List<Filter> filtersExportNuursWithDate = [Filter(column: "b_id", condition: "equals", value: "2"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")];
-  List<Filter> filtersExportZesWithDate = [Filter(column: "b_id", condition: "equals", value: "1"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")];
-  List<Filter> filtersExportTumurWithDate = [Filter(column: "b_id", condition: "equals", value: "3"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")];
-  List<Filter> filtersExportGazarWithDate = [Filter(column: "b_id", condition: "equals", value: "4"), Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")];
-  List<Filter> filtersBoomNuurs = [Filter(column: "boomt_short", condition: "equals", value: "ГАС"),Filter(column: "ognoo", condition: "greaterThanOrEqual", value: "2021-01-01"), Filter(column: "ognoo", condition: "lessThanOrEqual", value: "2021-04-06")];
 
   DateTime preStart;
   DateTime preEnd;
@@ -61,9 +36,9 @@ class _BoomtState extends State<Boomt> {
     }
   }
   final GlobalKey<LambdaChartState> Chart1 = new GlobalKey<LambdaChartState>();
-  final GlobalKey<LambdaChartState> Chart2 = new GlobalKey<LambdaChartState>();
-  final GlobalKey<LambdaChartState> Chart3 = new GlobalKey<LambdaChartState>();
-  final GlobalKey<LambdaChartState> Chart4 = new GlobalKey<LambdaChartState>();
+  final GlobalKey<LambdaChartRestState> Chart2 = new GlobalKey<LambdaChartRestState>();
+  final GlobalKey<LambdaChartRestState> Chart3 = new GlobalKey<LambdaChartRestState>();
+  final GlobalKey<LambdaChartRestState> Chart4 = new GlobalKey<LambdaChartRestState>();
   void setFilter(){
     setState(() {
       filters[0].value = getDateString(preStart);
@@ -115,6 +90,16 @@ class _BoomtState extends State<Boomt> {
           });
         });
   }
+
+  List<Filter> getFilter(int b_id){
+    List<Filter> filtersExport = [Filter(column: "b_id", condition: "equals", value: "${b_id}")];
+
+    filtersExport.add(filters[0]);
+    filtersExport.add(filters[1]);
+
+    return filtersExport;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -181,13 +166,13 @@ class _BoomtState extends State<Boomt> {
                   LambdaChart(schemaID: '214', key: Chart1, theme: theme, filters: filters),
 
                   // //// 6 Export Nuurs Boomt
-                  LambdaChartRest(title: "НҮҮРС", key: Chart2, APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportNuursBoomt, chartType: "ColumnChart"),
+                  LambdaChartRest(title: "НҮҮРС", key: Chart2, APIurl: "/api/exportBoomt", theme: theme, filters: getFilter(2), chartType: "ColumnChart"),
 
                   // //// 7 Export Zes Boomt
-                  LambdaChartRest(title: "ЗЭСИЙН БАЯЖМАЛ", key: Chart3, APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportZesBoomt, chartType: "ColumnChart"),
+                  LambdaChartRest(title: "ЗЭСИЙН БАЯЖМАЛ", key: Chart3, APIurl: "/api/exportBoomt", theme: theme, filters: getFilter(1), chartType: "ColumnChart"),
 
                   // //// 8 Export Tumur Boomt
-                  LambdaChartRest(title: "ТӨМРИЙН ХҮДЭР", key: Chart4, APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportZesTumur, chartType: "ColumnChart"),
+                  LambdaChartRest(title: "ТӨМРИЙН ХҮДЭР", key: Chart4, APIurl: "/api/exportBoomt", theme: theme, filters: getFilter(3), chartType: "ColumnChart"),
 
 
 
