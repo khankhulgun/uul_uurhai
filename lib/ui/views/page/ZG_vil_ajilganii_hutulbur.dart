@@ -54,7 +54,6 @@ class _ZGhutulburState extends State<ZGhutulbur> {
       loading = true;
     });
     final response = await client.execute(ZgHotolborQuery(variables: ZgHotolborArguments(page: page, size: 10)));
-
     setState(() {
       zghutulbur = response.data.paginate.dsZgHotolbor;
       currentPage = page;
@@ -62,7 +61,6 @@ class _ZGhutulburState extends State<ZGhutulbur> {
       total = response.data.paginate.total;
       loading = false;
     });
-
   }
 
   bool _isVisible = false;

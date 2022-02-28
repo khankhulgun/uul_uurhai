@@ -119,6 +119,7 @@ class _Detailstate extends State<Details> {
       this.getExportDun();
     });
   }
+
   void setFilterOlborlolt(){
     setState(() {
       olborloltFilters[0].value = getDateString(preStart);
@@ -129,7 +130,6 @@ class _Detailstate extends State<Details> {
         Chart5.currentState.initChart();
         Chart6.currentState.initChart();
       }
-
 
       this.getOlborlolt();
     });

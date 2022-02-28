@@ -54,7 +54,6 @@ class _ProductPriceState extends State<ProductPrice> {
   }
   void setFilter (int newVal){
     setState(() {
-
       filtersErdesUneAlt[0].value = "${newVal}";
       selectedId = newVal;
       Chart1.currentState.initChart();

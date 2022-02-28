@@ -20,9 +20,8 @@ class _MongolBankState extends State<MongolBank> {
   bool loading = true;
 
   String theme = "shine";
- List<Filter> filtersAlt = [
+  List<Filter> filtersAlt = [
     Filter(column: "a_maltlam_id", condition: "equals", value: "11"),
-
   ];
 
   List<String> colorsAltai = ["#F7C417", "#FF9B05", "#F5EAC3"];
@@ -53,17 +52,16 @@ class _MongolBankState extends State<MongolBank> {
         if(v.ashigtMaltmal != null){
           filtredTurul.add(v);
         }
-      });
+    });
     return filtredTurul;
   }
+
   void setFilter (int newVal){
     setState(() {
-
       filtersAlt[0].value = "${newVal}";
       selectedId = newVal;
       Chart1.currentState.initChart();
     });
-
   }
 
   @override

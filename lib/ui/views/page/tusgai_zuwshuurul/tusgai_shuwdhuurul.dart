@@ -258,7 +258,6 @@ class _newTusgaiZuvshuurulState extends State<newTusgaiZuvshuurul> {
                                mainAxisAlignment: MainAxisAlignment.center,
                                crossAxisAlignment: CrossAxisAlignment.center,
                                children: [
-
                                  Text('Талбайн хэмжээ\n/сая.га/', textAlign: TextAlign.center, style: TextStyle(fontSize: 12, color: Colors.black54, fontWeight: FontWeight.w500)),
                                  SizedBox(height: 5,),
                                  datas.length == 0 ? Container() : Text('${datas[0].haiguulTZ}', textAlign: TextAlign.center, style: TextStyle(fontSize: 24, color: Color.fromRGBO(88, 88, 88, 1), fontWeight: FontWeight.w500))

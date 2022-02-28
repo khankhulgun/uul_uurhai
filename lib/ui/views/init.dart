@@ -56,7 +56,6 @@ class _InitScreenState extends State<InitScreen> {
           return false;
         }
       } else {
-
         if(buildNumber < response.data['ios_build_number']){
           this._showDialog(response.data['ios_force'], response.data['ios_msg']);
           return true;
