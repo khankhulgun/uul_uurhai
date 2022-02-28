@@ -12,6 +12,17 @@ String getDate(String date){
 
   return formatter.format(dateTime);
 }
+String yearFirst(String date){
+  if(date == null && date == ""){
+    return "";
+  }
+  DateFormat dateFormat = DateFormat("yyyy-MM-dd");
+  var formatter = new DateFormat('yyyy');
+
+  DateTime dateTime  = dateFormat.parse(date);
+
+  return formatter.format(dateTime)+"-01-01";
+}
 String getDateString(DateTime dateTime){
 
   var formatter = new DateFormat('yyyy-MM-dd');

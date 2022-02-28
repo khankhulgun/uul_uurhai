@@ -262,7 +262,7 @@ class _mglHuuliHeregjiltState extends State<mglHuuliHeregjilt> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Expanded(flex: 3, child: Text('Бодлогын газар::', style: TextStyle(color: textColor, fontSize: 12),)),
+                                  Expanded(flex: 3, child: Text('Бодлогын газар:', style: TextStyle(color: textColor, fontSize: 12),)),
                                   Expanded(flex: 4, child: Text(b_datas[index].dsSubHeregjilt[indexSub].salbar, style: TextStyle(color: textColor, fontWeight: FontWeight.w600, fontSize: 12),)),
                                 ],
                               ),

@@ -1,4 +1,7 @@
-rm -rf ios/Flutter/App.framewor
-flutter build ios --release && tar -zcf build/app.ipa build/ios/iphoneos/Runner.app && ls -lh build/app.ipa
+rm -rf ios/Flutter/App.framework
+rm -rf ios/Pods
+rm -rf Podfile.lock
+rm -rf Podfile
+flutter build ios --release --no-tree-shake-icons && tar -zcf build/app.ipa build/ios/iphoneos/Runner.app && ls -lh build/app.ipa
 
-flutter build apk --release --split-per-abi
+flutter build apk --release --split-per-abi --no-tree-shake-icons
