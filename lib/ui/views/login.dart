@@ -38,7 +38,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await initAuth();
     });

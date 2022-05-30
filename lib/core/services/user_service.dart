@@ -1,4 +1,3 @@
-
 import 'package:catalog/core/models/user.dart';
 import 'package:lambda/modules/network_util.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';

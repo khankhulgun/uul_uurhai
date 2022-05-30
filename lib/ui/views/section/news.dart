@@ -246,17 +246,11 @@ class _ExportNewsState extends State<ExportNews> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text(
-                                  'НҮҮРС',
-                                  textAlign: TextAlign.right,
-                                  style: TextStyle(
-                                      color: primaryColor,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600),
-                                ),
+                                Text('НҮҮРС', textAlign: TextAlign.right, style: TextStyle(color: primaryColor, fontSize: 12, fontWeight: FontWeight.w600),),
+                                SizedBox(height: 10),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
                                     Expanded(
                                       flex: 2,
@@ -267,16 +261,17 @@ class _ExportNewsState extends State<ExportNews> {
                                             CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Expanded(
-                                              flex: 4,
+                                              flex: 0,
                                               child: SvgPicture.asset(
                                                   'assets/uuhvy_img/auto_teever.svg',
                                                   width: 28,
-                                                  fit: BoxFit.contain)),
+                                                  fit: BoxFit.contain)
+                                          ),
+                                          SizedBox(width: 6),
                                           Expanded(
                                             flex: 4,
                                             child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 0.0),
+                                              padding: const EdgeInsets.only(left: 0.0),
                                               child: Text(
                                                 number(n_autoZam),
                                                 style: TextStyle(
@@ -300,11 +295,12 @@ class _ExportNewsState extends State<ExportNews> {
                                             CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Expanded(
-                                              flex: 4,
+                                              flex: 0,
                                               child: SvgPicture.asset(
                                                   'assets/uuhvy_img/tumur_zam.svg',
                                                   width: 28,
                                                   fit: BoxFit.contain)),
+                                          SizedBox(width: 6),
                                           Expanded(
                                             flex: 4,
                                             child: Padding(
@@ -325,93 +321,60 @@ class _ExportNewsState extends State<ExportNews> {
                                     ),
                                     Expanded(
                                       flex: 2,
-                                      child: Center(
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Text(
-                                              'Нийт',
-                                              textAlign: TextAlign.right,
-                                              style: TextStyle(
-                                                  color: textColor,
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w400),
-                                            ),
-                                            Text(
-                                              number(n_dun),
-                                              textAlign: TextAlign.right,
-                                              style: TextStyle(
-                                                  color: primaryColor,
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w500),
-                                            ),
-                                          ],
-                                        ),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Expanded(
+                                            flex: 0,
+                                            child: Text('Нийт', textAlign: TextAlign.right, style: TextStyle(color: textColor, fontSize: 12, fontWeight: FontWeight.w400),),
+                                          ),
+                                          SizedBox(width: 10),
+                                          Expanded(
+                                            flex: 4,
+                                            child: Text(number(n_dun), textAlign: TextAlign.right, style: TextStyle(color: primaryColor, fontSize: 14, fontWeight: FontWeight.w500),),
+                                          )
+                                        ],
                                       ),
                                     ),
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
                                     Expanded(
                                       flex: 4,
-                                      child: Column(
+                                      child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.start,
+                                        MainAxisAlignment.start,
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                         children: <Widget>[
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: <Widget>[
-                                              Text(
-                                                'Өссөн дүн',
-                                                textAlign: TextAlign.right,
-                                                style: TextStyle(
-                                                    color: textColor,
-                                                    fontSize: 12,
-                                                    fontWeight:
-                                                        FontWeight.w400),
-                                              ),
-                                              Expanded(
-                                                  child: Text(
-                                                    number(n_ussunDun),
-                                                textAlign: TextAlign.right,
-                                                style: TextStyle(
-                                                    color: primaryColor,
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                              )),
-                                            ],
+                                          Text('Өссөн дүн', textAlign: TextAlign.right, style: TextStyle(color: textColor, fontSize: 12, fontWeight: FontWeight.w400),),
+                                          Expanded(
+                                            child: Text(number(n_ussunDun), textAlign: TextAlign.right, style: TextStyle(color: primaryColor, fontSize: 14, fontWeight: FontWeight.w500),)
                                           ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: <Widget>[
-                                              Text(
-                                                'Өмнөх оноос',
-                                                textAlign: TextAlign.right,
-                                                style: TextStyle(
-                                                    color: textColor,
-                                                    fontSize: 12,
-                                                    fontWeight:
-                                                        FontWeight.w400),
-                                              ),
-                                              Expanded(
-                                                child: n_umnuhOniiHaritsuulaltHuwi > 0 ? Text(huvi(n_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500)) :
-                                                Text(huvi(n_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w500)),
-                                              ),
-                                              // Expanded(
-                                              //   child: n_umnuhOniiHaritsuulaltHuwi > 0 ? Text(number(n_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500)) :
-                                              //   Text(number(n_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w500)),
-                                              // ),
-                                            ],
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(width: 10),
+                                    Expanded(
+                                      flex: 4,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Text('Өмнөх оноос', textAlign: TextAlign.right, style: TextStyle(color: textColor, fontSize: 12, fontWeight: FontWeight.w400),),
+                                          Expanded(
+                                            child: n_umnuhOniiHaritsuulaltHuwi > 0 ? Text(huvi(n_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500)) :
+                                            Text(huvi(n_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w500)),
                                           ),
+                                          // Expanded(
+                                          //   child: n_umnuhOniiHaritsuulaltHuwi > 0 ? Text(number(n_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500)) :
+                                          //   Text(number(n_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w500)),
+                                          // ),
                                         ],
                                       ),
                                     ),
@@ -451,9 +414,10 @@ class _ExportNewsState extends State<ExportNews> {
                                       fontSize: 12,
                                       fontWeight: FontWeight.w600),
                                 ),
+                                SizedBox(height: 10),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
                                     Expanded(
                                       flex: 2,
@@ -464,11 +428,12 @@ class _ExportNewsState extends State<ExportNews> {
                                             CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Expanded(
-                                              flex: 4,
+                                              flex: 0,
                                               child: SvgPicture.asset(
                                                   'assets/uuhvy_img/auto_teever.svg',
                                                   width: 28,
                                                   fit: BoxFit.contain)),
+                                          SizedBox(width: 6),
                                           Expanded(
                                             flex: 4,
                                             child: Padding(
@@ -487,7 +452,6 @@ class _ExportNewsState extends State<ExportNews> {
                                         ],
                                       ),
                                     ),
-                                    Divider(),
                                     Expanded(
                                       flex: 2,
                                       child: Row(
@@ -497,11 +461,12 @@ class _ExportNewsState extends State<ExportNews> {
                                             CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Expanded(
-                                              flex: 4,
+                                              flex: 0,
                                               child: SvgPicture.asset(
                                                   'assets/uuhvy_img/tumur_zam.svg',
                                                   width: 28,
                                                   fit: BoxFit.contain)),
+                                          SizedBox(width: 6),
                                           Expanded(
                                             flex: 4,
                                             child: Padding(
@@ -521,22 +486,23 @@ class _ExportNewsState extends State<ExportNews> {
                                     ),
                                     Expanded(
                                       flex: 2,
-                                      child: Center(
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Text(
-                                              'Нийт',
-                                              textAlign: TextAlign.right,
-                                              style: TextStyle(
-                                                  color: textColor,
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w400),
-                                            ),
-                                            Text(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                        children: <Widget>[
+                                          Text(
+                                            'Нийт',
+                                            textAlign: TextAlign.right,
+                                            style: TextStyle(
+                                                color: textColor,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                          SizedBox(width: 10),
+                                          Expanded(
+                                            child: Text(
                                               number(dun),
                                               textAlign: TextAlign.right,
                                               style: TextStyle(
@@ -544,65 +510,70 @@ class _ExportNewsState extends State<ExportNews> {
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.w500),
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
                                     ),
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                                Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.start,
+                                  crossAxisAlignment:
+                                  CrossAxisAlignment.start,
+                                  children: <Widget>[
                                     Expanded(
                                       flex: 4,
-                                      child: Column(
+                                      child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.start,
+                                        MainAxisAlignment.start,
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                         children: <Widget>[
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: <Widget>[
-                                              Text(
-                                                'Өссөн дүн',
-                                                textAlign: TextAlign.right,
-                                                style: TextStyle(
-                                                    color: textColor,
-                                                    fontSize: 12,
-                                                    fontWeight:
-                                                        FontWeight.w400),
-                                              ),
-                                              Expanded(
-                                                  child: Text(
-                                                    number(ussunDun),
+                                          Text(
+                                            'Өссөн дүн',
+                                            textAlign: TextAlign.right,
+                                            style: TextStyle(
+                                                color: textColor,
+                                                fontSize: 12,
+                                                fontWeight:
+                                                FontWeight.w400),
+                                          ),
+                                          Expanded(
+                                              child: Text(
+                                                number(ussunDun),
                                                 textAlign: TextAlign.right,
                                                 style: TextStyle(
                                                     color: textOrange,
                                                     fontSize: 14,
                                                     fontWeight:
-                                                        FontWeight.w500),
+                                                    FontWeight.w500),
                                               )),
-                                            ],
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(width: 10),
+                                    Expanded(
+                                      flex: 4,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Text(
+                                            'Өмнөх оноос',
+                                            textAlign: TextAlign.right,
+                                            style: TextStyle(
+                                                color: textColor,
+                                                fontSize: 12,
+                                                fontWeight:
+                                                FontWeight.w400),
                                           ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: <Widget>[
-                                              Text(
-                                                'Өмнөх оноос',
-                                                textAlign: TextAlign.right,
-                                                style: TextStyle(
-                                                    color: textColor,
-                                                    fontSize: 12,
-                                                    fontWeight:
-                                                        FontWeight.w400),
-                                              ),
-                                              Expanded(
-                                                  child: umnuhOniiHaritsuulaltHuwi > 0 ? Text(huvi(umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500)) :
-                                                      Text(huvi(umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w500)),
-                                              ),
-                                            ],
+                                          Expanded(
+                                            child: umnuhOniiHaritsuulaltHuwi > 0 ? Text(huvi(umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500)) :
+                                            Text(huvi(umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w500)),
                                           ),
                                         ],
                                       ),
@@ -644,9 +615,10 @@ class _ExportNewsState extends State<ExportNews> {
                                       fontSize: 12,
                                       fontWeight: FontWeight.w600),
                                 ),
+                                SizedBox(height: 10),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
                                     Expanded(
                                       flex: 2,
@@ -657,11 +629,12 @@ class _ExportNewsState extends State<ExportNews> {
                                             CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Expanded(
-                                              flex: 4,
+                                              flex: 0,
                                               child: SvgPicture.asset(
                                                   'assets/uuhvy_img/auto_teever.svg',
                                                   width: 28,
                                                   fit: BoxFit.contain)),
+                                          SizedBox(width: 6),
                                           Expanded(
                                             flex: 4,
                                             child: Padding(
@@ -690,11 +663,12 @@ class _ExportNewsState extends State<ExportNews> {
                                             CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Expanded(
-                                              flex: 4,
+                                              flex: 0,
                                               child: SvgPicture.asset(
                                                   'assets/uuhvy_img/tumur_zam.svg',
                                                   width: 28,
                                                   fit: BoxFit.contain)),
+                                          SizedBox(width: 6),
                                           Expanded(
                                             flex: 4,
                                             child: Padding(
@@ -715,22 +689,23 @@ class _ExportNewsState extends State<ExportNews> {
                                     ),
                                     Expanded(
                                       flex: 2,
-                                      child: Center(
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Text(
-                                              'Нийт',
-                                              textAlign: TextAlign.right,
-                                              style: TextStyle(
-                                                  color: textColor,
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w400),
-                                            ),
-                                            Text(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                        children: <Widget>[
+                                          Text(
+                                            'Нийт123',
+                                            textAlign: TextAlign.right,
+                                            style: TextStyle(
+                                                color: textColor,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                          SizedBox(width: 10),
+                                          Expanded(
+                                            child: Text(
                                               number(tumur_dun),
                                               textAlign: TextAlign.right,
                                               style: TextStyle(
@@ -738,65 +713,70 @@ class _ExportNewsState extends State<ExportNews> {
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.w500),
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
                                     ),
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                                Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.start,
+                                  crossAxisAlignment:
+                                  CrossAxisAlignment.start,
+                                  children: <Widget>[
                                     Expanded(
                                       flex: 4,
-                                      child: Column(
+                                      child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.start,
+                                        MainAxisAlignment.start,
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                         children: <Widget>[
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: <Widget>[
-                                              Text(
-                                                'Өссөн дүн',
-                                                textAlign: TextAlign.right,
-                                                style: TextStyle(
-                                                    color: textColor,
-                                                    fontSize: 12,
-                                                    fontWeight:
-                                                        FontWeight.w400),
-                                              ),
-                                              Expanded(
-                                                  child: Text(
-                                                    number(tumur_ussunDun),
+                                          Text(
+                                            'Өссөн дүн',
+                                            textAlign: TextAlign.right,
+                                            style: TextStyle(
+                                                color: textColor,
+                                                fontSize: 12,
+                                                fontWeight:
+                                                FontWeight.w400),
+                                          ),
+                                          Expanded(
+                                              child: Text(
+                                                number(tumur_ussunDun),
                                                 textAlign: TextAlign.right,
                                                 style: TextStyle(
                                                     color: textBlueGrey,
                                                     fontSize: 14,
                                                     fontWeight:
-                                                        FontWeight.w500),
+                                                    FontWeight.w500),
                                               )),
-                                            ],
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(width: 10),
+                                    Expanded(
+                                      flex: 4,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Text(
+                                            'Өмнөх оноос',
+                                            textAlign: TextAlign.right,
+                                            style: TextStyle(
+                                                color: textColor,
+                                                fontSize: 12,
+                                                fontWeight:
+                                                FontWeight.w400),
                                           ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: <Widget>[
-                                              Text(
-                                                'Өмнөх оноос',
-                                                textAlign: TextAlign.right,
-                                                style: TextStyle(
-                                                    color: textColor,
-                                                    fontSize: 12,
-                                                    fontWeight:
-                                                        FontWeight.w400),
-                                              ),
-                                              Expanded(
-                                                child: tumur_umnuhOniiHaritsuulaltHuwi > 0 ? Text(huvi(tumur_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500)) :
-                                                Text(huvi(tumur_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w500)),
-                                              ),
-                                            ],
+                                          Expanded(
+                                            child: tumur_umnuhOniiHaritsuulaltHuwi > 0 ? Text(huvi(tumur_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w500)) :
+                                            Text(huvi(tumur_umnuhOniiHaritsuulaltHuwi)+'%', textAlign: TextAlign.right, style: TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w500)),
                                           ),
                                         ],
                                       ),
