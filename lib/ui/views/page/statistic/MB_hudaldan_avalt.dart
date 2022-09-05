@@ -166,7 +166,7 @@ class _MbankState extends State<Mbank> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Expanded(flex: 4, child: Text('Бүтээгдэхүүн:', style: TextStyle(color: textColor, fontSize: 12),)),
-                            Expanded(flex: 3,child: Text(mbhud_avalt_i.ashigtMaltmal, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
+                            Expanded(flex: 3,child: Text(mbhud_avalt_i.ashigtMaltmals, style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 12),)),
                           ],
                         ),
                         Row(

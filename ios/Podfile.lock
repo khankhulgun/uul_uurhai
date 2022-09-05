@@ -25,9 +25,9 @@ PODS:
     - Flutter
   - shared_preferences (0.0.1):
     - Flutter
-  - sqflite (0.0.1):
+  - sqflite (0.0.2):
     - Flutter
-    - FMDB (~> 2.7.2)
+    - FMDB (>= 2.7.5)
   - url_launcher (0.0.1):
     - Flutter
   - webview_flutter (0.0.1):
@@ -93,15 +93,15 @@ SPEC CHECKSUMS:
   image_picker: 9c3312491f862b28d21ecd8fdf0ee14e601b3f09
   local_auth: 2571c49920ae469f46d5557435fad8fa473a5e88
   package_info: 873975fc26034f0b863a300ad47e7f1ac6c7ec62
-  path_provider: fb74bd0465e96b594bb3b5088ee4a4e7bb1f2a9d
+  path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   permission_handler: f615215121f43c1640d2b8500d4ad749512828a8
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   searchable_dropdown: 5058be32fdc5e0481d300ff2087129072e71bd62
-  shared_preferences: 430726339841afefe5142b9c1f50cb6bd7793e01
-  sqflite: 4001a31ff81d210346b500c55b17f4d6c7589dd0
+  shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
+  sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
   webview_flutter: d2b4d6c66968ad042ad94cbb791f5b72b4678a96
 
-PODFILE CHECKSUM: a75497545d4391e2d394c3668e20cfb1c2bbd4aa
+PODFILE CHECKSUM: 6ef28f34396ff0972795e17956d3764ad3ae1d4b
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.3

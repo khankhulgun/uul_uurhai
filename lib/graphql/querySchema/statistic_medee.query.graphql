@@ -60,12 +60,12 @@ query m_bank_hudaldan_avalt($page: Int!, $size: Int!) {
         last_page
         ds_m_bank_hudaldan_avalt{
             a_maltlam_id
-            ashigt_maltmal
+            ashigt_maltmals
             eh_survalj_id
             h_avsan_hemjee
             hemjih_negj_id
             id
-            negj
+            snegj
             ognoo
             survalj
             une

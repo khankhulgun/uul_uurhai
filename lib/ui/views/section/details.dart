@@ -346,160 +346,228 @@ class _Detailstate extends State<Details> {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 6),
-                      margin: EdgeInsets.symmetric(vertical: 10),
-                      child: Stack(
+                      padding: EdgeInsets.all(10.0),
+                      margin: EdgeInsets.symmetric(horizontal: 6, vertical: 10),
+                      decoration: BoxDecoration(
+                        color:  Color(0xFFD3E3FD),
+                        borderRadius: BorderRadius.all(Radius.circular(6.0)),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                            padding: EdgeInsets.all(10.0),
-                            decoration: BoxDecoration(
-                              color:  Colors.white,
-                              borderRadius: BorderRadius.all(Radius.circular(6.0)),
-                              border: Border.all(color: Color.fromRGBO(232, 232, 232, 1), width: 1),
-                            ),
-                            child:  Container(
-                              padding: EdgeInsets.only(top: 76.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Expanded(
-                                    flex: 4,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text('${exportFilters[0].value} ~ ${exportFilters[1].value}', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
-                                        SizedBox(height: 5),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.end,
-                                          children: [
-                                            Expanded(flex: 0, child: Text(number(range_dun), style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w600))),
-                                            SizedBox(width: 4),
-                                            Expanded(flex: 2, child: Text('мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
-                                          ],
-                                        ),
-                                        SizedBox(height: 5),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
-                                            Expanded(flex: 0, child: Text('Өмнөх он:', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400))),
-                                            SizedBox(width: 4),
-                                            Expanded(flex: 2, child: Text(number(range_dun_umnuh_on)+' мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 3,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Text('Өнгөрсөн оны мөн\nүеэс (мян.тн)', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
-                                        SizedBox(height: 5),
-                                        range_ungursun_onii_zuruu > 0 ? Text(number(range_ungursun_onii_zuruu), textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
-                                            : Text(number(range_ungursun_onii_zuruu), textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
-                                      ],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 3,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Text('Өнгөрсөн оны мөн үеэс хувиар', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
-                                        SizedBox(height: 5),
-                                        range_ungursun_onii_zuruu_huviar > 0 ? Text(huvi(range_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
-                                            : Text(huvi(range_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
+                          Expanded(
+                            flex: 4,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('${yearFirst(exportFilters[0].value)} ~ ${exportFilters[1].value}', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
+                                SizedBox(height: 5),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Expanded(flex: 0, child: Text(float(on_dun), style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w600))),
+                                    SizedBox(width: 4),
+                                    Expanded(flex: 2, child: Text('мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
+                                  ],
+                                ),
+                                SizedBox(height: 5),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Expanded(flex: 0, child: Text('Өмнөх оны\nмөн үед:', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400))),
+                                    SizedBox(width: 10),
+                                    Expanded(flex: 2, child: Text(float(on_dun_umnuh_on)+' мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
-                          Positioned(
-                            top: 0,
-                            left: 0,
-                            right: 0,
-                            child:   Container(
-                              padding: EdgeInsets.all(10.0),
-                              decoration: BoxDecoration(
-                                color:  Color(0xFFD3E3FD),
-                                borderRadius: BorderRadius.all(Radius.circular(6.0)),
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Expanded(
-                                    flex: 4,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text('${yearFirst(exportFilters[0].value)} ~ ${exportFilters[1].value}', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
-                                        SizedBox(height: 5),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.end,
-                                          children: [
-                                            Expanded(flex: 0, child: Text(number(on_dun), style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w600))),
-                                            SizedBox(width: 4),
-                                            Expanded(flex: 2, child: Text('мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
-                                          ],
-                                        ),
-                                        SizedBox(height: 5),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
-                                            Expanded(flex: 0, child: Text('Өмнөх он:', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400))),
-                                            SizedBox(width: 4),
-                                            Expanded(flex: 2, child: Text(number(on_dun_umnuh_on)+' мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 3,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Text('Өнгөрсөн оны мөн\nүеэс (мян.тн)', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
-                                        SizedBox(height: 5),
-                                        on_ungursun_onii_zuruu > 0 ? Text(number(on_ungursun_onii_zuruu), textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
-                                            : Text(number(on_ungursun_onii_zuruu), textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
-                                      ],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 3,
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Text('Өнгөрсөн оны мөн үеэс хувиар', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
-                                        SizedBox(height: 5),
-                                        on_ungursun_onii_zuruu_huviar > 0 ? Text(huvi(on_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
-                                            : Text(huvi(on_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
+                          Expanded(
+                            flex: 3,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text('Өнгөрсөн оны мөн\nүеэс (мян.тн)', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
+                                SizedBox(height: 5),
+                                Text(float(on_ungursun_onii_zuruu), textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: on_ungursun_onii_zuruu > 0 ? Colors.green : Colors.red, fontWeight: FontWeight.w400))
+                              ],
                             ),
-                          )
+                          ),
+                          Expanded(
+                            flex: 3,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text('Өнгөрсөн оны мөн үеэс хувиар', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
+                                SizedBox(height: 5),
+                                Text(huvi(on_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: on_ungursun_onii_zuruu > 0 ? Colors.green : Colors.red, fontWeight: FontWeight.w400))
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
+                    // Container(
+                    //   padding: EdgeInsets.symmetric(horizontal: 6),
+                    //   margin: EdgeInsets.symmetric(vertical: 10),
+                    //   child: Stack(
+                    //     children: [
+                    //       Container(
+                    //         padding: EdgeInsets.all(10.0),
+                    //         decoration: BoxDecoration(
+                    //           color:  Colors.white,
+                    //           borderRadius: BorderRadius.all(Radius.circular(6.0)),
+                    //           border: Border.all(color: Color.fromRGBO(232, 232, 232, 1), width: 1),
+                    //         ),
+                    //         child:  Container(
+                    //           padding: EdgeInsets.only(top: 76.0),
+                    //           child: Row(
+                    //             mainAxisAlignment: MainAxisAlignment.start,
+                    //             crossAxisAlignment: CrossAxisAlignment.center,
+                    //             children: [
+                    //               Expanded(
+                    //                 flex: 4,
+                    //                 child: Column(
+                    //                   mainAxisAlignment: MainAxisAlignment.start,
+                    //                   crossAxisAlignment: CrossAxisAlignment.start,
+                    //                   children: [
+                    //                     Text('${exportFilters[0].value} ~ ${exportFilters[1].value}', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
+                    //                     SizedBox(height: 5),
+                    //                     Row(
+                    //                       mainAxisAlignment: MainAxisAlignment.start,
+                    //                       crossAxisAlignment: CrossAxisAlignment.end,
+                    //                       children: [
+                    //                         Expanded(flex: 0, child: Text(number(range_dun), style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w600))),
+                    //                         SizedBox(width: 4),
+                    //                         Expanded(flex: 2, child: Text('мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
+                    //                       ],
+                    //                     ),
+                    //                     SizedBox(height: 5),
+                    //                     Row(
+                    //                       mainAxisAlignment: MainAxisAlignment.start,
+                    //                       crossAxisAlignment: CrossAxisAlignment.center,
+                    //                       children: [
+                    //                         Expanded(flex: 0, child: Text('Өмнөх он:', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400))),
+                    //                         SizedBox(width: 4),
+                    //                         Expanded(flex: 2, child: Text(number(range_dun_umnuh_on)+' мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
+                    //                       ],
+                    //                     ),
+                    //                   ],
+                    //                 ),
+                    //               ),
+                    //               Expanded(
+                    //                 flex: 3,
+                    //                 child: Column(
+                    //                   mainAxisAlignment: MainAxisAlignment.start,
+                    //                   crossAxisAlignment: CrossAxisAlignment.center,
+                    //                   children: [
+                    //                     Text('Өнгөрсөн оны мөн\nүеэс (мян.тн)', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
+                    //                     SizedBox(height: 5),
+                    //                     range_ungursun_onii_zuruu > 0 ? Text(number(range_ungursun_onii_zuruu), textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
+                    //                         : Text(number(range_ungursun_onii_zuruu), textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
+                    //                   ],
+                    //                 ),
+                    //               ),
+                    //               Expanded(
+                    //                 flex: 3,
+                    //                 child: Column(
+                    //                   mainAxisAlignment: MainAxisAlignment.start,
+                    //                   crossAxisAlignment: CrossAxisAlignment.center,
+                    //                   children: [
+                    //                     Text('Өнгөрсөн оны мөн үеэс хувиар', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
+                    //                     SizedBox(height: 5),
+                    //                     range_ungursun_onii_zuruu_huviar > 0 ? Text(huvi(range_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
+                    //                         : Text(huvi(range_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
+                    //                   ],
+                    //                 ),
+                    //               ),
+                    //             ],
+                    //           ),
+                    //         ),
+                    //       ),
+                    //       Positioned(
+                    //         top: 0,
+                    //         left: 0,
+                    //         right: 0,
+                    //         child:   Container(
+                    //           padding: EdgeInsets.all(10.0),
+                    //           decoration: BoxDecoration(
+                    //             color:  Color(0xFFD3E3FD),
+                    //             borderRadius: BorderRadius.all(Radius.circular(6.0)),
+                    //           ),
+                    //           child: Row(
+                    //             mainAxisAlignment: MainAxisAlignment.start,
+                    //             crossAxisAlignment: CrossAxisAlignment.center,
+                    //             children: [
+                    //               Expanded(
+                    //                 flex: 4,
+                    //                 child: Column(
+                    //                   mainAxisAlignment: MainAxisAlignment.start,
+                    //                   crossAxisAlignment: CrossAxisAlignment.start,
+                    //                   children: [
+                    //                     Text('${yearFirst(exportFilters[0].value)} ~ ${exportFilters[1].value}', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
+                    //                     SizedBox(height: 5),
+                    //                     Row(
+                    //                       mainAxisAlignment: MainAxisAlignment.start,
+                    //                       crossAxisAlignment: CrossAxisAlignment.end,
+                    //                       children: [
+                    //                         Expanded(flex: 0, child: Text(number(on_dun), style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w600))),
+                    //                         SizedBox(width: 4),
+                    //                         Expanded(flex: 2, child: Text('мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
+                    //                       ],
+                    //                     ),
+                    //                     SizedBox(height: 5),
+                    //                     Row(
+                    //                       mainAxisAlignment: MainAxisAlignment.start,
+                    //                       crossAxisAlignment: CrossAxisAlignment.center,
+                    //                       children: [
+                    //                         Expanded(flex: 0, child: Text('Өмнөх он:', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400))),
+                    //                         SizedBox(width: 4),
+                    //                         Expanded(flex: 2, child: Text(number(on_dun_umnuh_on)+' мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
+                    //                       ],
+                    //                     ),
+                    //                   ],
+                    //                 ),
+                    //               ),
+                    //               Expanded(
+                    //                 flex: 3,
+                    //                 child: Column(
+                    //                   mainAxisAlignment: MainAxisAlignment.start,
+                    //                   crossAxisAlignment: CrossAxisAlignment.center,
+                    //                   children: [
+                    //                     Text('Өнгөрсөн оны мөн\nүеэс (мян.тн)', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
+                    //                     SizedBox(height: 5),
+                    //                     on_ungursun_onii_zuruu > 0 ? Text(number(on_ungursun_onii_zuruu), textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
+                    //                         : Text(number(on_ungursun_onii_zuruu), textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
+                    //                   ],
+                    //                 ),
+                    //               ),
+                    //               Expanded(
+                    //                 flex: 3,
+                    //                 child: Column(
+                    //                   mainAxisAlignment: MainAxisAlignment.start,
+                    //                   crossAxisAlignment: CrossAxisAlignment.center,
+                    //                   children: [
+                    //                     Text('Өнгөрсөн оны мөн үеэс хувиар', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
+                    //                     SizedBox(height: 5),
+                    //                     on_ungursun_onii_zuruu_huviar > 0 ? Text(huvi(on_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
+                    //                         : Text(huvi(on_ungursun_onii_zuruu_huviar)+'%', textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
+                    //                   ],
+                    //                 ),
+                    //               ),
+                    //             ],
+                    //           ),
+                    //         ),
+                    //       )
+                    //     ],
+                    //   ),
+                    // ),
                     LambdaChartRest(title: "Экпорт боомтоор", key: Chart1, APIurl: "/api/exportBoomt", theme: theme, filters: filtersExportWithDate, chartType: "ColumnChart"),
                     // //12.2 Export zes
                     LambdaChart(schemaID: '223', key: Chart2, theme: theme, filters: filtersExportWithDate),

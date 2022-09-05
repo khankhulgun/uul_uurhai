@@ -80,7 +80,8 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/uuhvy_img/ulogo.png"
+  remove_alpha_ios: true
+  image_path: "assets/uuhvy_img/applogo.png"
 
 flutter_launcher_name:
   name: "УУХҮЯ"

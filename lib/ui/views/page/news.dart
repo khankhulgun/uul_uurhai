@@ -136,11 +136,11 @@ class _NewsState extends State<News> {
             scaffold: _scaffoldKey,
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => _onButtonPressed(),
-          child: Icon(Feather.getIconData('search')),
-          backgroundColor: mainColor,
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: () => _onButtonPressed(),
+        //   child: Icon(Feather.getIconData('search')),
+        //   backgroundColor: mainColor,
+        // ),
 
 //      floatingActionButtonLocation:
 //      FloatingActionButtonLocation.centerFloat,

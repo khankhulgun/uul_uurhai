@@ -86,11 +86,11 @@ class _ZGhutulburState extends State<ZGhutulbur> {
           scaffold: _scaffoldKey,
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _onButtonPressed(),
-        child: Icon(Feather.getIconData('search')),
-        backgroundColor: mainColor,
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () => _onButtonPressed(),
+      //   child: Icon(Feather.getIconData('search')),
+      //   backgroundColor: mainColor,
+      // ),
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: double.infinity,

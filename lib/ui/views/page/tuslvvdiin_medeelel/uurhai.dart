@@ -92,7 +92,7 @@ class _UurhaiState extends State<Uurhai> {
           width: MediaQuery.of(context).size.width,
           padding: EdgeInsets.all(0.0),
           height: double.infinity,
-          margin: EdgeInsets.only(bottom: 40),
+          //margin: EdgeInsets.only(bottom: 40),
           child: loading ? Loader() : Pagination(
             lastPage: lastPage,
             currentPage: currentPage,

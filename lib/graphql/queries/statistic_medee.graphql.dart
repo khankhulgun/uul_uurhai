@@ -249,8 +249,8 @@ class MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvalt
   @JsonKey(name: 'a_maltlam_id')
   int aMaltlamId;
 
-  @JsonKey(name: 'ashigt_maltmal')
-  String ashigtMaltmal;
+  @JsonKey(name: 'ashigt_maltmals')
+  String ashigtMaltmals;
 
   @JsonKey(name: 'eh_survalj_id')
   int ehSurvaljId;
@@ -263,7 +263,7 @@ class MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvalt
 
   int id;
 
-  String negj;
+  String snegj;
 
   DateTime ognoo;
 
@@ -274,12 +274,12 @@ class MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvalt
   @override
   List<Object> get props => [
         aMaltlamId,
-        ashigtMaltmal,
+        ashigtMaltmals,
         ehSurvaljId,
         hAvsanHemjee,
         hemjihNegjId,
         id,
-        negj,
+        snegj,
         ognoo,
         survalj,
         une
@@ -953,7 +953,7 @@ class MBankHudaldanAvaltQuery extends GraphQLQuery<MBankHudaldanAvalt$Query,
                           directives: [],
                           selectionSet: null),
                       FieldNode(
-                          name: NameNode(value: 'ashigt_maltmal'),
+                          name: NameNode(value: 'ashigt_maltmals'),
                           alias: null,
                           arguments: [],
                           directives: [],
@@ -983,7 +983,7 @@ class MBankHudaldanAvaltQuery extends GraphQLQuery<MBankHudaldanAvalt$Query,
                           directives: [],
                           selectionSet: null),
                       FieldNode(
-                          name: NameNode(value: 'negj'),
+                          name: NameNode(value: 'snegj'),
                           alias: null,
                           arguments: [],
                           directives: [],

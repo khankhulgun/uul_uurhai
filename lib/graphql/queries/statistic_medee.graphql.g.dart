@@ -180,12 +180,12 @@ MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvalt
         Map<String, dynamic> json) {
   return MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvalt()
     ..aMaltlamId = json['a_maltlam_id'] as int
-    ..ashigtMaltmal = json['ashigt_maltmal'] as String
+    ..ashigtMaltmals = json['ashigt_maltmals'] as String
     ..ehSurvaljId = json['eh_survalj_id'] as int
     ..hAvsanHemjee = (json['h_avsan_hemjee'] as num)?.toDouble()
     ..hemjihNegjId = json['hemjih_negj_id'] as int
     ..id = json['id'] as int
-    ..negj = json['negj'] as String
+    ..snegj = json['snegj'] as String
     ..ognoo =
         json['ognoo'] == null ? null : DateTime.parse(json['ognoo'] as String)
     ..survalj = json['survalj'] as String
@@ -197,12 +197,12 @@ Map<String, dynamic>
             MBankHudaldanAvalt$Query$Paginate$DsMBankHudaldanAvalt instance) =>
         <String, dynamic>{
           'a_maltlam_id': instance.aMaltlamId,
-          'ashigt_maltmal': instance.ashigtMaltmal,
+          'ashigt_maltmals': instance.ashigtMaltmals,
           'eh_survalj_id': instance.ehSurvaljId,
           'h_avsan_hemjee': instance.hAvsanHemjee,
           'hemjih_negj_id': instance.hemjihNegjId,
           'id': instance.id,
-          'negj': instance.negj,
+          'snegj': instance.snegj,
           'ognoo': instance.ognoo?.toIso8601String(),
           'survalj': instance.survalj,
           'une': instance.une,

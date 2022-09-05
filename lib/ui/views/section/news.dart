@@ -246,7 +246,7 @@ class _ExportNewsState extends State<ExportNews> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text('НҮҮРС', textAlign: TextAlign.right, style: TextStyle(color: primaryColor, fontSize: 12, fontWeight: FontWeight.w600),),
+                                Text('НҮҮРС (тн)', textAlign: TextAlign.right, style: TextStyle(color: primaryColor, fontSize: 12, fontWeight: FontWeight.w600),),
                                 SizedBox(height: 10),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -407,7 +407,7 @@ class _ExportNewsState extends State<ExportNews> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  'ЗЭСИЙН БАЯЖМАЛ',
+                                  'ЗЭСИЙН БАЯЖМАЛ (тн)',
                                   textAlign: TextAlign.right,
                                   style: TextStyle(
                                       color: textOrange,
@@ -608,7 +608,7 @@ class _ExportNewsState extends State<ExportNews> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  'ТӨМРИЙН ХҮДЭР',
+                                  'ТӨМРИЙН ХҮДЭР (тн)',
                                   textAlign: TextAlign.right,
                                   style: TextStyle(
                                       color: textBlueGrey,

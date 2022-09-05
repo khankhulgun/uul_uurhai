@@ -186,6 +186,239 @@ Map<String, dynamic> _$SongonShalgaruulalt$QueryToJson(
       'paginate': instance.paginate?.toJson(),
     };
 
+EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubBu
+    _$EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubBuFromJson(
+        Map<String, dynamic> json) {
+  return EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubBu()
+    ..asuudal = json['asuudal'] as String
+    ..asuudalD = json['asuudal_d'] as int
+    ..bTorol = json['b_torol'] as String
+    ..id = json['id'] as int
+    ..tableId = json['table_id'] as int
+    ..tolov = json['tolov'] as String
+    ..tolovId = json['tolov_id'] as int
+    ..torolId = json['torol_id'] as int;
+}
+
+Map<String, dynamic>
+    _$EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubBuToJson(
+            EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubBu
+                instance) =>
+        <String, dynamic>{
+          'asuudal': instance.asuudal,
+          'asuudal_d': instance.asuudalD,
+          'b_torol': instance.bTorol,
+          'id': instance.id,
+          'table_id': instance.tableId,
+          'tolov': instance.tolov,
+          'tolov_id': instance.tolovId,
+          'torol_id': instance.torolId,
+        };
+
+EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubGt
+    _$EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubGtFromJson(
+        Map<String, dynamic> json) {
+  return EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubGt()
+    ..aDugaar = json['a_dugaar'] as int
+    ..asuudal = json['asuudal'] as String
+    ..gtTorol = json['gt_torol'] as String
+    ..id = json['id'] as int
+    ..tableId = json['table_id'] as int
+    ..tolov = json['tolov'] as String
+    ..tolovId = json['tolov_id'] as int
+    ..torolId = json['torol_id'] as int;
+}
+
+Map<String, dynamic>
+    _$EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubGtToJson(
+            EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubGt
+                instance) =>
+        <String, dynamic>{
+          'a_dugaar': instance.aDugaar,
+          'asuudal': instance.asuudal,
+          'gt_torol': instance.gtTorol,
+          'id': instance.id,
+          'table_id': instance.tableId,
+          'tolov': instance.tolov,
+          'tolov_id': instance.tolovId,
+          'torol_id': instance.torolId,
+        };
+
+EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubNoots
+    _$EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubNootsFromJson(
+        Map<String, dynamic> json) {
+  return EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubNoots()
+    ..aDugaar = json['a_dugaar'] as int
+    ..asuudal = json['asuudal'] as String
+    ..buteegdehuun = json['buteegdehuun'] as String
+    ..id = json['id'] as int
+    ..tableId = json['table_id'] as int
+    ..tolov = json['tolov'] as String
+    ..tolovId = json['tolov_id'] as int
+    ..torolId = json['torol_id'] as int;
+}
+
+Map<String, dynamic>
+    _$EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubNootsToJson(
+            EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubNoots
+                instance) =>
+        <String, dynamic>{
+          'a_dugaar': instance.aDugaar,
+          'asuudal': instance.asuudal,
+          'buteegdehuun': instance.buteegdehuun,
+          'id': instance.id,
+          'table_id': instance.tableId,
+          'tolov': instance.tolov,
+          'tolov_id': instance.tolovId,
+          'torol_id': instance.torolId,
+        };
+
+EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubTezu
+    _$EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubTezuFromJson(
+        Map<String, dynamic> json) {
+  return EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubTezu()
+    ..aDugaar = json['a_dugaar'] as int
+    ..asuudal = json['asuudal'] as String
+    ..buteegdehuun = json['buteegdehuun'] as String
+    ..id = json['id'] as int
+    ..subBTorolId = json['sub_b_torol_id'] as int
+    ..tableId = json['table_id'] as int
+    ..tolov = json['tolov'] as String
+    ..tolovId = json['tolov_id'] as int;
+}
+
+Map<String, dynamic>
+    _$EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubTezuToJson(
+            EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubTezu
+                instance) =>
+        <String, dynamic>{
+          'a_dugaar': instance.aDugaar,
+          'asuudal': instance.asuudal,
+          'buteegdehuun': instance.buteegdehuun,
+          'id': instance.id,
+          'sub_b_torol_id': instance.subBTorolId,
+          'table_id': instance.tableId,
+          'tolov': instance.tolov,
+          'tolov_id': instance.tolovId,
+        };
+
+EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubUhggsa
+    _$EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubUhggsaFromJson(
+        Map<String, dynamic> json) {
+  return EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubUhggsa()
+    ..aDugaar = json['a_dugaar'] as int
+    ..asuudal = json['asuudal'] as String
+    ..id = json['id'] as int
+    ..tableId = json['table_id'] as int
+    ..tolovId = json['tolov_id'] as int
+    ..torol = json['torol'] as String
+    ..torolId = json['torol_id'] as int
+    ..uhggsaTolov = json['uhggsa_tolov'] as String;
+}
+
+Map<String, dynamic>
+    _$EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubUhggsaToJson(
+            EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubUhggsa
+                instance) =>
+        <String, dynamic>{
+          'a_dugaar': instance.aDugaar,
+          'asuudal': instance.asuudal,
+          'id': instance.id,
+          'table_id': instance.tableId,
+          'tolov_id': instance.tolovId,
+          'torol': instance.torol,
+          'torol_id': instance.torolId,
+          'uhggsa_tolov': instance.uhggsaTolov,
+        };
+
+EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol
+    _$EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlolFromJson(
+        Map<String, dynamic> json) {
+  return EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol()
+    ..ebmzSalbarId = json['ebmz_salbar_id'] as int
+    ..hhAsuudalToo = json['hh_asuudal_too'] as int
+    ..id = json['id'] as int
+    ..jilId = json['jil_id'] as int
+    ..zovlol = json['zovlol'] as String
+    ..dsSubBu = (json['ds_sub_bu'] as List)
+        ?.map((e) => e == null
+            ? null
+            : EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubBu
+                .fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..dsSubGt = (json['ds_sub_gt'] as List)
+        ?.map((e) => e == null
+            ? null
+            : EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubGt
+                .fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..dsSubNoots = (json['ds_sub_noots'] as List)
+        ?.map((e) => e == null
+            ? null
+            : EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubNoots
+                .fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..dsSubTezu = (json['ds_sub_tezu'] as List)
+        ?.map((e) => e == null ? null : EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubTezu.fromJson(e as Map<String, dynamic>))
+        ?.toList()
+    ..dsSubUhggsa = (json['ds_sub_uhggsa'] as List)?.map((e) => e == null ? null : EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol$DsSubUhggsa.fromJson(e as Map<String, dynamic>))?.toList();
+}
+
+Map<String, dynamic>
+    _$EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlolToJson(
+            EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol instance) =>
+        <String, dynamic>{
+          'ebmz_salbar_id': instance.ebmzSalbarId,
+          'hh_asuudal_too': instance.hhAsuudalToo,
+          'id': instance.id,
+          'jil_id': instance.jilId,
+          'zovlol': instance.zovlol,
+          'ds_sub_bu': instance.dsSubBu?.map((e) => e?.toJson())?.toList(),
+          'ds_sub_gt': instance.dsSubGt?.map((e) => e?.toJson())?.toList(),
+          'ds_sub_noots':
+              instance.dsSubNoots?.map((e) => e?.toJson())?.toList(),
+          'ds_sub_tezu': instance.dsSubTezu?.map((e) => e?.toJson())?.toList(),
+          'ds_sub_uhggsa':
+              instance.dsSubUhggsa?.map((e) => e?.toJson())?.toList(),
+        };
+
+EBMergejilZovlolAll$Query$Paginate _$EBMergejilZovlolAll$Query$PaginateFromJson(
+    Map<String, dynamic> json) {
+  return EBMergejilZovlolAll$Query$Paginate()
+    ..total = json['total'] as int
+    ..lastPage = json['last_page'] as int
+    ..dsEBMergejilZovlol = (json['ds_e_b_mergejil_zovlol'] as List)
+        ?.map((e) => e == null
+            ? null
+            : EBMergejilZovlolAll$Query$Paginate$DsEBMergejilZovlol.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList();
+}
+
+Map<String, dynamic> _$EBMergejilZovlolAll$Query$PaginateToJson(
+        EBMergejilZovlolAll$Query$Paginate instance) =>
+    <String, dynamic>{
+      'total': instance.total,
+      'last_page': instance.lastPage,
+      'ds_e_b_mergejil_zovlol':
+          instance.dsEBMergejilZovlol?.map((e) => e?.toJson())?.toList(),
+    };
+
+EBMergejilZovlolAll$Query _$EBMergejilZovlolAll$QueryFromJson(
+    Map<String, dynamic> json) {
+  return EBMergejilZovlolAll$Query()
+    ..paginate = json['paginate'] == null
+        ? null
+        : EBMergejilZovlolAll$Query$Paginate.fromJson(
+            json['paginate'] as Map<String, dynamic>);
+}
+
+Map<String, dynamic> _$EBMergejilZovlolAll$QueryToJson(
+        EBMergejilZovlolAll$Query instance) =>
+    <String, dynamic>{
+      'paginate': instance.paginate?.toJson(),
+    };
+
 EBMergejilZovlol$Query$Paginate$DsEBMergejilZovlol$DsSubBu
     _$EBMergejilZovlol$Query$Paginate$DsEBMergejilZovlol$DsSubBuFromJson(
         Map<String, dynamic> json) {
@@ -338,6 +571,7 @@ EBMergejilZovlol$Query$Paginate$DsEBMergejilZovlol
     ..id = json['id'] as int
     ..jilId = json['jil_id'] as int
     ..zovlol = json['zovlol'] as String
+    ..huraldaanDugaar = json['huraldaan_dugaar'] as int
     ..dsSubBu = (json['ds_sub_bu'] as List)
         ?.map((e) => e == null
             ? null
@@ -372,6 +606,7 @@ Map<String, dynamic> _$EBMergejilZovlol$Query$Paginate$DsEBMergejilZovlolToJson(
       'id': instance.id,
       'jil_id': instance.jilId,
       'zovlol': instance.zovlol,
+      'huraldaan_dugaar': instance.huraldaanDugaar,
       'ds_sub_bu': instance.dsSubBu?.map((e) => e?.toJson())?.toList(),
       'ds_sub_gt': instance.dsSubGt?.map((e) => e?.toJson())?.toList(),
       'ds_sub_noots': instance.dsSubNoots?.map((e) => e?.toJson())?.toList(),
@@ -423,6 +658,8 @@ AjilahHuchMedeelel$Query$Paginate$DsAjilahHuchMedeelel
     ..ajAhuiNerId = json['aj_ahui_ner_id'] as String
     ..chiglel = json['chiglel'] as String
     ..huchToo = json['huch_too'] as int
+    ..jil = json['jil'] as String
+    ..jilId = json['jil_id'] as int
     ..id = json['id'] as int
     ..medeelel = json['medeelel'] as String
     ..uls = json['uls'] as String
@@ -436,6 +673,8 @@ Map<String, dynamic>
           'aj_ahui_ner_id': instance.ajAhuiNerId,
           'chiglel': instance.chiglel,
           'huch_too': instance.huchToo,
+          'jil': instance.jil,
+          'jil_id': instance.jilId,
           'id': instance.id,
           'medeelel': instance.medeelel,
           'uls': instance.uls,
@@ -552,6 +791,127 @@ Map<String, dynamic> _$SongonShalagruulaltDelegrengui$QueryToJson(
       'paginate': instance.paginate?.toJson(),
     };
 
+LutEbmZovlol$Query$LutEbmZovlol _$LutEbmZovlol$Query$LutEbmZovlolFromJson(
+    Map<String, dynamic> json) {
+  return LutEbmZovlol$Query$LutEbmZovlol()
+    ..id = json['id'] as int
+    ..zovlol = json['zovlol'] as String;
+}
+
+Map<String, dynamic> _$LutEbmZovlol$Query$LutEbmZovlolToJson(
+        LutEbmZovlol$Query$LutEbmZovlol instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'zovlol': instance.zovlol,
+    };
+
+LutEbmZovlol$Query _$LutEbmZovlol$QueryFromJson(Map<String, dynamic> json) {
+  return LutEbmZovlol$Query()
+    ..lutEbmZovlol = (json['lut_ebm_zovlol'] as List)
+        ?.map((e) => e == null
+            ? null
+            : LutEbmZovlol$Query$LutEbmZovlol.fromJson(
+                e as Map<String, dynamic>))
+        ?.toList();
+}
+
+Map<String, dynamic> _$LutEbmZovlol$QueryToJson(LutEbmZovlol$Query instance) =>
+    <String, dynamic>{
+      'lut_ebm_zovlol':
+          instance.lutEbmZovlol?.map((e) => e?.toJson())?.toList(),
+    };
+
+LutJil$Query$LutJil _$LutJil$Query$LutJilFromJson(Map<String, dynamic> json) {
+  return LutJil$Query$LutJil()
+    ..id = json['id'] as int
+    ..jil = json['jil'] as String;
+}
+
+Map<String, dynamic> _$LutJil$Query$LutJilToJson(
+        LutJil$Query$LutJil instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'jil': instance.jil,
+    };
+
+LutJil$Query _$LutJil$QueryFromJson(Map<String, dynamic> json) {
+  return LutJil$Query()
+    ..lutJil = (json['lut_jil'] as List)
+        ?.map((e) => e == null
+            ? null
+            : LutJil$Query$LutJil.fromJson(e as Map<String, dynamic>))
+        ?.toList();
+}
+
+Map<String, dynamic> _$LutJil$QueryToJson(LutJil$Query instance) =>
+    <String, dynamic>{
+      'lut_jil': instance.lutJil?.map((e) => e?.toJson())?.toList(),
+    };
+
+LutUls$Query$LutUls _$LutUls$Query$LutUlsFromJson(Map<String, dynamic> json) {
+  return LutUls$Query$LutUls()
+    ..id = json['id'] as int
+    ..uls = json['uls'] as String;
+}
+
+Map<String, dynamic> _$LutUls$Query$LutUlsToJson(
+        LutUls$Query$LutUls instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'uls': instance.uls,
+    };
+
+LutUls$Query _$LutUls$QueryFromJson(Map<String, dynamic> json) {
+  return LutUls$Query()
+    ..lutUls = (json['lut_uls'] as List)
+        ?.map((e) => e == null
+            ? null
+            : LutUls$Query$LutUls.fromJson(e as Map<String, dynamic>))
+        ?.toList();
+}
+
+Map<String, dynamic> _$LutUls$QueryToJson(LutUls$Query instance) =>
+    <String, dynamic>{
+      'lut_uls': instance.lutUls?.map((e) => e?.toJson())?.toList(),
+    };
+
+HuraldaanDugaar$Query$DsViewEBMergejilHuraldaanDugaar
+    _$HuraldaanDugaar$Query$DsViewEBMergejilHuraldaanDugaarFromJson(
+        Map<String, dynamic> json) {
+  return HuraldaanDugaar$Query$DsViewEBMergejilHuraldaanDugaar()
+    ..huraldaanDugaar = json['huraldaan_dugaar'] as int
+    ..id = json['id'] as int;
+}
+
+Map<String, dynamic>
+    _$HuraldaanDugaar$Query$DsViewEBMergejilHuraldaanDugaarToJson(
+            HuraldaanDugaar$Query$DsViewEBMergejilHuraldaanDugaar instance) =>
+        <String, dynamic>{
+          'huraldaan_dugaar': instance.huraldaanDugaar,
+          'id': instance.id,
+        };
+
+HuraldaanDugaar$Query _$HuraldaanDugaar$QueryFromJson(
+    Map<String, dynamic> json) {
+  return HuraldaanDugaar$Query()
+    ..dsViewEBMergejilHuraldaanDugaar =
+        (json['ds_view_e_b_mergejil_huraldaan_dugaar'] as List)
+            ?.map((e) => e == null
+                ? null
+                : HuraldaanDugaar$Query$DsViewEBMergejilHuraldaanDugaar
+                    .fromJson(e as Map<String, dynamic>))
+            ?.toList();
+}
+
+Map<String, dynamic> _$HuraldaanDugaar$QueryToJson(
+        HuraldaanDugaar$Query instance) =>
+    <String, dynamic>{
+      'ds_view_e_b_mergejil_huraldaan_dugaar': instance
+          .dsViewEBMergejilHuraldaanDugaar
+          ?.map((e) => e?.toJson())
+          ?.toList(),
+    };
+
 TusgaiZovshoorolArguments _$TusgaiZovshoorolArgumentsFromJson(
     Map<String, dynamic> json) {
   return TusgaiZovshoorolArguments(
@@ -582,11 +942,29 @@ Map<String, dynamic> _$SongonShalgaruulaltArgumentsToJson(
       'size': instance.size,
     };
 
+EBMergejilZovlolAllArguments _$EBMergejilZovlolAllArgumentsFromJson(
+    Map<String, dynamic> json) {
+  return EBMergejilZovlolAllArguments(
+    page: json['page'] as int,
+    size: json['size'] as int,
+  );
+}
+
+Map<String, dynamic> _$EBMergejilZovlolAllArgumentsToJson(
+        EBMergejilZovlolAllArguments instance) =>
+    <String, dynamic>{
+      'page': instance.page,
+      'size': instance.size,
+    };
+
 EBMergejilZovlolArguments _$EBMergejilZovlolArgumentsFromJson(
     Map<String, dynamic> json) {
   return EBMergejilZovlolArguments(
     page: json['page'] as int,
     size: json['size'] as int,
+    turul_id: json['turul_id'] as String,
+    aanDugaar: json['aanDugaar'] as String,
+    jil_id: json['jil_id'] as String,
   );
 }
 
@@ -595,6 +973,9 @@ Map<String, dynamic> _$EBMergejilZovlolArgumentsToJson(
     <String, dynamic>{
       'page': instance.page,
       'size': instance.size,
+      'turul_id': instance.turul_id,
+      'aanDugaar': instance.aanDugaar,
+      'jil_id': instance.jil_id,
     };
 
 AjilahHuchMedeelelArguments _$AjilahHuchMedeelelArgumentsFromJson(
@@ -602,6 +983,9 @@ AjilahHuchMedeelelArguments _$AjilahHuchMedeelelArgumentsFromJson(
   return AjilahHuchMedeelelArguments(
     page: json['page'] as int,
     size: json['size'] as int,
+    uls_id: json['uls_id'] as String,
+    aanName: json['aanName'] as String,
+    jil_id: json['jil_id'] as String,
   );
 }
 
@@ -610,6 +994,9 @@ Map<String, dynamic> _$AjilahHuchMedeelelArgumentsToJson(
     <String, dynamic>{
       'page': instance.page,
       'size': instance.size,
+      'uls_id': instance.uls_id,
+      'aanName': instance.aanName,
+      'jil_id': instance.jil_id,
     };
 
 SongonShalagruulaltDelegrenguiArguments

@@ -88,10 +88,7 @@ class searchBusad extends StatelessWidget {
                     padding: EdgeInsets.all(0.0),
                     color: mainColor,
                     textColor: Colors.white,
-                    child: new Text(
-                      "Хайх",
-                      style: TextStyle(fontSize: 15),
-                    ),
+                    child: new Text("Хайх", style: TextStyle(fontSize: 15),),
                     onPressed: () {
 //                      setStateOfBottomSheet(() {
 //                        this.saveData(true);

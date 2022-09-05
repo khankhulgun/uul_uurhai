@@ -20,7 +20,7 @@ import 'package:http/http.dart' as http;
 
 
 import 'package:catalog/utils/date.dart';
-import 'package:catalog/ui/common/paginate.dart';
+import 'package:catalog/ui/common/new_paginate.dart';
 
 //GRAPHQL
 import 'package:catalog/graphql/config.dart';
