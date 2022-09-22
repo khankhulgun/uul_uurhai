@@ -421,7 +421,7 @@ class _mainScreenState extends State<mainScreen> {
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
-                                            datas.length == 0 ? Container(): Text(number(datas[0].tzToo), style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
+                                            datas.length == 0 ? Container(): Text(float(datas[0].tzToo), style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
                                             SizedBox(height: 12),
                                             // Row(
                                             //   mainAxisAlignment: MainAxisAlignment.center,
@@ -465,7 +465,7 @@ class _mainScreenState extends State<mainScreen> {
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           crossAxisAlignment: CrossAxisAlignment.center,
                                           children: [
-                                            datas.length == 0 ? Container(): Text('${datas[0].tHemjeeSay}', style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
+                                            datas.length == 0 ? Container(): Text(float(datas[0].tHemjeeSay), style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w500)),
                                             SizedBox(height: 4),
                                             Text('Талбайн хэмжээ /га/', style: TextStyle(fontSize: 8, color: Colors.white, fontWeight: FontWeight.w400)),
                                             SizedBox(height: 2),

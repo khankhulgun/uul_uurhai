@@ -669,7 +669,7 @@ class _Detailstate extends State<Details> {
                                           mainAxisAlignment: MainAxisAlignment.start,
                                           crossAxisAlignment: CrossAxisAlignment.end,
                                           children: [
-                                            Expanded(flex: 0, child: Text(number(O_range_dun), style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w600))),
+                                            Expanded(flex: 0, child: Text(float(O_range_dun), style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w600))),
                                             SizedBox(width: 4),
                                             Expanded(flex: 2, child: Text('мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
                                           ],
@@ -681,7 +681,7 @@ class _Detailstate extends State<Details> {
                                           children: [
                                             Expanded(flex: 0, child: Text('Өмнөх он:', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400))),
                                             SizedBox(width: 4),
-                                            Expanded(flex: 2, child: Text(number(O_range_dun_umnuh_on)+' мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
+                                            Expanded(flex: 2, child: Text(float(O_range_dun_umnuh_on)+' мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
                                           ],
                                         ),
                                       ],
@@ -695,8 +695,8 @@ class _Detailstate extends State<Details> {
                                       children: [
                                         Text('Өнгөрсөн оны мөн\nүеэс (мян.тн)', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
                                         SizedBox(height: 5),
-                                        O_range_ungursun_onii_zuruu > 0 ? Text(number(O_range_ungursun_onii_zuruu), textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
-                                            : Text(number(O_range_ungursun_onii_zuruu), textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
+                                        O_range_ungursun_onii_zuruu > 0 ? Text(float(O_range_ungursun_onii_zuruu), textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
+                                            : Text(float(O_range_ungursun_onii_zuruu), textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
                                       ],
                                     ),
                                   ),
@@ -743,7 +743,7 @@ class _Detailstate extends State<Details> {
                                           mainAxisAlignment: MainAxisAlignment.start,
                                           crossAxisAlignment: CrossAxisAlignment.end,
                                           children: [
-                                            Expanded(flex: 0, child: Text(number(O_on_dun), style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w600))),
+                                            Expanded(flex: 0, child: Text(float(O_on_dun), style: TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.w600))),
                                             SizedBox(width: 4),
                                             Expanded(flex: 2, child: Text('мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
                                           ],
@@ -755,7 +755,7 @@ class _Detailstate extends State<Details> {
                                           children: [
                                             Expanded(flex: 0, child: Text('Өмнөх он:', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400))),
                                             SizedBox(width: 4),
-                                            Expanded(flex: 2, child: Text(number(O_on_dun_umnuh_on)+' мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
+                                            Expanded(flex: 2, child: Text(float(O_on_dun_umnuh_on)+' мян.тн', style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w500))),
                                           ],
                                         ),
                                       ],
@@ -769,8 +769,8 @@ class _Detailstate extends State<Details> {
                                       children: [
                                         Text('Өнгөрсөн оны мөн\nүеэс (мян.тн)', textAlign: TextAlign.center, style: TextStyle(fontSize: 10, color: Colors.black, fontWeight: FontWeight.w400)),
                                         SizedBox(height: 5),
-                                        O_on_ungursun_onii_zuruu > 0 ? Text(number(O_on_ungursun_onii_zuruu), textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
-                                        : Text(number(O_on_ungursun_onii_zuruu), textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
+                                        O_on_ungursun_onii_zuruu > 0 ? Text(float(O_on_ungursun_onii_zuruu), textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.green, fontWeight: FontWeight.w400))
+                                        : Text(float(O_on_ungursun_onii_zuruu), textAlign: TextAlign.center, style: TextStyle(fontSize: 16, color: Colors.red, fontWeight: FontWeight.w400)),
 
                                       ],
                                     ),

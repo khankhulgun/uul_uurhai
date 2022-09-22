@@ -273,7 +273,7 @@ class _ExportNewsState extends State<ExportNews> {
                                             child: Padding(
                                               padding: const EdgeInsets.only(left: 0.0),
                                               child: Text(
-                                                number(n_autoZam),
+                                                float(n_autoZam),
                                                 style: TextStyle(
                                                     color: primaryColor,
                                                     fontSize: 14,
@@ -307,7 +307,7 @@ class _ExportNewsState extends State<ExportNews> {
                                               padding: const EdgeInsets.only(
                                                   left: 0.0),
                                               child: Text(
-                                                number(n_tumurZam),
+                                                float(n_tumurZam),
                                                 style: TextStyle(
                                                     color: primaryColor,
                                                     fontSize: 14,
@@ -332,7 +332,7 @@ class _ExportNewsState extends State<ExportNews> {
                                           SizedBox(width: 10),
                                           Expanded(
                                             flex: 4,
-                                            child: Text(number(n_dun), textAlign: TextAlign.right, style: TextStyle(color: primaryColor, fontSize: 14, fontWeight: FontWeight.w500),),
+                                            child: Text(float(n_dun), textAlign: TextAlign.right, style: TextStyle(color: primaryColor, fontSize: 14, fontWeight: FontWeight.w500),),
                                           )
                                         ],
                                       ),
@@ -354,7 +354,7 @@ class _ExportNewsState extends State<ExportNews> {
                                         children: <Widget>[
                                           Text('Өссөн дүн', textAlign: TextAlign.right, style: TextStyle(color: textColor, fontSize: 12, fontWeight: FontWeight.w400),),
                                           Expanded(
-                                            child: Text(number(n_ussunDun), textAlign: TextAlign.right, style: TextStyle(color: primaryColor, fontSize: 14, fontWeight: FontWeight.w500),)
+                                            child: Text(float(n_ussunDun), textAlign: TextAlign.right, style: TextStyle(color: primaryColor, fontSize: 14, fontWeight: FontWeight.w500),)
                                           ),
                                         ],
                                       ),
@@ -440,7 +440,7 @@ class _ExportNewsState extends State<ExportNews> {
                                               padding: const EdgeInsets.only(
                                                   left: 0.0),
                                               child: Text(
-                                                number(autoZam),
+                                                float(autoZam),
                                                 style: TextStyle(
                                                     color: textOrange,
                                                     fontSize: 14,
@@ -472,7 +472,7 @@ class _ExportNewsState extends State<ExportNews> {
                                             child: Padding(
                                               padding: const EdgeInsets.only(left: 0.0),
                                               child: Text(
-                                                number(tumurZam),
+                                                float(tumurZam),
                                                 style: TextStyle(
                                                     color: textOrange,
                                                     fontSize: 14,
@@ -503,7 +503,7 @@ class _ExportNewsState extends State<ExportNews> {
                                           SizedBox(width: 10),
                                           Expanded(
                                             child: Text(
-                                              number(dun),
+                                              float(dun),
                                               textAlign: TextAlign.right,
                                               style: TextStyle(
                                                   color: textOrange,
@@ -542,7 +542,7 @@ class _ExportNewsState extends State<ExportNews> {
                                           ),
                                           Expanded(
                                               child: Text(
-                                                number(ussunDun),
+                                                float(ussunDun),
                                                 textAlign: TextAlign.right,
                                                 style: TextStyle(
                                                     color: textOrange,
@@ -641,7 +641,7 @@ class _ExportNewsState extends State<ExportNews> {
                                               padding: const EdgeInsets.only(
                                                   left: 0.0),
                                               child: Text(
-                                                number(tumur_autoZam),
+                                                float(tumur_autoZam),
                                                 style: TextStyle(
                                                     color: textBlueGrey,
                                                     fontSize: 14,
@@ -675,7 +675,7 @@ class _ExportNewsState extends State<ExportNews> {
                                               padding: const EdgeInsets.only(
                                                   left: 0.0),
                                               child: Text(
-                                                number(tumur_tumurZam),
+                                                float(tumur_tumurZam),
                                                 style: TextStyle(
                                                     color: textBlueGrey,
                                                     fontSize: 14,
@@ -696,7 +696,7 @@ class _ExportNewsState extends State<ExportNews> {
                                         CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Text(
-                                            'Нийт123',
+                                            'Нийт',
                                             textAlign: TextAlign.right,
                                             style: TextStyle(
                                                 color: textColor,
@@ -706,7 +706,7 @@ class _ExportNewsState extends State<ExportNews> {
                                           SizedBox(width: 10),
                                           Expanded(
                                             child: Text(
-                                              number(tumur_dun),
+                                              float(tumur_dun),
                                               textAlign: TextAlign.right,
                                               style: TextStyle(
                                                   color: textBlueGrey,
@@ -745,7 +745,7 @@ class _ExportNewsState extends State<ExportNews> {
                                           ),
                                           Expanded(
                                               child: Text(
-                                                number(tumur_ussunDun),
+                                                float(tumur_ussunDun),
                                                 textAlign: TextAlign.right,
                                                 style: TextStyle(
                                                     color: textBlueGrey,
